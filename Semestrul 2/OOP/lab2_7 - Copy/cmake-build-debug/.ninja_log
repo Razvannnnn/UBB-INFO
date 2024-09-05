@@ -1,8 +1,0 @@
-# ninja log v5
-21	130	7319790188478094	CMakeFiles/lab2_7.dir/cheltuieli.c.obj	b567688fb54fba92
-12	221	7319805003025985	CMakeFiles/lab2_7.dir/service.c.obj	d5ac707abef61759
-2	166	7320133140669659	CMakeFiles/lab2_7.dir/main.c.obj	8c6e7ae0133e2ccd
-167	426	7320133143239063	lab2_7.exe	659c4474d2d648ba
-15	106	7319722236771369	CMakeFiles/lab2_7.dir/valid.c.obj	c54c2f159c7fe286
-16	217	7319805002985990	CMakeFiles/lab2_7.dir/ui.c.obj	daaf325497a5b062
-17	137	7319790188558105	CMakeFiles/lab2_7.dir/repo.c.obj	f971a6426a468771

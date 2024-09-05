@@ -1,3 +1,0 @@
-C:/Users/razva/Desktop/SDA/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug/CMakeFiles/Lista_Ordonata___cu_pozitie_iterator.dir
-C:/Users/razva/Desktop/SDA/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/razva/Desktop/SDA/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
