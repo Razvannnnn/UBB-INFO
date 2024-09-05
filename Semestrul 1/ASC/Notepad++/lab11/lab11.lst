@@ -1,0 +1,87 @@
+     1                                  bits 32
+     2                                  
+     3                                  global _modul
+     4                                  
+     5                                  extern exit, scanf, printf      
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 257800                      format_citire db "%x", 0
+    12 00000003 536972756C20646520-         mesaj_citire db "Sirul de numere: ", 0
+    12 0000000C 6E756D6572653A2000 
+    13                                      
+    14 00000015 43752073656D6E3A20-         format_afisare_cu dd "Cu semn: %d ", 10, 13, 0
+    14 0000001E 2564200A0000000D00-
+    14 00000027 000000000000       
+    15 0000002D 466172612073656D6E-         format_afisare_fara dd "Fara semn: %u ", 10, 13, 0
+    15 00000036 3A2025752000000A00-
+    15 0000003F 00000D000000000000-
+    15 00000048 00                 
+    16                                      
+    17 00000049 00000000                    nr dd 0
+    18                                      max equ 50
+    19 0000004D 00000000<rept>              sir times max+1 dd 0
+    20                                  
+    21                                  segment code use32 class=code
+    22                                      
+    23                                      
+    24                                      _modul:
+    25                                          ;9. Se cere sa se citeasca de la tastatura un sir de numere, date in baza 16 (se citeste de la tastatura un sir de caractere si in memorie trebuie stocat un sir de numere). Sa se afiseze valoarea zecimala a 
+    26                                           
+    27 00000000 68[03000000]                    push dword mesaj_citire
+    28 00000005 FF15[00000000]                  call [printf]
+    29 0000000B 83C404                          add esp, 4
+    30 0000000E BF[4D000000]                    mov edi, sir
+    31                                          repeta:
+    32 00000013 68[49000000]                        push dword nr
+    33 00000018 68[00000000]                        push dword format_citire
+    34 0000001D FF15[00000000]                      call [scanf]
+    35 00000023 83C408                              add esp, 4*2
+    36                                          
+    37 00000026 A1[49000000]                        mov eax, [nr]
+    38 0000002B 83F800                              cmp eax, 0
+    39 0000002E 7403                                je next
+    40                                              
+    41 00000030 AB                                  stosd
+    42                                              
+    43 00000031 EBE0                                jmp repeta
+    44                                          next:
+    45                                          
+    46 00000033 FC                              cld
+    47 00000034 BE[4D000000]                    mov esi, sir
+    48                                  
+    49                                          repeta2:
+    50                                              
+    51 00000039 AD                                  lodsd
+    52 0000003A 83F800                              cmp eax, 0
+    53 0000003D 7429                                je next2
+    54                                              
+    55                                              ; mov ebx, eax
+    56                                              ; push dword ebx
+    57                                              ; call modul
+    58                                              
+    59 0000003F BBFFFFFFFF                          mov ebx, -1
+    60 00000044 29C3                                sub ebx, eax
+    61                                              
+    62 00000046 53                                  push ebx
+    63                                              
+    64 00000047 50                                  push dword eax
+    65 00000048 68[2D000000]                        push dword format_afisare_fara
+    66 0000004D FF15[00000000]                      call [printf]
+    67 00000053 83C408                              add esp, 4*2
+    68                                              
+    69 00000056 5B                                  pop ebx
+    70                                              
+    71 00000057 53                                  push dword ebx
+    72 00000058 68[15000000]                        push dword format_afisare_cu
+    73 0000005D FF15[00000000]                      call [printf]
+    74 00000063 83C408                              add esp, 4*2
+    75                                              
+    76 00000066 EBD1                                jmp repeta2
+    77                                              
+    78                                          next2:
+    79                                          
+    80 00000068 6A00                            push    dword 0
+    81 0000006A FF15[00000000]                  call    [exit]

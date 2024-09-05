@@ -1,0 +1,2 @@
+CI10,corp iluminat,Lampa Venetia,12,500
+CL23,corp iluminat,Lampa,15,250

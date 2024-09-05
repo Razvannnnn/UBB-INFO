@@ -1,0 +1,57 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf          
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000000 256400                      format_citire db "%d", 0
+    13                                      
+    14 00000003 0000                        a dw 0
+    15 00000005 0000                        b dw 0
+    16 00000007 00000000                    c dd 0
+    17                                      
+    18 0000000B 52657A756C7461743A-         format_afisare db "Rezultat: %x", 0
+    18 00000014 20257800           
+    19                                  
+    20                                  
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 68[03000000]                    push dword a
+    24 00000005 68[00000000]                    push dword format_citire
+    25 0000000A FF15[00000000]                  call [scanf]
+    26 00000010 83C408                          add esp, 4*2
+    27                                          
+    28 00000013 68[05000000]                    push dword b
+    29 00000018 68[00000000]                    push dword format_citire
+    30 0000001D FF15[00000000]                  call [scanf]
+    31 00000023 83C408                          add esp, 4*2
+    32                                          
+    33 00000026 B900000000                      mov ecx, 0
+    34                                          
+    35 0000002B 66A1[03000000]                  mov ax, [a]
+    36 00000031 668B1D[05000000]                mov bx, [b]
+    37 00000038 6601D8                          add ax, bx
+    38                                          
+    39 0000003B 6689C1                          mov cx, ax
+    40                                          
+    41 0000003E 66A1[03000000]                  mov ax, [a]
+    42 00000044 668B1D[05000000]                mov bx, [b]
+    43 0000004B 6629D8                          sub ax, bx
+    44                                          
+    45 0000004E C1E110                          shl ecx, 16
+    46 00000051 6689C1                          mov cx, ax
+    47                                          
+    48 00000054 890D[07000000]                  mov [c], ecx
+    49                                          
+    50 0000005A FF35[07000000]                  push dword [c]
+    51 00000060 68[0B000000]                    push dword format_afisare
+    52 00000065 FF15[00000000]                  call [printf]
+    53 0000006B 83C408                          add esp, 4*2
+    54                                          
+    55 0000006E 6A00                            push    dword 0
+    56 00000070 FF15[00000000]                  call    [exit]

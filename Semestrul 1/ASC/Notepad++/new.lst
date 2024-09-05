@@ -1,0 +1,29 @@
+     1                                  bits 32 
+     2                                  global start        
+     3                                  extern exit ; tell nasm that exit exists even if we won't be defining it
+     4                                  import exit msvcrt.dll ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     5                                  ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+     6                                  ; our data is declared here (the variables needed by our program)
+     7                                  segment data use32 class=data
+     8 00000000 6162636D6E              	s db 'a', 'b', 'c', 'm','n' ; declararea sirului initial s
+     9                                  	l equ $-s ; stabilirea lungimea sirului initial l
+    10 00000005 00<rept>                	d times l db 0 ; rezervarea unui spatiu de dimensiune l pentru sirul destinatie d si initializarea acestuia
+    11                                  
+    12                                  segment code use32 class=code
+    13                                  start:
+    14 00000000 B905000000              	mov ecx, l ;punem lungimea in ECX pentru a putea realiza bucla loop de ecx ori
+    15 00000005 BE00000000              	mov esi, 0     
+    16 0000000A E313                    	jecxz Sfarsit      
+    17                                  	Repeta:
+    18 0000000C 8A86[00000000]          		mov al, [s+esi]
+    19 00000012 B320                    		mov bl, 'a'-'A' ; pentru a obtine litera mare corespunzatoare literei mici, vom scadea din codul ASCII 
+    20                                  		; al literei mici diferenta dintre 'a'-'A'
+    21 00000014 28D8                    		sub al, bl             
+    22 00000016 8886[05000000]          		mov [d+esi], al    
+    23 0000001C 46                      		inc esi
+    24 0000001D E2ED                    	loop Repeta
+    25                                  	Sfarsit:;terminarea programului
+    26                                  
+    27                                  	; exit(0)
+    28 0000001F 6A00                    	push dword 0 ; push the parameter for exit onto the stack
+    29 00000021 FF15[00000000]          	call [exit] ; call exit to terminate the program

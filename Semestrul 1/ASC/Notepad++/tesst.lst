@@ -1,0 +1,42 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf     
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll    
+     9                                  
+    10                                  
+    11                                  segment data use32 class=data
+    12                                      
+    13 00000000 536972756C20646520-         mesaj_afisare db "Sirul de caractere: ", 0
+    13 00000009 636172616374657265-
+    13 00000012 3A2000             
+    14 00000015 32                          sir_caractere db 50
+    15 00000016 32                          sir_numere db 50
+    16 00000017 257300                      input db "%s", 0
+    17                                  
+    18                                  
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 68[00000000]                    push dword mesaj_afisare
+    22 00000005 FF15[00000000]                  call [printf]
+    23 0000000B 83C404                          add esp, 4
+    24                                          
+    25 0000000E 68[15000000]                    push dword sir_caractere
+    26 00000013 68[17000000]                    push dword input
+    27 00000018 FF15[00000000]                  call [scanf]
+    28 0000001E 83C408                          add esp, 4*2
+    29                                          
+    30 00000021 8D3D[15000000]                  lea edi, [sir_caractere]
+    31 00000027 8D35[16000000]                  lea esi, [sir_numere]
+    32 0000002D 31C9                            xor ecx, ecx 
+    33                                          
+    34 0000002F 68[15000000]                    push dword sir_caractere
+    35 00000034 FF15[00000000]                  call [printf]
+    36 0000003A 83C404                          add esp, 4
+    37                                          
+    38                                          
+    39 0000003D 6A00                            push    dword 0
+    40 0000003F FF15[00000000]                  call    [exit]

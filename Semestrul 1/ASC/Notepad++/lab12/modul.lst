@@ -1,0 +1,69 @@
+     1                                  bits 32
+     2                                  
+     3                                  global _modul
+     4                                  
+     5                                  extern exit, scanf, printf      
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  segment data use32 class=data
+    11 00000000 257800                      format_citire db "%x", 0
+    12                                      
+    13 00000003 43752073656D6E3A20-         format_afisare_cu dd "Cu semn: %d ", 10, 13, 0
+    13 0000000C 2564200A0000000D00-
+    13 00000015 000000000000       
+    14 0000001B 466172612073656D6E-         format_afisare_fara dd "Fara semn: %u ", 10, 13, 0
+    14 00000024 3A2025752000000A00-
+    14 0000002D 00000D000000000000-
+    14 00000036 00                 
+    15                                      
+    16 00000037 00000000                    nr dd 0
+    17                                      max equ 50
+    18 0000003B 00000000<rept>              sir times max+1 dd 0
+    19                                  
+    20                                  segment code use32 class=code
+    21                                      
+    22                                      
+    23                                      _modul:
+    24                                          ;9. Se cere sa se citeasca de la tastatura un sir de numere, date in baza 16 (se citeste de la tastatura un sir de caractere si in memorie trebuie stocat un sir de numere). Sa se afiseze valoarea zecimala a 
+    25                                          
+    26 00000000 55                              push ebp
+    27 00000001 89E5                            mov ebp,esp
+    28                                          
+    29 00000003 8B4508                          mov eax, [ebp+8]
+    30                                  
+    31                                          repeta2:
+    32                                              
+    33 00000006 AD                                  lodsd
+    34 00000007 83F800                              cmp eax, 0
+    35 0000000A 7429                                je next2
+    36                                              
+    37                                              ; mov ebx, eax
+    38                                              ; push dword ebx
+    39                                              ; call modul
+    40                                              
+    41 0000000C BBFFFFFFFF                          mov ebx, -1
+    42 00000011 29C3                                sub ebx, eax
+    43                                              
+    44 00000013 53                                  push ebx
+    45                                              
+    46 00000014 50                                  push dword eax
+    47 00000015 68[1B000000]                        push dword format_afisare_fara
+    48 0000001A FF15[00000000]                      call [printf]
+    49 00000020 83C408                              add esp, 4*2
+    50                                              
+    51 00000023 5B                                  pop ebx
+    52                                              
+    53 00000024 53                                  push dword ebx
+    54 00000025 68[03000000]                        push dword format_afisare_cu
+    55 0000002A FF15[00000000]                      call [printf]
+    56 00000030 83C408                              add esp, 4*2
+    57                                              
+    58 00000033 EBD1                                jmp repeta2
+    59                                              
+    60                                          next2:
+    61                                          
+    62 00000035 89EC                            mov esp, ebp
+    63 00000037 5D                              pop ebp
+    64 00000038 C3                              ret

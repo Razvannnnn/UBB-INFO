@@ -1,0 +1,102 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fread, fclose, printf              ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import printf msvcrt.dll                 ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16 00000000 74657874325F312E74-         nume_fisier db "text2_1.txt", 0
+    16 00000009 787400             
+    17 0000000C 7200                        mod_acces db "r", 0
+    18 0000000E 00000000                    descriptor_fisier dd 0
+    19 00000012 4E722E20636F6E736F-         mesaj_afisare dd "Nr. consoane: %d", 0
+    19 0000001B 616E653A2025640000-
+    19 00000024 0000               
+    20                                      
+    21 00000026 <res 000003E8>              text resb 1000
+    22 0000040E 64000000                    count dd 100
+    23 00000412 01000000                    dimensiune dd 1
+    24                                      
+    25 00000416 00000000                    lungime_sir dd 0
+    26 0000041A 00000000                    nr_consoane dd 0
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ; 2. Se da un fisier text. Sa se citeasca continutul fisierului, sa se contorizeze numarul de consoane si sa se afiseze aceasta valoare. Numele fisierului text este definit in segmentul de date.
+    32                                          
+    33                                          
+    34                                          ;DESCHIDERE FISIER
+    35 00000000 68[0C000000]                    push dword mod_acces        
+    36 00000005 68[00000000]                    push dword nume_fisier
+    37 0000000A FF15[00000000]                  call [fopen]
+    38 00000010 83C408                          add esp, 4*2
+    39                                          
+    40 00000013 83F800                          cmp eax, 0  ;DACA FISIERUL NU EXISTA SARE LA SFARSIT
+    41 00000016 7471                            je Sfarsit
+    42 00000018 A3[0E000000]                    mov [descriptor_fisier], eax
+    43                                          
+    44                                          ;CITIRE DIN FISIER
+    45 0000001D FF35[0E000000]                  push dword [descriptor_fisier]
+    46 00000023 FF35[0E040000]                  push dword [count]
+    47 00000029 FF35[12040000]                  push dword [dimensiune]
+    48 0000002F 68[26000000]                    push dword text
+    49 00000034 FF15[00000000]                  call [fread]
+    50 0000003A 83C410                          add esp, 4*4
+    51                                          
+    52 0000003D A3[16040000]                    mov [lungime_sir], eax
+    53                                          
+    54                                          ;DETERMINARE NR CONSOANE
+    55 00000042 BE[26000000]                    mov esi, text
+    56 00000047 8B0D[16040000]                  mov ecx, [lungime_sir]
+    57 0000004D BB00000000                      mov ebx, 0
+    58 00000052 FC                              cld
+    59 00000053 E320                            jecxz Sfarsit_loop 
+    60                                          repeta:
+    61 00000055 AC                                  lodsb
+    62 00000056 2C61                                sub al, 'a'     ;sau cmp cu 'a','e','i','o','u'
+    63 00000058 3C00                                cmp al, 0
+    64 0000005A 7411                                je Vocala
+    65 0000005C 3C04                                cmp al, 4
+    66 0000005E 740D                                je Vocala
+    67 00000060 3C08                                cmp al, 8
+    68 00000062 7409                                je Vocala
+    69 00000064 3C0E                                cmp al, 14
+    70 00000066 7405                                je Vocala
+    71 00000068 3C14                                cmp al, 20
+    72 0000006A 7401                                je Vocala
+    73                                              
+    74 0000006C 43                                  inc ebx
+    75                                              
+    76                                              Vocala:
+    77                                              
+    78 0000006D E2E6                            loop repeta
+    79                                          
+    80 0000006F 891D[1A040000]                  mov [nr_consoane], ebx
+    81                                          
+    82                                          Sfarsit_loop:
+    83                                          
+    84                                          ;AFISARE NR CONSOANE
+    85 00000075 FF35[1A040000]                  push dword [nr_consoane]
+    86 0000007B 68[12000000]                    push dword mesaj_afisare
+    87 00000080 FF15[00000000]                  call [printf]
+    88 00000086 83C408                          add esp, 4*2
+    89                                          
+    90                                          Sfarsit:
+    91                                          
+    92                                          ;INCHIDERE FISIER
+    93 00000089 FF35[0E000000]                  push dword [descriptor_fisier]
+    94 0000008F FF15[00000000]                  call [fclose]
+    95 00000095 83C404                          add esp, 4
+    96                                      
+    97                                          ; exit(0)
+    98 00000098 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    99 0000009A FF15[00000000]                  call    [exit]       ; call exit to terminate the program

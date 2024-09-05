@@ -1,0 +1,3 @@
+9_22,Descriere,5
+10_1,Descriere,7
+12_2,Descriere,5

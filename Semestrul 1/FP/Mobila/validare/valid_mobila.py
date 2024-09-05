@@ -1,0 +1,2 @@
+class ValidMobila:
+    pass

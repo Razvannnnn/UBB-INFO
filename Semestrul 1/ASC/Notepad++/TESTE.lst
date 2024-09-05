@@ -1,0 +1,25 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit               
+     6                                  import exit msvcrt.dll    
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10 00000000 FA                          b db ~a
+    11                                      a equ 5
+    12                                  
+    13                                  
+    14                                  
+    15                                  
+    16                                  segment code use32 class=code
+    17                                      start:
+    18 00000000 55                              push EBP
+    19 00000001 89E5                            MOV EBP,ESP
+    20 00000003 8B6D00                          MOV EBP,[EBP]
+    21 00000006 8B5D00                          MOV EBX,[EBP]
+    22 00000009 891C24                          MOV [ESP],EBX
+    23                                          
+    24 0000000C 6A00                            push    dword 0
+    25 0000000E FF15[00000000]                  call    [exit]

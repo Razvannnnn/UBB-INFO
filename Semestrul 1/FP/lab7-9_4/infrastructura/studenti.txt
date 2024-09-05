@@ -1,0 +1,8 @@
+7595,Bercea,927
+5794,Stefan,329
+4166,Elena,939
+4694,Elena,626
+2549,Ion,91
+6532,Alin,238
+1578,Maria,434
+1,Mihai,23

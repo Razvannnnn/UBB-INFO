@@ -1,0 +1,96 @@
+     1                                  bits 32
+     2                                  global start        
+     3                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     4                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     5                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+     6                                  ; our data is declared here (the variables needed by our program)
+     7                                  segment data use32 class=data
+     8                                  
+     9 00000000 39302A51F411                s dw 12345, 20778, 4596
+    10                                      l equ ($-s)/2
+    11 00000006 00<rept>                    d times l*5 db 0
+    12 00000015 0A00                        zece dw 10
+    13                                      
+    14                                  segment code use32 class=code
+    15                                      
+    16                                      ; Dandu-se un sir de cuvinte sa se obtina sirul (de octeti) cifrelor in baza zece ale fiecarui cuvant din acest sir.
+    17                                      ; Exemplu:
+    18                                      ; daca avem sirul:
+    19                                      ; sir DW 12345, 20778, 4596 
+    20                                      ; obtinem rezultatul
+    21                                      ; 1, 2, 3, 4, 5, 2, 0, 7, 7, 8, 4, 5, 9, 6.
+    22                                      
+    23                                      
+    24                                      start:
+    25 00000000 BE[00000000]                mov esi, s
+    26 00000005 BF[06000000]                mov edi, d
+    27 0000000A B903000000                  mov ecx, l
+    28 0000000F FC                          cld
+    29 00000010 E367                        jecxz Sfarsit
+    30                                      Repeta:
+    31 00000012 66AD                            lodsw   ;AX = numarul
+    32 00000014 66BB0100                        mov bx, 1
+    33                                          nr_cif:
+    34 00000018 6650                                push ax 
+    35 0000001A 6689D8                              mov ax, bx ;ax = 1
+    36 0000001D 66BB0A00                            mov bx, 10 ;bx = 10
+    37 00000021 66F7E3                              mul bx ; ax = 10
+    38 00000024 6689C3                              mov bx, ax ;bx= 10
+    39 00000027 6658                                pop ax ; ax=nr
+    40 00000029 6639D8                              cmp ax, bx
+    41 0000002C 720C                                jb next
+    42 0000002E 6681FB1027                          cmp bx, 10000
+    43 00000033 741A                                je cifre
+    44 00000035 6639D8                              cmp ax, bx
+    45 00000038 77DE                                ja nr_cif
+    46                                          next:
+    47 0000003A 6650                            push ax
+    48 0000003C 6689D8                          mov ax, bx
+    49 0000003F 66BB0A00                        mov bx, 10
+    50 00000043 66BA0000                        mov dx, 0
+    51 00000047 66F7F3                          div bx
+    52 0000004A 6689C3                          mov bx, ax
+    53 0000004D 6658                            pop ax 
+    54                                          cifre:
+    55 0000004F 6650                                push ax
+    56 00000051 66BA0000                            mov dx, 0
+    57 00000055 66F7F3                              div bx
+    58 00000058 AA                                  stosb
+    59 00000059 6689D0                              mov ax, dx
+    60 0000005C 6650                                push ax
+    61 0000005E 6689D8                              mov ax, bx
+    62 00000061 66BB0A00                            mov bx, 10
+    63 00000065 66BA0000                            mov dx, 0
+    64 00000069 66F7F3                              div bx
+    65 0000006C 6689C3                              mov bx, ax
+    66 0000006F 6658                                pop ax
+    67 00000071 6683FB00                            cmp bx, 0
+    68 00000075 75D8                                jne cifre
+    69 00000077 E299                        loop Repeta
+    70                                      Sfarsit:
+    71                                      
+    72                                      ; start:
+    73                                      ; mov esi, s
+    74                                      ; mov edi, d
+    75                                      ; mov ecx, l
+    76                                      ; cld
+    77                                      ; jecxz Sfarsit
+    78                                      ; Repeta:
+    79                                          ; lodsw   ;AX = numarul
+    80                                          
+    81                                          ; cifre:
+    82                                              ; mov dx, 0
+    83                                              ; mov bx, 10
+    84                                              ; div bx   ; DX = Ultima cifra
+    85                                              ; push ax
+    86                                              ; mov ax, dx
+    87                                              ; stosb
+    88                                              ; pop ax
+    89                                              ; cmp ax, 0
+    90                                              ; jne cifre    
+    91                                      ; loop Repeta
+    92                                      ; Sfarsit:
+    93                                      
+    94                                      
+    95 00000079 6A00                        push dword 0      ; push the parameter for exit onto the stack
+    96 0000007B FF15[00000000]              call [exit]       ; call exit to terminate the program

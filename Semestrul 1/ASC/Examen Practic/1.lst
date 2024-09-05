@@ -1,0 +1,152 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf, fopen, fclose, fprintf, fread    
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fclose msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  import fread msvcrt.dll
+    13                                  
+    14                                  
+    15                                  segment data use32 class=data
+    16 00000000 63203D2000                  mesaj1 db "c = ", 0
+    17 00000005 6E203D2000                  mesaj2 db "n = ", 0
+    18                                      
+    19 0000000A 0000                        c dw 0
+    20 0000000C 0000                        n dw 0
+    21 0000000E 00000000                    nume dd 0
+    22                                      
+    23 00000012 256300                      format_citire_mesaj1 db "%c", 0
+    24 00000015 256400                      format_citire_mesaj2 db "%d", 0
+    25 00000018 257300                      format_citire_nume db "%s", 0
+    26                                      
+    27 0000001B 7200                        mod_acces db "r", 0
+    28                                      
+    29 0000001D 00                          descriptor_fisier db 0
+    30                                      len equ 100
+    31 0000001E 00<rept>                    text times len db 0
+    32                                      
+    33 00000082 496E636F7265637400          mesaj_afisare_incorect db "Incorect", 0
+    34 0000008B 4E756D6172756C2064-         mesaj_afisare_corect db "Numarul de aparitii al caracterului %c ", 0
+    34 00000094 652061706172697469-
+    34 0000009D 6920616C2063617261-
+    34 000000A6 63746572756C756920-
+    34 000000AF 25632000           
+    35 000000B3 75726D617420646520-         mesaj_afisare_corect2 db "urmat de un spatiu este egal cu numarul %d citit", 0
+    35 000000BC 756E20737061746975-
+    35 000000C5 206573746520656761-
+    35 000000CE 6C206375206E756D61-
+    35 000000D7 72756C202564206369-
+    35 000000E0 74697400           
+    36                                      
+    37 000000E4 00                          lungime_fisier db 0
+    38                                  
+    39                                  
+    40                                  segment code use32 class=code
+    41                                      start:
+    42 00000000 68[00000000]                    push dword mesaj1
+    43 00000005 FF15[00000000]                  call [printf]
+    44 0000000B 83C404                          add esp, 4
+    45                                          
+    46 0000000E 68[0A000000]                    push dword c
+    47 00000013 68[12000000]                    push dword format_citire_mesaj1
+    48 00000018 FF15[00000000]                  call [scanf]
+    49 0000001E 83C408                          add esp, 4*2
+    50                                          
+    51 00000021 68[05000000]                    push dword mesaj2
+    52 00000026 FF15[00000000]                  call [printf]
+    53 0000002C 83C404                          add esp, 4
+    54                                          
+    55 0000002F 68[0C000000]                    push dword n
+    56 00000034 68[15000000]                    push dword format_citire_mesaj2
+    57 00000039 FF15[00000000]                  call [scanf]
+    58 0000003F 83C408                          add esp, 4*2
+    59                                          
+    60 00000042 68[0E000000]                    push dword nume
+    61 00000047 68[18000000]                    push dword format_citire_nume
+    62 0000004C FF15[00000000]                  call [scanf]
+    63 00000052 83C408                          add esp, 4*2
+    64                                          
+    65                                          ;Deschidere fisier
+    66                                          
+    67 00000055 68[1B000000]                    push dword mod_acces
+    68 0000005A 68[0E000000]                    push dword nume
+    69 0000005F FF15[00000000]                  call [fopen]
+    70 00000065 83C408                          add esp, 4*2
+    71                                          
+    72 00000068 83F800                          cmp eax, 0
+    73 0000006B 0F8499000000                    je Sfarsit
+    74                                          
+    75 00000071 A3[1D000000]                    mov [descriptor_fisier], eax
+    76                                          
+    77                                          ;Citire din fisier
+    78                                          
+    79 00000076 FF35[1D000000]                  push dword [descriptor_fisier]
+    80 0000007C 6A64                            push dword len
+    81 0000007E 6A01                            push dword 1
+    82 00000080 68[1E000000]                    push dword text
+    83 00000085 FF15[00000000]                  call [fread]
+    84 0000008B 83C410                          add esp, 4*4
+    85                                          
+    86 0000008E A3[E4000000]                    mov [lungime_fisier], eax
+    87                                          
+    88 00000093 BE[1E000000]                    mov esi, text
+    89 00000098 8B0D[E4000000]                  mov ecx, [lungime_fisier]
+    90 0000009E 668B15[0C000000]                mov dx, [n]
+    91                                          Repeta:
+    92 000000A5 AC                                  lodsb
+    93 000000A6 3A05[0A000000]                      cmp al, [c]
+    94 000000AC 7507                                jne next
+    95 000000AE 803E20                              cmp byte[esi], 20h
+    96 000000B1 7502                                jne next
+    97                                              
+    98 000000B3 664A                                dec dx
+    99                                              
+   100                                              next:
+   101 000000B5 E2EE                            loop Repeta
+   102                                          
+   103 000000B7 6683FA00                        cmp dx, 0
+   104 000000BB 7530                            jne incorect
+   105                                          
+   106                                          corect:
+   107                                          
+   108 000000BD FF35[0A000000]                      push dword [c]
+   109 000000C3 68[8B000000]                        push dword mesaj_afisare_corect
+   110 000000C8 FF15[00000000]                      call [printf]
+   111 000000CE 83C408                              add esp, 4*2
+   112                                              
+   113 000000D1 B800000000                          mov eax, 0
+   114 000000D6 66A1[0C000000]                      mov ax, [n]
+   115                                              
+   116 000000DC 50                                  push dword eax
+   117 000000DD 68[B3000000]                        push dword mesaj_afisare_corect2
+   118 000000E2 FF15[00000000]                      call [printf]
+   119 000000E8 83C408                              add esp, 4*2
+   120 000000EB EB0E                                jmp next1
+   121                                              
+   122                                          incorect:
+   123 000000ED 68[82000000]                        push dword mesaj_afisare_incorect
+   124 000000F2 FF15[00000000]                      call [printf]
+   125 000000F8 83C404                              add esp, 4
+   126                                          
+   127                                          next1:
+   128                                          
+   129                                          ;Inchidere fisier
+   130                                          
+   131                                          
+   132 000000FB FF35[1D000000]                  push dword [descriptor_fisier]
+   133 00000101 FF15[00000000]                  call [fclose]
+   134 00000107 83C404                          add esp, 4
+   135                                      
+   136                                          Sfarsit:
+   137                                          
+   138 0000010A 68[82000000]                    push dword mesaj_afisare_incorect
+   139 0000010F FF15[00000000]                  call [printf]
+   140 00000115 83C404                          add esp, 4
+   141                                          
+   142 00000118 6A00                            push    dword 0
+   143 0000011A FF15[00000000]                  call    [exit]

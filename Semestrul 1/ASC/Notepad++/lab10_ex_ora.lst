@@ -1,0 +1,84 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fprintf, scanf, fclose, fopen
+     8                                  import exit msvcrt.dll
+     9                                  import scanf msvcrt.dll
+    10                                  import fprintf msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import fopen msvcrt.dll
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16 00000000 00000000                    a dd 0
+    17 00000004 00000000                    b dd 0
+    18 00000008 2563000000000000            format_citire dd "%c", 0
+    19 00000010 436174756C3A202564-         format_afisare_cat dd "Catul: %d ", 13100
+    19 00000019 2000002C330000     
+    20 00000020 52657374756C3A2025-         format_afisare_rest dd "Restul: %d", 0
+    20 00000029 64000000000000     
+    21                                      
+    22 00000030 00000000                    cat dd 0
+    23 00000034 00000000                    res dd 0
+    24 00000038 61646976622E747874-         nume_fisier dd "adivb.txt", 0
+    24 00000041 00000000000000     
+    25 00000048 00000000                    descriptor_fisier dd 0
+    26 0000004C 7700000009000000            mod_acces dd "w", 9
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ;CREARE FISIER
+    32 00000000 68[4C000000]                    push dword mod_acces
+    33 00000005 68[38000000]                    push dword nume_fisier
+    34 0000000A FF15[00000000]                  call [fopen]
+    35 00000010 83C408                          add esp, 4 * 2
+    36                                          
+    37 00000013 A3[48000000]                    mov [descriptor_fisier], eax
+    38                                          
+    39 00000018 83F800                          cmp eax, 0
+    40 0000001B 0F8489000000                    je Sfarsit
+    41                                          
+    42 00000021 68[00000000]                    push dword a
+    43 00000026 68[08000000]                    push dword format_citire
+    44 0000002B FF15[00000000]                  call [scanf]
+    45 00000031 83C408                          add esp, 4 * 2
+    46                                          
+    47 00000034 68[04000000]                    push dword b
+    48 00000039 68[08000000]                    push dword format_citire
+    49 0000003E FF15[00000000]                  call [scanf]
+    50 00000044 83C408                          add esp, 4 * 2
+    51                                          
+    52 00000047 66A1[00000000]                  mov ax, [a]
+    53 0000004D 6683E830                        sub ax, '0'
+    54 00000051 8A1D[04000000]                  mov bl, [b]
+    55 00000057 80EB30                          sub bl, '0'
+    56 0000005A F6F3                            div bl
+    57 0000005C A2[30000000]                    mov [cat], al
+    58 00000061 8825[34000000]                  mov [res], ah
+    59                                          
+    60 00000067 FF35[30000000]                  push dword [cat]
+    61 0000006D 68[10000000]                    push dword format_afisare_cat
+    62 00000072 FF35[48000000]                  push dword [descriptor_fisier]
+    63 00000078 FF15[00000000]                  call [fprintf]
+    64 0000007E 83C40C                          add esp, 4 * 3
+    65                                          
+    66 00000081 FF35[34000000]                  push dword [res]
+    67 00000087 68[20000000]                    push dword format_afisare_rest
+    68 0000008C FF35[48000000]                  push dword [descriptor_fisier]
+    69 00000092 FF15[00000000]                  call [fprintf]
+    70 00000098 83C40C                          add esp, 4 * 3
+    71                                          
+    72                                          ;INCHIDERE FISIER
+    73 0000009B FF35[48000000]                  push dword [descriptor_fisier]
+    74 000000A1 FF15[00000000]                  call [fclose]
+    75 000000A7 83C404                          add esp, 4
+    76                                          
+    77                                          Sfarsit:
+    78                                      
+    79                                          ; exit(0)
+    80 000000AA 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    81 000000AC FF15[00000000]                  call    [exit]       ; call exit to terminate the program

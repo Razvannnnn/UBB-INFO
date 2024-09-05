@@ -1,0 +1,65 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf               
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  
+    11                                  segment data use32 class=data
+    12 00000000 413D00                      mesaj1 db "A=", 0
+    13 00000003 423D00                      mesaj2 db "B=", 0
+    14                                      
+    15 00000006 256400                      format_citire db "%d", 0
+    16                                      
+    17 00000009 3C25643E202A203C25-         afisare db "<%d> * <%d> = <%d>", 0
+    17 00000012 643E203D203C25643E-
+    17 0000001B 00                 
+    18                                      
+    19 0000001C 0000                        a dw 0
+    20 0000001E 0000                        b dw 0
+    21                                      
+    22 00000020 00000000                    result dd 0
+    23                                  
+    24                                  segment code use32 class=code
+    25                                      start:
+    26 00000000 68[00000000]                    push dword mesaj1
+    27 00000005 FF15[00000000]                  call [printf]
+    28 0000000B 83C404                          add esp, 4
+    29                                          
+    30 0000000E 68[1C000000]                    push dword a
+    31 00000013 68[06000000]                    push dword format_citire
+    32 00000018 FF15[00000000]                  call [scanf]
+    33 0000001E 83C408                          add esp, 4*2
+    34                                          
+    35 00000021 68[03000000]                    push dword mesaj2
+    36 00000026 FF15[00000000]                  call [printf]
+    37 0000002C 83C404                          add esp, 4
+    38                                          
+    39 0000002F 68[1E000000]                    push dword b
+    40 00000034 68[06000000]                    push dword format_citire
+    41 00000039 FF15[00000000]                  call [scanf]
+    42 0000003F 83C408                          add esp, 4*2
+    43                                          
+    44 00000042 66A1[1C000000]                  mov ax, [a]
+    45 00000048 668B1D[1E000000]                mov bx, [b]
+    46 0000004F 66F7E3                          mul bx
+    47                                          
+    48 00000052 A3[20000000]                    mov [result], eax
+    49                                          
+    50 00000057 668B1D[1C000000]                mov bx, [a]
+    51 0000005E 668B0D[1E000000]                mov cx, [b]
+    52                                          
+    53 00000065 FF35[20000000]                  push dword [result]
+    54 0000006B 6651                            push dword cx
+    54          ******************       warning: register size specification ignored
+    55 0000006D 6653                            push dword bx
+    55          ******************       warning: register size specification ignored
+    56 0000006F 68[09000000]                    push dword afisare
+    57 00000074 FF15[00000000]                  call [printf]
+    58 0000007A 83C410                          add esp, 4*4
+    59                                          
+    60 0000007D 6A00                            push    dword 0
+    61 0000007F FF15[00000000]                  call    [exit]

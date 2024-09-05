@@ -1,0 +1,78 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, scanf, fprintf, fclose
+     8                                  import fopen msvcrt.dll; tell nasm that exit exists even if we won't be defining it
+     9                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    10                                  import scanf msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  import fclose msvcrt.dll                         ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16 00000000 74657874325F322E74-         nume_fisier db "text2_2.txt", 0
+    16 00000009 787400             
+    17 0000000C 7700                        mod_acces db "w", 0
+    18 0000000E 00000000                    descriptor_fisier dd 0
+    19 00000012 2564200000000000            format_afisare dd "%d ", 0
+    20                                      
+    21 0000001A 00000000                    nr dd 0
+    22 0000001E 256400                      format_nr db "%d", 0
+    23                                  
+    24                                  ; our code starts here
+    25                                  segment code use32 class=code
+    26                                      start:
+    27                                          ; 17. Se da un nume de fisier (definit in segmentul de date). Sa se creeze un fisier cu numele dat, apoi sa se citeasca de la tastatura numere si sa se scrie din valorile citite in fisier numerele divizibile
+    28                                          
+    29                                          ;CREARE FISIER
+    30 00000000 68[0C000000]                    push dword mod_acces
+    31 00000005 68[00000000]                    push dword nume_fisier
+    32 0000000A FF15[00000000]                  call [fopen]
+    33 00000010 83C408                          add esp, 4*2
+    34                                          
+    35 00000013 A3[0E000000]                    mov [descriptor_fisier], eax
+    36                                          
+    37 00000018 83F800                          cmp eax, 0
+    38 0000001B 7459                            je Sfarsit
+    39                                          
+    40                                          ;CITIM NUMERE DE LA TASTATURA
+    41                                          repeta:
+    42 0000001D 68[1A000000]                        push dword nr
+    43 00000022 68[1E000000]                        push dword format_nr
+    44 00000027 FF15[00000000]                      call [scanf]
+    45 0000002D 83C408                              add esp, 4*2
+    46                                          
+    47 00000030 A1[1A000000]                        mov eax, [nr]
+    48 00000035 BA00000000                          mov edx, 0
+    49 0000003A 83F800                              cmp eax, 0
+    50 0000003D 7428                                je next
+    51 0000003F BB07000000                          mov ebx, 7
+    52 00000044 F7F3                                div ebx
+    53 00000046 83FA00                              cmp edx, 0
+    54 00000049 751A                                jne nu_diviz
+    55                                              
+    56                                              ;ADAUGARE IN FISIER NR DIV CU 7
+    57                                              
+    58 0000004B FF35[1A000000]                      push dword [nr]
+    59 00000051 68[12000000]                        push dword format_afisare
+    60 00000056 FF35[0E000000]                      push dword [descriptor_fisier]
+    61 0000005C FF15[00000000]                      call [fprintf]
+    62 00000062 83C40C                              add esp, 4*3
+    63                                  
+    64                                              nu_diviz:
+    65 00000065 EBB6                                jmp repeta
+    66                                          next:
+    67                                          
+    68                                          ;INCHIDERE FISIER
+    69 00000067 FF35[0E000000]                  push dword [descriptor_fisier]
+    70 0000006D FF15[00000000]                  call [fclose]
+    71 00000073 83C404                          add esp, 4
+    72                                          
+    73                                          Sfarsit:
+    74                                      
+    75                                          ; exit(0)
+    76 00000076 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    77 00000078 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

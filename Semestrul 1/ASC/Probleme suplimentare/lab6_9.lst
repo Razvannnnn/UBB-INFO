@@ -1,0 +1,69 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit               
+     6                                  import exit msvcrt.dll    
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10 00000000 785634124D3C2C1A76-         s dd 12345678h, 1A2C3C4Dh, 98FCDD76h
+    10 00000009 DDFC98             
+    11                                      len equ ($-s)/4
+    12 0000000C 00000000                    d times (len/4)+1 dd 0
+    13                                  
+    14                                  
+    15                                  segment code use32 class=code
+    16                                      start:
+    17 00000000 B803000000                      mov eax, len
+    18 00000005 BA00000000                      mov edx, 0
+    19 0000000A BB04000000                      mov ebx, 4
+    20 0000000F F7F3                            div ebx
+    21 00000011 89C1                            mov ecx, eax
+    22 00000013 89D3                            mov ebx, edx
+    23 00000015 BE[00000000]                    mov esi, s
+    24 0000001A BF[0C000000]                    mov edi, d
+    25 0000001F FC                              cld
+    26 00000020 E316                            jecxz next
+    27                                          
+    28                                          Repeta:
+    29 00000022 51                                  push ecx
+    30 00000023 B904000000                          mov ecx, 4
+    31                                              Repeta1:
+    32 00000028 B800000000                              mov eax, 0
+    33 0000002D 66AD                                    lodsw
+    34 0000002F 66C1E808                                shr ax, 8
+    35 00000033 E2F3                                loop Repeta1
+    36                                              
+    37                                              
+    38 00000035 59                                  pop ecx
+    39 00000036 E2EA                            loop Repeta
+    40                                          
+    41                                          next:
+    42 00000038 83FB00                              cmp ebx, 0
+    43 0000003B 7428                                je Sfarsit
+    44 0000003D 53                                  push ebx
+    45 0000003E 89D9                                mov ecx, ebx
+    46 00000040 FC                                  cld
+    47                                              Repeta2:
+    48 00000041 AD                                      lodsd
+    49 00000042 C1E808                                  shr eax, 8
+    50 00000045 88C3                                    mov bl, al
+    51 00000047 B800000000                              mov eax, 0
+    52 0000004C 89D8                                    mov eax, ebx
+    53 0000004E C1C808                                  ror eax, 8
+    54 00000051 89C3                                    mov ebx, eax
+    55 00000053 E2EC                                loop Repeta2
+    56 00000055 58                                  pop eax
+    57 00000056 B904000000                          mov ecx, 4
+    58 0000005B 29C1                                sub ecx, eax
+    59 0000005D 89D8                                mov eax, ebx
+    60                                              Repeta3:
+    61 0000005F C1C808                                  ror eax, 8
+    62 00000062 E2FB                                loop Repeta3
+    63 00000064 AB                                  stosd
+    64                                              
+    65                                          Sfarsit:
+    66                                          
+    67 00000065 6A00                            push    dword 0
+    68 00000067 FF15[00000000]                  call    [exit]

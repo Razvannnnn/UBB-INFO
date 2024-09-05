@@ -1,0 +1,99 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, fopen, fclose, fprintf, fread, printf
+     6                                  import exit msvcrt.dll    
+     7                                  import fopen msvcrt.dll
+     8                                  import fclose msvcrt.dll
+     9                                  import fprintf msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import printf msvcrt.dll
+    12                                  
+    13                                  
+    14                                  segment data use32 class=data
+    15 00000000 6C6162385F362E7478-         nume_fisier db "lab8_6.txt", 0
+    15 00000009 7400               
+    16 0000000B 7200                        mod_acces db "r", 0
+    17 0000000D 00000000                    descriptor_fisier dd 0
+    18                                      len equ 100
+    19 00000011 00<rept>                    text times len db 0
+    20 00000075 00000000                    lungime_sir dd 0
+    21 00000079 00                          cifra db 0
+    22 0000007A 00                          frecv db 0
+    23                                      
+    24 0000007B 43696672613A25640A-         mod_afisare_cif db "Cifra:%d", 10, 13, 0
+    24 00000084 0D00               
+    25 00000086 4672656376656E7461-         mod_afisare_frecv db "Frecventa:%d", 0
+    25 0000008F 3A256400           
+    26                                  
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ;DESCHIDERE FISIER
+    30 00000000 68[0B000000]                    push dword mod_acces
+    31 00000005 68[00000000]                    push dword nume_fisier
+    32 0000000A FF15[00000000]                  call [fopen]
+    33 00000010 83C408                          add esp, 4*2
+    34                                          
+    35 00000013 A3[0D000000]                    mov [descriptor_fisier], eax
+    36                                          
+    37 00000018 83F800                          cmp eax, 0
+    38 0000001B 0F8490000000                    je final
+    39                                          
+    40                                          ;CITIM DIN FISIER
+    41 00000021 FF35[0D000000]                  push dword [descriptor_fisier]
+    42 00000027 6A64                            push dword len
+    43 00000029 6A01                            push dword 1
+    44 0000002B 68[11000000]                    push dword text
+    45 00000030 FF15[00000000]                  call [fread]
+    46 00000036 83C410                          add esp, 4*4
+    47                                          
+    48 00000039 A3[75000000]                    mov [lungime_sir], eax
+    49                                          
+    50 0000003E B90A000000                      mov ecx, 10
+    51                                          Repeta:
+    52 00000043 51                                  push ecx
+    53                                              
+    54 00000044 BB39000000                          mov ebx, '9'
+    55 00000049 29CB                                sub ebx, ecx
+    56                                              
+    57 0000004B BE[11000000]                        mov esi, text
+    58 00000050 8B0D[75000000]                      mov ecx, [lungime_sir]
+    59 00000056 BA00000000                          mov edx, 0
+    60                                              Repeta1:
+    61 0000005B AC                                      lodsb
+    62 0000005C 38D8                                    cmp al, bl
+    63 0000005E 7501                                    jne next    
+    64 00000060 42                                      inc edx
+    65                                                  next:
+    66 00000061 E2F8                                loop Repeta1
+    67                                              
+    68 00000063 3B15[7A000000]                      cmp edx, [frecv]
+    69 00000069 760C                                jna next1
+    70                                              
+    71 0000006B 881D[79000000]                      mov byte[cifra], bl
+    72 00000071 8815[7A000000]                      mov byte[frecv], dl
+    73                                              
+    74                                              next1:
+    75 00000077 59                                  pop ecx
+    76 00000078 E2C9                            loop Repeta
+    77                                          
+    78 0000007A FF35[79000000]                  push dword [cifra]
+    79 00000080 68[7B000000]                    push dword mod_afisare_cif
+    80 00000085 FF15[00000000]                  call [printf]
+    81 0000008B 83C408                          add esp, 4*2
+    82                                          
+    83 0000008E FF35[7A000000]                  push dword [frecv]
+    84 00000094 68[86000000]                    push dword mod_afisare_frecv
+    85 00000099 FF15[00000000]                  call [printf]
+    86 0000009F 83C408                          add esp, 4*2
+    87                                          
+    88                                          ;INCHIDEM FISIERUL
+    89 000000A2 FF35[0D000000]                  push dword [descriptor_fisier]
+    90 000000A8 FF15[00000000]                  call [fclose]
+    91 000000AE 83C404                          add esp, 4
+    92                                          
+    93                                          final:
+    94                                          
+    95 000000B1 6A00                            push    dword 0
+    96 000000B3 FF15[00000000]                  call    [exit]

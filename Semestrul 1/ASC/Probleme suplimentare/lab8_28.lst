@@ -1,0 +1,60 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf, fopen, fclose, fread, fprintf
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fclose msvcrt.dll
+    11                                  import fread msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  
+    14                                  segment data use32 class=data
+    15 00000000 6C6162385F32382E74-         nume_fisier db "lab8_28.txt", 0
+    15 00000009 787400             
+    16 0000000C 7700                        mod_acces db "w", 0
+    17 0000000E 00                          descriptor_fisier db 0
+    18                                      len equ 100
+    19 0000000F 00<rept>                    text times len db 0 
+    20 00000073 00000000                    lungime_text dd 0
+    21                                      
+    22 00000077 00000000                    cuvant dd 0
+    23                                      
+    24 0000007B 2573000000000000            format_citire dd "%s", 0
+    25                                  
+    26                                  segment code use32 class=code
+    27                                      start:
+    28                                          ;deschidere fisier
+    29                                          
+    30 00000000 68[0C000000]                    push dword mod_acces
+    31 00000005 68[00000000]                    push dword nume_fisier
+    32 0000000A FF15[00000000]                  call [fopen]
+    33 00000010 83C408                          add esp, 4*2
+    34                                          
+    35 00000013 83F800                          cmp eax, 0
+    36 00000016 742C                            je Sfarsit
+    37                                          
+    38 00000018 A3[0E000000]                    mov [descriptor_fisier], eax
+    39                                          
+    40                                          ;citire de la tastatura
+    41                                          
+    42 0000001D 68[77000000]                    push dword cuvant
+    43 00000022 68[7B000000]                    push dword format_citire
+    44 00000027 FF15[00000000]                  call [scanf]
+    45 0000002D 83C408                          add esp, 4*2
+    46                                          
+    47 00000030 BE[77000000]                    mov esi, cuvant
+    48                                          
+    49                                          
+    50                                          
+    51                                          ;inchidere fisier
+    52 00000035 FF35[0E000000]                  push dword [descriptor_fisier]
+    53 0000003B FF15[00000000]                  call [fclose]
+    54 00000041 83C404                          add esp, 4
+    55                                      
+    56                                          Sfarsit:
+    57                                          
+    58 00000044 6A00                            push    dword 0
+    59 00000046 FF15[00000000]                  call    [exit]

@@ -1,0 +1,71 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit               
+     6                                  import exit msvcrt.dll    
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10 00000000 78567F12CDABCDAB            s dd 127F5678h, 0ABCDABCDh
+    11                                      l equ ($-s)/4
+    12 00000008 00000000<rept>              d times l dd 0
+    13                                  
+    14                                  segment code use32 class=code
+    15                                      start:
+    16 00000000 BE[00000000]                    mov esi, s
+    17 00000005 BF[08000000]                    mov edi, d
+    18 0000000A B902000000                      mov ecx, l
+    19 0000000F FC                              cld
+    20 00000010 E367                            jecxz final
+    21                                          Repeta:
+    22 00000012 AD                                  lodsd
+    23 00000013 83F800                              cmp eax, 0
+    24 00000016 7C30                                jl next
+    25                                              
+    26 00000018 66BB0000                            mov bx, 0
+    27 0000001C 66BA0000                            mov dx, 0
+    28 00000020 00C3                                add bl, al
+    29 00000022 80D700                              adc bh, 0
+    30 00000025 C1E808                              shr eax, 8
+    31 00000028 00C2                                add dl, al
+    32 0000002A 80D600                              adc dh, 0
+    33 0000002D C1E808                              shr eax, 8
+    34 00000030 00C3                                add bl, al
+    35 00000032 80D700                              adc bh, 0
+    36 00000035 C1E808                              shr eax, 8
+    37 00000038 00C2                                add dl, al
+    38 0000003A 80D600                              adc dh, 0
+    39 0000003D 6689D0                              mov ax, dx
+    40 00000040 C1E010                              shl eax, 16
+    41 00000043 6689D8                              mov ax, bx
+    42 00000046 EB2E                                jmp urm
+    43                                              
+    44                                              next:
+    45 00000048 66BB0000                                mov bx, 0
+    46 0000004C 66BA0000                                mov dx, 0
+    47 00000050 00C3                                    add bl, al
+    48 00000052 80DF00                                  sbb bh, 0
+    49 00000055 C1E808                                  shr eax, 8
+    50 00000058 00C2                                    add dl, al
+    51 0000005A 80DE00                                  sbb dh, 0
+    52 0000005D C1E808                                  shr eax, 8
+    53 00000060 00C3                                    add bl, al
+    54 00000062 80DF00                                  sbb bh, 0
+    55 00000065 C1E808                                  shr eax, 8
+    56 00000068 00C2                                    add dl, al
+    57 0000006A 80DE00                                  sbb dh, 0
+    58 0000006D 6689D0                                  mov ax, dx
+    59 00000070 C1E010                                  shl eax, 16
+    60 00000073 6689D8                                  mov ax, bx
+    61                                              urm:
+    62 00000076 AB                                  stosd
+    63 00000077 E299                            loop Repeta
+    64                                          
+    65                                          
+    66                                          
+    67                                          
+    68                                          final:
+    69                                          
+    70 00000079 6A00                            push    dword 0
+    71 0000007B FF15[00000000]                  call    [exit]
