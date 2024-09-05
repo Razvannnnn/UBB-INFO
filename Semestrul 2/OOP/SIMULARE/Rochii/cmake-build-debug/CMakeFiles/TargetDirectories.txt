@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/OOP/SIMULARE/Rochii/cmake-build-debug/CMakeFiles/Rochii.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Rochii/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Rochii/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Rochii/cmake-build-debug/CMakeFiles/Rochii_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Rochii/cmake-build-debug/CMakeFiles/Rochii_autogen.dir

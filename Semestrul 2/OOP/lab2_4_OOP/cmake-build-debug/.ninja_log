@@ -1,0 +1,9 @@
+# ninja log v5
+2	103	7314221119150826	CMakeFiles/lab2_4_OOP.dir/domeniu.c.obj	e57f244b551aa2c
+8	131	7317883332741489	CMakeFiles/lab2_4_OOP.dir/repository.c.obj	5f6e55bca81d2dd3
+2	94	7314371337158329	CMakeFiles/lab2_4_OOP.dir/validare.c.obj	e28ccbde20425490
+3	70	7320136038487252	CMakeFiles/lab2_4_OOP.dir/main.c.obj	9e3318db9d2eae59
+3	107	7318042822198414	CMakeFiles/lab2_4_OOP.dir/teste.c.obj	4ede8b57175fc93b
+71	165	7320136039379223	lab2_4_OOP.exe	ab27f147ab72b4b
+4	122	7318041411055487	CMakeFiles/lab2_4_OOP.dir/service.c.obj	21d3d022bd872882
+10	178	7319790468727082	CMakeFiles/lab2_4_OOP.dir/ui.c.obj	8707cf9239156bb4

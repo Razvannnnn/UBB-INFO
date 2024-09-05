@@ -1,0 +1,141 @@
+1.
+grep -E '[aA]' file
+grep -E 'a' -e 'A' file
+grep -E '[aA]{1,}' file
+grep -E '[aA]+' file
+grep -E -i 'a' file
+
+2.
+grep -e '^$' file | wc -l
+grep -v '.' file | wc -l
+awk 'BEGIN{s=0} {if(lenght($0)==0) s+=1} {print s}' file
+sed -n '/$/p' file | wc -l
+
+3.
+sed '/7/!p' file
+sed '/7/d' file
+
+4.
+awk 'BEGIN{suma=0} {sume+=$(NF-1)} END{print suma}' file
+
+5.
+>
+>>
+cmd1 | cmd2
+dup2(1, new_fd)
+
+6.
+#!bin/bash
+while [ -n "$1" ]
+do
+	echo "$1"
+	shift
+done
+
+7.
+if [ -f "fisier" ]
+file "fisier"
+if [ -r "fisier" ]
+[$(find . -type f "fisier" | wc -l) -eq 1]
+
+
+8.
+P->C1       se suprascrie parintele
+
+9.
+int fd=open("fisier", O_CREAT | O_WEONLY);
+dup2(fd,1);
+
+10.
+int fd=open("fisier", O_RDONLY);
+dup2(fd,0);
+
+11.
+Doar 1 FIFO poate fi deschis, deoarece dupa primul open se blocheaza
+
+12.
+pthread_barrier_wait pentru o bariera initializata cu 1
+
+Nu va avea niciun efect deoarece atunci cand este initializata cu 1, firul de executie va trece
+imediat bariera
+
+13.
+Procese > thread
+- Cand este nevoie de comunicare intre ele
+- Daca sarcinile de rezolvat sunt mai complexe
+- Daca procesele trebuire sa ruleze pe masini diferite
+- Daca se pune accent pe securitatea datelor (in thread-uri nu exista securitate)
+
+14.
+pthread_cond_wait cu mtx
+-face unlock la mutexul primit ca argument
+-asteapta primirea unui semnal (trimis prin pthread_cond_signal()/pthread_cond_broadcast())
+
+15.
+SECTIUNEA CRITIICA
+O sectiune critica se refera la o sectiune de cod sau o regiune dintr un program unde resursele
+partajate sunt accesate si modificate. Este important sa ne asigurat ca numai un proces sau thread
+executa sectiunea critica la un moment dat prentu a mentine intregritatea datelor si pentru a 
+preveni race conditions.
+
+16. 1 singur fifo, asteptand sa se deschida operatia.
+
+17.
+
+18. sed -r 's/([^ ]*) /\1/; t; :a; s/([^ ]* [^ ]*) ([^ ]* [^ ]*) /\1\2/;ta' file
+
+19. awk 'BEGIN{p=1} {if(NR%2==1 && NF%2==1) p*=$NF} {print p}' file
+
+20. 
+nimic
+
+21. dup2(fd,0);
+
+22. 
+
+23. FIFO IN LOCUL UNUI PIPE
+
+Fifo ofera mai multa flexibiliate si persistenta in comunicare intre procese, fiind utile atunci
+cand procese diferite trebuie sa comunice intre ele in mod independent si simultan sau atunci
+cand este necesara stocarea temporara a datelor pe disc pentru acces ulterior.
+
+24. MUTEX IN LOCUL RWLOCK
+
+Atunci cand avem o resursa care nu trebuie sa fie accesata in mod concurent de mai multe fire
+de executie, iar performanta nu este o preocupare majora. Utilizarea unui mutex este mai simpla
+decat a unui rwlock si poate fi mai eficienta in anumite circumstante, dar nu permite accesul
+concurent la resursa.
+
+25. INLOCUIREA PTHREAD_MUTEX_LOCK CU SEM_WAIT
+
+Daca semaforul este initializat cu o valoare mai mare de 1, mai multe fire pot accesa resursa
+simultan, ceea ce poate dupe la probleme de concurenta. Utilizarea semafoarelor pentru 
+exclusivitate poate introduce complexitate suplimentara in gestionarea sincronizarii, iar 
+mutex-urile sunt optimizate pentru exclusivitate si pot fi mai eficiente pentru acest scop
+specific. IN CONCLUZIE, SCHIMBAREA POATE AFECTA EXCLUSIVITATEA ACCESULUI LA RESURSA SI POATE
+COMPLICA GESTIONAREA SINCRONIZARII INTRE FIRE.
+
+26.
+
+27. Prevenire deadlock 
+
+Ordinea corecta a mutex-urilor
+
+28. PTHREAD_COND_WAIT
+
+1 - eliberare mutex
+2 - asteptare eliberare conditie
+3 - blocarea si suspendarea threadului
+4 - reasteptarea threadului
+
+29. FISIER DE TIP DIRECTOR
+
+Lista de intrari
+Metadatele directorului
+Pointeri catre blocuri de date
+Intrari speciale
+
+30. LINK SIMBOLIC - LINK HARD
+
+Hard link-ul pointeaa catre un loc de pe hard-drive
+Simbolic link-ul pointeaza catre un alt fisier, care acela pointeza catre drive.

@@ -1,0 +1,45 @@
+// pseudocode
+
+pre:
+    list1 - the original sorted iterated List
+    list2 - the list given as a parameter in the function
+post:
+    list1 - containing all the elements except elements in list 2 (list1 - list2)
+
+
+functie stergeElemente(lista: ListaDubluInlantuitaSortata)
+
+    listaIndex <- lista.head
+    currentIndex <- head
+    previousIndex <- -1
+
+    cat timp listaIndex != -1
+        cat timp currentIndex != -1 si r(lista.elemente[listaIndex], elemente[currentIndex])
+            daca lista.elemente[listaIndex] == elemente[currentIndex] atunci
+                daca currentIndex == head atunci
+                    head <- next[head]
+                    previous[head] <- -1
+                altfel daca currentIndex == tail atunci
+                    tail <- previous[tail]
+                    next[tail] <- -1
+                altfel
+                    next[previousIndex] <- next[currentIndex]
+                    previous[next[currentIndex]] <- previousIndex
+
+                previous[firstEmpty] <- currentIndex
+                next[currentIndex] <- firstEmpty
+                firstEmpty <- currentIndex
+
+                currentIndex <- next[currentIndex]
+                previous[currentIndex] <- previousIndex
+                lungime <- lungime - 1
+            altfel
+                previousIndex <- currentIndex
+                currentIndex <- next[currentIndex]
+            sfarsit daca
+        sfarsit cat timp
+
+        listaIndex <- lista.next[listaIndex]
+    sfarsit cat timp
+
+sfarsit functie

@@ -1,0 +1,55 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/validare.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\validare.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\validare.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_VALIDARE_H
+        -:    2:#define LAB6_VALIDARE_H
+        -:    3:
+        -:    4:#include <cstring>
+        -:    5:#include <iostream>
+        -:    6:#include <utility>
+        -:    7:using std::string;
+        -:    8:
+        -:    9:class Exception {
+        -:   10:    string msg;
+        -:   11:public:
+function _ZN9ExceptionC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 0 returned 0% blocks executed 0%
+    #####:   12:    explicit Exception(string m) : msg{ m } {
+    %%%%%:   12-block  0
+call    0 never executed
+    #####:   13:    }
+        -:   14:
+        -:   15:    string getMsg() {
+        -:   16:        return msg;
+        -:   17:    }
+        -:   18:};
+        -:   19:
+        -:   20:class Valid {
+        -:   21:public:
+        -:   22:    /**
+        -:   23:     * Verificare daca parametru x este nevid
+        -:   24:     * @param x - string
+        -:   25:     * @return
+        -:   26:     */
+        -:   27:    static bool non_vid(const std::string& x);
+        -:   28:
+        -:   29:    /**
+        -:   30:     * Verifica daca parametru este mai mare ca 0
+        -:   31:     * @param pret - double
+        -:   32:     * @return
+        -:   33:     */
+        -:   34:    static bool non_negative(double pret);
+        -:   35:
+        -:   36:    /**
+        -:   37:     * Functie de validare a intregului produs
+        -:   38:     * @param nume
+        -:   39:     * @param tip
+        -:   40:     * @param pret
+        -:   41:     * @param producator
+        -:   42:     */
+        -:   43:    static void validProdus(std::string& nume, std::string &tip, double pret, std::string &producator);
+        -:   44:};
+        -:   45:
+        -:   46:void teste_validare(Valid valid);
+        -:   47:
+        -:   48:#endif //LAB6_VALIDARE_H

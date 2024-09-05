@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/tractoare/cmake-build-debug/CMakeFiles/tractoare.dir
+C:/Users/razva/Desktop/tractoare/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/tractoare/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/tractoare/cmake-build-debug/CMakeFiles/tractoare_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/tractoare/cmake-build-debug/CMakeFiles/tractoare_autogen.dir

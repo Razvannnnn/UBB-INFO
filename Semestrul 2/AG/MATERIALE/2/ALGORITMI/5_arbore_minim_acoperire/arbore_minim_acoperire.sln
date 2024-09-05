@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arbore_minim_acoperire", "arbore_minim_acoperire\arbore_minim_acoperire.vcxproj", "{11720B1F-E25A-43B2-856C-6278DB0B915D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Debug|x64.ActiveCfg = Debug|x64
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Debug|x64.Build.0 = Debug|x64
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Debug|x86.ActiveCfg = Debug|Win32
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Debug|x86.Build.0 = Debug|Win32
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Release|x64.ActiveCfg = Release|x64
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Release|x64.Build.0 = Release|x64
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Release|x86.ActiveCfg = Release|Win32
+		{11720B1F-E25A-43B2-856C-6278DB0B915D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8905D286-1D88-4976-A3D1-9225F1427016}
+	EndGlobalSection
+EndGlobal

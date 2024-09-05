@@ -1,0 +1,29 @@
+PSEUDOCOD
+
+Funcție filtrare(d: Dictionar)
+
+    ultim <- null
+    current <- head
+
+    CâtTimp current != null
+
+        Dacă conditia este valida pentru current->element.first
+            next <- current->next
+            sterge current
+
+            Dacă ultim != null
+                ultim->next <- next
+            Altfel
+                head <- next
+            SfDacă
+
+            current <- next
+            dimensiune <- dimensiune - 1
+        Altfel
+            ultim <- current
+            current = current->next
+        SfDacă
+
+    SfCâtTimp
+
+SFFuncție

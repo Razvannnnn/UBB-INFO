@@ -1,0 +1,58 @@
+"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\razva\Desktop\GitHub\UBB-FMI\Semestrul 2\SDA\Cursuri\Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)\Implementare Colectie" -B "C:\Users\razva\Desktop\GitHub\UBB-FMI\Semestrul 2\SDA\Cursuri\Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)\Implementare Colectie\cmake-build-debug"
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+CMake Warning in C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dggkdj/CMakeLists.txt:
+  The object file directory
+
+    C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-dggkdj/CMakeFiles/cmTC_b2d38.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    CMakeCCompilerABI.c.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+CMake Warning in C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-opzac8/CMakeLists.txt:
+  The object file directory
+
+    C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-opzac8/CMakeFiles/cmTC_06414.dir/./
+
+  has 238 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    CMakeCXXCompilerABI.cpp.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (5.7s)
+CMake Warning in CMakeLists.txt:
+  The object file directory
+
+    C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug/CMakeFiles/Implementare_Colectie___reprezentare_secventiala_folosind_vector_dinamic.dir/./
+
+  has 258 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    Colectie.cpp.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+-- Generating done (0.0s)
+-- Build files have been written to: C:/Users/razva/Desktop/GitHub/UBB-FMI/Semestrul 2/SDA/Cursuri/Curs3 - Containere (Matrice, Colectie, Multime, Dictionar, Coada)/Implementare Colectie/cmake-build-debug

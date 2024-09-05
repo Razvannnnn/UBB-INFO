@@ -1,0 +1,15 @@
+Hasdeu
+50
+200000
+Roman
+75
+160000
+Bercea
+54
+150000
+Mircea
+80
+250000
+Fericirii
+68
+235000

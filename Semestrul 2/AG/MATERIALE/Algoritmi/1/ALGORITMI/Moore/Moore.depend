@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1649363289 source:d:\an1_sem2\ag\algoritmi\moore\main.cpp
+	<iostream>
+	<queue>
+	<fstream>
+

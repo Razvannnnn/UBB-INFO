@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lista_Ordonata___cu_pozitie_iterator"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lista_Ordonata___cu_pozitie_iterator">
+				<Option output="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug/Lista_Ordonata___cu_pozitie_iterator" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++"/>
+					<Add directory="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lista_Ordonata___cu_pozitie_iterator"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lista_Ordonata___cu_pozitie_iterator/fast">
+				<Option output="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug/Lista_Ordonata___cu_pozitie_iterator" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++"/>
+					<Add directory="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lista_Ordonata___cu_pozitie_iterator/fast"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista\ Ordonata\ -\ cu\ pozitie\ iterator/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++/App.cpp">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++/Iterator.cpp">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++/Iterator.h">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++/LO.cpp">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Proiect C++/LO.h">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste/TestExtins.cpp">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste/TestExtins.h">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste/TestScurt.cpp">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/Teste/TestScurt.h">
+			<Option target="Lista_Ordonata___cu_pozitie_iterator"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/SDA/LAB4_/OneDrive_2024-04-24/Lista Ordonata - cu pozitie iterator/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

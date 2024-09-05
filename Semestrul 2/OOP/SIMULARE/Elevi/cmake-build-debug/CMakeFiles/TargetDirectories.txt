@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/OOP/SIMULARE/Elevi/cmake-build-debug/CMakeFiles/Elevi.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Elevi/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Elevi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Elevi/cmake-build-debug/CMakeFiles/Elevi_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Elevi/cmake-build-debug/CMakeFiles/Elevi_autogen.dir

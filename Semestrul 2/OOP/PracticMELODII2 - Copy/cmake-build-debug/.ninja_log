@@ -1,0 +1,60 @@
+# ninja log v5
+14	144	7406658199254704	PracticMELODII2_autogen/timestamp	cd8a19b5cc45bc9b
+14	144	7406658199254704	PracticMELODII2_autogen/mocs_compilation.cpp	cd8a19b5cc45bc9b
+152	1872	7406658216539040	CMakeFiles/PracticMELODII2.dir/main.cpp.obj	ccedbf8c3ad46a5c
+14	144	7406658199254704	C:/Users/razva/Desktop/OOP/PracticMELODII2/cmake-build-debug/PracticMELODII2_autogen/timestamp	cd8a19b5cc45bc9b
+148	499	7406140905029613	CMakeFiles/PracticMELODII2.dir/domain.cpp.obj	100cb5621984a60b
+14	144	7406658199254704	C:/Users/razva/Desktop/OOP/PracticMELODII2/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	cd8a19b5cc45bc9b
+176	272	7406048909440607	CMakeFiles/PracticMELODII2.dir/PracticMELODII2_autogen/mocs_compilation.cpp.obj	b89c81688f282a35
+1935	2108	7406658218851847	PracticMELODII2.exe	addb869436108c58
+166	720	7406658205019462	CMakeFiles/PracticMELODII2.dir/service.cpp.obj	7f491e6473178c88
+170	1934	7406658217168964	CMakeFiles/PracticMELODII2.dir/GUI.cpp.obj	714d5812ed1e3dc
+171	666	7406655901824422	CMakeFiles/PracticMELODII2.dir/repo.cpp.obj	a4644778b25ffc40
+103	423	7406198513383036	CMakeFiles/PracticMELODII2.dir/observer.cpp.obj	ffd866163d1b71e6
+19	196	7406671284647196	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+19	196	7406671284647196	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+19	196	7406671284647196	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+19	196	7406671284647196	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+197	313	7406671285812286	CMakeFiles/PracticMELODII2.dir/PracticMELODII2_autogen/mocs_compilation.cpp.obj	c94ff2270aa49c07
+216	574	7406671288412615	CMakeFiles/PracticMELODII2.dir/domain.cpp.obj	2e2861e21af37167
+225	623	7406671288919070	CMakeFiles/PracticMELODII2.dir/observer.cpp.obj	c1c590adcf3db40c
+212	654	7406671289229024	CMakeFiles/PracticMELODII2.dir/service.cpp.obj	53cf4c0e0b425edd
+208	699	7406671289684125	CMakeFiles/PracticMELODII2.dir/repo.cpp.obj	8f9c16ac210fb8a3
+205	1778	7406671300457879	CMakeFiles/PracticMELODII2.dir/main.cpp.obj	24ac3f135cb22970
+219	1875	7406671301427759	CMakeFiles/PracticMELODII2.dir/GUI.cpp.obj	562518e0db28e234
+1875	2136	7406671303975232	PracticMELODII2.exe	addb869436108c58
+40	2437	7406673535454804	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+40	2437	7406673535454804	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+40	2437	7406673535454804	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+40	2437	7406673535454804	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+2502	2817	7406673539266473	CMakeFiles/PracticMELODII2.dir/domain.cpp.obj	2e2861e21af37167
+2498	2849	7406673539576503	CMakeFiles/PracticMELODII2.dir/service.cpp.obj	53cf4c0e0b425edd
+2495	2973	7406673540813787	CMakeFiles/PracticMELODII2.dir/repo.cpp.obj	8f9c16ac210fb8a3
+2504	3961	7406673550684627	CMakeFiles/PracticMELODII2.dir/GUI.cpp.obj	562518e0db28e234
+2440	3974	7406673550825079	CMakeFiles/PracticMELODII2.dir/main.cpp.obj	24ac3f135cb22970
+3974	4200	7406673553050242	PracticMELODII2.exe	addb869436108c58
+8	85	7406674590809679	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+8	85	7406674590809679	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+8	85	7406674590809679	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+8	85	7406674590809679	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+21	82	7406674670938102	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+21	82	7406674670938102	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+21	82	7406674670938102	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+21	82	7406674670938102	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+99	386	7406674673988794	CMakeFiles/PracticMELODII2.dir/domain.cpp.obj	2e2861e21af37167
+97	469	7406674674806827	CMakeFiles/PracticMELODII2.dir/service.cpp.obj	53cf4c0e0b425edd
+94	500	7406674675126932	CMakeFiles/PracticMELODII2.dir/repo.cpp.obj	8f9c16ac210fb8a3
+28	105	7406674759423443	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+28	105	7406674759423443	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+28	105	7406674759423443	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+28	105	7406674759423443	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+108	1504	7406674773414886	CMakeFiles/PracticMELODII2.dir/main.cpp.obj	24ac3f135cb22970
+116	1570	7406674774062916	CMakeFiles/PracticMELODII2.dir/GUI.cpp.obj	562518e0db28e234
+1570	1728	7406674775620477	PracticMELODII2.exe	addb869436108c58
+35	100	7406681650014872	PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+35	100	7406681650014872	PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+35	100	7406681650014872	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/timestamp	2304ed18769bfb46
+35	100	7406681650014872	C:/Users/razva/Desktop/OOP/PracticMELODII2 - Copy/cmake-build-debug/PracticMELODII2_autogen/mocs_compilation.cpp	2304ed18769bfb46
+103	1436	7406681663366528	CMakeFiles/PracticMELODII2.dir/main.cpp.obj	24ac3f135cb22970
+111	1501	7406681664021890	CMakeFiles/PracticMELODII2.dir/GUI.cpp.obj	562518e0db28e234
+1502	1646	7406681665447363	PracticMELODII2.exe	addb869436108c58

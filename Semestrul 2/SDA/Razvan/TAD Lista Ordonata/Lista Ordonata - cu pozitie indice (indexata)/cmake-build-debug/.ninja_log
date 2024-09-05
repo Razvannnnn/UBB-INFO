@@ -1,0 +1,26 @@
+# ninja log v5
+157	191	1713944268023920566	Lista_Ordonata___cu_pozitie_indice__indexata_	9e4deafff9194888
+338	411	7356513186601042	Lista_Ordonata___cu_pozitie_indice__indexata_.exe	9353d681487bb32f
+15	116	7356513183703641	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/Iterator.cpp.obj	4897074e4f456c5c
+19	118	7356513183715526	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestScurt.cpp.obj	47a1302c839cdd48
+10	291	7356513185444024	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestExtins.cpp.obj	79eb0b1fbc82f91f
+0	333	7356513185857300	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/App.cpp.obj	c683fa67f7b2fbe9
+13	338	7356513185917289	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/LO.cpp.obj	e48b7e67740510e6
+65	386	7373867475184825	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/Iterator.cpp.obj	4897074e4f456c5c
+75	386	7373867475184825	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestScurt.cpp.obj	47a1302c839cdd48
+71	476	7373867476075653	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestExtins.cpp.obj	79eb0b1fbc82f91f
+40	506	7373867476385540	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/App.cpp.obj	c683fa67f7b2fbe9
+68	506	7373867476395631	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/LO.cpp.obj	e48b7e67740510e6
+506	637	7373867477677086	Lista_Ordonata___cu_pozitie_indice__indexata_.exe	c033d1f4f72ea01f
+39	136	7373868613851585	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestScurt.cpp.obj	47a1302c839cdd48
+29	137	7373868613861589	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/Iterator.cpp.obj	4897074e4f456c5c
+36	236	7373868614846699	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestExtins.cpp.obj	79eb0b1fbc82f91f
+20	267	7373868615161940	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/App.cpp.obj	c683fa67f7b2fbe9
+32	270	7373868615181942	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/LO.cpp.obj	e48b7e67740510e6
+270	361	7373868616072052	Lista_Ordonata___cu_pozitie_indice__indexata_.exe	c033d1f4f72ea01f
+32	267	7373873732828558	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/Iterator.cpp.obj	4897074e4f456c5c
+43	269	7373873732852857	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestScurt.cpp.obj	47a1302c839cdd48
+40	276	7373873732914066	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Teste/TestExtins.cpp.obj	79eb0b1fbc82f91f
+21	301	7373873733167462	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/App.cpp.obj	c683fa67f7b2fbe9
+36	302	7373873733176657	CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir/Proiect_C++/LO.cpp.obj	e48b7e67740510e6
+302	437	7373873734500626	Lista_Ordonata___cu_pozitie_indice__indexata_.exe	c033d1f4f72ea01f

@@ -1,0 +1,326 @@
+Curs 1: shel interpreteza comenziscrie in linia de comanda
+
+
+Curs 2 :
+0 - standard input 
+1 - standard output
+2 - standard error
+
+eroare asa se redirectioneaza eroarea 2>&1
+
+Curs 3:
+grep -v : sa nu arate
+? - inseamna ca poate lipsi
+ps -o time nume_proces timpul de cand ruleaza
+
+Curs 4: 
+Un proces este orice program in executie
+
+
+Curs 7:
+dup2(pipe[0] , 0) // Adica se citeste ce e le standard input
+dup2(pipe[1] , 1) // Se scrie de la std output
+
+curs 12:
+
+mutam in stare de wait : il dam jos de pe proces ca restu de procese sa continue executia
+
+Ce faci cand ai deadlock?
+iesire din deadlock -> detectare deadlock -> prevenire
+
+Iesire : oprim procesul
+deteclare : un ciclu in graful de alocare a resurselor e un deadlock
+prevenire : mutual exclusion (lock/unlock)
+            hold(lock)
+            non-preemption(un nou lock nu alueaza pe cel anterior)
+
+mount the file sistem - connect linux to the file system
+
+/etc -informatii specifice masinii necesare intretinerii sistemului
+/home -folosit pt directorii gazda ai utilizatorilor
+/usr -folosit in mod traditional pt a stoca fisiere ce pot fi modificate; este punctul de 
+montare pentru partitia ce contine usr
+/bin -contine programele principalelor comenzi standard Unix
+/sbin (super-utilizator bin) -contine comenzi critice pt procedura de incarcare a sistemului
+/lib -contine diverse biblioteci si baze de date necesare apelurilor sistem
+/dev -folosit pt memorarea fisierelor speciale (fisierele devices)
+/stand -contine informatiile necesare incarcarii sistemului
+/mnt -folosit pt a monta un sistem de fisiere temporar
+/spool -in el sunt memorate fisierele tampon temporare destinate prelucrarilor asincrone
+/export -folosit ca pct implicit de montare pt un arbore de sistem de fisiere exportat,
+pt fisierele in retea gestionate prin pachetul NFS(Network File System)
+/var -folosit pt memorarea fisierelor care cresc dinamic
+/tmp -folosit pt a memora fisiere temporare pt aplicatii
+
+*continutul directorului /usr:
+-unele dintre subdirectoare sunt plasate la nivel de radacina: bin, sbin, lib
+/usr/include -contine fisierele header (*.h) standard ale limbajului C de sub Unix
+/usr/share -contine o serie de directoare partajabile in retea
+/usr/ucb -contine programele executabile compatibile Unix BSD
+/usr/src -contine textele sursa C ale nucleului Unix de pe masina respectiva
+/usr/ccs -contine instrumentele de dezvoltare a programelor C oferite de Unix: cc,gcc,dbx,cb,indent,etc.
+
+*continutul directorului /var
+-unele subdirectoare de la nivele superioare au fost mutate aici de catre versiunile mai noi de Unix: 
+spool si tmp
+/var/saf -contine fisiere jurnal si de contabilizare a serviciilor oferite
+/var/uucp -contine programele necesare efectuarii de copieri de fisiere intre sisteme Unix
+/var/news -contine fisierele necesare serviciului de (stiri) noutati (news) care 
+poate fi instalat pe masinile Unix
+/var/mail -contine casutele postale implicite ale utilizatorilor (INBOX)
+/var/cron -contine fisierele jurnal necesare serviciilor executate la termen
+/var/opt -constituie un punct de montare pt diferite pachete de aplicatii
+/var/preserve -contine fisiere jurnal destinate refacerii starii editoarelor de texte "picate"
+ca urmare a unor incidente
+/var/adm -contine fisiere jurnal(log-uri) de contabilizare si administrare a sistemului)
+
+Imaginea unui proces in memorie este compusa din 2 parti:
+
+1) Contextul user(utilizator) cuprinde:
+*Zona text: portiunea de instructiuni masina a procesului
+*Datele initializate read/only reprezinta constantele utilizate de catre proces
+*Date initializate read/write reprezinta aceke variabile ale procesului care primesc 
+valori initiale in faza de compilare
+*Date neinitializate contine zona ocupata de catre restul variabilelor, cu exceptia celor
+carora li se aloca spatiu pe stiva sau in zona heap. Pt acestea nu se rezerva spatiu in 
+fisierul executabil
+*Heap reprezinta zona unde se aloca spatiu pentru variabilele dinamice, iar Stiva este 
+zona de memorie folosita pt transferul parametrilor in cazul apelului de functii
+
+2) Contextul nucleu cuprinde:
+*Intrarea in tabela proceselor:
+ -starea procesului
+ -pointer la zona User si la tabela regiunilor de memorie ale procesului
+ -dimensiunea procesului in memorie
+ -PID (Process ID) si PPID(Parent Process ID)
+ -UID (User ID) = identificatorul utilizatorului care a lansat procesul ->getuid()
+ -GID (Group ID) = identificatorul grupului la care apartine utilizatorul ->getgid()
+ -EUID (Effective User ID) =identificatorul efectiv al procesului aflat in executie ->geteuid()
+ -EGID (Effective Group ID) =identificatorul efectiv de grup ->getegid()
+*Tabela regiunilor de memorie ale procesului = o tabela de translatie adrese virtuale - 
+adrese fizice de memorie pentru regiunile (sectiunile) programului care este executat in 
+contextul acestui proces
+*Stiva nucleu este memoria alocata pt stiva folosita de nucleul sistemului de operare in 
+modul de executie nucleu
+*Contextul registru (hardware) =o zona de memorie unde se salveaza continutul registrilor 
+generali, de stiva, de executie si control si de stare in momentul in care algoritmul de
+planificare a accesului la procesor decide sa dea controlul procesorului unui alt proces.
+Acesti registrii ai procesorului se salveaza pt a putea relua, mai tarziu, executia procesului,
+de unde a ramas.
+
+
+*fork()
+-modul de creare al unui proces
+-(din proceul parinte) se copiaza imaginea procesului intr-o zona de memorie libera, 
+aceaasta copie fiind noul proces creat (proces fiu), in prima faza identic cu procesul initial
+-un apel fork() intoarce in procesul parinte pid-ul noului proces fiu, iar in procesul fiu
+intoarce valoarea 0
+-in caz de esec => -1 si seteaza coresp variabila errno
+-rezultat >0 =>suntem in parinte
+	  =0 =>suntem in fiu
+
+*exit()
+exit(int n)
+-provoaca terminarea procesului curent si revenirea la procesul parinte
+-n este codul de retur cu care se termina procesul  
+
+*wait()
+-suspenda executia programului pana la terminarea unui proces fiu
+
+*waitpid()
+-pune programul in asteptare pana la aparitia unuia dintre urm evenimente:
+  ->terminarea procesului precizat prin argumentul pid
+  ->receptionarea unui semnal de terminare a proceesului curent
+  ->aparitia unui semnal cu efect de iesire din starea de asteptare
+
+
+  *exec*()
+-apelului exec i se furnizeaza numele unui fisier executabil, iar continutul acestuia se 
+suprapune peste programul procesului existent
+-Prototipurile apelului exec*()
+  int execv (char *fisier,char *argv[]);
+  int execl(char *fisier, char *arg0,...,char *argn,NULL);
+  int execve(char *fisier,char *argv[],char *envp[]);
+  int execle(char *fisier,char *arg0,...,char *argn,NULL,char *envp[]);
+  int execvp(char *fisier,char *argv[]);
+  int execlp(char *fisier,char *arg0,...,char *argn,NULL);
+
+Comunicarea prin FIFO între procese Unix
+
+FIFO (pipe cu nume) = un flux de date unidirectional, accesat prin intermediul unui fisier
+rezident in sistemul de fisiere
+-au nume si ocupa un loc in sistemul de fisiere
+-poate fi accesat de orice 2 procese, nu neaparat cu parinte comun
+-pe disc nu se stocheaza nici o data care trece prin canalul FIFO, acestea fiind stocate
+si gestionate in buffer-ele nucleului sistemului de operare
+
+*Deosebiri intre pipe si FIFO:
+-suportul pt pipe este o portiune din memoria RAM gestionata de nucleu, in timp ce FIFO 
+are ca suport discul magnetic
+-toate procesle care comunica printr0un pipe trebuie sa fie descendente ale procesului creator 
+al canalului pipe, in timp ce pentru FIFO nu se cere nici o relatie intre procese
+
+*Creare FIFO:
+ int mknod(char *numeFIFO, int mod, 0);
+ int mkfifo(char *numeFIFO,int mod);
+sau cu una dintre comenzile shell:
+ $ mknod numeFIFO p
+ $ mkfifo numeFIFO
+
+*Stergere FIFO:
+-se poate face fie cu comanda shell rm numeFIFO, fie cu un apel sistem C unlink()
+-dupa ce e cret FIFO, el trebuie deschis pt citire sau scriere, folosind comanda open(0_RDONLY,O_WRONLY)
+
+*cLIENT/SERVER prin FIFO:
+-pt a se asigura comunicarea bidirectionala se folosesc 2 FIFO-uri
+-fiecare dintre ele primeste ca si parametri descriptorii de fisiere, presupuse deschise, 
+prin care comunica cu partenerul
+
+
+într- un sistem de operare. Aceste stãri de proces sunt: 
+ HOLD – proces pregãtit pentru intrarea în sistem; 
+ READY – procesul este în memorie ºi este gata de a fi servit de (un) procesor; 
+ RUN – un procesor executã efectiv instrucþiuni (maºinã) ale procesului; 
+ WAIT – procesul aºteaptã terminarea unei operaþii de intrare / ieºire; 
+ SWAP – imaginea procesului este evacuatã temporar pe disc; 
+ FINISH – procesul s-a terminat, trebuie livrate doar rezultatele. 
+
+
+COMPILATOARELE sunt programe care traduc texte sursã scrise în limbaje de nivel înalt 
+(C, C++, Java, FORTRAN, COBOL, Pascal, Ada etc.) în limbaj maºinã. 
+
+ASAMBLORUL este un program care traduce texte scrise în limbajul de asamblare propriu 
+SC într-un modul obiect. Din punct de vedere al SO problemele legate de asamblor sunt 
+incluse în problemele compilatoarelor. 
+ 
+LINK-EDITORUL sau EDITORUL DE LEGATURI. Grupeazã unul sau mai multe module 
+obiect, împreunã cu subprograme de serviciu din diverse biblioteci, într-un program 
+executabil. 
+ 
+LOADER (PROGRAM DE INCARCARE) este un program al SO care are trei sarcini: 
+ citirea unui program executabil de pe un anumit suport; 
+ încãrcarea acestuia în memorie; 
+ lansarea lui în execuþie
+
+ 
+INTERPRETOR este un program care executã pas cu pas instrucþiunile descrise într-un 
+anumit limbaj. Tehnica interpretãrii este aplicatã la diferite limbaje de programare, cum ar fi 
+Java, BASIC, LISP, PROLOG etc. 
+ 
+MACROPROCESOR (PREPROCESOR) este un program cu ajutorul cãruia se transformã o 
+machetã de program, pe baza unor parametri, într-un program sursã compilabil.
+
+EDITORUL DE TEXTE este un program interactiv destinat introducerii ºi corectãrii textelor 
+sursã sau a unor texte destinate tipãririi. Orice SO interactiv dispune cel puþin de câte un astfel 
+de editor de texte.
+
+RUTINELE DE DEPANARE (DEPANATOARELE) asistã execuþia unui program utilizator 
+ºi-l ajutã sã depisteze în program cauzele erorilor apãrute în timpul execuþiei lui. 
+
+BIBLIOTECARUL este un program cu ajutorul cãruia utilizatorul poate comanda pãstrarea 
+programelor proprii în fiºiere speciale de tip bibliotecã, poate copia programe dintr-o 
+
+MEDIILE DE PROGRAMARE sunt componente complexe destinate în principal activitãþii de 
+dezvoltare de programe
+
+SUPRAFETELE DE OPERARE au apãrut tot la calculatoarele IBM-PC ºi a celor compatibile 
+cu ele. Ele au rolul principal de a "îmbrãca" sistemul de operare (Windows sau Unix), pentru 
+a-i face mai uºoarã operarea
+bibliotecã în alta, ºterge, insereazã ºi modificã programe în aceste biblioteci.
+
+Un semafor s este o pereche 
+(v(s), c(s)) 
+ 
+unde v(s) este valoarea semaforului, iar c(s) o coadã de aºteptare. Valoarea v(s) este un 
+numãr întreg, care primeºte o valoare iniþialã v0(s). Coada de aºteptare conþine (pointeri la) 
+procesele care aºteaptã la semaforul s. Iniþial coada este vidã, iar disciplina cozii depinde de 
+sistemul de operare (FIFO, LIFO, prioritãþi etc.). 
+
+
+Problema producãtorului ºi a consumatorului. 
+ 
+Sã presupunem cã existã unul sau mai multe procese numite producãtoare, ºi unul sau mai 
+multe procese numite consumatoare. De exemplu, conceptele de pipe ºi FIFO sunt de aceastã 
+naturã (vezi 5.3.2 ºi 5.3.4). Transmiterea informaþiilor de la producãtori spre consumatori se 
+realizeazã prin intermediul unui buffer cu n intrãri pentru n articole. Fiecare producãtor 
+depune câte un articol în buffer, iar fiecare consumator scoate câte un articol din buffer. 
+Problema constã în a dirija cele douã tipuri de procese astfel încât: 
+ sã existe acces exclusiv la buffer; 
+ consumatorii sã aºtepte când bufferul este gol; 
+ producãtorii sã aºtepte când bufferul este plin. 
+
+Solution for Producer – 
+
+do{
+
+//produce an item
+
+wait(empty);
+wait(mutex);
+
+//place in buffer
+
+signal(mutex);
+signal(full);
+
+}while(true)
+
+olution for Consumer – 
+
+do{
+
+wait(full);
+wait(mutex);
+
+// consume item from buffer
+
+signal(mutex);
+signal(empty);
+
+
+}while(true)
+
+9.1.2.5 Problema citirilor ºi a scrierilor. 
+ 
+Problema a fost formulatã în 1971 de cãtre Courtois, Heymans ºi Parnas [4] [50]. Se 
+presupune cã existã douã tipuri de procese: cititor ºi scriitor. Ele partajeazã împreunã o 
+aceeaºi resursã, sã zicem un fiºier. Un proces scriitor modificã conþinutul fiºierului, iar unul 
+cititor consultã informaþiile din el. Spre deosebire de problema producãtorului ºi a 
+consumatorului (unde toate procesele aveau acces exclusiv la resursã), la acest tip de problemã 
+orice proces scriitor are acces exclusiv la resursã, în timp ce mai multe procese cititor pot 
+avea acces simultan la ea. 
+
+
+Evitarea (prevenirea apariþiei) impasului. 
+ 
+In 1971, Coffman, Elphic ºi Shoshani [4], [19] au indicat patru condiþii necesare pentru 
+apariþia impasului: 
+1. procesele solicitã controlul exclusiv asupra resurselor pe care le cer (condiþia de 
+excludere mutualã); 
+2. procesele pãstreazã resursele deja ocupate atunci când aºteaptã alocarea altor resurse 
+(condiþia de ocupã ºi aºteaptã); 
+3. resursele nu pot fi ºterse din procesele care le þin ocupate, pânã când ele nu sunt 
+utilizate complet (condiþia de nepreempþie); 
+4. existã un lanþ de procese în care fiecare dintre ele aºteaptã dupã o resursã ocupatã de 
+altul din lanþ (condiþia de aºteptare circularã). 
+
+
+ Alocare paginata
+Termenul de memorie virtualã este de regulã asociat cu capacitatea de a adresa un spaþiu de 
+memorie mai mare decât este cel disponibil la memoria operativã a SC concret. Conceptul este 
+destul de vechi, el apãrând odatã cu SO ATLAS al Universitãþii Manchester, Anglia, 1960 
+[19]. Se cunosc douã metode de virtualizare, mult înrudite dupã cum vom vedea în continuare. 
+Este vorba de alocarea paginatã ºi alocarea segmentatã. Practic, toate sistemele de calcul 
+actuale folosesc, într-o formã sau alta, mecanisme de memorie virtualã. 
+
+
+
+Alocare segmentata
+Atunci când am vorbit despre alocarea realã, am vãzut cã fiecare proces trebuia sã ocupe un 
+spaþiu contiguu de memorie, numit partiþie. Ceea ce introduce nou mecanismul de alocare 
+segmentatã este faptul cã textul unui program poate fi plasat în zone de memorie distincte, 
+fiecare dintre ele conþinând o bucatã de program numitã segment. Singura deosebire 
+principialã dintre alocarea paginatã ºi cea segmentatã este aceea cã segmentele sunt de lungimi 
+diferite. In fig. 10.15 am ilustrat aceastã situaþie cu locurile ce vor fi ocupate de un program 
+format din trei segmente. 
+

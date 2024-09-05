@@ -1,0 +1,166 @@
+3. awk '{wc=0;count=0;for(col=1;col<=NF;++col)wc++;count++;done
+print $wc/$count}'
+
+4. Print the file names and hierarch 
+tree .
+
+5.
+#!/bin/bash
+
+main() {
+	local SUM_LINES=0
+	local COUNT=0
+
+	for FILE in *.txt; do
+		aux=$(cat $FILE | wc -l)
+		((++COUNT))
+		SUM_LINES=$((SUM_LINES + aux))
+
+	done
+  if [[ $COUNT -eq 0 ]]; then
+    echo "No .txt files"
+    exit 1
+  fi
+	echo $(echo "scale=2; $SUM_LINES / $COUNT" | bc)
+
+}
+
+main
+
+
+7. f(3) number of proceses
+
+void f(int n)
+{
+    if(n > 0 && fork() == 0)
+    {
+        f(n - 1);
+        wait(NULL);
+      }
+      else wait(NULL);
+  }
+
+f(3) -> 4 procese (cu tot cu parinte)
+
+
+8. What does it print?
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <wait.h>
+
+int main(int argc, char *argv[]) {
+  char *s[3] = {"A", "B", "C"};
+  for (int i = 0; i < 3; ++i) {
+    execl("/bin/echo", "/bin/echo", s[i], NULL);
+  }
+  return EXIT_SUCCESS;
+}
+It only prints out "A" , bcs execl replaces the current image of the procces with a new one
+If the execl fails it will come back
+
+
+9. What does the system call "read" do when the fifo contains less data
+thatn it is required to read?
+
+returns error
+
+
+10. What will the code fragment below print to the console if no other
+process opens the "abc" FIFO ? Justify
+
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <wait.h>
+int main(int argc, char *argv[]) {
+  int r, w, n = 0;
+  r = open("abc", O_RDONLY);
+  n++;
+  w = open("abc", O_WRONLY);
+  n++;
+  printf("%d\n", n);
+  return EXIT_SUCCESS;
+}
+
+It will print 2 , because it read and writes in the same file , so it
+doesnt block
+
+11. What happens with a process between the moment it finished and the
+moment its parrent calls wait?
+
+Becomes a zombie process 
+
+13 . Schedule so the sum of delays is minimized
+
+A/7/13 , B/5/9 , C/2/4
+
+C - B - A
+2 - 7 - 14  : sum = 0 + 0 + 1 = 1
+
+
+14. Give an advantage a disavatnage of the set-associative cache versus
+the associative caches
+
+adv : more flexible
+dis : more complicated and time consuming
+
+15. What page category has the highest priority in the NRU replacement policy
+when choosing a victim page?
+
+NRU - not recently used 
+1
+
+16. Given 2set-associative caches , one with 2 sets of 4 pages and one
+with 4 sets of 2 pages, which would perform beter for the following
+sequence of page requests:
+20 , 9 , 18 , 27 , 20, 9 , 18 , 27. why?
+
+cache 1:
+2 seturi cate 4 pagini
+set 0 : 20 , 18 , 20 , 18
+set 1 : 9 , 27 , 9 , 27
+
+cache 2:
+4 seturi de cate 2 pagini
+set 0 : 20 , 20
+set 1 : 9 , 9 
+set 2 : 18 , 18
+set 3 : 27 , 27
+
+cache 2 e mai bun pentru ca se poate accesa mai rapid cache-ul astfel
+pentru ca se au mai multe seturi
+
+17. How many data blocks can be referenced by the double-indirection of a i-node
+if a block contains n addresses to other blocks?
+
+n + n ^ 2
+
+19. Give a method for preventing the apparatition of deadlocks
+
+reccursive deadlocks
+
+20. Add the necessary instructions to the code fragment below , so that thestantard input of command /bin/pwd
+to be read from pipe p;
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <wait.h>
+
+int main(int argc, char *argv[]) {
+  int p[2];
+  pipe(p);
+
+  if (fork() == 0) {
+    close(p[1]); // nu scriem
+    dup2(p[0], STDIN_FILENO);
+    execl("/bin/pwd", "/bin/pwd", NULL);
+    perror("execl");
+    exit(EXIT_FAILURE);
+  }
+  close(p[0]);
+  return EXIT_SUCCESS;
+}
+

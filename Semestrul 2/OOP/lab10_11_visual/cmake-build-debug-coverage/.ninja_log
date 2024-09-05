@@ -1,0 +1,15 @@
+# ninja log v5
+16	608	7356448552286309	CMakeFiles/lab6.dir/produs.cpp.obj	f33cb6177f85a4e3
+20	1334	7356451301389957	CMakeFiles/lab6.dir/service.cpp.obj	6a86af6f4bc379f6
+26	883	7356451296897451	CMakeFiles/lab6.dir/ui.cpp.obj	3ce719d198c55916
+3	438	7356453821861607	CMakeFiles/lab6.dir/main.cpp.obj	bf6185e418a2e453
+72	279	7356448548980610	CMakeFiles/lab6.dir/vector.cpp.obj	dec5c11d27d2a8b
+2	552	7356451484852325	CMakeFiles/lab6.dir/repo.cpp.obj	a5153e57edb9e969
+438	679	7356453824189038	lab6.exe	8308789f37c949c1
+31	686	7356448553071527	CMakeFiles/lab6.dir/validare.cpp.obj	196bb3e114d544f9
+1	129	7364616882797984	build.ninja	276cea155c8d0994
+2	89	7343982432616618	CMakeFiles/test.dir/vector.cpp.obj	f0de4920a8a70f63
+12	250	7343982434218871	CMakeFiles/test.dir/test_vector.cpp.obj	9b7d3912a849d659
+250	325	7343982434939435	test.exe	5d942ce78243f6d7
+26	1283	7356448558050975	CMakeFiles/lab6.dir/CosProduse.cpp.obj	72b81c4860bea34f
+33	959	7356451297637513	CMakeFiles/lab6.dir/LabRepo.cpp.obj	220a6258c225de70

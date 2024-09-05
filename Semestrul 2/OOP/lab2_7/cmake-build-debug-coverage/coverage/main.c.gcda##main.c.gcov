@@ -1,0 +1,87 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_7/main.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_7\cmake-build-debug-coverage\CMakeFiles\lab2_7.dir\main.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_7\cmake-build-debug-coverage\CMakeFiles\lab2_7.dir\main.c.gcda
+        -:    0:Runs:1
+        -:    1:/*
+        -:    2:    Creati o aplicatie modulara in C.
+        -:    3:    Se cere interfata utilizator de tip consola.
+        -:    4:    Datele introduse de utilizator trebuie validate.
+        -:    5:    Folositi athitectura stratificata.
+        -:    6:    Folositi dezvoltare dirijata de teste (Test Driven Development)
+        -:    7:    Fiecare metoda din aplicatie trebuie specificat si testat.
+        -:    8:    Implementati vector dinamic pentru lucru cu liste:
+        -:    9:        - in prima saptamana puteti folosi reprezentarea cu un struct ( un vector static si lungime in el)
+        -:   10:        - pana in saptamana 2 trebuie folosit alocare dinamica (sa acomodeze oricate elemente)
+        -:   11:    Timp de lucru 2 saptamani.
+        -:   12:
+        -:   13:
+        -:   14:    7. Administrator imobil
+        -:   15:
+        -:   16:    Creati o aplicatie care permite gestiunea de cheltuieli lunare pentru apartamentele dintr-un bloc.
+        -:   17:    Fiecare cheltuiala are: numarul apartamentului, suma, tipul (apa, canal, incalzire, gaz).
+        -:   18:    Aplicatia permite:
+        -:   19:    a) Adaugarea de cheltuieli pentru un apartament
+        -:   20:    b) Modificarea unei cheltuieli existente (tipul, suma)
+        -:   21:    c) Stergere cheltuiala
+        -:   22:    d) Vizualizare lista de cheltuieli filtrat dupa o proprietate (suma, tipul,apartament)
+        -:   23:    e) Vizualizare lista de cheltuieli ordonat dupa suma sau tip (crescator/descrescator)
+        -:   24: */
+        -:   25:
+        -:   26:
+        -:   27:#include <string.h>
+        -:   28:#include <stdio.h>
+        -:   29:#define _CRTDBG_MAP_ALLOC
+        -:   30:#include <stdlib.h>
+        -:   31://#include <crtdbg.h>
+        -:   32:#include "ui.h"
+        -:   33:#include "repo.h"
+        -:   34:#include "lista.h"
+        -:   35:#include "valid.h"
+        -:   36:#include "service.h"
+        -:   37:
+function test called 1 returned 100% blocks executed 100%
+        1:   38:void test() {
+        1:   39:    test_adaugare();
+        1:   39-block  0
+call    0 returned 1
+        1:   40:    test_modificare();
+call    0 returned 1
+        1:   41:    test_stergere();
+call    0 returned 1
+        1:   42:    test_srv_adaugare();
+call    0 returned 1
+        1:   43:    test_srv_modificare();
+call    0 returned 1
+        1:   44:    test_srv_stergere();
+call    0 returned 1
+        1:   45:    test_filtrare_propr_nr();
+call    0 returned 1
+        1:   46:    test_filtrare_propr_suma();
+call    0 returned 1
+        1:   47:    test_filtrare_propr_tip();
+call    0 returned 1
+        1:   48:    test_sortare();
+call    0 returned 1
+        1:   49:    test_compare();
+call    0 returned 1
+        1:   50:    test_sortare2();
+call    0 returned 1
+        1:   51:}
+        -:   52:
+        -:   53:
+function main called 1 returned 0% blocks executed 80%
+        1:   54:int main() {
+        -:   55:    // Definim lista
+        1:   56:    Lista lista = createLista();
+        1:   56-block  0
+call    0 returned 1
+        -:   57:
+        -:   58:    // Facem testele si rulam aplicatia
+        1:   59:    test();
+call    0 returned 1
+        -:   60:
+        1:   61:    consola(&lista);
+call    0 returned 0
+        -:   62:    //_CrtDumpMemoryLeaks();
+    #####:   63:    return 0;
+        -:   64:}

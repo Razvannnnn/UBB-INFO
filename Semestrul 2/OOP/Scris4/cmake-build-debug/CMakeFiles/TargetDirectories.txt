@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/OOP/Scris4/cmake-build-debug/CMakeFiles/Scris4.dir
+C:/Users/razva/Desktop/OOP/Scris4/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/Scris4/cmake-build-debug/CMakeFiles/rebuild_cache.dir

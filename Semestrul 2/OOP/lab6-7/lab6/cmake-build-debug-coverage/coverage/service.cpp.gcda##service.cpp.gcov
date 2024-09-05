@@ -1,0 +1,1412 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/service.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "service.h"
+        -:    2:
+        -:    3:#include <utility>
+        -:    4:#include <cassert>
+        -:    5:
+function _ZN13serviceProdus8adaugareENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_dS5_ called 10 returned 100% blocks executed 88%
+       10:    6:void serviceProdus::adaugare(std::string nume, std::string tip, double pret, std::string producator) {
+       10:    7:    Valid::validProdus(nume, tip, pret, producator);
+       10:    7-block  0
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:    8:    Produs p{std::move(nume), std::move(tip), pret, std::move(producator)};
+       10:    8-block  0
+call    0 returned 10
+call    1 returned 10
+call    2 returned 10
+call    3 returned 10
+call    4 returned 10
+call    5 returned 10
+call    6 returned 10
+call    7 returned 10
+call    8 returned 10
+call    9 returned 10
+       10:    9:    repo.store(p);
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:   10:}
+       10:   10-block  0
+call    0 returned 10
+    $$$$$:   10-block  1
+call    1 never executed
+        -:   11:
+function _ZN13serviceProdus10modificareENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_dS5_S5_S5_dS5_ called 1 returned 100% blocks executed 87%
+        1:   12:void serviceProdus::modificare(std::string nume, std::string tip, double pret, std::string producator,
+        -:   13:                               std::string newnume, std::string newtip, double newpret, std::string newproducator) {
+        1:   14:    Valid::validProdus(nume, tip, pret, producator);
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15:    Valid::validProdus(newnume, newtip, newpret, newproducator);
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16:    Produs p{std::move(nume), std::move(tip), pret, std::move(producator)};
+        1:   16-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+        1:   17:    Produs p2{std::move(newnume), std::move(newtip), newpret, std::move(newproducator)};
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+        1:   18:    repo.modify(p, p2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   19:
+        1:   20:}
+        1:   20-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   20-block  1
+call    2 never executed
+    $$$$$:   20-block  2
+call    3 never executed
+        -:   21:
+function _ZN13serviceProdus8stergereERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_ called 1 returned 100% blocks executed 100%
+        1:   22:void serviceProdus::stergere(const std::string& nume, const std::string& tip, const std::string& producator) {
+        1:   23:    repo.del(nume, tip, producator);
+        1:   23-block  0
+call    0 returned 1
+        1:   24:}
+        -:   25:
+function _ZN13serviceProdus5cautaERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_ called 1 returned 100% blocks executed 100%
+        1:   26:Produs serviceProdus::cauta(const std::string &nume, const std::string &tip, const std::string &producator) {
+        1:   27:    return repo.cauta(nume, tip, producator);
+        1:   27-block  0
+call    0 returned 1
+        -:   28:}
+        -:   29:
+function _ZN13serviceProdus7sortareEii called 1 returned 100% blocks executed 86%
+        1:   30:RepoProdus serviceProdus::sortare(int criteriu, int mod) {
+        1:   31:    RepoProdus produseSortate;
+        1:   31-block  0
+call    0 returned 1
+        1:   32:    produseSortate = repo;
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   33:    repo.sortare(produseSortate, criteriu, mod);
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   34:    return produseSortate;}
+        1:   34-block  0
+        1:   34-block  1
+    $$$$$:   34-block  2
+call    0 never executed
+        -:   35:
+function _ZN13serviceProdus17fltrareUnCriteriuERKiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_dS9_ called 4 returned 100% blocks executed 92%
+        4:   36:RepoProdus serviceProdus::fltrareUnCriteriu(const int& criteriu, const string& nume, const string& tip, double pret, const string& producator) {
+        4:   37:    RepoProdus produseFiltrate ;
+        4:   37-block  0
+call    0 returned 4
+        4:   38:    if(criteriu == 1) {
+branch  0 taken 1 (fallthrough)
+branch  1 taken 3
+        1:   39:        repo.filtrareNume(produseFiltrate, nume);
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   40:    }
+        3:   41:    else if(criteriu == 2) {
+        3:   41-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   42:        repo.filtrareTip(produseFiltrate, tip);
+        1:   42-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   43:    }
+        2:   44:    else if(criteriu == 3) {
+        2:   44-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   45:        repo.filtrarePret(produseFiltrate, pret);
+        1:   45-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   46:    }
+        1:   47:    else if(criteriu == 4) {
+        1:   47-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   48:        repo.filtrareProducator(produseFiltrate, producator);
+        1:   48-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   49:    }
+        4:   50:    return produseFiltrate;}
+        4:   50-block  0
+        4:   50-block  1
+    $$$$$:   50-block  2
+call    0 never executed
+        -:   51:
+function _Z19testServiceAdaugarev called 1 returned 100% blocks executed 52%
+        1:   52:void testServiceAdaugare() {
+        1:   53:    RepoProdus repo;
+        1:   53-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54:    serviceProdus service{ repo };
+        1:   54-block  0
+call    0 returned 1
+        5:   55:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:   55-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   55-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   55-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   55-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   55-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   55-block  5
+call   15 never executed
+    $$$$$:   55-block  6
+    $$$$$:   55-block  7
+    $$$$$:   55-block  8
+call   16 never executed
+    $$$$$:   55-block  9
+    $$$$$:   55-block 10
+    $$$$$:   55-block 11
+call   17 never executed
+    $$$$$:   55-block 12
+    $$$$$:   55-block 13
+       1*:   56:    assert(service.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   56-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   56-block  1
+call    6 never executed
+        1:   56-block  2
+        1:   56-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   56-block  4
+call    9 returned 1
+    $$$$$:   56-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   56-block  6
+call   12 never executed
+    $$$$$:   56-block  7
+        1:   57:}
+        1:   57-block  0
+call    0 returned 1
+    $$$$$:   57-block  1
+call    1 never executed
+        -:   58:
+function _Z19testServiceStergerev called 1 returned 100% blocks executed 51%
+        1:   59:void testServiceStergere() {
+        1:   60:    RepoProdus repo;
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   61:    serviceProdus service{ repo };
+        1:   61-block  0
+call    0 returned 1
+        5:   62:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:   62-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   62-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   62-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   62-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   62-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   62-block  5
+call   15 never executed
+    $$$$$:   62-block  6
+    $$$$$:   62-block  7
+    $$$$$:   62-block  8
+call   16 never executed
+    $$$$$:   62-block  9
+    $$$$$:   62-block 10
+    $$$$$:   62-block 11
+call   17 never executed
+    $$$$$:   62-block 12
+    $$$$$:   62-block 13
+       1*:   63:    assert(service.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   63-block  1
+call    6 never executed
+        1:   63-block  2
+        1:   63-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   63-block  4
+call    9 returned 1
+        1:   63-block  5
+    $$$$$:   63-block  6
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   63-block  7
+call   12 never executed
+    $$$$$:   63-block  8
+        5:   64:    service.stergere("Apa", "Minerala", "Bucovina");
+        1:   64-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   64-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   64-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   64-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   64-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   64-block  5
+call   15 never executed
+    $$$$$:   64-block  6
+    $$$$$:   64-block  7
+    $$$$$:   64-block  8
+call   16 never executed
+    $$$$$:   64-block  9
+    $$$$$:   64-block 10
+    $$$$$:   64-block 11
+call   17 never executed
+    $$$$$:   64-block 12
+    $$$$$:   64-block 13
+       1*:   65:    assert(service.getAll().size() == 0);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   65-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   65-block  1
+call    6 never executed
+        1:   65-block  2
+        1:   65-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   65-block  4
+call    9 returned 1
+    $$$$$:   65-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   65-block  6
+call   12 never executed
+    $$$$$:   65-block  7
+        1:   66:}
+        1:   66-block  0
+call    0 returned 1
+    $$$$$:   66-block  1
+call    1 never executed
+        -:   67:
+function _Z21testServiceModificarev called 1 returned 100% blocks executed 52%
+        1:   68:void testServiceModificare() {
+        1:   69:    RepoProdus repo;
+        1:   69-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   70:    serviceProdus service{ repo };
+        1:   70-block  0
+call    0 returned 1
+        5:   71:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:   71-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   71-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   71-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   71-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   71-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   71-block  5
+call   15 never executed
+    $$$$$:   71-block  6
+    $$$$$:   71-block  7
+    $$$$$:   71-block  8
+call   16 never executed
+    $$$$$:   71-block  9
+    $$$$$:   71-block 10
+    $$$$$:   71-block 11
+call   17 never executed
+    $$$$$:   71-block 12
+    $$$$$:   71-block 13
+       1*:   72:    assert(service.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   72-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   72-block  1
+call    6 never executed
+        1:   72-block  2
+        1:   72-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   72-block  4
+call    9 returned 1
+        1:   72-block  5
+    $$$$$:   72-block  6
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   72-block  7
+call   12 never executed
+    $$$$$:   72-block  8
+       11:   73:    service.modificare("Apa", "Minerala", 2.99, "Bucovina", "Apa", "Plata", 4.99, "NotBucovina");
+        1:   73-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   73-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   73-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   73-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   73-block  4
+call   12 returned 1
+branch 13 taken 1 (fallthrough)
+branch 14 taken 0 (throw)
+        1:   73-block  5
+call   15 returned 1
+branch 16 taken 1 (fallthrough)
+branch 17 taken 0 (throw)
+        1:   73-block  6
+call   18 returned 1
+branch 19 taken 1 (fallthrough)
+branch 20 taken 0 (throw)
+        1:   73-block  7
+call   21 returned 1
+call   22 returned 1
+call   23 returned 1
+call   24 returned 1
+call   25 returned 1
+call   26 returned 1
+    $$$$$:   73-block  8
+call   27 never executed
+    $$$$$:   73-block  9
+    $$$$$:   73-block 10
+    $$$$$:   73-block 11
+call   28 never executed
+    $$$$$:   73-block 12
+    $$$$$:   73-block 13
+    $$$$$:   73-block 14
+call   29 never executed
+    $$$$$:   73-block 15
+    $$$$$:   73-block 16
+    $$$$$:   73-block 17
+call   30 never executed
+    $$$$$:   73-block 18
+    $$$$$:   73-block 19
+    $$$$$:   73-block 20
+call   31 never executed
+    $$$$$:   73-block 21
+    $$$$$:   73-block 22
+    $$$$$:   73-block 23
+call   32 never executed
+    $$$$$:   73-block 24
+    $$$$$:   73-block 25
+       1*:   74:    assert(service.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   74-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   74-block  1
+call    6 never executed
+        1:   74-block  2
+        1:   74-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   74-block  4
+call    9 returned 1
+    $$$$$:   74-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   74-block  6
+call   12 never executed
+    $$$$$:   74-block  7
+        1:   75:    Vector<Produs> updatedproduse = service.getAll();
+        1:   75-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   76:    assert(updatedproduse[0].getNume() == "Apa");
+        1:   76-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   76-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   76-block  2
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   76-block  3
+call    9 never executed
+        1:   76-block  4
+        1:   76-block  5
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+        1:   76-block  6
+call   12 returned 1
+    $$$$$:   76-block  7
+branch 13 never executed (fallthrough)
+branch 14 never executed
+    $$$$$:   76-block  8
+call   15 never executed
+    $$$$$:   76-block  9
+       1*:   77:    assert(updatedproduse[0].getTip() == "Plata");
+        1:   77-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   77-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   77-block  2
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   77-block  3
+call    9 never executed
+        1:   77-block  4
+        1:   77-block  5
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+        1:   77-block  6
+call   12 returned 1
+    $$$$$:   77-block  7
+branch 13 never executed (fallthrough)
+branch 14 never executed
+    $$$$$:   77-block  8
+call   15 never executed
+    $$$$$:   77-block  9
+       1*:   78:    assert(updatedproduse[0].getPret() == 4.99);
+        1:   78-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   78-block  1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   78-block  2
+call    6 never executed
+        1:   78-block  3
+       1*:   79:    assert(updatedproduse[0].getProducator() == "NotBucovina");
+        1:   79-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   79-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   79-block  2
+branch  7 taken 0 (fallthrough)
+branch  8 taken 1
+    %%%%%:   79-block  3
+call    9 never executed
+        1:   79-block  4
+        1:   79-block  5
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+        1:   79-block  6
+call   12 returned 1
+    $$$$$:   79-block  7
+branch 13 never executed (fallthrough)
+branch 14 never executed
+    $$$$$:   79-block  8
+call   15 never executed
+    $$$$$:   79-block  9
+        1:   80:}
+        1:   80-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:   80-block  1
+call    2 never executed
+    $$$$$:   80-block  2
+call    3 never executed
+        -:   81:
+function _Z19testServiceFiltrarev called 1 returned 100% blocks executed 50%
+        1:   82:void testServiceFiltrare() {
+        1:   83:    RepoProdus repo;
+        1:   83-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84:    RepoProdus listaFiltrata;
+        1:   84-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   85:    serviceProdus service{ repo };
+        1:   85-block  0
+call    0 returned 1
+        6:   86:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:   86-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   86-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   86-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   86-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   86-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   86-block  5
+call   15 never executed
+    $$$$$:   86-block  6
+    $$$$$:   86-block  7
+    $$$$$:   86-block  8
+call   16 never executed
+    $$$$$:   86-block  9
+    $$$$$:   86-block 10
+    $$$$$:   86-block 11
+call   17 never executed
+    $$$$$:   86-block 12
+    $$$$$:   86-block 13
+        6:   87:    service.adaugare("Apa", "Plata", 3.99, "Bucovina");
+        1:   87-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   87-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   87-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   87-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   87-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   87-block  5
+call   15 never executed
+    $$$$$:   87-block  6
+    $$$$$:   87-block  7
+    $$$$$:   87-block  8
+call   16 never executed
+    $$$$$:   87-block  9
+    $$$$$:   87-block 10
+    $$$$$:   87-block 11
+call   17 never executed
+    $$$$$:   87-block 12
+    $$$$$:   87-block 13
+        5:   88:    service.adaugare("Apa", "Plata", 3.29, "Aqua Carpatica");
+        1:   88-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   88-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   88-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   88-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   88-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:   88-block  5
+call   15 never executed
+    $$$$$:   88-block  6
+    $$$$$:   88-block  7
+    $$$$$:   88-block  8
+call   16 never executed
+    $$$$$:   88-block  9
+    $$$$$:   88-block 10
+    $$$$$:   88-block 11
+call   17 never executed
+    $$$$$:   88-block 12
+    $$$$$:   88-block 13
+       1*:   89:    assert(service.getAll().size() == 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   89-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   89-block  1
+call    6 never executed
+        1:   89-block  2
+        1:   89-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   89-block  4
+call    9 returned 1
+        1:   89-block  5
+    $$$$$:   89-block  6
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   89-block  7
+call   12 never executed
+    $$$$$:   89-block  8
+        -:   90:
+        5:   91:    listaFiltrata = service.fltrareUnCriteriu(1, "Apa", "", 0, "");
+        1:   91-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   91-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   91-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   91-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   91-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+    $$$$$:   91-block  5
+    $$$$$:   91-block  6
+call   17 never executed
+    $$$$$:   91-block  7
+    $$$$$:   91-block  8
+    $$$$$:   91-block  9
+call   18 never executed
+    $$$$$:   91-block 10
+    $$$$$:   91-block 11
+    $$$$$:   91-block 12
+call   19 never executed
+    $$$$$:   91-block 13
+    $$$$$:   91-block 14
+    $$$$$:   91-block 15
+       1*:   92:    assert(listaFiltrata.getAll().size() == 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   92-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   92-block  1
+call    6 never executed
+        1:   92-block  2
+        1:   92-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   92-block  4
+call    9 returned 1
+    $$$$$:   92-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   92-block  6
+call   12 never executed
+    $$$$$:   92-block  7
+        -:   93:
+        1:   94:    listaFiltrata = {};
+        1:   94-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   94-block  1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:   94-block  2
+        5:   95:    listaFiltrata = service.fltrareUnCriteriu(2, "", "Plata", 0, "");
+        1:   95-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   95-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   95-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   95-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   95-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+    $$$$$:   95-block  5
+    $$$$$:   95-block  6
+call   17 never executed
+    $$$$$:   95-block  7
+    $$$$$:   95-block  8
+    $$$$$:   95-block  9
+call   18 never executed
+    $$$$$:   95-block 10
+    $$$$$:   95-block 11
+    $$$$$:   95-block 12
+call   19 never executed
+    $$$$$:   95-block 13
+    $$$$$:   95-block 14
+    $$$$$:   95-block 15
+       1*:   96:    assert(listaFiltrata.getAll().size() == 2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   96-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   96-block  1
+call    6 never executed
+        1:   96-block  2
+        1:   96-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   96-block  4
+call    9 returned 1
+    $$$$$:   96-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   96-block  6
+call   12 never executed
+    $$$$$:   96-block  7
+        -:   97:
+        1:   98:    listaFiltrata = {};
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   98-block  1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:   98-block  2
+        5:   99:    listaFiltrata = service.fltrareUnCriteriu(3, "", "", 2.99, "");
+        1:   99-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   99-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:   99-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:   99-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+    $$$$$:   99-block  5
+    $$$$$:   99-block  6
+call   17 never executed
+    $$$$$:   99-block  7
+    $$$$$:   99-block  8
+    $$$$$:   99-block  9
+call   18 never executed
+    $$$$$:   99-block 10
+    $$$$$:   99-block 11
+    $$$$$:   99-block 12
+call   19 never executed
+    $$$$$:   99-block 13
+    $$$$$:   99-block 14
+    $$$$$:   99-block 15
+       1*:  100:    assert(listaFiltrata.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  100-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  100-block  1
+call    6 never executed
+        1:  100-block  2
+        1:  100-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  100-block  4
+call    9 returned 1
+    $$$$$:  100-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:  100-block  6
+call   12 never executed
+    $$$$$:  100-block  7
+        -:  101:
+        1:  102:    listaFiltrata = {};
+        1:  102-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  102-block  1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:  102-block  2
+        5:  103:    listaFiltrata = service.fltrareUnCriteriu(4, "", "", 0, "Bucovina");
+        1:  103-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  103-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  103-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  103-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  103-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+    $$$$$:  103-block  5
+    $$$$$:  103-block  6
+call   17 never executed
+    $$$$$:  103-block  7
+    $$$$$:  103-block  8
+    $$$$$:  103-block  9
+call   18 never executed
+    $$$$$:  103-block 10
+    $$$$$:  103-block 11
+    $$$$$:  103-block 12
+call   19 never executed
+    $$$$$:  103-block 13
+    $$$$$:  103-block 14
+    $$$$$:  103-block 15
+       1*:  104:    assert(listaFiltrata.getAll().size() == 2);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  104-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  104-block  1
+call    6 never executed
+        1:  104-block  2
+        1:  104-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  104-block  4
+call    9 returned 1
+    $$$$$:  104-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:  104-block  6
+call   12 never executed
+    $$$$$:  104-block  7
+        1:  105:}
+        1:  105-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  105-block  1
+call    2 never executed
+    $$$$$:  105-block  2
+call    3 never executed
+        -:  106:
+function _Z16testServiceCautav called 1 returned 100% blocks executed 51%
+        1:  107:void testServiceCauta() {
+        1:  108:    RepoProdus repo;
+        1:  108-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  109:    serviceProdus service{ repo };
+        1:  109-block  0
+call    0 returned 1
+        5:  110:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:  110-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  110-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  110-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  110-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  110-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:  110-block  5
+call   15 never executed
+    $$$$$:  110-block  6
+    $$$$$:  110-block  7
+    $$$$$:  110-block  8
+call   16 never executed
+    $$$$$:  110-block  9
+    $$$$$:  110-block 10
+    $$$$$:  110-block 11
+call   17 never executed
+    $$$$$:  110-block 12
+    $$$$$:  110-block 13
+       1*:  111:    assert(service.getAll().size() == 1);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  111-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  111-block  1
+call    6 never executed
+        1:  111-block  2
+        1:  111-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  111-block  4
+call    9 returned 1
+        1:  111-block  5
+    $$$$$:  111-block  6
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:  111-block  7
+call   12 never executed
+    $$$$$:  111-block  8
+        5:  112:    auto p = service.cauta("Apa", "Minerala", "Bucovina");
+        1:  112-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  112-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  112-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  112-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  112-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:  112-block  5
+call   15 never executed
+    $$$$$:  112-block  6
+    $$$$$:  112-block  7
+    $$$$$:  112-block  8
+call   16 never executed
+    $$$$$:  112-block  9
+    $$$$$:  112-block 10
+    $$$$$:  112-block 11
+call   17 never executed
+    $$$$$:  112-block 12
+    $$$$$:  112-block 13
+       1*:  113:    assert(p.getNume() == "Apa");
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  113-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  113-block  1
+branch  6 taken 0 (fallthrough)
+branch  7 taken 1
+    %%%%%:  113-block  2
+call    8 never executed
+        1:  113-block  3
+        1:  113-block  4
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0
+        1:  113-block  5
+call   11 returned 1
+    $$$$$:  113-block  6
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:  113-block  7
+call   14 never executed
+    $$$$$:  113-block  8
+       1*:  114:    assert(p.getTip() == "Minerala");
+        1:  114-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  114-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  114-block  2
+branch  6 taken 0 (fallthrough)
+branch  7 taken 1
+    %%%%%:  114-block  3
+call    8 never executed
+        1:  114-block  4
+        1:  114-block  5
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0
+        1:  114-block  6
+call   11 returned 1
+    $$$$$:  114-block  7
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:  114-block  8
+call   14 never executed
+    $$$$$:  114-block  9
+       1*:  115:    assert(p.getProducator() == "Bucovina");
+        1:  115-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  115-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  115-block  2
+branch  6 taken 0 (fallthrough)
+branch  7 taken 1
+    %%%%%:  115-block  3
+call    8 never executed
+        1:  115-block  4
+        1:  115-block  5
+branch  9 taken 1 (fallthrough)
+branch 10 taken 0
+        1:  115-block  6
+call   11 returned 1
+    $$$$$:  115-block  7
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:  115-block  8
+call   14 never executed
+    $$$$$:  115-block  9
+        1:  116:}
+        1:  116-block  0
+call    0 returned 1
+call    1 returned 1
+    $$$$$:  116-block  1
+call    2 never executed
+    $$$$$:  116-block  2
+call    3 never executed
+        -:  117:
+function _Z18testServiceSortarev called 1 returned 100% blocks executed 51%
+        1:  118:void testServiceSortare() {
+        1:  119:    RepoProdus repo;
+        1:  119-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  120:    RepoProdus listaSortate;
+        1:  120-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  121:    serviceProdus service{ repo };
+        1:  121-block  0
+call    0 returned 1
+        6:  122:    service.adaugare("Apa", "Minerala", 2.99, "Bucovina");
+        1:  122-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  122-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  122-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  122-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  122-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:  122-block  5
+call   15 never executed
+    $$$$$:  122-block  6
+    $$$$$:  122-block  7
+    $$$$$:  122-block  8
+call   16 never executed
+    $$$$$:  122-block  9
+    $$$$$:  122-block 10
+    $$$$$:  122-block 11
+call   17 never executed
+    $$$$$:  122-block 12
+    $$$$$:  122-block 13
+        6:  123:    service.adaugare("Apa", "Plata", 3.99, "Bucovina");
+        1:  123-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  123-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  123-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  123-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  123-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:  123-block  5
+call   15 never executed
+    $$$$$:  123-block  6
+    $$$$$:  123-block  7
+    $$$$$:  123-block  8
+call   16 never executed
+    $$$$$:  123-block  9
+    $$$$$:  123-block 10
+    $$$$$:  123-block 11
+call   17 never executed
+    $$$$$:  123-block 12
+    $$$$$:  123-block 13
+        5:  124:    service.adaugare("Apa", "Plata", 3.29, "Aqua Carpatica");
+        1:  124-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  124-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  124-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  124-block  3
+call    9 returned 1
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0 (throw)
+        1:  124-block  4
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+    $$$$$:  124-block  5
+call   15 never executed
+    $$$$$:  124-block  6
+    $$$$$:  124-block  7
+    $$$$$:  124-block  8
+call   16 never executed
+    $$$$$:  124-block  9
+    $$$$$:  124-block 10
+    $$$$$:  124-block 11
+call   17 never executed
+    $$$$$:  124-block 12
+    $$$$$:  124-block 13
+       1*:  125:    assert(service.getAll().size() == 3);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  125-block  0
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  125-block  1
+call    6 never executed
+        1:  125-block  2
+        1:  125-block  3
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:  125-block  4
+call    9 returned 1
+    $$$$$:  125-block  5
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:  125-block  6
+call   12 never executed
+    $$$$$:  125-block  7
+        1:  126:    listaSortate = service.sortare(2, 1);
+        1:  126-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  126-block  1
+call    3 returned 1
+call    4 returned 1
+    $$$$$:  126-block  2
+        1:  127:    auto produse = listaSortate.getAll();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  128:    assert(produse[0].getPret() == 2.99);
+        1:  128-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  128-block  1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  128-block  2
+call    6 never executed
+        1:  128-block  3
+        1:  129:}
+        1:  129-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+    $$$$$:  129-block  1
+call    3 never executed
+    $$$$$:  129-block  2
+call    4 never executed
+    $$$$$:  129-block  3
+call    5 never executed
+        -:  130:
+function _Z12testeServicev called 1 returned 100% blocks executed 100%
+        1:  131:void testeService() {
+        1:  132:    testServiceAdaugare();
+        1:  132-block  0
+call    0 returned 1
+        1:  133:    testServiceStergere();
+call    0 returned 1
+        1:  134:    testServiceModificare();
+call    0 returned 1
+        1:  135:    testServiceFiltrare();
+call    0 returned 1
+        1:  136:    testServiceCauta();
+call    0 returned 1
+        1:  137:    testServiceSortare();
+call    0 returned 1
+        1:  138:}

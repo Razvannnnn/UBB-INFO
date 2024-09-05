@@ -1,0 +1,12 @@
+PSEUDOCOD
+
+Funcție avanseazaKPasi(int: k)
+    Daca k este <= 0
+        aruncam exceptie: Numarul de pasi trb sa fie pozitiv
+
+    pentru i <- 0, k-1 executa
+        daca iteratorul nu este valid
+            aruncam exceptie
+        trecem la urmatorul element
+
+SFFuncție

@@ -1,0 +1,182 @@
+1. Care va fi efectul inlocuirii apelurilor la pthread_mutex_lock cu apeluri sem_post?
+
+R: pthread_mutex_lock nu are aceeasi actiune ca sem_post. Pthread_mutex_lock va bloca segmentul de cod pentru a putea
+fi folosit de un singur thread, pe cand sem_post va incrementa semaforul, comportandu-se ca un unlock si oferind posibilit
+tuturor thread-urilor sa intre in sectiunea de cod.
+
+
+
+2. Cand ati folosi execv in locul de execl?
+
+R: EXECL il folosim in cazul in care argumentele sunt primite separat, pe cand in EXECV argumentele sunt intr un vector.
+
+
+
+3. Dati trei moduri de a afla dimensiunea unui fisier in linia de comanda Linux
+
+R: ls -l
+   du 'file' -b
+   stat 'file'
+
+
+
+4. Scrieti o comanda AWK care afiseaza suma tuturor numerelor dintr-un fisier text ale carui linii sunt formate din
+secvente de cifre separate prin spatii
+
+R: awk -F " " 'BEGIN{suma=0} {for(i=1;i<=NF;i++) suma+=$i} END{print suma}' file
+
+
+
+5. Dati trei comenzi GREP care afiseaza dintr-un fisier lniile formate exclusiv dintr-o secventa nevida de litere si
+cifre alternatic(ex: a0g sau 1r5m)
+
+R: grep -E -i '^([a-z]{1}[0-9]{1}|[0-9]{1}[a-z]{1})+$' file
+   grep -E -i '^([a-z][0-9]|[0-9][a-z]){1,}$' file
+   grep -E -i '^([a-z][0-9]|[0-9][a-z])+$' file
+   
+
+
+6. Scrieti doua comenzi SED care afiseaza liniile unui fisier stergan prima secventa nevida de litere mici
+
+R: sed -r 's/([a-z]+)//g' file
+
+
+7. Desenati ierarhia proceselor create de codul de mai jos, incluzand procesul parinte
+
+for(i=0;i<3;i++) {
+	if(fork() > 0) {
+		wait(0);
+		wait(0);
+		exit(0);
+	}
+}
+
+R:    P->C1
+
+
+
+8. Ce va tipari fragmentul de cod de mai jos? Justificati
+
+execl("expr", "expr", "1", "+", "1", NULL);
+execlp("echo", "echo", "3", NULL):
+printf("4\n");
+
+R: 3 deoarece execl are nevoie de path
+   nu se afiseaza 4 deoarece dupa rularea execlp programul se va opri.
+
+
+9. De ce descriptorul de fisier returnat de popen trebuie inchis cu pclose si nu cu fclose?
+
+R: POPEN deschide un canal pipe catre un proces extern si intoarce descriptorul fisierului. PCLOSE este menit sa inchida
+acest canal de comunicare, pe cand fclose nu poate face asta.
+
+
+10. Cate FIFO-uri poate deschide pentru citire un fisier, daca FIFO-urile sunt si vor fi intotdeauna folosite de alte
+procese doar pentru scriere?
+
+R:Nu exista o limita...
+
+
+11. Ce este o sectiune critica?
+
+R: SEGMENT DE COD CARE ESTE UTILIZAT DE CATE UN SINGUR THREAD IN ACELASI TIMP!
+
+
+12. Dati trei apeluri de functii care asigura excluderea mutuala.
+
+R: pthread_mutex_lock()
+   pthread_rwlock_rdlock()
+   sem_wait();
+
+
+13. Dati o expresie regulara care accepta orice secventa de lungime para de cuvinte (formata din litere) separate prin 
+spatii, cu conditia ca pentru fiecare cuvant si lungimea si pozitia in secventa sa fie ambele pare sau impare.
+
+R:
+'(([a-zA-Z]) ([a-zA-Z]))*'
+
+
+14. Cand ati incarca in memorie paginile unui program care tocmai este pornit?
+
+R:
+
+
+
+15. Considerand ca dimensiunea unui bloc este B si dimensiunea unei adrese este A, cate blocuri de date sunt adresate
+de indirectarea dubla a unui i-nod?
+
+R:(B/A)^2
+
+
+16. Ce se poate intampla daca functia f este rulata de mai multe thread-uri si simultane? De ce?
+
+pthread_mutex_t m[2];
+void* f(void* p) {
+	int id = (int)p;
+	pthread_mutex_t* first = &m[id%2];
+	pthread_mutex_t* second = &m[(id+1)%2];
+	
+	pthread_mutex_lock(first);
+	pthread_mutex_lock(second);
+	...
+	pthread_mutex_unlock(second);
+	pthread_mutex_unlock(first);
+}
+
+R: Se va produce deadlock deoarece este posibil ca atunci cand un thread cu id 0 da lock la first=0, un al doilea thread
+cu id 1 va da lock la first=1. Cand se va incerca sa se dea lock la second, se va produce deadlock.
+
+
+
+17. Prin ce tranzitie de stare va trece un proces cand apeleaza sem_wait si in ce conditii? Justificati
+
+R: Sem_wait() produce decrementarea semaforului. Daca acesta va ajunge la valoarea 0, va trece din executie,
+la starea de asteptare. Daca valoarea semaforului este mai mare ca 0, isi va continua executia.
+
+
+
+18. Ce puteti face ca programator pentru a preveni deadlock-ul
+
+R: Pentru a preveni deadlock-ul trebuie sa ne asiguram ca segmentul de cod unde se produc sincronizarile, este corect
+si ca se apeleaza in aceeasi ordine de fiecare data.
+
+
+
+19. Dati exemplu de valori distincte si mai mari ca 0 pentru T, N1, N2 si N3 pentru care programul se incheie.
+
+pthread_barrier_t b1,b2;
+
+void* f1(void* a) {
+	pthread_barrier_wait(&b1);
+	return NULL;
+}
+void* f2(void* a) {
+        pthread_barrier_wait(&b2);
+        return NULL;
+}
+int main() {
+	int i;
+	pthread_t t[T][2];
+
+	pthread_barrier_init(&b1, NULL, N1);
+	pthread_barrier_init(&n2, NULL, N2);
+	for(i=0;i<T;i++) {
+		pthread_create(&t[i][0], NULL, f1, NULL);
+		pthread_create(&t[i][1], NULL, f2, NULL):
+	}
+	for(i=0;i<T;i++) {
+		pthread_join(t[i][0],NULL);
+		pthread_join(t[i][1],NULL);	
+	}
+	pthread_barrier_destroy(&b1);
+	pthread_barrier_destroy(&b2);
+	return NULL;
+}
+
+R: T = 
+   N1= 
+   N2= 
+
+
+
+

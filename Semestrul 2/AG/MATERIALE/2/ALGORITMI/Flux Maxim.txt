@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+#define inf 0x3f3f3f3f
+using namespace std;
+
+std::ifstream fin("prime.in");
+std::ofstream fout("prime.out");
+int n , m;
+std::vector<std::vector<int>>gf , cap;
+std::vector<bool>used;
+std::queue<int>q;
+std::vector<int>fathers;
+int maxFlow = 0;
+bool bfs(){
+    for(int i = 1 ; i <= n ; ++i)
+        used[i] = 0;
+    while(!q.empty()){
+        q.pop();
+    }    
+    used[1] = 1;
+    q.push(1);
+
+    while(!q.empty()){
+        int currentNode = q.front();
+        q.pop();
+
+        for(const auto& nextNode : gf[currentNode]){
+            if(used[nextNode] || !cap[currentNode][nextNode])continue;
+
+            fathers[nextNode] = currentNode;
+            used[nextNode] = 1;
+            q.push(nextNode);
+        }
+    }
+    return used[n];
+}
+
+int main(){
+    fin >> n >> m;
+    fathers.resize(n + 1);
+    used.resize(n + 1);
+    gf.resize(n + 1 , std::vector<int>(m + 1));
+    cap.resize(n + 1 , std::vector<int>(m + 1));
+    for(int i = 0 ; i < m ; ++i){
+        int x , y , c;
+        fin >> x >> y >> c;
+        gf[x].push_back(y);
+        gf[y].push_back(x);
+        cap[x][y] = c;
+    }
+    while (bfs()) {
+        int minFlow = inf;
+        for(int node = n ; node != 1 ; node = fathers[node]){
+            minFlow = std::min(minFlow , cap[fathers[node]][node]);
+        }
+
+        for(int node = n ; node != 1 ; node = fathers[node]){
+            cap[fathers[node]][node] -= minFlow;
+            cap[node][fathers[node]] += minFlow;
+        }
+        maxFlow += minFlow;
+    }
+    fout << maxFlow;
+    return 0;
+}

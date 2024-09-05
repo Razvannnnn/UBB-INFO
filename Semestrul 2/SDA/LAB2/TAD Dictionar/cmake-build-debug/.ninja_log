@@ -1,0 +1,8 @@
+# ninja log v5
+166	213	1711480616874709552	TAD_Dictionar	546cba0a04f916ef
+2	541	7343514763559069	CMakeFiles/TAD_Dictionar.dir/Proiect_C++/App.cpp.obj	d17201bfb16059d0
+543	801	7343514766140371	TAD_Dictionar.exe	2620ffecba8a5a4b
+34	541	7343514763569066	CMakeFiles/TAD_Dictionar.dir/Teste/TestScurt.cpp.obj	d218d7ed7307c453
+30	543	7343514763589168	CMakeFiles/TAD_Dictionar.dir/Proiect_C++/Dictionar.cpp.obj	10d3d137d7900eb8
+58	600	7332379893260584	CMakeFiles/TAD_Dictionar.dir/Proiect_C++/IteratorDictionar.cpp.obj	bca6b3f447a382ab
+39	542	7343514763579064	CMakeFiles/TAD_Dictionar.dir/Teste/TestExtins.cpp.obj	96bc22b4b360c530

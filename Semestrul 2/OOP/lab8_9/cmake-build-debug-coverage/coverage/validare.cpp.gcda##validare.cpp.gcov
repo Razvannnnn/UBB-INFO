@@ -1,0 +1,273 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/validare.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\validare.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\validare.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "validare.h"
+        -:    2:
+        -:    3:
+        -:    4:#include <cassert>
+        -:    5:
+function _ZN5Valid12non_negativeEd called 30 returned 100% blocks executed 100%
+       30:    6:bool Valid::non_negative(double pret) {
+       30:    7:    return pret > 0;
+       30:    7-block  0
+        -:    8:}
+        -:    9:
+function _ZN5Valid7non_vidERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 82 returned 100% blocks executed 100%
+       82:   10:bool Valid::non_vid(const std::string& x) {
+       82:   11:    if(!x.empty()) return true;
+       82:   11-block  0
+call    0 returned 82
+branch  1 taken 81 (fallthrough)
+branch  2 taken 1
+       81:   11-block  1
+        1:   12:    else return false;
+        1:   12-block  0
+        -:   13:}
+        -:   14:
+function _ZN5Valid11validProdusERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_dS6_ called 26 returned 100% blocks executed 47%
+       26:   15:void Valid::validProdus(std::string& nume, std::string &tip, double pret, std::string &producator) {
+       26:   16:    string errori;
+       26:   16-block  0
+call    0 returned 26
+        -:   17:
+      26*:   18:    if(!non_vid(nume)) errori.append("Nume invalid!\n");
+call    0 returned 26
+branch  1 taken 0 (fallthrough)
+branch  2 taken 26
+    %%%%%:   18-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+      26*:   19:    if(!non_vid(tip)) errori.append("Tip invalid!\n");
+       26:   19-block  0
+call    0 returned 26
+branch  1 taken 0 (fallthrough)
+branch  2 taken 26
+    %%%%%:   19-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+      26*:   20:    if(!non_negative(pret)) errori.append("Pret invalid!\n");
+       26:   20-block  0
+call    0 returned 26
+branch  1 taken 0 (fallthrough)
+branch  2 taken 26
+    %%%%%:   20-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+      26*:   21:    if(!non_vid(producator)) errori.append("Producator invalid!\n");
+       26:   21-block  0
+call    0 returned 26
+branch  1 taken 0 (fallthrough)
+branch  2 taken 26
+    %%%%%:   21-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+        -:   22:
+      26*:   23:    if(!errori.empty()) throw Exception(errori);
+       26:   23-block  0
+call    0 returned 26
+branch  1 taken 0 (fallthrough)
+branch  2 taken 26
+    %%%%%:   23-block  1
+call    3 never executed
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   23-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   23-block  3
+call   10 never executed
+call   11 never executed
+    $$$$$:   23-block  4
+call   12 never executed
+    $$$$$:   23-block  5
+    $$$$$:   23-block  6
+call   13 never executed
+       26:   24:}
+       26:   24-block  0
+call    0 returned 26
+    $$$$$:   24-block  1
+call    1 never executed
+        -:   25:
+        -:   26:
+function _Z8test_vid5Valid called 1 returned 100% blocks executed 54%
+        1:   27:void test_vid(Valid valid) {
+       2*:   28:    assert(valid.non_vid("abc") == true);
+        1:   28-block  0
+        1:   28-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  2
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   28-block  3
+call    6 never executed
+        1:   28-block  4
+        1:   28-block  5
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   28-block  6
+call    9 returned 1
+        1:   28-block  7
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+    $$$$$:   28-block  8
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:   28-block  9
+call   14 never executed
+    $$$$$:   28-block 10
+    $$$$$:   28-block 11
+branch 15 never executed (fallthrough)
+branch 16 never executed
+    $$$$$:   28-block 12
+call   17 never executed
+       2*:   29:    assert(valid.non_vid("2314") == true);
+        1:   29-block  0
+        1:   29-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29-block  2
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   29-block  3
+call    6 never executed
+        1:   29-block  4
+        1:   29-block  5
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   29-block  6
+call    9 returned 1
+        1:   29-block  7
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+    $$$$$:   29-block  8
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:   29-block  9
+call   14 never executed
+    $$$$$:   29-block 10
+    $$$$$:   29-block 11
+branch 15 never executed (fallthrough)
+branch 16 never executed
+    $$$$$:   29-block 12
+call   17 never executed
+       2*:   30:    assert(valid.non_vid("dada") == true);
+        1:   30-block  0
+        1:   30-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   30-block  2
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   30-block  3
+call    6 never executed
+        1:   30-block  4
+        1:   30-block  5
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   30-block  6
+call    9 returned 1
+        1:   30-block  7
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+    $$$$$:   30-block  8
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:   30-block  9
+call   14 never executed
+    $$$$$:   30-block 10
+    $$$$$:   30-block 11
+branch 15 never executed (fallthrough)
+branch 16 never executed
+    $$$$$:   30-block 12
+call   17 never executed
+       2*:   31:    assert(valid.non_vid("") == false);
+        1:   31-block  0
+        1:   31-block  1
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31-block  2
+call    3 returned 1
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:   31-block  3
+call    6 never executed
+        1:   31-block  4
+        1:   31-block  5
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0
+        1:   31-block  6
+call    9 returned 1
+        1:   31-block  7
+branch 10 taken 1 (fallthrough)
+branch 11 taken 0
+    $$$$$:   31-block  8
+branch 12 never executed (fallthrough)
+branch 13 never executed
+    $$$$$:   31-block  9
+call   14 never executed
+    $$$$$:   31-block 10
+    $$$$$:   31-block 11
+branch 15 never executed (fallthrough)
+branch 16 never executed
+        1:   32:}
+        1:   32-block  0
+        -:   33:
+function _Z13test_negative5Valid called 1 returned 100% blocks executed 76%
+        1:   34:void test_negative(Valid valid) {
+       1*:   35:    assert(valid.non_negative(23) == true);
+        1:   35-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   35-block  1
+call    3 never executed
+        1:   35-block  2
+       1*:   36:    assert(valid.non_negative(1000) == true);
+        1:   36-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   36-block  1
+call    3 never executed
+        1:   36-block  2
+       1*:   37:    assert(valid.non_negative(1) == true);
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   37-block  1
+call    3 never executed
+        1:   37-block  2
+       1*:   38:    assert(valid.non_negative(-23) == false);
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   38-block  1
+call    3 never executed
+        1:   38-block  2
+        1:   39:}
+        -:   40:
+function _Z14teste_validare5Valid called 1 returned 100% blocks executed 100%
+        1:   41:void teste_validare(Valid valid) {
+        1:   42:    test_negative(valid);
+        1:   42-block  0
+call    0 returned 1
+        1:   43:    test_vid(valid);
+call    0 returned 1
+        1:   44:}

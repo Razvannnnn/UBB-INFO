@@ -1,0 +1,156 @@
+1 . Dati exemplu de 3 expresii regulare care accepta 
+orice numar ne-negativ multiplu de 5
+ Mai usor , adica nu au - inainte si au 5 sau 0 la final
+
+grep -E '[0-9]{,0}[05]$'
+grep -E '[+0-9][0-9]{,0}[05]$'
+grep -E '^[+0-9][0-9]{,9}[05]$'
+
+2. Dati 5 comenzi grep care afiseaza toate liniile dintr-un fisier
+care contin litera a mare sau mic
+
+grep -E '[aA]' 2.txt
+grep -E '\b[aA]' 2.txt 
+grep -Ei 'a' 2.txt
+grep -E -v '[b-zB-Z]' 2.txt 
+grep -E 'a|A' 2.txt
+
+3. 2 comenzi sed care afiseaza dintr-un fisier 
+doar liniile care nu contin cifra 7
+
+sed '/7/d' 3.txt 
+sed -n '/7/!p' 3.txt
+
+4. Scrieti o comanda awk care afiseaza suma 
+penultimului camp al tuturor liniilor
+
+awk '{sum += $(NF -1)} END {print sum}' 4.txt 
+
+5. Cum puteri redirecta in linia de comanda iesirea de eroare 
+prin pipe inspre un alt program?
+
+comanda_cu_eroare 2>&1 | alt_program
+
+6. Un script shell care afiseaza toate argumentele din linia de 
+comanda fara a folosi for
+
+echo "$@"
+
+7. Desenati ierarhia proceselor create de codul de mai jos
+incluzand procesul parinte
+
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <wait.h>
+int main(int argc, char *argv[]) {
+  for (int i = 0; i < 3; ++i) {
+    fork();
+    execlp("ls", "ls", "/", NULL);
+  }
+  return EXIT_SUCCESS;
+}
+
+i = 0 ; intra pe for , se da fork()
+
+P - C
+
+ambele procese dau execlp , si acolo se opresc(daca a fost succesful)
+
+8. Adaugati liniile de cod c necesare pentru ca instructiunea de mai jos
+sa suprascrie continutul unui fisier b.txt
+Nu modificati instructiunea``
+
+execlp("cat" , "cat" , "a.txt" , NULL);
+
+int fd = open("fisier" , O_CREAT | O_WEONLY);
+dup2(fd , 1);
+
+9. De ce nu este recomandat sa comunicati bidirection printr-un singur fifo?
+
+este mai usor pentru a face operatii precum : citesc in copil , fac suma in parinte si dupa o trimit la alt copil sa afiseze suma
+pot aparea dealock-uri , si face logica mult prea complicata , decat daca ar mai adauga un proces
+
+10. Cate fifo-uri poate deschide un proces daca nu sunt si nici nu vor
+fi folosite vreodata de un alt proces?
+
+1 - dupa primul open se blocheaza
+
+11. Cand se poate folosi un proces in locul unui thread?
+
+procesele pot rula pe masini diferite, pe cand thread-urile nu
+
+12. Ce este o sectiune critica?
+
+segment of code that is executed by multiple concurent thread or procceses
+and which acces shared resources
+
+13. De ce un thread trebuie sa verifice conditia la iesirea din apelul
+pthread_cond_wait ?
+
+a)spurious wakeups : poate reveni chiar si fara ca semnalul conditiei sa fie emis
+b) mai multe thread-uri pot astepta aceeasi variabila de conditie
+c) adaca thread-ul ar putea trece la executia secventei urmatoare fara ca conditia sa devina efectiv adevarata
+
+14. Care va fi efectul inlocuirii apelurilor la pthread_mutex_lock
+cu apeluri la pthread_rwlock_rdlock
+
+pthread_rwlock_rdlock - lock a read-write lock object for reading
+                      - functie pentru a obtine un lock de citire pe un thread read-write
+un read-write lock permite mai multor thread-uri sa citeasca o resursa in acelasi timp, dar exclusiv accesul pentru scriere
+un singur thread sa poate scrie la un moment dat
+
+read_lock:
+multiple read locks can be acquired by multiple threads at the sametime
+
+write lock:
+it cannot be read by another thread if they have a read lock implemented in them
+
+Raspuns : Mai multe thread-uri pot sa citeasca/acceseze acea zona critica , dar doar unul poate sa scrie
+
+
+15. Care este efectul apelului la pthread_barrier_wait pentu o bariera initiaizata cu 1?
+
+Raspuns : cand dai pthread_barrier_init(.. , 1)
+el iti face astfel incat cand ajunge un thread la el sa mearga mai departe
+adica el trece imediat bariera
+
+16. Cum se incrementeaza valoarea unui semaphor?
+
+Decrementare : wait
+Incrementare : post
+
+17.  Cum putem preveni deadlock-urile
+
+Raspuns : recursive threads
+pthread_mutex_attr rec;
+setam la recusiv pthread_mutex_set_attr
+pthread_mutex_init(&mutex, rec);
+
+18. Prin ce tranzitie de stare va trece un proces cand citeste dintr-un fisier?
+
+a) stare initiala : procesul initiaza operatiunea de citire din fisier
+b) tranzitie de la (running) la waiting : face cerere de citire din fisier
+c) waiting : asteapta datele
+d) tranzitie de la waiting la ready
+e) tranzitie de la ready la running
+
+19. Ce contine superblocul unui disc linux ?
+
+super block - data structure
+the block of the filesystem that has all the important metadata of the fyle sistem
+
+20. Enumerati tipurile de adresare a blocurilor de date dintr-un i-nod
+
+a) Direct addressing 
+b) Single indirect addressing
+c) Double indirect addressing
+d) Triple indirect addressing
+
+pentru fisier mic se foloseste a)
+cu cat se urca in dimensiunea fisierului se va folosi combinatii de a,b,c,d
+
+
+

@@ -1,0 +1,75 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/main.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include "repo.h"
+        -:    3:#include "produs.h"
+        -:    4:#include "ui.h"
+        -:    5:#include "validare.h"
+        -:    6:
+function _Z11rulareTestev called 1 returned 100% blocks executed 100%
+        1:    7:void rulareTeste() {
+        1:    8:    testeREPO();
+        1:    8-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:    9:    testeService();
+        1:    9-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   10:    Valid valid;
+        1:   11:    teste_validare(valid);
+        1:   11-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   12:    printf("Testele au fost rulate cu succes!\n");
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13:}
+        1:   13-block  0
+        -:   14:
+function main called 1 returned 100% blocks executed 82%
+        1:   15:int main() {
+        1:   16:    rulareTeste();
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17:    RepoProdus repo;
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   18:    serviceProdus service{repo};
+        1:   18-block  0
+call    0 returned 1
+        1:   19:    UI ui{service};
+call    0 returned 1
+        1:   20:    ui.startUI();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21:    return 0;
+        1:   22:}
+        1:   22-block  0
+call    0 returned 1
+    $$$$$:   22-block  1
+call    1 never executed
+        -:   23:
+        -:   24:/*
+        -:   25:    1 Magazin
+        -:   26:
+        -:   27:    Creați o aplicație care permite:
+        -:   28:    · gestiunea unei liste de produse. Produs: nume, tip, preț, producător
+        -:   29:    · adăugare, ștergere, modificare și afișare produse
+        -:   30:    · căutare produs
+        -:   31:    · filtrare produse după: preț, nume, producător
+        -:   32:    · sortare produse după: nume, preț, nume + tip
+        -:   33:
+        -:   34: */

@@ -1,0 +1,7 @@
+C:\Windows\system32\wsl.exe --distribution Ubuntu --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/c/Users/razva/Desktop/OOP/lab2_7/cmake-build-wsl_profile && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' -S /mnt/c/Users/razva/Desktop/OOP/lab2_7 -B /mnt/c/Users/razva/Desktop/OOP/lab2_7/cmake-build-wsl_profile"
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.27 or higher is required.  You are running version 3.22.1
+
+
+-- Configuring incomplete, errors occurred!
+See also "/mnt/c/Users/razva/Desktop/OOP/lab2_7/cmake-build-wsl_profile/CMakeFiles/CMakeOutput.log".

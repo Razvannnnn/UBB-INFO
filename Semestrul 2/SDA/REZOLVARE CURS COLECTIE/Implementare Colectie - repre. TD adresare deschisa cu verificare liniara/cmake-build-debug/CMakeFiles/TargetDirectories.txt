@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/SDA/REZOLVARE CURS COLECTIE/Implementare Colectie - repre. TD adresare deschisa cu verificare liniara/cmake-build-debug/CMakeFiles/Implementare_Colectie___repre__TD_adresare_deschisa_cu_verificare_liniara.dir
+C:/Users/razva/Desktop/SDA/REZOLVARE CURS COLECTIE/Implementare Colectie - repre. TD adresare deschisa cu verificare liniara/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/SDA/REZOLVARE CURS COLECTIE/Implementare Colectie - repre. TD adresare deschisa cu verificare liniara/cmake-build-debug/CMakeFiles/rebuild_cache.dir

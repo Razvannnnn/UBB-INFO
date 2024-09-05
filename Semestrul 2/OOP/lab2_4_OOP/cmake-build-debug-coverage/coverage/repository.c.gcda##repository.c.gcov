@@ -1,0 +1,226 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/repository.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\repository.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\repository.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <malloc.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include "repository.h"
+        -:    4:#include "MyList.h"
+        -:    5:#include "domeniu.h"
+        -:    6:
+function creazaLista called 17 returned 100% blocks executed 100%
+       17:    7:MyList* creazaLista(){
+       17:    8:    MyList* listaOferte = (MyList *) creazaVector();
+       17:    8-block  0
+call    0 returned 17
+       17:    9:    return listaOferte;
+        -:   10:}
+        -:   11:
+function copylista called 12 returned 100% blocks executed 100%
+       12:   12:MyList* copylista(MyList* lista) {
+       12:   13:    MyList* copy = creazaLista();
+       12:   13-block  0
+call    0 returned 12
+       39:   14:    for(int i=0;i<lista->dimensiune;i++) {
+       39:   14-block  0
+branch  0 taken 27
+branch  1 taken 12 (fallthrough)
+       27:   15:        struct Oferta* oferta = getOferta(*lista, i);
+       27:   15-block  0
+call    0 returned 27
+       27:   16:        int id = get_id(*oferta);
+call    0 returned 27
+       27:   17:        int suprafata = get_suprafata(*oferta);
+call    0 returned 27
+       27:   18:        int pret = get_pret(*oferta);
+call    0 returned 27
+       27:   19:        char *tip = get_tip(oferta);
+call    0 returned 27
+       27:   20:        char *adresa = get_adresa(oferta);
+call    0 returned 27
+       27:   21:        adauga(copy, creareOferta(id,tip,adresa,suprafata,pret));
+call    0 returned 27
+call    1 returned 27
+        -:   22:    }
+       12:   23:    return copy;
+       12:   23-block  0
+        -:   24:}
+        -:   25:
+function distrugeLista called 15 returned 100% blocks executed 100%
+       15:   26:void distrugeLista(MyList* listaOferte){
+       48:   27:    for (int i = 0; i < size(listaOferte); i ++)
+       15:   27-block  0
+       48:   27-block  1
+call    0 returned 48
+branch  1 taken 33
+branch  2 taken 15 (fallthrough)
+       33:   28:        distrugeOferta(get(listaOferte, i));
+       33:   28-block  0
+call    0 returned 33
+call    1 returned 33
+       15:   29:    distruge(listaOferte);
+       15:   29-block  0
+call    0 returned 15
+       15:   30:}
+        -:   31:
+function distrugeListaUndo called 2 returned 100% blocks executed 100%
+        2:   32:void distrugeListaUndo(MyList* undolist) {
+       14:   33:    for(int i=0;i< size(undolist);i++) {
+        2:   33-block  0
+       14:   33-block  1
+call    0 returned 14
+branch  1 taken 12
+branch  2 taken 2 (fallthrough)
+       12:   34:        distrugeLista(undolist->elems[i]);
+       12:   34-block  0
+call    0 returned 12
+        -:   35:    }
+        2:   36:    distruge(undolist);
+        2:   36-block  0
+call    0 returned 2
+        2:   37:}
+        -:   38:
+function adaugare_oferta called 10 returned 100% blocks executed 100%
+       10:   39:void adaugare_oferta(MyList* listaOferte, struct Oferta oferta){
+       10:   40:    int id_oferta = get_id(oferta);
+       10:   40-block  0
+call    0 returned 10
+       24:   41:    for (int i = 0; i < size(listaOferte); i ++)
+       14:   41-block  0
+       24:   41-block  1
+call    0 returned 24
+branch  1 taken 15
+branch  2 taken 9 (fallthrough)
+       15:   42:        if (get_id(*((struct Oferta*)get(listaOferte, i))) == id_oferta) {
+       15:   42-block  0
+call    0 returned 15
+call    1 returned 15
+branch  2 taken 1 (fallthrough)
+branch  3 taken 14
+        1:   43:            return; /// id existent
+        1:   43-block  0
+        -:   44:        }
+        9:   45:    adauga(listaOferte, creareOferta(oferta.id, oferta.tip, oferta.adresa, oferta.suprefata, oferta.pret));
+        9:   45-block  0
+call    0 returned 9
+call    1 returned 9
+        -:   46:}
+        -:   47:
+function stergere_oferta called 5 returned 100% blocks executed 100%
+        5:   48:void stergere_oferta(MyList* listaOferte, int id){
+        5:   49:    int poz_stergere = -1;
+       17:   50:    for (int i = 0; i < size(listaOferte); i ++)
+        5:   50-block  0
+       12:   50-block  1
+       17:   50-block  2
+call    0 returned 17
+branch  1 taken 12
+branch  2 taken 5 (fallthrough)
+       12:   51:        if (get_id(*((struct Oferta*)get(listaOferte, i))) == id)
+       12:   51-block  0
+call    0 returned 12
+call    1 returned 12
+branch  2 taken 3 (fallthrough)
+branch  3 taken 9
+        3:   52:            poz_stergere = i;
+        3:   52-block  0
+        5:   53:    if (poz_stergere == -1) {
+        5:   53-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 3
+        2:   54:        return; /// id inexistent
+        2:   54-block  0
+        -:   55:    }
+        3:   56:    free(((struct Oferta*)get(listaOferte, poz_stergere)));
+        3:   56-block  0
+call    0 returned 3
+        3:   57:    sterge(listaOferte, poz_stergere);
+call    0 returned 3
+        -:   58:}
+        -:   59:
+function modificare_oferta called 4 returned 100% blocks executed 100%
+        4:   60:void modificare_oferta(MyList* listaOferte, int id, struct Oferta oferta){
+        4:   61:    int poz = -1;
+       12:   62:    for (int i = 0; i < size(listaOferte); i ++)
+        4:   62-block  0
+        8:   62-block  1
+       12:   62-block  2
+call    0 returned 12
+branch  1 taken 8
+branch  2 taken 4 (fallthrough)
+        8:   63:        if (id == get_id(*((struct Oferta*)get(listaOferte, i))))
+        8:   63-block  0
+call    0 returned 8
+call    1 returned 8
+branch  2 taken 2 (fallthrough)
+branch  3 taken 6
+        2:   64:            poz = i;
+        2:   64-block  0
+        4:   65:    if (poz == -1)
+        4:   65-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   66:        return; /// id inexistent
+        2:   66-block  0
+        2:   67:    set_id(((struct Oferta*)get(listaOferte, poz)), id);
+        2:   67-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   68:    set_tip(((struct Oferta*)get(listaOferte, poz)), get_tip(&oferta));
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        2:   69:    set_suprafata(((struct Oferta*)get(listaOferte, poz)), get_suprafata(oferta));
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        2:   70:    set_adresa(((struct Oferta*)get(listaOferte, poz)), get_adresa(&oferta));
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        2:   71:    set_pret(((struct Oferta*)get(listaOferte, poz)), get_pret(oferta));
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        -:   72:}
+        -:   73:
+function get_all_oferte called 12 returned 100% blocks executed 100%
+       12:   74:void get_all_oferte(MyList* listaOferte, struct Oferta* oferte_copie, int *dim){
+       12:   75:    *dim = size(listaOferte);
+       12:   75-block  0
+call    0 returned 12
+       60:   76:    for (int i = 0; i < size(listaOferte); i ++) {
+       60:   76-block  0
+call    0 returned 60
+branch  1 taken 48
+branch  2 taken 12 (fallthrough)
+       48:   77:        set_id(&oferte_copie[i], get_id(*((struct Oferta*)(get(listaOferte, i)))));
+       48:   77-block  0
+call    0 returned 48
+call    1 returned 48
+call    2 returned 48
+       48:   78:        set_tip(&oferte_copie[i], get_tip(((struct Oferta*)get(listaOferte, i))));
+call    0 returned 48
+call    1 returned 48
+call    2 returned 48
+       48:   79:        set_adresa(&oferte_copie[i], get_adresa(((struct Oferta*)get(listaOferte, i))));
+call    0 returned 48
+call    1 returned 48
+call    2 returned 48
+       48:   80:        set_suprafata(&oferte_copie[i], get_suprafata(*((struct Oferta*)get(listaOferte, i))));
+call    0 returned 48
+call    1 returned 48
+call    2 returned 48
+       48:   81:        set_pret(&oferte_copie[i], get_pret(*((struct Oferta*)get(listaOferte, i))));
+call    0 returned 48
+call    1 returned 48
+call    2 returned 48
+        -:   82:    }
+       12:   83:}
+        -:   84:
+function dimensiune called 18 returned 100% blocks executed 100%
+       18:   85:void dimensiune(MyList* listaOferte, int *dim){
+       18:   86:    *dim = size(listaOferte);
+       18:   86-block  0
+call    0 returned 18
+       18:   87:}

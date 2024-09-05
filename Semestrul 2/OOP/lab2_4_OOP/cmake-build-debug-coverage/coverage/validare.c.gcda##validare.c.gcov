@@ -1,0 +1,55 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/validare.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\validare.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\validare.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <string.h>
+        -:    2:#include "validare.h"
+        -:    3:
+        -:    4:
+function validare_oferta called 13 returned 100% blocks executed 100%
+       13:    5:void validare_oferta(struct Oferta oferta, char erori[]){
+       13:    6:    strcpy(erori, "");
+       13:    7:    if (get_id(oferta) < 0)
+       13:    7-block  0
+call    0 returned 13
+branch  1 taken 1 (fallthrough)
+branch  2 taken 12
+        1:    8:        strcat(erori, "\nID invalid!");
+        1:    8-block  0
+       13:    9:    if (strcmp(get_tip(&oferta), "teren") != 0 && strcmp(get_tip(&oferta), "casa") != 0 && strcmp(get_tip(&oferta), "apartament") != 0)
+       13:    9-block  0
+call    0 returned 13
+branch  1 taken 10 (fallthrough)
+branch  2 taken 3
+       10:    9-block  1
+call    3 returned 10
+branch  4 taken 8 (fallthrough)
+branch  5 taken 2
+        8:    9-block  2
+call    6 returned 8
+branch  7 taken 3 (fallthrough)
+branch  8 taken 5
+        3:   10:        strcat(erori, "\nTip invalid!");
+        3:   10-block  0
+       13:   11:    if (strcmp(get_adresa(&oferta), "") == 0)
+       13:   11-block  0
+call    0 returned 13
+branch  1 taken 1 (fallthrough)
+branch  2 taken 12
+        1:   12:        strcat(erori, "\nAdresa invalida!");
+        1:   12-block  0
+       13:   13:    if (get_suprafata(oferta) < 1)
+       13:   13-block  0
+call    0 returned 13
+branch  1 taken 1 (fallthrough)
+branch  2 taken 12
+        1:   14:        strcat(erori, "\nSuprafata invalida!");
+        1:   14-block  0
+       13:   15:    if (get_pret(oferta) < 0)
+       13:   15-block  0
+call    0 returned 13
+branch  1 taken 1 (fallthrough)
+branch  2 taken 12
+        1:   16:        strcat(erori, "\nPret invalida!");
+        1:   16-block  0
+       13:   17:}

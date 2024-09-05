@@ -1,0 +1,5 @@
+pthread_mutex_t mtx;
+
+pthread_mutex_lock(&mtx);
+
+pthread_mutex_unlock(&mtx);

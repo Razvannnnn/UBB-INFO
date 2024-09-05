@@ -1,0 +1,1801 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/ui.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "ui.h"
+        -:    2:#include <iostream>
+        -:    3:
+        -:    4:using std::cin;
+        -:    5:using std::cout;
+        -:    6:
+        -:    7:
+function _ZN2UI7startUIEv called 1 returned 100% blocks executed 1%
+        1:    8:void UI::startUI() {
+        1:    8-block  0
+        -:    9:    while (true) {
+        1:   10:        cout<<"1. Adaugare\n2. Stergere\n3. Modificare\n4. Print\n5. Filtrare dupa un criteriu\n6. Cautare\n7. Sortare\n0. Exit\nComanda:";
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11:        int comanda = 0;
+        1:   12:        cin>>comanda;
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13:        if(comanda == 0) {
+        1:   13-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   14:            break;
+        -:   15:        }
+    #####:   16:        if(comanda == 1) {
+    %%%%%:   16-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   17:            string nume;
+    %%%%%:   17-block  0
+call    0 never executed
+    #####:   18:            string tip;
+call    0 never executed
+        -:   19:            double pret;
+    #####:   20:            string producator;
+call    0 never executed
+    #####:   21:            cout<<"Nume:";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   22:            cin>>nume;
+    %%%%%:   22-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   23:            cout<<"Tip:";
+    %%%%%:   23-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   24:            cin>>tip;
+    %%%%%:   24-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   25:            cout<<"Pret:";
+    %%%%%:   25-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   26:            cin>>pret;
+    %%%%%:   26-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   27:            cout<<"Producator:";
+    %%%%%:   27-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   28:            cin>>producator;
+    %%%%%:   28-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   29:            try {
+    #####:   30:                service.adaugare(nume, tip, pret, producator);
+    %%%%%:   30-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   30-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   30-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   30-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   30-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:   30-block  5
+call   15 never executed
+    $$$$$:   30-block  6
+    $$$$$:   30-block  7
+call   16 never executed
+    $$$$$:   30-block  8
+    $$$$$:   30-block  9
+call   17 never executed
+    $$$$$:   30-block 10
+    #####:   31:                cout<<"Produs adaugat!\n";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   32:            } catch(Exception &e){
+    $$$$$:   32-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   32-block  1
+call    2 never executed
+    =====:   33:                cout<< e.getMsg();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   33-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    $$$$$:   33-block  1
+call    6 never executed
+    $$$$$:   33-block  2
+call    7 never executed
+    $$$$$:   33-block  3
+    =====:   34:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   34-block  0
+call    3 never executed
+    #####:   35:        }
+    %%%%%:   35-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    $$$$$:   35-block  1
+call    3 never executed
+    $$$$$:   35-block  2
+call    4 never executed
+    $$$$$:   35-block  3
+call    5 never executed
+    #####:   36:        if(comanda == 2) {
+    %%%%%:   36-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   37:            string nume;
+    %%%%%:   37-block  0
+call    0 never executed
+    #####:   38:            string tip;
+call    0 never executed
+    #####:   39:            string producator;
+call    0 never executed
+    #####:   40:            cout << "Nume:";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   41:            cin >> nume;
+    %%%%%:   41-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   42:            cout << "Tip:";
+    %%%%%:   42-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   43:            cin >> tip;
+    %%%%%:   43-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   44:            cout << "Producator:";
+    %%%%%:   44-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   45:            cin >> producator;
+    %%%%%:   45-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   46:            try {
+    #####:   47:                service.stergere(nume, tip, producator);
+    %%%%%:   47-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   48:                cout << "Produs sters!\n";
+    %%%%%:   48-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   49:            } catch (Exception &e) {
+    $$$$$:   49-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   49-block  1
+call    2 never executed
+    =====:   50:                cout << e.getMsg();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   50-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    $$$$$:   50-block  1
+call    6 never executed
+    $$$$$:   50-block  2
+call    7 never executed
+    $$$$$:   50-block  3
+    =====:   51:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   51-block  0
+call    3 never executed
+    #####:   52:        }
+    %%%%%:   52-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    $$$$$:   52-block  1
+call    3 never executed
+    $$$$$:   52-block  2
+call    4 never executed
+    $$$$$:   52-block  3
+call    5 never executed
+    #####:   53:        if(comanda == 3) {
+    %%%%%:   53-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   54:            string nume;
+    %%%%%:   54-block  0
+call    0 never executed
+    #####:   55:            string tip;
+call    0 never executed
+        -:   56:            double pret;
+    #####:   57:            string producator;
+call    0 never executed
+    #####:   58:            cout<<"Nume:";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   59:            cin>>nume;
+    %%%%%:   59-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   60:            cout<<"Tip:";
+    %%%%%:   60-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   61:            cin>>tip;
+    %%%%%:   61-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   62:            cout<<"Pret:";
+    %%%%%:   62-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   63:            cin>>pret;
+    %%%%%:   63-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   64:            cout<<"Producator:";
+    %%%%%:   64-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   65:            cin>>producator;
+    %%%%%:   65-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   66:            string numeNou;
+    %%%%%:   66-block  0
+call    0 never executed
+    #####:   67:            string tipNou;
+call    0 never executed
+        -:   68:            double pretNou;
+    #####:   69:            string producatorNou;
+call    0 never executed
+    #####:   70:            cout<<"Nume NOU:";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   71:            cin>>numeNou;
+    %%%%%:   71-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   72:            cout<<"Tip NOU:";
+    %%%%%:   72-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   73:            cin>>tipNou;
+    %%%%%:   73-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   74:            cout<<"Pret NOU:";
+    %%%%%:   74-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   75:            cin>>pretNou;
+    %%%%%:   75-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   76:            cout<<"Producator NOU:";
+    %%%%%:   76-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   77:            cin>>producatorNou;
+    %%%%%:   77-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   78:            try {
+    #####:   79:                service.modificare(nume, tip, pret, producator, numeNou, tipNou, pretNou, producatorNou);
+    %%%%%:   79-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   79-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   79-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   79-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   79-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   79-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   79-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   79-block  7
+call   21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 never executed
+call   26 never executed
+    $$$$$:   79-block  8
+call   27 never executed
+    $$$$$:   79-block  9
+    $$$$$:   79-block 10
+call   28 never executed
+    $$$$$:   79-block 11
+    $$$$$:   79-block 12
+call   29 never executed
+    $$$$$:   79-block 13
+    $$$$$:   79-block 14
+call   30 never executed
+    $$$$$:   79-block 15
+    $$$$$:   79-block 16
+call   31 never executed
+    $$$$$:   79-block 17
+    $$$$$:   79-block 18
+call   32 never executed
+    $$$$$:   79-block 19
+    #####:   80:                cout<<"Produs Modificat!\n";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    =====:   81:            } catch(Exception &e){
+    $$$$$:   81-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   81-block  1
+call    2 never executed
+    =====:   82:                cout<< e.getMsg();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   82-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    $$$$$:   82-block  1
+call    6 never executed
+    $$$$$:   82-block  2
+call    7 never executed
+    $$$$$:   82-block  3
+    =====:   83:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   83-block  0
+call    3 never executed
+    #####:   84:        }
+    %%%%%:   84-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+call    4 never executed
+call    5 never executed
+    $$$$$:   84-block  1
+call    6 never executed
+    $$$$$:   84-block  2
+call    7 never executed
+    $$$$$:   84-block  3
+call    8 never executed
+    $$$$$:   84-block  4
+call    9 never executed
+    $$$$$:   84-block  5
+call   10 never executed
+    $$$$$:   84-block  6
+call   11 never executed
+    #####:   85:        if(comanda == 4) {
+    %%%%%:   85-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   86:            for(const Produs& p : service.getAll()) {
+    %%%%%:   86-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   86-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   86-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   86-block  3
+    %%%%%:   86-block  4
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   86-block  5
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   86-block  6
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:   87:                cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:   87-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   87-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   87-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   87-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   87-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:   87-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:   87-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:   87-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:   87-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:   87-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:   87-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:   87-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:   87-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:   87-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:   87-block 14
+call   45 never executed
+    $$$$$:   87-block 15
+    $$$$$:   87-block 16
+call   46 never executed
+    $$$$$:   87-block 17
+    $$$$$:   87-block 18
+call   47 never executed
+    $$$$$:   87-block 19
+    #####:   88:            }
+    %%%%%:   88-block  0
+call    0 never executed
+    $$$$$:   88-block  1
+call    1 never executed
+        -:   89:        }
+    #####:   90:        if(comanda == 5) {
+    %%%%%:   90-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:   91:            string nume;
+    %%%%%:   91-block  0
+call    0 never executed
+    #####:   92:            string tip;
+call    0 never executed
+        -:   93:            double pret;
+    #####:   94:            string producator;
+call    0 never executed
+    #####:   95:            RepoProdus produseFiltrate;
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   96:            int comandaFiltrare=-1;
+    #####:   97:            cout<<"Filtrare dupa: 1.Nume, 2.Tip, 3.Pret, 4.Producator\nOptiune:";
+    %%%%%:   97-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   98:            cin>>comandaFiltrare;
+    %%%%%:   98-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   99:            while(comandaFiltrare<1 || comandaFiltrare>4) {
+    %%%%%:   99-block  0
+    %%%%%:   99-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    %%%%%:   99-block  2
+branch  2 never executed
+branch  3 never executed (fallthrough)
+    #####:  100:                cout<<"Optiune invalida!\nOptiune:";
+    %%%%%:  100-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  101:                cin>>comandaFiltrare;
+    %%%%%:  101-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  102:            }
+    #####:  103:            if(comandaFiltrare == 1) {
+    %%%%%:  103-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  104:                cout<<"Nume: ";
+    %%%%%:  104-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  105:                cin>>nume;
+    %%%%%:  105-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  106:                produseFiltrate = service.fltrareUnCriteriu(1, nume, "", 0, "");
+    %%%%%:  106-block  0
+    %%%%%:  106-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  106-block  2
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  106-block  3
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  106-block  4
+call    9 never executed
+call   10 never executed
+call   11 never executed
+call   12 never executed
+    $$$$$:  106-block  5
+    $$$$$:  106-block  6
+call   13 never executed
+    $$$$$:  106-block  7
+    $$$$$:  106-block  8
+    $$$$$:  106-block  9
+call   14 never executed
+    $$$$$:  106-block 10
+    $$$$$:  106-block 11
+    $$$$$:  106-block 12
+    #####:  107:                for(const Produs& p : produseFiltrate.getAll()) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  107-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  107-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  107-block  2
+    %%%%%:  107-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  107-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  107-block  5
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  108:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  108-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  108-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  108-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  108-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  108-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  108-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  108-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  108-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  108-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  108-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  108-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  108-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  108-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  108-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  108-block 14
+call   45 never executed
+    $$$$$:  108-block 15
+    $$$$$:  108-block 16
+call   46 never executed
+    $$$$$:  108-block 17
+    $$$$$:  108-block 18
+call   47 never executed
+    $$$$$:  108-block 19
+    #####:  109:                }
+    %%%%%:  109-block  0
+call    0 never executed
+    $$$$$:  109-block  1
+call    1 never executed
+        -:  110:            }
+    #####:  111:            if(comandaFiltrare == 2) {
+    %%%%%:  111-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  112:                cout<<"Tip: ";
+    %%%%%:  112-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  113:                cin>>tip;
+    %%%%%:  113-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  114:                produseFiltrate = service.fltrareUnCriteriu(2, "", tip, 0, "");
+    %%%%%:  114-block  0
+    %%%%%:  114-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  114-block  2
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  114-block  3
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  114-block  4
+call    9 never executed
+call   10 never executed
+call   11 never executed
+call   12 never executed
+    $$$$$:  114-block  5
+    $$$$$:  114-block  6
+call   13 never executed
+    $$$$$:  114-block  7
+    $$$$$:  114-block  8
+    $$$$$:  114-block  9
+call   14 never executed
+    $$$$$:  114-block 10
+    $$$$$:  114-block 11
+    $$$$$:  114-block 12
+    #####:  115:                for(const Produs& p : produseFiltrate.getAll()) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  115-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  115-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  115-block  2
+    %%%%%:  115-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  115-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  115-block  5
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  116:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  116-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  116-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  116-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  116-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  116-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  116-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  116-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  116-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  116-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  116-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  116-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  116-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  116-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  116-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  116-block 14
+call   45 never executed
+    $$$$$:  116-block 15
+    $$$$$:  116-block 16
+call   46 never executed
+    $$$$$:  116-block 17
+    $$$$$:  116-block 18
+call   47 never executed
+    $$$$$:  116-block 19
+    #####:  117:                }
+    %%%%%:  117-block  0
+call    0 never executed
+    $$$$$:  117-block  1
+call    1 never executed
+        -:  118:            }
+    #####:  119:            if(comandaFiltrare == 3) {
+    %%%%%:  119-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  120:                cout<<"Pret: ";
+    %%%%%:  120-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  121:                cin>>pret;
+    %%%%%:  121-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  122:                produseFiltrate = service.fltrareUnCriteriu(3, "", "", pret, "");
+    %%%%%:  122-block  0
+    %%%%%:  122-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  122-block  2
+    %%%%%:  122-block  3
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  122-block  4
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  122-block  5
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  122-block  6
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:  122-block  7
+    $$$$$:  122-block  8
+call   17 never executed
+    $$$$$:  122-block  9
+    $$$$$:  122-block 10
+    $$$$$:  122-block 11
+call   18 never executed
+    $$$$$:  122-block 12
+    $$$$$:  122-block 13
+    $$$$$:  122-block 14
+call   19 never executed
+    $$$$$:  122-block 15
+    $$$$$:  122-block 16
+    $$$$$:  122-block 17
+    #####:  123:                for(const Produs& p : produseFiltrate.getAll()) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  123-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  123-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  123-block  2
+    %%%%%:  123-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  123-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  123-block  5
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  124:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  124-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  124-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  124-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  124-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  124-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  124-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  124-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  124-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  124-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  124-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  124-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  124-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  124-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  124-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  124-block 14
+call   45 never executed
+    $$$$$:  124-block 15
+    $$$$$:  124-block 16
+call   46 never executed
+    $$$$$:  124-block 17
+    $$$$$:  124-block 18
+call   47 never executed
+    $$$$$:  124-block 19
+    #####:  125:                }
+    %%%%%:  125-block  0
+call    0 never executed
+    $$$$$:  125-block  1
+call    1 never executed
+        -:  126:            }
+    #####:  127:            if(comandaFiltrare == 4) {
+    %%%%%:  127-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  128:                cout<<"Producator: ";
+    %%%%%:  128-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  129:                cin>>producator;
+    %%%%%:  129-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  130:                produseFiltrate = service.fltrareUnCriteriu(4, "", "", 0, producator);
+    %%%%%:  130-block  0
+    %%%%%:  130-block  1
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  130-block  2
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  130-block  3
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  130-block  4
+call    9 never executed
+call   10 never executed
+call   11 never executed
+call   12 never executed
+    $$$$$:  130-block  5
+    $$$$$:  130-block  6
+call   13 never executed
+    $$$$$:  130-block  7
+    $$$$$:  130-block  8
+    $$$$$:  130-block  9
+call   14 never executed
+    $$$$$:  130-block 10
+    $$$$$:  130-block 11
+    $$$$$:  130-block 12
+    #####:  131:                for(const Produs& p : produseFiltrate.getAll()) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  131-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  131-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  131-block  2
+    %%%%%:  131-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  131-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  131-block  5
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  132:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  132-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  132-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  132-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  132-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  132-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  132-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  132-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  132-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  132-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  132-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  132-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  132-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  132-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  132-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  132-block 14
+call   45 never executed
+    $$$$$:  132-block 15
+    $$$$$:  132-block 16
+call   46 never executed
+    $$$$$:  132-block 17
+    $$$$$:  132-block 18
+call   47 never executed
+    $$$$$:  132-block 19
+    #####:  133:                }
+    %%%%%:  133-block  0
+call    0 never executed
+    $$$$$:  133-block  1
+call    1 never executed
+        -:  134:            }
+    #####:  135:        }
+    %%%%%:  135-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+    $$$$$:  135-block  1
+call    4 never executed
+    $$$$$:  135-block  2
+call    5 never executed
+    $$$$$:  135-block  3
+call    6 never executed
+    $$$$$:  135-block  4
+call    7 never executed
+    #####:  136:        if(comanda == 6) {
+    %%%%%:  136-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  137:            string nume;
+    %%%%%:  137-block  0
+call    0 never executed
+    #####:  138:            string tip;
+call    0 never executed
+    #####:  139:            string producator;
+call    0 never executed
+    #####:  140:            cout << "Nume:";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  141:            cin >> nume;
+    %%%%%:  141-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  142:            cout << "Tip:";
+    %%%%%:  142-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  143:            cin >> tip;
+    %%%%%:  143-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  144:            cout << "Producator:";
+    %%%%%:  144-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  145:            cin >> producator;
+    %%%%%:  145-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  146:            try {
+    #####:  147:                Produs p = service.cauta(nume, tip, producator);
+    %%%%%:  147-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  148:                cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  148-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  148-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  148-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  148-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  148-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  148-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  148-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  148-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  148-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  148-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  148-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  148-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  148-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  148-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+    $$$$$:  148-block 14
+call   42 never executed
+    $$$$$:  148-block 15
+    $$$$$:  148-block 16
+call   43 never executed
+    $$$$$:  148-block 17
+    $$$$$:  148-block 18
+call   44 never executed
+    $$$$$:  148-block 19
+    #####:  149:            } catch (RepoException &e) {
+call    0 never executed
+    $$$$$:  149-block  0
+call    1 never executed
+    $$$$$:  149-block  1
+branch  2 never executed (fallthrough)
+branch  3 never executed
+    $$$$$:  149-block  2
+call    4 never executed
+    =====:  150:                cout << e.getMsg();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  150-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    $$$$$:  150-block  1
+call    6 never executed
+    $$$$$:  150-block  2
+call    7 never executed
+    $$$$$:  150-block  3
+    =====:  151:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  151-block  0
+call    3 never executed
+    #####:  152:        }
+    %%%%%:  152-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+    $$$$$:  152-block  1
+call    3 never executed
+    $$$$$:  152-block  2
+call    4 never executed
+    $$$$$:  152-block  3
+call    5 never executed
+    #####:  153:        if(comanda == 7) {
+    %%%%%:  153-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  154:            cout<<"Filtrare dupa: 1.Nume 2.Pret 3.Nume+Tip\nOptiune:\n";
+    %%%%%:  154-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  155:            int comanda_sort;
+    #####:  156:            cin>>comanda_sort;
+    %%%%%:  156-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  157:            while(comanda_sort<1 || comanda_sort>3) {
+    %%%%%:  157-block  0
+    %%%%%:  157-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    %%%%%:  157-block  2
+branch  2 never executed
+branch  3 never executed (fallthrough)
+    #####:  158:                cout<<"Optiune invalida!\nOptiune:";
+    %%%%%:  158-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  159:                cin>>comanda_sort;
+    %%%%%:  159-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  160:            }
+    #####:  161:            if(comanda_sort == 1) {
+    %%%%%:  161-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  162:                cout<<"1.Crescator sau 2.Descrescator\n";
+    %%%%%:  162-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  163:                int comanda_sort2;
+    #####:  164:                cin>>comanda_sort2;
+    %%%%%:  164-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  165:                while(comanda_sort2<1 || comanda_sort2>2) {
+    %%%%%:  165-block  0
+    %%%%%:  165-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    %%%%%:  165-block  2
+branch  2 never executed
+branch  3 never executed (fallthrough)
+    #####:  166:                    cout<<"Optiune invalida!\nOptiune:";
+    %%%%%:  166-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  167:                    cin>>comanda_sort2;
+    %%%%%:  167-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  168:                }
+    #####:  169:                RepoProdus produseSortate = service.sortare(1, comanda_sort2);
+    %%%%%:  169-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  170:                for(const Produs& p : produseSortate.getAll()) {
+    %%%%%:  170-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  170-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  170-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  170-block  3
+    %%%%%:  170-block  4
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  170-block  5
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  170-block  6
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  171:                        cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  171-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  171-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  171-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  171-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  171-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  171-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  171-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  171-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  171-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  171-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  171-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  171-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  171-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  171-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  171-block 14
+call   45 never executed
+    $$$$$:  171-block 15
+    $$$$$:  171-block 16
+call   46 never executed
+    $$$$$:  171-block 17
+    $$$$$:  171-block 18
+call   47 never executed
+    $$$$$:  171-block 19
+    #####:  172:                    }
+    %%%%%:  172-block  0
+call    0 never executed
+    $$$$$:  172-block  1
+call    1 never executed
+    #####:  173:            }
+call    0 never executed
+    $$$$$:  173-block  0
+call    1 never executed
+    #####:  174:            if(comanda_sort == 2) {
+    %%%%%:  174-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  175:                cout<<"1.Crescator sau 2.Descrescator\n";
+    %%%%%:  175-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  176:                int comanda_sort2;
+    #####:  177:                cin>>comanda_sort2;
+    %%%%%:  177-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  178:                while(comanda_sort2<1 || comanda_sort2>2) {
+    %%%%%:  178-block  0
+    %%%%%:  178-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    %%%%%:  178-block  2
+branch  2 never executed
+branch  3 never executed (fallthrough)
+    #####:  179:                    cout<<"Optiune invalida!\nOptiune:";
+    %%%%%:  179-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  180:                    cin>>comanda_sort2;
+    %%%%%:  180-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  181:                }
+    #####:  182:                RepoProdus produseSortate = service.sortare(2, comanda_sort2);
+    %%%%%:  182-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  183:                for(const Produs& p : produseSortate.getAll()) {
+    %%%%%:  183-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  183-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  183-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  183-block  3
+    %%%%%:  183-block  4
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  183-block  5
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  183-block  6
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  184:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  184-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  184-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  184-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  184-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  184-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  184-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  184-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  184-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  184-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  184-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  184-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  184-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  184-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  184-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  184-block 14
+call   45 never executed
+    $$$$$:  184-block 15
+    $$$$$:  184-block 16
+call   46 never executed
+    $$$$$:  184-block 17
+    $$$$$:  184-block 18
+call   47 never executed
+    $$$$$:  184-block 19
+    #####:  185:                }
+    %%%%%:  185-block  0
+call    0 never executed
+    $$$$$:  185-block  1
+call    1 never executed
+    #####:  186:            }
+call    0 never executed
+    $$$$$:  186-block  0
+call    1 never executed
+    #####:  187:            if(comanda_sort == 3) {
+    %%%%%:  187-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  188:                cout<<"1.Crescator sau 2.Descrescator\n";
+    %%%%%:  188-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  189:                int comanda_sort2;
+    #####:  190:                cin>>comanda_sort2;
+    %%%%%:  190-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  191:                while(comanda_sort2<1 || comanda_sort2>2) {
+    %%%%%:  191-block  0
+    %%%%%:  191-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    %%%%%:  191-block  2
+branch  2 never executed
+branch  3 never executed (fallthrough)
+    #####:  192:                    cout<<"Optiune invalida!\nOptiune:";
+    %%%%%:  192-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  193:                    cin>>comanda_sort2;
+    %%%%%:  193-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  194:                }
+    #####:  195:                RepoProdus produseSortate = service.sortare(3, comanda_sort2);
+    %%%%%:  195-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  196:                for(const Produs& p : produseSortate.getAll()) {
+    %%%%%:  196-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  196-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  196-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  196-block  3
+    %%%%%:  196-block  4
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  196-block  5
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  196-block  6
+branch 15 never executed
+branch 16 never executed (fallthrough)
+    #####:  197:                    cout<<"Nume:"<<p.getNume()<<"\nTip:"<<p.getTip()<<"\nPret:"<<p.getPret()<<"\nProducator:"<<p.getProducator()<<"\n";
+    %%%%%:  197-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  197-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  197-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  197-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  197-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  197-block  5
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  197-block  6
+call   18 never executed
+branch 19 never executed (fallthrough)
+branch 20 never executed (throw)
+    %%%%%:  197-block  7
+call   21 never executed
+branch 22 never executed (fallthrough)
+branch 23 never executed (throw)
+    %%%%%:  197-block  8
+call   24 never executed
+branch 25 never executed (fallthrough)
+branch 26 never executed (throw)
+    %%%%%:  197-block  9
+call   27 never executed
+branch 28 never executed (fallthrough)
+branch 29 never executed (throw)
+    %%%%%:  197-block 10
+call   30 never executed
+branch 31 never executed (fallthrough)
+branch 32 never executed (throw)
+    %%%%%:  197-block 11
+call   33 never executed
+branch 34 never executed (fallthrough)
+branch 35 never executed (throw)
+    %%%%%:  197-block 12
+call   36 never executed
+branch 37 never executed (fallthrough)
+branch 38 never executed (throw)
+    %%%%%:  197-block 13
+call   39 never executed
+call   40 never executed
+call   41 never executed
+call   42 never executed
+branch 43 never executed (fallthrough)
+branch 44 never executed (throw)
+    $$$$$:  197-block 14
+call   45 never executed
+    $$$$$:  197-block 15
+    $$$$$:  197-block 16
+call   46 never executed
+    $$$$$:  197-block 17
+    $$$$$:  197-block 18
+call   47 never executed
+    $$$$$:  197-block 19
+    #####:  198:                }
+    %%%%%:  198-block  0
+call    0 never executed
+    $$$$$:  198-block  1
+call    1 never executed
+    #####:  199:            }
+call    0 never executed
+    $$$$$:  199-block  0
+call    1 never executed
+        -:  200:        }
+    #####:  201:    }
+    %%%%%:  201-block  0
+        1:  202:}
+        1:  202-block  0

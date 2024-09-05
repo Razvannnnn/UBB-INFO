@@ -1,0 +1,2 @@
+C:\Windows\system32\wsl.exe --distribution Ubuntu --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/c/Users/razva/Desktop/OOP/lab2_7/cmake-build-wsl_profile && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' /mnt/c/Users/razva/Desktop/OOP/lab2_7"
+/bin/bash: line 1: /usr/bin/cmake: No such file or directory

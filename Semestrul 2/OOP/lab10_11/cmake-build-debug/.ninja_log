@@ -1,0 +1,23 @@
+# ninja log v5
+2	396	7337918639168488	CMakeFiles/lab6.dir/main.cpp.obj	89506345152132e6
+2	351	7337921255437625	CMakeFiles/lab6.dir/ui.cpp.obj	2c3cb6593d21379d
+51	418	7337916388136234	CMakeFiles/lab6.dir/produs.cpp.obj	866eb8f53a64944a
+19	401	7337918639228516	CMakeFiles/lab6.dir/service.cpp.obj	2184827fb89592a7
+2	315	7337918792224138	CMakeFiles/lab6.dir/repo.cpp.obj	1c9ac9eb1131ef67
+351	462	7337921256521727	lab6.exe	879d7d614863ccba
+17	185	7373985442758501	lab6_autogen/timestamp	227b534d72d94ea4
+17	185	7373985442758501	lab6_autogen/mocs_compilation.cpp	227b534d72d94ea4
+17	185	7373985442758501	C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug/lab6_autogen/timestamp	227b534d72d94ea4
+17	185	7373985442758501	C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug/lab6_autogen/mocs_compilation.cpp	227b534d72d94ea4
+198	297	7373985444203600	CMakeFiles/lab6.dir/vector.cpp.obj	59dbdf1b8475c2d4
+186	298	7373985444203600	CMakeFiles/lab6.dir/lab6_autogen/mocs_compilation.cpp.obj	8bf0ee715a94fcbe
+201	531	7373985446548987	CMakeFiles/lab6.dir/produs.cpp.obj	15c2775dec4b8721
+214	569	7373985446909022	CMakeFiles/lab6.dir/validare.cpp.obj	87b3618aeb276a5d
+217	755	7373985448779365	CMakeFiles/lab6.dir/CosProduse.cpp.obj	ffd64c61fa8069eb
+205	761	7373985448849365	CMakeFiles/lab6.dir/repo.cpp.obj	31b96965d6cfe960
+211	798	7373985449219369	CMakeFiles/lab6.dir/ui.cpp.obj	c7ea4935ad365d61
+221	821	7373985449439402	CMakeFiles/lab6.dir/LabRepo.cpp.obj	284ea8d16738e313
+208	1046	7373985451684713	CMakeFiles/lab6.dir/service.cpp.obj	92a2f21b0ffc86ca
+224	1635	7373985457585784	CMakeFiles/lab6.dir/GUI.cpp.obj	bd1383aa8a2c2b87
+194	1689	7373985458125786	CMakeFiles/lab6.dir/main.cpp.obj	f71dbe2849a474f6
+1689	1920	7373985460377159	lab6.exe	6f9d6287d5d580ee

@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug/CMakeFiles/lab6.dir
+C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug/CMakeFiles/lab6_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug/CMakeFiles/lab6_autogen.dir

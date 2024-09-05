@@ -1,0 +1,9 @@
+# ninja log v5
+1	256	7345231751737256	CMakeFiles/matad_matinc.dir/main.cpp.obj	89fb41e9543faeaa
+258	341	7345231752547074	matad_matinc.exe	c845d1a33778399
+2	247	7345231954603188	CMakeFiles/matad_matinc.dir/main.cpp.obj	89fb41e9543faeaa
+247	317	7345231955271668	matad_matinc.exe	c845d1a33778399
+2	242	7345232352004947	CMakeFiles/matad_matinc.dir/main.cpp.obj	89fb41e9543faeaa
+243	309	7345232352635184	matad_matinc.exe	c845d1a33778399
+2	237	7345233018144681	CMakeFiles/matad_matinc.dir/main.cpp.obj	89fb41e9543faeaa
+237	302	7345233018768947	matad_matinc.exe	c845d1a33778399

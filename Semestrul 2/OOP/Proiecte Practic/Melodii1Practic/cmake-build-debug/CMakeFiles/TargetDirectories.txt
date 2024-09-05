@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug/CMakeFiles/Melodii1Practic.dir
+C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug/CMakeFiles/Melodii1Practic_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug/CMakeFiles/Melodii1Practic_autogen.dir

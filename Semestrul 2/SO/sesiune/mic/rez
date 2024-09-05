@@ -1,0 +1,179 @@
+1. Write a unix sheel command that displays the lines in a file a.txt that contains words
+starting with capital letters
+
+grep -E '^[A-Z]' a.txt 
+
+2. Write a unix shell command that inverts in a file a.txt all pairs of neighboring digits
+echo "a3972b" | sed -E 's/([0-9])([0-9])/\2\1/g'
+
+3. File a.txt contains on each line 2 numers separated by space
+Write a unix shell command that displays for each line the sum of its numbers
+
+awk '{print $1+$2}' nr.txt 
+
+4. Display only the lines of a file that appear only once
+sort file.txt | uniq -u
+
+5. Write a unix shell script that displays the name of each .txt file
+that containt the word cat
+
+for FILE in \*.txt; do
+  nr=$( grep -Eo 'cat' $FILE | wc -l)
+  if [[ $nr -gt 0 ]]; then
+    echo "$FILE"
+  fi
+done
+
+6. In the program fragment below, mark which proces executes each line
+the parent , the child, or both
+
+k = fork();
+if(k == 0)// child
+{
+    printf("A\n");// child
+}
+else{ // parent
+    printf("B\n");
+  }
+printf("C\n"); // both
+
+7. How many procceses will be created by the code fragment below?
+
+fork(); wait(0); fork(); wait(0); fork();
+
+2^3
+
+8. What are the possible console outputs of the following code fragment
+(ignoring any output that execl might generate),
+and when will they happen?
+
+printf("A\n"); execl(....);printf("B\n");
+
+mereu A\n
+
+daca execl reuseste se opreste aici
+
+daca execl nu reuseste : B\n
+
+9. What does the sytem call "read" do when the pipe is empty?
+Procesul asteapta pana cand se va scrie ceva
+
+10. What does the system call "open" do before returning from opening a fifo?
+
+checks the flags that it has been set to
+
+11. Give a reason for choosing threads over procceses
+more efficient with memory management , with threads you have 
+shared memory , with procceses you double every time you fork()
+
+12. Considerintthat functions "fa" and "fb" are run in concurent threads
+what will the value of "n" be after the threads are finised . WHY?
+
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <wait.h>
+
+pthread_mutex_t a, b;
+int n = 0;
+void *fa(void *p) {
+  pthread_mutex_lock(&a);
+  ++n;
+  pthread_mutex_unlock(&a);
+}
+void *fb(void *p) {
+  pthread_mutex_lock(&b);
+  ++n;
+  pthread_mutex_unlock(&b);
+}
+
+int main(int argc, char *argv[]) {
+  pthread_mutex_init(&a, NULL);
+  pthread_mutex_init(&b, NULL);
+
+  pthread_t *th;
+  th = (pthread_t *)malloc(sizeof(pthread_t) * 2);
+
+  pthread_create(&th[0], NULL, fa, NULL);
+  pthread_create(&th[1], NULL, fb, NULL);
+
+  pthread_join(th[0], NULL);
+  pthread_join(th[1], NULL);
+
+  pthread_mutex_destroy(&a);
+  pthread_mutex_destroy(&b);
+
+  printf("%d\n", n);
+
+  return EXIT_SUCCESS;
+}
+
+
+13. Schedule the following jobs(Name / Duration /Deadline) so all can meet their deadlines
+
+A/5/9 , B/7/13 , C/1/10
+
+C - A - B
+1 - 6 - 13 = 0 + 0 + 0 = 0
+
+14. Give one advantage and one disavantage of the segmented allocation method over the 
+paged allocation method
+
+advantage: allows logical grouping of data and code into segments
+          ex : data_array
+
+disavantage: segmented allocation can lead to external fragmention
+          hard to find every time new blocks that can be allocated
+
+15. When would you load into memory the pages of a program that is being started?
+
+demandpaging : pages are loaded into memroy only when they are needed
+pre-paging : several pages before they are actualy accesed
+swapping : entire pages are loaded into memory at once
+
+16. When does a process change state from run to ready?
+
+Stages of a process:
+1) new(create) about to be created , but not yet created
+2) ready(new) -> ready to run
+3) run : the procces is chosen from the ready queue by the cpu for execution
+4) blocked or wait 
+5) terminated or completed : is killed
+
+It doesnt make sense , only from ready to run
+
+17. Given a unix fyle sistem configured with a block size of B bytes
+that can contain A addreses and i-nodes, having S directlink , one simple indirection link,
+one double indirection link , and one triple indirection link , give the formula for the maximum filesize possible.
+
+Total blocks = S + A + A^2 + A^3
+
+maximum file size in bytes : M = B x Total blocks
+
+18. What happens with the data when you delete a file that has a hard link 
+pointing to it?
+
+the hard link still remains , becaus hard links acts as a mirror copy of the original file
+
+19. Give e method for preventing deadlocks
+
+recursive deadlocks 
+
+pthread_mutex_attr_t recursiveMutexAttribute;
+pthread_mutexattr_settype(&recursiveMutexAttribute , PTHREAD_MUTEX_RECURSIVE)
+pthread_mutex_init(&mutex , recursiveMutexAttribute);
+
+
+20. What is a binary semaphore , and whats the effect of its P method , when
+called by multiple concurent procceses/threads
+
+methods: wait(P) , signal(V)
+wait decrement the value of the semaphore
+signal - increments the value of the semaphore
+
+diferenta intre mutex si binary semaphore este ca 
+poti da "unlock" la binary semaphore in alt thread
+in mutex poti da unlock doar in thread-ul curent
+

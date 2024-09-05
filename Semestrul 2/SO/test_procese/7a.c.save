@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include "header.h"
+
+int main(int argc, char* argv[])
+{
+	if(mkfifo(myfifo1, 0644) < 0)
+	{
+		perror("mkfifo()");
+		exit(1);
+	}
+	if(mkfifo(myfifo2, 0644) < 0)
+	{
+		perror("mkfifo()");
+		exit(1);
+	}
+	int fd_write = open(myfifo1, O_WRONLY);
+	if(fd_write == -1)
+	{
+		perror("open()");
+		exit(1);
+	}
+	int fd_read = open(myfifo2, O_RDONLY);
+	{
+		perror("open()");
+		close(fd_write);
+		exit(1);
+	}
+
+	sdrandom(getpid());
+	int nr=0;
+	while(nr != 10)
+	{
+		nr = random()%10+1;
+		if(write(fd_write,&nr,sizeof(int))< 0)
+		{
+			perror("write()");
+			break;
+		}
+		if(read(fd_read, &nr, sizeof(int)) < 0)
+		{
+			perror("read()");
+			break;
+		}
+	}
+	return 0;
+}

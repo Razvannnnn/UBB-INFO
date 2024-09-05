@@ -1,0 +1,35 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/CosProduse.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_COSPRODUSE_H
+        -:    2:#define LAB6_COSPRODUSE_H
+        -:    3:
+        -:    4:#include "produs.h"
+        -:    5:#include <vector>
+        -:    6:
+        -:    7:using std::vector;
+        -:    8:
+        -:    9:class CosProduse {
+        -:   10:private:
+        -:   11:    vector<Produs> cosProduse;
+        -:   12:public:
+        -:   13:    /**
+        -:   14:     * Constructorul cosului
+        -:   15:     */
+function _ZN10CosProduseC1Ev called 0 returned 0% blocks executed 0%
+    #####:   16:    CosProduse() = default;
+    %%%%%:   16-block  0
+call    0 never executed
+        -:   17:
+        -:   18:    void adaugaProdusCos(const Produs &p);
+        -:   19:
+        -:   20:    void adaugaRandomProdusCos(vector<Produs> produse,int nr);
+        -:   21:
+        -:   22:    const vector<Produs> &getAllCos();
+        -:   23:
+        -:   24:    void stergeCos();
+        -:   25:};
+        -:   26:
+        -:   27:
+        -:   28:#endif //LAB6_COSPRODUSE_H

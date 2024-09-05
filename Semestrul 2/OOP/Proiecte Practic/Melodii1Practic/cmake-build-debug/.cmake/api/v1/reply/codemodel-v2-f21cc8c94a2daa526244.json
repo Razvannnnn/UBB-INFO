@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Melodii1Practic",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Melodii1Practic::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Melodii1Practic-Debug-81afa96821955ff2e29c.json",
+					"name" : "Melodii1Practic",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Melodii1Practic_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Melodii1Practic_autogen-Debug-b3a9c464a68bdd2e1a45.json",
+					"name" : "Melodii1Practic_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Melodii1Practic_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Melodii1Practic_autogen_timestamp_deps-Debug-868f4c2468b2603e6bac.json",
+					"name" : "Melodii1Practic_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/razva/Desktop/Melodii1Practic/cmake-build-debug",
+		"source" : "C:/Users/razva/Desktop/Melodii1Practic"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

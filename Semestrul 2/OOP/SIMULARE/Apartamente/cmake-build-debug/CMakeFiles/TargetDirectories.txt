@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/OOP/SIMULARE/Apartamente/cmake-build-debug/CMakeFiles/Apartamente.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Apartamente/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Apartamente/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Apartamente/cmake-build-debug/CMakeFiles/Apartamente_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/SIMULARE/Apartamente/cmake-build-debug/CMakeFiles/Apartamente_autogen.dir

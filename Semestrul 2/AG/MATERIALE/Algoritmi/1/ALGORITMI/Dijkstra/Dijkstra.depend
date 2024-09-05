@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1649364018 source:d:\an1_sem2\ag\algoritmi\dijkstra\main.cpp
+	<iostream>
+	<limits.h>
+	<fstream>
+

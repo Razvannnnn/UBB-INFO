@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/SimulareOOP/cmake-build-debug/CMakeFiles/SimulareOOP.dir
+C:/Users/razva/Desktop/SimulareOOP/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/SimulareOOP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/SimulareOOP/cmake-build-debug/CMakeFiles/SimulareOOP_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/SimulareOOP/cmake-build-debug/CMakeFiles/SimulareOOP_autogen.dir

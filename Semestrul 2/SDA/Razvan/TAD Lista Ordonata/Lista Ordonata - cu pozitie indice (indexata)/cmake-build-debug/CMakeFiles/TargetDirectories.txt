@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/SDA/Razvan/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/cmake-build-debug/CMakeFiles/Lista_Ordonata___cu_pozitie_indice__indexata_.dir
+C:/Users/razva/Desktop/SDA/Razvan/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/SDA/Razvan/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/cmake-build-debug/CMakeFiles/rebuild_cache.dir

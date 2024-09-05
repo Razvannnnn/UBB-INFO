@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Lista_Ordonata___cu_pozitie_indice__indexata_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Lista_Ordonata___cu_pozitie_indice__indexata_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Lista_Ordonata___cu_pozitie_indice__indexata_-Debug-57f79dccc0edd4c313a9.json",
+					"name" : "Lista_Ordonata___cu_pozitie_indice__indexata_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/razva/Desktop/SDA/Razvan/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)/cmake-build-debug",
+		"source" : "C:/Users/razva/Desktop/SDA/Razvan/TAD Lista Ordonata/Lista Ordonata - cu pozitie indice (indexata)"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

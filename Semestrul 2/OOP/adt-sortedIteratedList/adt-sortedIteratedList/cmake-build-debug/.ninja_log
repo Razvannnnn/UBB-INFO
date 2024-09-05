@@ -1,0 +1,8 @@
+# ninja log v5
+234	259	1714485112207315676	adt_sortedIteratedList	eeaaf5287c70fd33
+21	260	7374102933931860	CMakeFiles/adt_sortedIteratedList.dir/SortedIteratedList.cpp.obj	505c4c6e9e2b7eff
+12	316	7374102934481862	CMakeFiles/adt_sortedIteratedList.dir/ExtendedTest.cpp.obj	c3d4c1234c0beea5
+15	118	7374102932516198	CMakeFiles/adt_sortedIteratedList.dir/ListIterator.cpp.obj	996cb778c50ee3c2
+316	391	7374102935217191	adt_sortedIteratedList.exe	f098671347d13fd5
+3	246	7374102933791858	CMakeFiles/adt_sortedIteratedList.dir/App.cpp.obj	be3b64dc3aaf67ac
+18	252	7374102933841861	CMakeFiles/adt_sortedIteratedList.dir/ShortTest.cpp.obj	a748b5d110fa2583

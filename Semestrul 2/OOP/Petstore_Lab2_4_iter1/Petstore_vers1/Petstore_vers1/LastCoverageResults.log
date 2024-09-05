@@ -1,0 +1,21 @@
+[2021-03-11 09:23:03] [info] Start Program:
+Path:"E:\\istvan\\__oop\\curs\\wsp\\Petstore_vers1\\x64\\Debug\\Petstore_vers1.exe"
+Arguments:
+Working directory: "e:\\istvan\\__oop\\curs\\wsp\\Petstore_vers1\\Petstore_vers1\\"
+Modules: Selected: E:\istvan\__oop\curs\wsp\Petstore_vers1\x64\Debug\Petstore_vers1.exe Excluded: 
+Sources: Selected: e:\istvan\__oop\curs\wsp\Petstore_vers1\Petstore_vers1 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\Dell\AppData\Local\Temp\w0jo4s5m.ttv 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2021-03-11 09:23:03] [info] Module: E:\istvan\__oop\curs\wsp\Petstore_vers1\x64\Debug\Petstore_vers1.exe is selected because it matches selected pattern: E:\istvan\__oop\curs\wsp\Petstore_vers1\x64\Debug\Petstore_vers1.exe
+[2021-03-11 09:23:03] [info] ----------------------------------------------------
+[2021-03-11 09:23:03] [info] Coverage binary generated in file: C:\Users\Dell\AppData\Local\Temp\w0jo4s5m.ttv
+[2021-03-11 09:23:03] [info] ----------------------------------------------------

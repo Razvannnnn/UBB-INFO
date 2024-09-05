@@ -1,0 +1,43 @@
+"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.2.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\razva\Desktop\SDA\Cursuri\Curs6 - Liste inlantuite - reprezentarea inlanturilor pe tablou\Implementare - Colectie - Reprezentare simplu inlantuita cu inlantuiri pe tablou static" -B "C:\Users\razva\Desktop\SDA\Cursuri\Curs6 - Liste inlantuite - reprezentarea inlanturilor pe tablou\Implementare - Colectie - Reprezentare simplu inlantuita cu inlantuiri pe tablou static\cmake-build-debug"
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+CMake Warning in C:/Users/razva/Desktop/SDA/Cursuri/Curs6 - Liste inlantuite - reprezentarea inlanturilor pe tablou/Implementare - Colectie - Reprezentare simplu inlantuita cu inlantuiri pe tablou static/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-m1vui2/CMakeLists.txt:
+  The object file directory
+
+    C:/Users/razva/Desktop/SDA/Cursuri/Curs6 - Liste inlantuite - reprezentarea inlanturilor pe tablou/Implementare - Colectie - Reprezentare simplu inlantuita cu inlantuiri pe tablou static/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-m1vui2/CMakeFiles/cmTC_9ea71.dir/./
+
+  has 275 characters.  The maximum full path to an object file is 250
+  characters (see CMAKE_OBJECT_PATH_MAX).  Object file
+
+    CMakeCCompilerABI.c.obj
+
+  cannot be safely placed under this directory.  The build may not work
+  correctly.
+
+
+CMake Error:
+  Running
+
+   'C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe' '-C' 'C:/Users/razva/Desktop/SDA/Cursuri/Curs6 - Liste inlantuite - reprezentarea inlanturilor pe tablou/Implementare - Colectie - Reprezentare simplu inlantuita cu inlantuiri pe tablou static/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-m1vui2' '-t' 'recompact'
+
+  failed with:
+
+   ninja: error: build.ninja:30: loading 'CMakeFiles/rules.ninja': The system cannot find the path specified.
+
+  
+
+  include CMakeFiles/rules.ninja
+
+                                ^ near here
+
+
+
+CMake Error at C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile):
+  Failed to generate test project build system.
+Call Stack (most recent call first):
+  C:/Program Files/JetBrains/CLion 2023.2.2/bin/cmake/win/x64/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!

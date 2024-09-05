@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/AG/LAB05_/pb3/cmake-build-debug/CMakeFiles/pb3.dir
+C:/Users/razva/Desktop/AG/LAB05_/pb3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/AG/LAB05_/pb3/cmake-build-debug/CMakeFiles/rebuild_cache.dir

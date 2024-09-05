@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/lab2_7.dir/main.c.o CMakeFiles/lab2_7.dir/repo.c.o CMakeFiles/lab2_7.dir/service.c.o CMakeFiles/lab2_7.dir/cheltuieli.c.o CMakeFiles/lab2_7.dir/ui.c.o CMakeFiles/lab2_7.dir/valid.c.o CMakeFiles/lab2_7.dir/lista.c.o -o lab2_7 

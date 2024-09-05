@@ -1,0 +1,13 @@
+# ninja log v5
+48	139	7406856635058838	tractoare_autogen/timestamp	5bae3753b33a0ac
+48	139	7406856635058838	tractoare_autogen/mocs_compilation.cpp	5bae3753b33a0ac
+1464	1884	7406856650274122	tractoare.exe	172957041753cae9
+110	1428	7406792624046361	CMakeFiles/tractoare.dir/main.cpp.obj	84ef8284d11980e2
+48	139	7406856635058838	C:/Users/razva/Desktop/tractoare/cmake-build-debug/tractoare_autogen/timestamp	5bae3753b33a0ac
+48	139	7406856635058838	C:/Users/razva/Desktop/tractoare/cmake-build-debug/tractoare_autogen/mocs_compilation.cpp	5bae3753b33a0ac
+162	252	7406697407841662	CMakeFiles/tractoare.dir/tractoare_autogen/mocs_compilation.cpp.obj	f9d892e9fa15eac7
+120	342	7406699188926499	CMakeFiles/tractoare.dir/domain.cpp.obj	b7cb02bcc50fd21f
+127	471	7406784187284671	CMakeFiles/tractoare.dir/service.cpp.obj	bab1b215d9933f03
+100	485	7406786305731729	CMakeFiles/tractoare.dir/repo.cpp.obj	4c1294fc340fb8b9
+142	1464	7406856648304715	CMakeFiles/tractoare.dir/gui.cpp.obj	ab79601e8950a0e7
+130	464	7406784187219436	CMakeFiles/tractoare.dir/teste.cpp.obj	dd866d85d1e6b244

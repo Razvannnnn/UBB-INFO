@@ -1,0 +1,8 @@
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/lab6.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/test.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/lab6_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/lab6_autogen.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/test_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/CMakeFiles/test_autogen.dir

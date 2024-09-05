@@ -1,0 +1,176 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/produs.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\produs.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\produs.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "produs.h"
+        -:    2:
+function _ZNK6Produs7getPretEv called 40 returned 100% blocks executed 100%
+       40:    3:double Produs::getPret() const {
+       40:    4:    return pret;
+       40:    4-block  0
+        -:    5:}
+        -:    6:
+function _ZNK6Produs7getNumeB5cxx11Ev called 215 returned 100% blocks executed 100%
+      215:    7:string Produs::getNume() const{
+      215:    8:    return nume;
+      215:    8-block  0
+call    0 returned 215
+        -:    9:}
+        -:   10:
+function _ZNK6Produs6getTipB5cxx11Ev called 181 returned 100% blocks executed 100%
+      181:   11:string Produs::getTip() const{
+      181:   12:    return tip;
+      181:   12-block  0
+call    0 returned 181
+        -:   13:}
+        -:   14:
+function _ZNK6Produs13getProducatorB5cxx11Ev called 143 returned 100% blocks executed 100%
+      143:   15:string Produs::getProducator() const{
+      143:   16:    return producator;
+      143:   16-block  0
+call    0 returned 143
+        -:   17:}
+        -:   18:
+function _ZN6Produs7setPretEd called 4 returned 100% blocks executed 100%
+        4:   19:void Produs::setPret(double newPret) {
+        4:   20:    pret = newPret;
+        4:   21:}
+        -:   22:
+function _ZN6Produs7setNumeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 4 returned 100% blocks executed 100%
+        4:   23:void Produs::setNume(const string& newNume) {
+        4:   24:    nume = newNume;
+        4:   24-block  0
+call    0 returned 4
+        4:   25:}
+        -:   26:
+function _ZN6Produs6setTipERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 4 returned 100% blocks executed 100%
+        4:   27:void Produs::setTip(const string& newTip) {
+        4:   28:    tip = newTip;
+        4:   28-block  0
+call    0 returned 4
+        4:   29:}
+        -:   30:
+function _ZN6Produs13setProducatorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 4 returned 100% blocks executed 100%
+        4:   31:void Produs::setProducator(const string& newProducator) {
+        4:   32:    producator = newProducator;
+        4:   32-block  0
+call    0 returned 4
+        4:   33:}
+        -:   34:
+function _ZN6ProdusC2Ev called 1 returned 100% blocks executed 62%
+        1:   35:Produs::Produs() {
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        1:   36:    pret = 0;
+        1:   37:    nume = "";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38:    tip = "";
+        1:   38-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   39:    producator = "";
+        1:   39-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   40:}
+        1:   40-block  0
+    $$$$$:   40-block  1
+call    0 never executed
+    $$$$$:   40-block  2
+call    1 never executed
+    $$$$$:   40-block  3
+call    2 never executed
+        -:   41:
+function _Z7cmpNumeRK6ProdusS1_ called 4 returned 100% blocks executed 73%
+        4:   42:bool cmpNume(const Produs &p1, const Produs &p2) {
+        4:   43:    return p1.getNume() < p2.getNume();
+        4:   43-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   43-block  1
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:   43-block  2
+call    6 returned 4
+call    7 returned 4
+call    8 returned 4
+        4:   43-block  3
+    $$$$$:   43-block  4
+    $$$$$:   43-block  5
+call    9 never executed
+        -:   44:}
+        -:   45:
+function _Z7cmpPretRK6ProdusS1_ called 5 returned 100% blocks executed 100%
+        5:   46:bool cmpPret(const Produs &p1, const Produs &p2) {
+        5:   47:    return p1.getPret() < p2.getPret();
+        5:   47-block  0
+call    0 returned 5
+call    1 returned 5
+        -:   48:}
+        -:   49:
+function _Z10cmpNumeTipRK6ProdusS1_ called 9 returned 100% blocks executed 65%
+        9:   50:bool cmpNumeTip(const Produs &p1, const Produs &p2) {
+        9:   51:    if(p1.getNume() == p2.getNume()) {
+        9:   51-block  0
+call    0 returned 9
+branch  1 taken 9 (fallthrough)
+branch  2 taken 0 (throw)
+        9:   51-block  1
+call    3 returned 9
+branch  4 taken 9 (fallthrough)
+branch  5 taken 0 (throw)
+        9:   51-block  2
+call    6 returned 9
+call    7 returned 9
+call    8 returned 9
+branch  9 taken 8 (fallthrough)
+branch 10 taken 1
+    $$$$$:   51-block  3
+    $$$$$:   51-block  4
+call   11 never executed
+    $$$$$:   51-block  5
+call   12 never executed
+        8:   52:        return p1.getTip() < p2.getTip();
+        8:   52-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   52-block  1
+call    3 returned 8
+branch  4 taken 8 (fallthrough)
+branch  5 taken 0 (throw)
+        8:   52-block  2
+call    6 returned 8
+call    7 returned 8
+call    8 returned 8
+    $$$$$:   52-block  3
+    $$$$$:   52-block  4
+call    9 never executed
+    $$$$$:   52-block  5
+call   10 never executed
+        -:   53:    }
+        1:   54:    return p1.getNume() < p2.getNume();
+        1:   54-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   54-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   54-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+    $$$$$:   54-block  3
+    $$$$$:   54-block  4
+call    9 never executed
+        -:   55:}

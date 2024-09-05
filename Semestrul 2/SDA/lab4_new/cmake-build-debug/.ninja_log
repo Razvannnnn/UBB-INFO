@@ -1,0 +1,23 @@
+# ninja log v5
+2	204	7356023598983297	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/Iterator.cpp.obj	c8e585c0d26433d5
+2	222	7355984948400926	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/App.cpp.obj	cc40c508637a800c
+2	413	7356124761057136	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestScurt.cpp.obj	12feca94f3dabfcb
+2	200	7355987015521691	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	e022dc614a09d0a4
+413	653	7356124763422769	lab4.exe	ec6d53b1cf46236b
+14	248	7356023599424542	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/LO.cpp.obj	8aea458094ed41b9
+20	136	7356152810426035	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestScurt.cpp.obj	40197ebcb8656443
+14	224	7356152811311103	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/Iterator.cpp.obj	1d6ea27c09196b85
+12	235	7356152811401099	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	39f959ed7d831546
+2	253	7356152811601094	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/App.cpp.obj	da65901e83727c53
+17	267	7356152811731180	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/LO.cpp.obj	a47325a49a5bc837
+267	377	7356152812806284	lab4.exe	ec6d53b1cf46236b
+2	199	7356156192623212	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	39f959ed7d831546
+200	271	7356156193323348	lab4.exe	ec6d53b1cf46236b
+1	201	7356156315865255	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	39f959ed7d831546
+202	274	7356156316566246	lab4.exe	ec6d53b1cf46236b
+2	197	7356160067834653	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	39f959ed7d831546
+197	267	7356160068510407	lab4.exe	ec6d53b1cf46236b
+2	231	7356162880745490	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/LO.cpp.obj	a47325a49a5bc837
+232	305	7356162881458754	lab4.exe	ec6d53b1cf46236b
+2	242	7356501299936372	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/LO.cpp.obj	a47325a49a5bc837
+242	366	7356501301148462	lab4.exe	ec6d53b1cf46236b

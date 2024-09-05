@@ -1,0 +1,105 @@
+
+
+Generale:
+Proces zombie : proces care s-a terminat dar inca se afla in process table , si este terminated state
+orphan procces - e un proces a carui parinte s-a terminat , pe parinte nu s-a dat wait
+pid-ul 1 va adopta ambele tipuri de procese 
+ps aux -e | grep 'Z' -> iti arata procesele zombie
+
+
+Regex: 
+\b -> adica da match la spatii sau caractere speciale
+z/
+
+
+------------------------------- GREP / SED / AWK
+
+
+
+
+
+------------------------------- BASH
+
+
+
+
+
+
+------------------------------- PIPE
+functia open daca nu este deschisa de celalt fifo nu va continua
+open("Nume_fisier" , MOD);
+// O_WRONLY - doar pentru citire
+
+Fiecare fork iti dubleaza datele din memorie
+
+wait() -> Face astfel incat sa se termine toate
+
+pid_t id = fork(); // Daca suntem in copil o sa fie 0
+                  // Daca suntem in parinte o sa avem diferit de 1
+pid_t getpid(void) = procces ID
+pid_t getppid(void) = parrent procces ID 
+
+write(fd[1] , &x , sizeof(int)) // Scriu in dreapta , in copil
+write poate returna -1 daca este eroare
+
+read(fd[0] , &x , sizeof(int)) // Citesc in stanga , in parinte
+read poate returna -1 daca este eroare
+
+
+// Sunt pur si simplu pipe-uri care sunt numite
+mkfifo("Nume_fifo" , 0777 - ceva mod)
+returneaza -1 daca este eroare
+
+Nu se fac pipe-uri bidirectionale din cauza deadlock-urilor
+
+Exec family functions
+Nu poti face cu pipe intre ele , adica nu poti
+execlp(.. | ..);
+
+exec() face replace la procesul curent cu noul proces
+fork() duplicheaza procesul acela
+execlp(file: "ping", arg: "ping", "-c", "3", "google.com", NULL);      
+mereu trebuie NULL la final , el doar le baga in linia de comanda
+
+      path          path         
+excl("/bin/echo" , "/bin/echo" , s , NULL);
+execl se executa o data , si acolo se opreste executia
+daca nu functioneaza merge mai departe
+------------------------------- THREADURI
+
+
+-------------------------------- IDK
+https://www.geeksforgeeks.org/fork-practice-questions/
+https://www.google.com/search?client=ubuntu-sn&channel=fs&q=fork+practice+problems#fpstate=ive&vld=cid:0cb77997,vid:9WAyQ-_jIzs,st:0
+
+https://www.quora.com/What-does-single-indir-double-indir-triple-indir-mean-in-an-Inode-of-a-file
+
+Direct block pointer - this block contains a direct block pointer is for the actual data block that contains the file data
+
+Indirect block pointers - contains a block of data blocks (pointers)
+
+      Single Indirect pointer - one level indirection / set of direct data block numbers
+
+      Double indirect pointer - two level 
+
+      Triple indirect pointer - triple
+
+Deadlock :
+
+necessary condition is mutual exclusion - we cant share resource among different procces at the same time
+
+second condition : hold and wait or resource holding
+
+no preemption - other procces cannot the resource forcefully
+
+final condition for deadlock : circular wait
+
+Semaphore : post + 1
+            wait - 1
+
+Cache : How do cache give us the illusion of large and fast memory?
+Small cache memory is fast 
+you mostly keep the MRU data(most recetnlty used data)
+
+
+tags in cache - 

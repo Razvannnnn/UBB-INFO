@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1649623859 source:d:\an1_sem2\ag\algoritmi\exersare_partial_2\main.cpp
+	<iostream>
+	<limits.h>
+	<fstream>
+
+1649660750 source:d:\an1_sem2\ag\algoritmi\dijkstra_reconstructie\main.cpp
+	<iostream>
+	<limits.h>
+	<fstream>
+

@@ -1,0 +1,9 @@
+# ninja log v5
+5	375	7374624137554508	CMakeFiles/Lab4.dir/App.cpp.obj	5df9046dfcf1f787
+24	376	7374624137564589	CMakeFiles/Lab4.dir/TestScurt.cpp.obj	4f7005f74c2b2d51
+14	377	7374624137574523	CMakeFiles/Lab4.dir/IteratorLP.cpp.obj	856d1fb8859de08
+20	377	7374624137564589	CMakeFiles/Lab4.dir/TestExtins.cpp.obj	a7ec2dea34a8f211
+17	377	7374624137574523	CMakeFiles/Lab4.dir/Lista.cpp.obj	af58e70d5a5240fe
+377	686	7374624140641304	Lab4.exe	cce7c74353ecfff2
+4	231	7374648833876040	CMakeFiles/Lab4.dir/Lista.cpp.obj	af58e70d5a5240fe
+231	315	7374648834692922	Lab4.exe	cce7c74353ecfff2

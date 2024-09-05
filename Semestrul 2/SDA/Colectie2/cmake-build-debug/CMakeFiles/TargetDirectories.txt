@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/SDA/Colectie2/cmake-build-debug/CMakeFiles/Colectie2.dir
+C:/Users/razva/Desktop/SDA/Colectie2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/SDA/Colectie2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

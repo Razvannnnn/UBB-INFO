@@ -1,0 +1,12 @@
+Sa se scrie un program C care:
+
+- va citi de la tastatura un numar natural N = {50000, 80000, 100000}.
+- va citi N numere intregi (pe 1 OCTET) din fisierul binar "1_file"
+si le va stoca intr-o variabila globala
+- va crea, apoi, un numar potrivit de thread-uri care vor procesa numerele
+intregi citite anterior din fisier si care:
+	- vor determina numarul de aparitii a2, a3, a5, ..., a97 ale fiecarui
+	numar intreg PRIM din intervalul (0,100]
+	- vor calcula M = media aritmetica(a2, a3, ..., a97)
+	- vor determina si afisa TOATE numerele PRIME al caror numar de aparitii
+	este CEL MAI APROPIAT de media aritmetica M calculata anterior

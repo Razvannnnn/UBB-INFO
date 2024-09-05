@@ -1,0 +1,11 @@
+# ninja log v5
+15	314	7344298774164595	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/Pet.cpp.obj	977454dae4e90d2a
+19	317	7344298774194548	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/VectDinNewDelete.cpp.obj	c8fe598544c4b410
+24	511	7344298775320518	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/VectDinSmartPointer.cpp.obj	9a9757daa2ca8116
+1	440	7344322477920295	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/main.cpp.obj	be4ccbd57e5eeaca
+440	628	7344322479747858	VectorDinamicCPP.exe	a4d190bb67770097
+3	212	7344328760951578	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/Pet.cpp.obj	977454dae4e90d2a
+21	241	7344328761292611	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/VectDinNewDelete.cpp.obj	c8fe598544c4b410
+25	322	7344328762103253	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/VectDinSmartPointer.cpp.obj	9a9757daa2ca8116
+16	531	7344328764159388	CMakeFiles/VectorDinamicCPP.dir/VectorDinamicCPP/main.cpp.obj	be4ccbd57e5eeaca
+531	710	7344328765947902	VectorDinamicCPP.exe	a4d190bb67770097

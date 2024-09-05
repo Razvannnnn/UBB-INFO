@@ -1,0 +1,108 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/Scris/main.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\Scris\cmake-build-debug-coverage\CMakeFiles\Scris.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\Scris\cmake-build-debug-coverage\CMakeFiles\Scris.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <assert.h>
+        -:    3:
+        -:    4:using namespace std;
+        -:    5:
+function _Z1fi called 5 returned 80% blocks executed 100%
+        5:    6:bool f(int a) {
+        5:    7:    if (a <= 1)
+        5:    7-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 4
+        1:    8:        throw "Illegal argument";
+        1:    8-block  0
+call    0 returned 1
+call    1 returned 0
+        4:    9:    int aux = 0;
+       28:   10:    for (int i = 2; i < a; i++) {
+        4:   10-block  0
+       24:   10-block  1
+       28:   10-block  2
+branch  0 taken 24
+branch  1 taken 4 (fallthrough)
+       24:   11:        if (a % i == 0) {
+       24:   11-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 20
+        4:   12:            aux++;
+        4:   12-block  0
+        -:   13:        }
+        -:   14:    }
+        4:   15:    return aux == 0;
+        4:   15-block  0
+        -:   16:}
+        -:   17:
+function _Z6test_fv called 1 returned 100% blocks executed 78%
+        1:   18:void test_f()
+        -:   19:{
+       1*:   20:    assert(f(5) == true);
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   20-block  1
+call    3 never executed
+        1:   20-block  2
+       1*:   21:    assert(f(6) == false);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   21-block  1
+call    3 never executed
+        1:   21-block  2
+       1*:   22:    assert(f(13) == true);
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   22-block  1
+call    3 never executed
+        1:   22-block  2
+        -:   23:    try
+        -:   24:    {
+        1:   25:        f(1);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1 (throw)
+        1:   26:    } catch(const char* msg) {
+        1:   26-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        1:   26-block  1
+call    2 returned 1
+        -:   27:        assert(true);
+        1:   28:    }
+        1:   29:}
+        1:   29-block  0
+        -:   30:
+function main called 1 returned 100% blocks executed 100%
+        1:   31:int main() {
+        -:   32:    int x;
+        1:   33:    test_f();
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   34:    cin>>x;
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   35:    cout<<f(x);
+        1:   35-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   35-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   36:    return 0;
+        1:   36-block  0
+        -:   37:}

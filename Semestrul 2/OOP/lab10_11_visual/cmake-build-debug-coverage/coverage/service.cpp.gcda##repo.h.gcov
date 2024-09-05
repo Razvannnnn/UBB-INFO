@@ -1,0 +1,180 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/repo.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_REPO_H
+        -:    2:#define LAB6_REPO_H
+        -:    3:
+        -:    4://#include <vector>
+        -:    5:#include "produs.h"
+        -:    6:#include <string>
+        -:    7:#include <utility>
+        -:    8:#include <vector>
+        -:    9:#include <algorithm>
+        -:   10:#include <utility>
+        -:   11:#include <unordered_map>
+        -:   12:
+        -:   13:
+        -:   14:using std::vector;
+        -:   15:using std::string;
+        -:   16:
+        -:   17:class RepoException {
+        -:   18:    string msg;
+        -:   19:public:
+        -:   20:    explicit RepoException(string m): msg{std::move(m)} {
+        -:   21:    }
+        -:   22:
+        -:   23:    string getMsg() {
+        -:   24:        return msg;
+        -:   25:    }
+        -:   26:};
+        -:   27:
+        -:   28:
+        -:   29:class RepoAbstract {
+        -:   30:public:
+function _ZN12RepoAbstractC2Ev called 0 returned 0% blocks executed 0%
+    #####:   31:    RepoAbstract() = default;
+        -:   32:
+        -:   33:    RepoAbstract(RepoAbstract& repo) = delete;
+        -:   34:
+        -:   35:    virtual void store(const Produs& produs) = 0;
+        -:   36:
+        -:   37:    virtual void modify(Produs& produs, Produs& produsNou) = 0;
+        -:   38:
+        -:   39:    virtual void del(const Produs& produs) = 0;
+        -:   40:
+        -:   41:    virtual Produs &cauta(const string& nume, const string& tip, const string& producator) = 0;
+        -:   42:
+        -:   43:    virtual vector<Produs> &getAll() = 0;
+        -:   44:};
+        -:   45:
+        -:   46:
+        -:   47:class RepoProdus : public RepoAbstract{
+        -:   48:private:
+        -:   49:    vector<Produs> produse;
+        -:   50:public:
+function _ZN10RepoProdusC1Ev called 0 returned 0% blocks executed 0%
+    #####:   51:    RepoProdus() = default;
+    %%%%%:   51-block  0
+call    0 never executed
+call    1 never executed
+        -:   52:
+        -:   53:    bool exist(const Produs& produs);
+        -:   54:
+        -:   55:    /**
+        -:   56:     * Adauga un produs in lista de produse
+        -:   57:     * @param produs - produsul adaugat
+        -:   58:     */
+        -:   59:    void store(const Produs& produs) override;
+        -:   60:
+        -:   61:    /**
+        -:   62:     * Sterge un produs din lista de produse
+        -:   63:     * @param nume - numele produsului pe care il stergem
+        -:   64:     * @param tip - tipul produsului pe care il stergem
+        -:   65:     * @param producator - producatorul produsului pe care il stergem
+        -:   66:     */
+        -:   67:    void del(const Produs& produs) override;
+        -:   68:
+        -:   69:    /**
+        -:   70:     * Modifica un produs din lista de produse
+        -:   71:     * @param produs - produsul care se modifica
+        -:   72:     * @param produsNou - produsul nou
+        -:   73:     */
+        -:   74:    void modify(Produs& produs, Produs& produsNou) override;
+        -:   75:
+        -:   76:    /**
+        -:   77:     * Functie care cauta un produs si il returneaza
+        -:   78:     * @param nume - numele produsului pe care il stergem
+        -:   79:     * @param tip - tipul produsului pe care il stergem
+        -:   80:     * @param producator - producatorul produsului pe care il stergem
+        -:   81:     */
+        -:   82:    Produs &cauta(const string& nume, const string& tip, const string& producator) override;
+        -:   83:
+        -:   84:    /**
+        -:   85:     * Functie getter
+        -:   86:     * @return - un vector cu toate produsele
+        -:   87:     */
+        -:   88:    vector<Produs> &getAll() override {
+        -:   89:        return produse;
+        -:   90:    }
+        -:   91:};
+        -:   92:
+        -:   93:class LabRepo : public RepoAbstract {
+        -:   94:private:
+        -:   95:    std::unordered_map<int, Produs> produse;
+        -:   96:    double probabilitate;
+        -:   97:
+        -:   98:    bool exist(const Produs& produs);
+        -:   99:
+        -:  100:public:
+        -:  101:    LabRepo() = default;
+        -:  102:
+        -:  103:    void random() const;
+        -:  104:
+        -:  105:    void setProbabilitate(double prob);
+        -:  106:
+        -:  107:    /**
+        -:  108:     * Adauga un produs in lista de produse
+        -:  109:     * @param produs - produsul adaugat
+        -:  110:     */
+        -:  111:    void store(const Produs& produs) override;
+        -:  112:
+        -:  113:    /**
+        -:  114:     * Sterge un produs din lista de produse
+        -:  115:     * @param nume - numele produsului pe care il stergem
+        -:  116:     * @param tip - tipul produsului pe care il stergem
+        -:  117:     * @param producator - producatorul produsului pe care il stergem
+        -:  118:     */
+        -:  119:    void del(const Produs& produs) override;
+        -:  120:
+        -:  121:    /**
+        -:  122:     * Modifica un produs din lista de produse
+        -:  123:     * @param produs - produsul care se modifica
+        -:  124:     * @param produsNou - produsul nou
+        -:  125:     */
+        -:  126:    void modify(Produs& produs, Produs& produsNou) override;
+        -:  127:
+        -:  128:    /**
+        -:  129:     * Functie care cauta un produs si il returneaza
+        -:  130:     * @param nume - numele produsului pe care il stergem
+        -:  131:     * @param tip - tipul produsului pe care il stergem
+        -:  132:     * @param producator - producatorul produsului pe care il stergem
+        -:  133:     */
+        -:  134:    Produs &cauta(const string& nume, const string& tip, const string& producator) override;
+        -:  135:
+        -:  136:    /**
+        -:  137:     * Functie getter
+        -:  138:     * @return - un vector cu toate produsele
+        -:  139:     */
+        -:  140:    vector<Produs> &getAll() override;
+        -:  141:};
+        -:  142:
+        -:  143:
+        -:  144:
+        -:  145:class RepoProdusFile : public RepoProdus{
+        -:  146:private:
+        -:  147:    string filename;
+        -:  148:    void loadFromFile();
+        -:  149:    void writeToFile();
+        -:  150:
+        -:  151:public:
+        -:  152:    explicit RepoProdusFile(string filename) : RepoProdus(), filename{std::move(filename)} {
+        -:  153:        loadFromFile();
+        -:  154:    }
+        -:  155:
+        -:  156:    void store(const Produs& produs) override {
+        -:  157:        RepoProdus::store(produs);
+        -:  158:        writeToFile();
+        -:  159:    }
+        -:  160:
+        -:  161:    void del(const Produs& produs) override {
+        -:  162:        RepoProdus::del(produs);
+        -:  163:        writeToFile();
+        -:  164:    }
+        -:  165:};
+        -:  166:
+        -:  167:
+        -:  168:void testeREPO();
+        -:  169:void testeLABREPO();
+        -:  170:
+        -:  171:#endif //LAB6_REPO_H

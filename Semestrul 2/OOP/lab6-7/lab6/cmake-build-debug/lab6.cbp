@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lab6"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab6">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/lab6" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/OOP/lab6/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab6"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab6/fast">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/lab6" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/OOP/lab6/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 lab6/fast"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/OOP/lab6/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test/fast">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/test" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/razva/Desktop/OOP/lab6/."/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 test/fast"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/main.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/produs.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/produs.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/repo.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/repo.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/service.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/service.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/test_vector.cpp">
+			<Option target="test"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/ui.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/ui.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/validare.cpp">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/validare.h">
+			<Option target="lab6"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/vector.cpp">
+			<Option target="lab6"/>
+			<Option target="test"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/vector.h">
+			<Option target="lab6"/>
+			<Option target="test"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab6/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

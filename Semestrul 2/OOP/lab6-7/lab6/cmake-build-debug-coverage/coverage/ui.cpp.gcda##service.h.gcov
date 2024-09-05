@@ -1,0 +1,97 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/service.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_SERVICE_H
+        -:    2:#define LAB6_SERVICE_H
+        -:    3:
+        -:    4:#include <string>
+        -:    5:#include "repo.h"
+        -:    6:#include "produs.h"
+        -:    7:#include "vector.h"
+        -:    8:#include "validare.h"
+        -:    9:
+        -:   10:using std::string;
+        -:   11:
+        -:   12:class serviceProdus {
+        -:   13:private:
+        -:   14:    RepoProdus& repo;
+        -:   15:    Valid validare;
+        -:   16:public:
+        -:   17:    explicit serviceProdus(RepoProdus& repo): repo{ repo } {
+        -:   18:    }
+        -:   19:
+        -:   20:    serviceProdus() = default;
+        -:   21:
+        -:   22:    /**
+        -:   23:     * Adauga un produs in lista de produse
+        -:   24:     * @param nume - numele produsului
+        -:   25:     * @param tip - tipul produsului
+        -:   26:     * @param pret - pretul produsului
+        -:   27:     * @param producator - producatorul produsului
+        -:   28:     */
+        -:   29:    void adaugare(string nume, string tip, double pret, string producator);
+        -:   30:
+        -:   31:    /**
+        -:   32:     * Sterge un produs din lista de produse
+        -:   33:     * @param nume - numele produsului
+        -:   34:     * @param tip - tipul produsului
+        -:   35:     * @param producator - producatorul produsului
+        -:   36:     */
+        -:   37:    void stergere(const string& nume, const string& tip, const string& producator);
+        -:   38:
+        -:   39:    /**
+        -:   40:     * Modifica un produs din lista de produse
+        -:   41:     * @param nume - numele produsului pe care il schimbam
+        -:   42:     * @param tip - tipul produsului pe care il schimbam
+        -:   43:     * @param pret - pretul produsului pe care il schimbam
+        -:   44:     * @param producator - producatorul produslui pe care il schimbam
+        -:   45:     * @param numeNou - numele produsului nou
+        -:   46:     * @param tipNou - tipul produsului nou
+        -:   47:     * @param pretNou - pretul produsului nou
+        -:   48:     * @param producatorNou - producatorul produslui nou
+        -:   49:     */
+        -:   50:    void modificare(string nume, string tip, double pret, string producator,
+        -:   51:                    string numeNou, string tipNou, double pretNou, string producatorNou);
+        -:   52:
+        -:   53:    /**
+        -:   54:     * Functie care cauta un produs si il returneaza
+        -:   55:     * @param nume - numele produsului
+        -:   56:     * @param tip - tipul produsului
+        -:   57:     * @param producator - producatorul produsului
+        -:   58:     */
+        -:   59:    Produs cauta(const string& nume, const string& tip, const string& producator);
+        -:   60:
+        -:   61:    /**
+        -:   62:     * Functie care returneaza lista sortata dupa un criteriu
+        -:   63:     * @param criteriu
+        -:   64:     * @param mod
+        -:   65:     * @return
+        -:   66:     */
+        -:   67:    RepoProdus sortare(int criteriu, int mod);
+        -:   68:
+        -:   69:    /**
+        -:   70:     * Functie care filtreaza produsele dupa un criteriu
+        -:   71:     * @param criteriu - 1 - Nume
+        -:   72:     *                 - 2 - Tip
+        -:   73:     *                 - 3 - Pret
+        -:   74:     *                 - 4 - Producator
+        -:   75:     * Returneaza o lista cu produsele filtrate
+        -:   76:     */
+        -:   77:    RepoProdus fltrareUnCriteriu(const int& criteriu, const string& nume, const string& tip, double pret, const string& producator);
+        -:   78:
+        -:   79:    /**
+        -:   80:     * Getter care returneaza un vector cu lista de produse
+        -:   81:     * @return - lista produse
+        -:   82:     */
+function _ZN13serviceProdus6getAllEv called 0 returned 0% blocks executed 0%
+    #####:   83:    Vector<Produs> getAll() {
+    #####:   84:        return repo.getAll();
+    %%%%%:   84-block  0
+call    0 never executed
+        -:   85:    }
+        -:   86:};
+        -:   87:
+        -:   88:void testeService();
+        -:   89:
+        -:   90:#endif //LAB6_SERVICE_H

@@ -1,0 +1,146 @@
+1. Scrieti o expresie regulara care accepta linii care contin litera "a"
+dar nu contin litera "b"
+
+grep -E "[^b][a]*a[^b]*" filename
+
+2. Care este numarul maxim de procese fiu create de fragmentul de cod
+de mai jos care pot coexista simultan?
+
+for(int i = 0 ; i < 7 ; ++i)
+{
+    if(fork() == 0){
+        sleep(rand % 10);
+        exit(0);
+      }
+    if(i % 3 == 0)wait(0);
+}
+
+i = 0 -> fork() exit 0 -> 2 procese existente , da si wait(0)
+i = 1 -> fork() exit 0 -> 3 procese existente, nu da wait
+..
+
+4 procese existente maxim
+
+3. Procesele A , B , C comunica prin fifo-urile X,Y,Z conform diagramei de mai jos
+Schitati fragmentele de codpentru care fifo-urile sunt deschise in cele 3 procese
+
+A -- X --> B
+B -- Y --> C
+C -- Z --> A
+
+mkfifo("X" , 0600);
+mkfifo("Y" , 0600);
+mkfifo("Z" , 0600);
+
+// Proces A
+a2b = open("X" , O_WRONLY);
+c2a = open("Z" , O_RDONLY);
+..
+close(a2b);
+close(c2a);
+
+// Proces B
+
+a2b = open("X" , O_RDONLY);
+b2c = open("Y" , O_WRONLY);
+..
+close(a2b);
+close(c2a);
+
+// Proces C
+c2a = open("Z" , O_WRONLY);
+b2c = open("Y" , O_RDONLY);
+..
+close(c2a);
+close(b2c);
+
+4. Cate thread-uri ati folosi pentru a procesa un milion de fisiere?
+
+Un numar egal de thread-uri cate core-uri are cpu-ul.
+
+5. Dati un exemplu de valori pentru T, N1 , N2 si N3 pentru care programul
+de mai jos se incheie.
+
+pthread_barrier_t b1 , b2 , b3;
+
+void* f1(void *a)
+{
+    pthread_barrier_wait(&b1);
+    return NULL;
+}
+
+void* f1(void *a)
+{
+    pthread_barrier_wait(&b2);
+    return NULL;
+}
+
+void* f1(void *a)
+{
+    pthread_barrier_wait(&b3);
+    return NULL;
+}
+
+int main()
+{
+    int i;
+    pthread_t t[T][3];
+
+ 
+    pthread_barrier_init(&b1 , N1);   
+    pthread_barrier_init(&b2 , N1);
+    pthread_barrier_init(&b3 , N1);
+
+  for(int i = 0 ; i < T ; ++i)
+  {
+      pthread_create(&t[i][0] , NULL , f1 , NULL);
+      pthread_create(&t[i][1] , NULL , f2 , NULL);
+      pthread_create(&t[i][2] , NULL , f3 , NULL);
+ 
+  }
+
+  for(int i = 0 ; i < T ; ++i)
+  {
+      pthread_join(t[i][0] , NULL);
+      pthread_join(t[i][1] , NULL);
+      pthread_join(t[i][2] , NULL);
+  }
+
+  pthread_barrier_destroy(&b1);
+  pthread_barrier_destroy(&b2);
+  pthread_barrier_destroy(&b3);
+
+  return NULL;
+}
+
+Raspuns : T = 3 , N1 = 3 , N2 = 3 , N3 = 3;
+
+6. De ce operatii I/o cauzeaza un proces sa treaca din starea 
+de RUN in starea de WAIT?
+
+Majoritatea operatiilor I/O necesita acces pentru hardware
+care sunt mai lente ca viteza procesorului, si nu blocheaza 
+procesorul pentru un proces care este in running, mai degraba il scoate
+temporar si il baga in WAIT.
+
+7. Cum se face calculul de adresa in alocare cu partii fixe absolute?
+
+Will be exactly the physical address , to have fixed size.
+
+8. Dati un avantaj si dezavantaj al politicii de plasare
+First-Fit fata de Worst-fit.
+
+First-Fit e mai rapid (avantaj)
+nu face adresare fragmentata(dezavantaj)
+
+9. Care este cea mai prioritara pagina de memorie pe care politica de inlocuire NRU ar alege-o
+ca pagina victima?
+
+NRU - not recently used
+R: Not written not read
+
+10. Considerand ca dimensiunea unui block este B si dimensiunea unei adrese este A,
+cate blocuri de date sunt adresa de indirectarea tripla a 
+unui i-nod?
+
+r: (B / A) ^ 3

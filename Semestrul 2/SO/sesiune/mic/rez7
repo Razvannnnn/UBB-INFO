@@ -1,0 +1,186 @@
+1. Give a regular expression that matches any even-length
+sequence of lower-case words separated by spaces , if for each word
+its length and its position in the sequence are either both odd or both
+even.
+
+ex : the 5-t has to be odd , and the 16 has to be even
+
+grep -E '^((\b[a-z]{1,3}\b \b[a-z]{4,}\b) | (\b[a-z]{4,}\b \b[a-z]{1,3}\b) )*$'
+
+2. When would you load into memory the pages of a aprocess that is just starting?
+
+a)Pre-everything : is slower to load them
+b)Load when you have something to do with it
+
+3. Considering that the size of a block is B and the size of an address isA, how many data blocks are addressed by the double indirect addressing of an i-node?
+
+r: (B/A) ^ 2
+
+4. What state transition will a process undergo when it calls 
+sem_wait and under what conditions? 
+Justify your answer.
+
+r: From running to waiting, se decrementeaza semaforul cu 1
+cand semaforul devine 0 , procesul a astepta
+
+5. Give example of T,N1 , N2 , N3 for this to run : 
+
+pthread_barrier_t b1, b2;
+
+void* f1(void* a)
+{
+	pthread_barrier_wait(&b1);
+	return NULL;
+}
+
+void* f2(void* a)
+{
+	pthread_barrier_wait(&b2);
+	return NULL;
+}
+
+int main()
+{
+	int i;
+	pthread_t t[T][2];
+
+	pthread_barrier_init(&b1, NULL, N1);
+	pthread_barrier_init(&b2, NULL, N2);
+	for (i = 0; i < T; i++)
+	{
+		pthread_create(&t[i][0], NULL, f1, NULL);
+		pthread_create(&t[i][1], NULL, f2, NULL);
+	}	
+	for (i = 0; i < T; i++)
+	{
+		pthread_join(t[i][0], NULL);
+		pthread_join(t[i][1], NULL);
+	}
+	pthread_barrier_destroy(&b1);
+	pthread_barrier_destroy(&b2);
+	return NULL;
+}
+
+solution:
+T = 1, N1 = 1, N2 = 1, N3 = 1
+even tho N3 doesn't exist
+
+6. What could happen if function f were executed by 
+several simultaneous threads? Why?
+
+pthread_mutex_t m[2];
+void* f(void* p)
+{
+	int id = (int) p;
+	pthread_mutex_t* first = &m[id % 2];
+	pthread_mutex_t* second = &m[(id + 1) % 2];
+
+	pthread_mutex_lock(first);
+	pthread_mutex_lock(second);
+	...
+	pthread_mutex_unlock(second);
+	pthread_mutex_unlock(first);
+}
+
+R : poate sa apara deadlock
+
+7. What can you do as a software developer to prevent deadlocks
+
+R : sa elimin muchia care realizeaza ciclul in graful de wait-uri
+adica sa aleg o ordine in care lock-urile si unlock-urile sa fie in aceeasi ordine
+
+8. What will be the effect of replacing calls 
+to pthread_mutex_lock with calls to sem_post?
+
+r: pthread_mutex_lock : iti da lock la un mutex , adica lasa un sigur thread sa acceseze sectiunea critica
+sem_post : incrementeaza semaforul
+
+incorrect use of syncronization
+
+9. 3 function calls that ensure mutual exclusion
+
+a) pthread_mutex_lock / unlock
+b) sem_wait/post
+c) atomic operations
+
+10. Whatis a critical section
+
+a section where multiple threads/proces share resources
+
+11. When would you use execv instead of execl?
+
+execl : takes a variable number of arguments where each argument is
+passed as separate parameter in the function call
+
+execv : takes a single array of pointers to null terminated strings
+
+R: when you have a fixed number of arguments->execl
+when you have a dynamic array ->execv
+
+12. How many FIFOs can a process open for reading if the FIFOs are and will ever be used by other processes only for writing?
+
+R: no restrict as long as system limits are not exceded
+
+13. Explain why the file descriptor returned by popen must be closed with pclose instead of fclose.
+
+r: 
+popen : open a pipe , returns a FILE pointer 
+this is not a traditional file descriptor and is more high-level
+
+14. What will the fragment below print? Justify your answer.
+
+execl("expr", "expr", "1", "+", "1", NULL);
+execlp("echo", "echo", "3", NULL);
+printf("4\n");
+
+r: 2 , 3 , 4
+
+15: Give three ways of finding the size of a file on the linux command line.
+
+ls -l
+stat file
+du -b file
+
+16. Draw the hierarchy of processes created by the code below, including the parent process.
+
+for (i = 0; i < 3; i++)
+{
+	if (fork() > 0)
+	{
+		wait(0);
+		wait(0);
+		exit(0);
+	}
+}
+
+solution:
+p -> c1
+c1 -> c2
+c2 -> c3
+
+17. Write two SED commands that display a file's lines deleting the first non-empty sequence of lower-case letters.
+
+solution:
+
+sed 's/^[a-z]\{1,\}//' input_file
+sed 's/^.*$//' input_file
+
+18. 
+Write an AWK command that displays the sum of all the numbers in a text file whose lines consist of sequences of digits separated by spaces.
+
+solution:
+ awk '{ 
+    for (i=1; i<=NF; i++) { sum += $i; } 
+} 
+END { 
+    print sum; 
+}' file
+
+19. Give three GREP commands that display the lines of a file which consist exclusively
+of a non-empty sequence of alternating leters and digits (ex: a0g or 1r5m)
+
+solution:
+
+grep '^[[0-9a-zA-Z]][[0-9]][[0-9a-zA-Z]]*$' file.txt
+
+

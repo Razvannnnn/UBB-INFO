@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Practiccc",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Practiccc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Practiccc-Debug-2af43db466ca48bde1b4.json",
+					"name" : "Practiccc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Practiccc_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Practiccc_autogen-Debug-b725bc846f67d3d0784e.json",
+					"name" : "Practiccc_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Practiccc_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Practiccc_autogen_timestamp_deps-Debug-e5ab773eaa63ffb23295.json",
+					"name" : "Practiccc_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/razva/Desktop/OOP/Practiccc/cmake-build-debug",
+		"source" : "C:/Users/razva/Desktop/OOP/Practiccc"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

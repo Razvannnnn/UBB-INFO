@@ -1,0 +1,275 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/service.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\service.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\service.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <malloc.h>
+        -:    2:#include "service.h"
+        -:    3:
+function creazaObiect called 11 returned 100% blocks executed 100%
+       11:    4:struct Oferta creazaObiect(int id, char tip[], char adresa[], int suprafata, int pret){
+        -:    5:    struct Oferta oferta;
+       11:    6:    oferta.id = id;
+       11:    7:    strcpy(oferta.tip, tip);
+       11:    8:    strcpy(oferta.adresa, adresa);
+       11:    9:    oferta.suprefata = suprafata;
+       11:   10:    oferta.pret = pret;
+       11:   11:    return oferta;
+       11:   11-block  0
+        -:   12:}
+        -:   13:
+function adaugareOferte called 8 returned 100% blocks executed 100%
+        8:   14:void adaugareOferte(MyList *repo, MyList* undolist, int id, char tip[], char adresa[], int suprafata, int pret){
+        8:   15:    struct Oferta oferta = creazaObiect(id, tip, adresa, suprafata, pret);
+        8:   15-block  0
+call    0 returned 8
+        -:   16:    char erori[50];
+        8:   17:    validare_oferta(oferta, erori);
+call    0 returned 8
+        8:   18:    if (strlen(erori) > 0)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:   19:        return;
+        1:   19-block  0
+        7:   20:    adauga(undolist, copylista(repo));
+        7:   20-block  0
+call    0 returned 7
+call    1 returned 7
+        7:   21:    adaugare_oferta(repo, oferta);
+call    0 returned 7
+        -:   22:}
+        -:   23:
+function modificareOferta called 3 returned 100% blocks executed 100%
+        3:   24:void modificareOferta(MyList *repo, MyList* undolist, int id, char tip[], char adresa[], int suprafata, int pret){
+        3:   25:    struct Oferta oferta = creazaObiect(id, tip, adresa, suprafata, pret);
+        3:   25-block  0
+call    0 returned 3
+        -:   26:    char erori[50];
+        3:   27:    validare_oferta(oferta, erori);
+call    0 returned 3
+        3:   28:    if (strlen(erori) > 0)
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   29:        return;
+        1:   29-block  0
+        2:   30:    adauga(undolist, copylista(repo));
+        2:   30-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   31:    modificare_oferta(repo, id, oferta);
+call    0 returned 2
+        -:   32:}
+        -:   33:
+function stergereOferta called 3 returned 100% blocks executed 100%
+        3:   34:void stergereOferta(MyList *repo, MyList* undolist, int id){
+        3:   35:    adauga(undolist, copylista(repo));
+        3:   35-block  0
+call    0 returned 3
+call    1 returned 3
+        3:   36:    stergere_oferta(repo, id);
+call    0 returned 3
+        3:   37:}
+        -:   38:
+function sort_cresc_verif called 26 returned 100% blocks executed 100%
+       26:   39:int sort_cresc_verif(struct Oferta ofertai, struct Oferta ofertaj){
+       26:   40:    if (ofertai.pret == ofertaj.pret)
+       26:   40-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 23
+        3:   41:        return strcmp(ofertai.tip, ofertaj.tip) > 0;
+        3:   41-block  0
+       23:   42:    return ofertai.pret > ofertaj.pret;
+       23:   42-block  0
+        -:   43:}
+        -:   44:
+function sort_descresc_verif called 26 returned 100% blocks executed 100%
+       26:   45:int sort_descresc_verif(struct Oferta ofertai, struct Oferta ofertaj){
+       26:   46:    if (ofertai.pret == ofertaj.pret)
+       26:   46-block  0
+branch  0 taken 6 (fallthrough)
+branch  1 taken 20
+        6:   47:        return strcmp(ofertai.tip, ofertaj.tip) < 0;
+        6:   47-block  0
+       20:   48:    return ofertai.pret < ofertaj.pret;
+       20:   48-block  0
+        -:   49:}
+        -:   50:
+        -:   51:
+function odonareOferteDupaPretTip called 2 returned 100% blocks executed 100%
+        2:   52:void odonareOferteDupaPretTip(MyList *repo, struct Oferta* oferte, int (*verificare)()){
+        -:   53:    int dim;
+        2:   54:    dimensiune(repo, &dim);
+        2:   54-block  0
+call    0 returned 2
+        2:   55:    get_all_oferte(repo, oferte, &dim);
+call    0 returned 2
+        -:   56:
+       10:   57:    for (int i = 0; i < dim - 1 ; i ++)
+        8:   57-block  0
+       10:   57-block  1
+branch  0 taken 8
+branch  1 taken 2 (fallthrough)
+       28:   58:        for (int j = i + 1; j < dim; j ++)
+        8:   58-block  0
+       20:   58-block  1
+       28:   58-block  2
+branch  0 taken 20
+branch  1 taken 8 (fallthrough)
+       20:   59:            if (verificare(oferte[i], oferte[j])){
+       20:   59-block  0
+call    0 returned 20
+branch  1 taken 10 (fallthrough)
+branch  2 taken 10
+       10:   60:                struct Oferta aux = oferte[i];
+       10:   61:                oferte[i] = oferte[j];
+       10:   62:                oferte[j] = aux;
+       10:   62-block  0
+        -:   63:            }
+        2:   64:}
+        -:   65:
+function ordonareBubble called 2 returned 100% blocks executed 100%
+        2:   66:void ordonareBubble(MyList *repo, struct Oferta* oferte, int (*verificare)()) {
+        -:   67:    int dim;
+        2:   68:    dimensiune(repo, &dim);
+        2:   68-block  0
+call    0 returned 2
+        2:   69:    get_all_oferte(repo, oferte, &dim);
+call    0 returned 2
+        2:   70:    int ok = 1;
+        -:   71:    do {
+        8:   72:        ok=0;
+       40:   73:        for(int i=0;i<dim - 1;i++) {
+        8:   73-block  0
+       32:   73-block  1
+       40:   73-block  2
+branch  0 taken 32
+branch  1 taken 8 (fallthrough)
+       32:   74:            if(verificare(oferte[i], oferte[i+1])) {
+       32:   74-block  0
+call    0 returned 32
+branch  1 taken 10 (fallthrough)
+branch  2 taken 22
+       10:   75:                struct Oferta aux = oferte[i];
+       10:   76:                oferte[i] = oferte[i+1];
+       10:   77:                oferte[i+1] = aux;
+       10:   78:                ok=1;
+       10:   78-block  0
+        -:   79:            }
+        -:   80:        }
+        8:   81:    } while (ok);
+        8:   81-block  0
+branch  0 taken 6
+branch  1 taken 2 (fallthrough)
+        2:   82:}
+        -:   83:
+function copiere_oferta called 8 returned 100% blocks executed 100%
+        8:   84:void copiere_oferta(struct Oferta* destinatie, struct Oferta* oferta){
+        8:   85:    destinatie->id = oferta->id;
+        8:   86:    strcpy(destinatie->tip, oferta->tip);
+        8:   87:    strcpy(destinatie->adresa, oferta->adresa);
+        8:   88:    destinatie->suprefata = oferta->suprefata;
+        8:   89:    destinatie->pret = oferta->pret;
+        8:   90:}
+        -:   91:
+function filtrareDupaUnCriteriu called 3 returned 100% blocks executed 100%
+        3:   92:void filtrareDupaUnCriteriu(MyList *repo, struct Oferta* oferte, int *l, int criteriu, int suprafata, char tip[], int pret){
+        -:   93:    int dim;
+        3:   94:    dimensiune(repo, &dim);
+        3:   94-block  0
+call    0 returned 3
+        3:   95:    *l = 0;
+        3:   96:    struct Oferta* lista = (struct Oferta*) malloc(dim * sizeof(struct  Oferta));
+        3:   97:    get_all_oferte(repo, lista, &dim);
+call    0 returned 3
+       18:   98:    for (int i = 0; i < dim; i ++){
+       15:   98-block  0
+       18:   98-block  1
+branch  0 taken 15
+branch  1 taken 3 (fallthrough)
+       15:   99:        if (criteriu == 1) {
+       15:   99-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 10
+        5:  100:            if (get_suprafata(lista[i]) == suprafata)
+        5:  100-block  0
+call    0 returned 5
+branch  1 taken 2 (fallthrough)
+branch  2 taken 3
+        2:  101:                copiere_oferta(&oferte[*l], &lista[i]), *l += 1;
+        2:  101-block  0
+call    0 returned 2
+        -:  102:        }
+       10:  103:        else if (criteriu == 2) {
+       10:  103-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 5
+        5:  104:            if (strcmp(get_tip(&lista[i]), tip) == 0)
+        5:  104-block  0
+call    0 returned 5
+branch  1 taken 2 (fallthrough)
+branch  2 taken 3
+        2:  105:                copiere_oferta(&oferte[*l], &lista[i]), *l += 1;
+        2:  105-block  0
+call    0 returned 2
+        -:  106:        }
+        5:  107:        else if (criteriu == 3){
+        5:  107-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 0
+        5:  108:            if (get_pret(lista[i]) == pret)
+        5:  108-block  0
+call    0 returned 5
+branch  1 taken 1 (fallthrough)
+branch  2 taken 4
+        1:  109:                copiere_oferta(&oferte[*l], &lista[i]), *l += 1;
+        1:  109-block  0
+call    0 returned 1
+        -:  110:        }
+        -:  111:    }
+        -:  112:
+        3:  113:    free(lista);
+        3:  114:}
+        -:  115:
+function filtrareNoua called 1 returned 100% blocks executed 100%
+        1:  116:void filtrareNoua(MyList *repo, struct Oferta* oferte, int *l, int pret) {
+        -:  117:    int dim;
+        1:  118:    dimensiune(repo, &dim);
+        1:  118-block  0
+call    0 returned 1
+        1:  119:    *l = 0;
+        1:  120:    struct Oferta* lista = (struct Oferta*) malloc(dim * sizeof(struct Oferta));
+        1:  121:    get_all_oferte(repo, lista, &dim);
+call    0 returned 1
+        6:  122:    for(int i=0;i<dim;i++) {
+        5:  122-block  0
+        6:  122-block  1
+branch  0 taken 5
+branch  1 taken 1 (fallthrough)
+        5:  123:        if(get_pret(lista[i]) >= pret) {
+        5:  123-block  0
+call    0 returned 5
+branch  1 taken 3 (fallthrough)
+branch  2 taken 2
+        3:  124:            copiere_oferta(&oferte[*l], &lista[i]);
+        3:  124-block  0
+call    0 returned 3
+        3:  125:            *l += 1;
+        -:  126:        }
+        -:  127:    }
+        1:  128:    free(lista);
+        1:  129:}
+        -:  130:
+        -:  131:
+function getAllOferte called 2 returned 100% blocks executed 100%
+        2:  132:void getAllOferte(MyList *repo, struct Oferta* oferte_copie, int *dim){
+        2:  133:    get_all_oferte(repo, oferte_copie, dim);
+        2:  133-block  0
+call    0 returned 2
+        2:  134:}
+        -:  135:
+function Dim called 7 returned 100% blocks executed 100%
+        7:  136:void Dim(MyList *repo, int *dim){
+        7:  137:    dimensiune(repo, dim);
+        7:  137-block  0
+call    0 returned 7
+        7:  138:}
+        -:  139:

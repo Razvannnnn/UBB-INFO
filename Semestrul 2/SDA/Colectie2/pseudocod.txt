@@ -1,0 +1,20 @@
+PSEUDOCOD
+
+Funcție diferentaMaxMin()
+    Daca colectia este vida
+        returnam -1
+
+    minElem <- max
+    maxElem <- min
+
+    pentru i <- 0, m executa
+        daca e[i].second > 0
+            daca e[i].first < minElem
+                minElem <- e[i].first
+            daca e[i].first > maxElem
+                maxElem <- e[i].first
+
+    return maxElem - minElem
+
+SFFuncție
+

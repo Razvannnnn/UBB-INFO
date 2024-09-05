@@ -1,0 +1,80 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/undo.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_UNDO_H
+        -:    2:#define LAB6_UNDO_H
+        -:    3:
+        -:    4:#include "produs.h"
+        -:    5:#include "repo.h"
+        -:    6:
+        -:    7:class ActiuneUndo {
+        -:    8:public:
+        -:    9:    virtual void doUndo() = 0;
+        -:   10:
+        -:   11:    ~ActiuneUndo() = default;
+        -:   12:};
+        -:   13:
+        -:   14:class UndoAdauga: public ActiuneUndo {
+        -:   15:    Produs produsAdaugat;
+        -:   16:    RepoAbstract &repo;
+        -:   17:public:
+function _ZN10UndoAdaugaC1ER12RepoAbstractR6Produs called 20 returned 100% blocks executed 100%
+       20:   18:    UndoAdauga(RepoAbstract &repo, Produs &produs) : repo{repo}, produsAdaugat{produs} {}
+       20:   18-block  0
+call    0 returned 20
+call    1 returned 20
+        -:   19:
+function _ZN10UndoAdauga6doUndoEv called 3 returned 100% blocks executed 100%
+        3:   20:    void doUndo() override {
+        3:   21:        repo.del(produsAdaugat);
+        3:   21-block  0
+call    0 returned 3
+        3:   22:    }
+        -:   23:};
+        -:   24:
+        -:   25:class UndoModifica: public ActiuneUndo  {
+        -:   26:    Produs produsVechi, produsNou;
+        -:   27:    RepoAbstract &repo;
+        -:   28:public:
+function _ZN12UndoModificaC1ER12RepoAbstractR6ProdusS3_ called 2 returned 100% blocks executed 83%
+        2:   29:    UndoModifica(RepoAbstract &repo, Produs &produsVechi, Produs &produsNou) : repo{repo}, produsVechi{produsVechi}, produsNou{produsNou} {}
+        2:   29-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+branch  3 taken 2 (fallthrough)
+branch  4 taken 0 (throw)
+        2:   29-block  1
+    $$$$$:   29-block  2
+call    5 never executed
+        -:   30:
+function _ZN12UndoModifica6doUndoEv called 1 returned 100% blocks executed 100%
+        1:   31:    void doUndo() override {
+        1:   32:        repo.del(produsVechi);
+        1:   32-block  0
+call    0 returned 1
+        1:   33:        repo.store(produsNou);
+call    0 returned 1
+        1:   34:    }
+        -:   35:};
+        -:   36:
+        -:   37:class UndoSterge: public ActiuneUndo {
+        -:   38:    Produs produsSters;
+        -:   39:    RepoAbstract &repo;
+        -:   40:public:
+function _ZN10UndoStergeC1ER12RepoAbstractR6Produs called 2 returned 100% blocks executed 100%
+        2:   41:    UndoSterge(RepoAbstract &repo, Produs &produsSters) : repo{repo}, produsSters{produsSters} {}
+        2:   41-block  0
+call    0 returned 2
+call    1 returned 2
+        -:   42:
+function _ZN10UndoSterge6doUndoEv called 1 returned 100% blocks executed 100%
+        1:   43:    void doUndo() override {
+        1:   44:        repo.store(produsSters);
+        1:   44-block  0
+call    0 returned 1
+        1:   45:    }
+        -:   46:};
+        -:   47:
+        -:   48:#endif //LAB6_UNDO_H

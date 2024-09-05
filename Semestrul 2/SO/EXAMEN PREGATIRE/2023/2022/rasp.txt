@@ -1,0 +1,74 @@
+1. 4 REGULI FOLOSITE IN EXPRESIILE REGULARE PENTRU A SPECIFICA DE CATE ORI EXPRESIA PRECEDENTA TREBUIE SA SE REPETE
+
+R:
+
+{x,} - de minim x ori
+{,x} - de maxim x ori
+{a,b} - de la a pana la b ori
++ - >=1
+* - >=0
+? - cel mult odata
+{x} - de exact x ori
+
+2. NR MAXIM DE PROCESE FIU CREATE DE FRAGMENTUL DE COD DE MAI JOS CARE POT COEXISTA SIMULTAN
+
+for(i=0;i<12;i++) {
+	if(fork()==0) {
+		sleep(rand()%10);
+		exit(0);
+	}
+	if(i%3==0) {
+		wait(0);
+	}
+}
+
+R: 0,3,6,9 - vor fi asteptate => 1,2,4,...11 vor coexista => 8 procese vor coexista
+
+3. UN PROCES DESCHIDE UN FIFO PENTRU SCRIERE SI E SINGURUL PROCES DIN SISTEM CARE FOLOSESTE SAU VA
+FOLOSI VREODATA ACEL FIFO. CAND ISI VA INCHEIA PROCESUL EXECUTIA?
+
+R: Procesul nu isi va incheia executia niciodata. La deschiderea unui fifo pentru scriere,
+inainte de a da return asteapta sa fie ceruta si operatia de citire (complementara).
+
+4. CONSIDERATI CA AVETI UN MILION DE FISIERE TEXT SI TREBUIE SA SCRIETI UN PROGRAM CARE SA SORTEZE
+LINIILE FIECARUIA. CATE THREAD-URI ATI FOLOSI PENTRU ACEST PROGRAM? CUM ATI ALEGE ACEST NUMAR?
+JUSTIFICAT!
+
+R: As folosi atatea thread-uri cate core-uri disponibele am sau un multiplu al acestui numar.
+In acest fel se vor executa cat mai multe operatii in paralel si programul va avea timp de executare
+minim.
+
+5.
+
+6. DE CE OPERATIILE I/O PUN PROCESUL IN STAREA WAIT SI NU IN STAREA READY?
+
+R: Un proces ajunge in starea de wait deoarece este dat jos de pe procesor pentru a lasa celelalte
+procese sa isi faca treaba pana candd isi primeste toate datele pe care le necesita. Va trece ulterior
+in stare de ready, asteptand sa prinda iar procesorul.
+
+7. AVANTAJE SI DEZAVANTAJE -- ALOCAREA CU PARTITII VARIABILE SI ALOCAREA PAGINATA
+
+R: Un dezavantaj al partitiilor variabile ar fi fragmentarea memoriei (alocarea paginata rezolva aceasta problema)
+Un avantaj ar fi un calcul de adresa mai simplu (avem nevoie doar de numarul partitiei si de offset), la alocarea
+paginata avem nevoie si de tabela de pagini pe langa offset.
+
+8. AVANTAJE SI DEZAVANTAJE -- FIRST-FIT SI WORST-FIT
+
+R: Un avantaj al politicii FIRST-FIT este faptul ca este rapida (Primul spatiu in care incape, comparat cu cel
+mai mare spatiu disponibil)
+Un dezavantaj ar fi fragmentarea memoriei in parti dificil de folosit ulterior
+
+9. CARE ESTE CEA MAI PRIORITARA CLASA DE PAGINI DE MEMORIE DIN CARE POLITICA DE INLCOUIRE NRU AR ALEGE O CA PAGINA
+VICTIMA?
+
+R: NRU (not recently used) va alege ca victima prima clasa nevida.
+In functie de prioritatea acestea sunt: 
+0 :00 - necitita si nescrisa recent
+1 :01 - scrisa recent
+2 :10 - citite recent
+3 :11 - citite si scrise recent
+ 
+10. CONSIDERAND CA DIMENSIUNEA UNUI BLOC ESTE B SI DIMENSIUNEA UNI ADRESE ESTE A, CATE BLOCURI DE DATE SUNT
+ADRESATE DE INDIRECTAREA TRIPLA A UNUI I-NOD
+
+(B/A)^3

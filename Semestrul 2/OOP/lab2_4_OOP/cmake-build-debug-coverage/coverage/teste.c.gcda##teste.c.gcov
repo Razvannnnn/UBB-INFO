@@ -1,0 +1,466 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/teste.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\teste.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\teste.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "teste.h"
+        -:    2:#include "domeniu.h"
+        -:    3:#include <assert.h>
+        -:    4:#include <string.h>
+        -:    5:#include <stdio.h>
+        -:    6:#include <malloc.h>
+        -:    7:#include "repository.h"
+        -:    8:#include "validare.h"
+        -:    9:#include "service.h"
+        -:   10:#include "MyList.h"
+        -:   11:
+function teste_domeniu called 1 returned 100% blocks executed 81%
+        1:   12:void teste_domeniu(){
+        -:   13:    struct Oferta oferta[2];
+        -:   14:
+        1:   15:    set_id(&oferta[0], 1);
+        1:   15-block  0
+call    0 returned 1
+        1:   16:    set_tip(&oferta[0], "apartament");
+call    0 returned 1
+        1:   17:    set_adresa(&oferta[0], "Cluj");
+call    0 returned 1
+        1:   18:    set_suprafata(&oferta[0], 400);
+call    0 returned 1
+        1:   19:    set_pret(&oferta[0], 30123);
+call    0 returned 1
+        -:   20:
+       1*:   21:    assert(get_id(oferta[0]) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   21-block  0
+call    3 never executed
+        1:   21-block  1
+       1*:   22:    assert(strcmp(get_tip(&oferta[0]), "apartament") == 0);
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   22-block  1
+call    3 never executed
+        1:   22-block  2
+       1*:   23:    assert(strcmp(get_adresa(&oferta[0]), "Cluj") == 0);
+        1:   23-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   23-block  1
+call    3 never executed
+        1:   23-block  2
+       1*:   24:    assert(get_suprafata(oferta[0]) == 400);
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   24-block  1
+call    3 never executed
+        1:   24-block  2
+       1*:   25:    assert(get_pret(oferta[0]) == 30123);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   25-block  1
+call    3 never executed
+        1:   25-block  2
+        1:   26:}
+        -:   27:
+function teste_repository called 1 returned 100% blocks executed 84%
+        1:   28:void teste_repository(){
+        1:   29:    MyList *repo = creazaLista();
+        1:   29-block  0
+call    0 returned 1
+        1:   30:    struct Oferta oferta = {1, "apartament", "Cluj", 400, 21312};
+        1:   31:    struct Oferta oferta2 = {2, "apartament2", "Borsa", 500, 2312};
+        1:   32:    struct Oferta oferta2_m = {2, "apartament3", "Borsa", 500, 2312};
+        1:   33:    adaugare_oferta(repo, oferta);
+call    0 returned 1
+        1:   34:    adaugare_oferta(repo, oferta);
+call    0 returned 1
+        1:   35:    adaugare_oferta(repo, oferta2);
+call    0 returned 1
+        1:   36:    int dim = 0;
+        1:   37:    dimensiune(repo, &dim);
+call    0 returned 1
+       1*:   38:    assert(dim == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   38-block  0
+call    2 never executed
+        1:   38-block  1
+        1:   39:    stergere_oferta(repo, 3);
+        1:   39-block  0
+call    0 returned 1
+        1:   40:    dimensiune(repo, &dim);
+call    0 returned 1
+       1*:   41:    assert(dim == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   41-block  0
+call    2 never executed
+        1:   41-block  1
+        1:   42:    stergere_oferta(repo, 1);
+        1:   42-block  0
+call    0 returned 1
+        1:   43:    dimensiune(repo, &dim);
+call    0 returned 1
+       1*:   44:    assert(dim == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   44-block  0
+call    2 never executed
+        1:   44-block  1
+        1:   45:    struct Oferta* lista = (struct Oferta*)malloc(dim * sizeof(struct Oferta));
+        1:   46:    get_all_oferte(repo, lista, &dim);
+        1:   46-block  0
+call    0 returned 1
+        1:   47:    modificare_oferta(repo, 1, oferta);
+call    0 returned 1
+       1*:   48:    assert(strcmp(get_tip(&lista[0]), "apartament2") == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   48-block  0
+call    3 never executed
+        1:   48-block  1
+        1:   49:    modificare_oferta(repo, 2, oferta2_m);
+        1:   49-block  0
+call    0 returned 1
+        1:   50:    get_all_oferte(repo, lista, &dim);
+call    0 returned 1
+       1*:   51:    assert(strcmp(get_tip(&lista[0]), "apartament3") == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   51-block  0
+call    3 never executed
+        1:   51-block  1
+        1:   52:    free(lista);
+        1:   53:    distrugeLista(repo);
+        1:   53-block  0
+call    0 returned 1
+        1:   54:}
+        -:   55:
+function teste_validare called 1 returned 100% blocks executed 78%
+        1:   56:void teste_validare(){
+        1:   57:    struct Oferta oferta = {1, "apartament", "Cluj", 400, 21312};
+        1:   58:    struct Oferta oferta2 = {-2, "apartamen", "", 0, -2312};
+        -:   59:    char erori[200];
+        1:   60:    validare_oferta(oferta, erori);
+        1:   60-block  0
+call    0 returned 1
+       1*:   61:    assert(strlen(erori) == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   61-block  0
+call    2 never executed
+        1:   61-block  1
+        1:   62:    validare_oferta(oferta2, erori);
+        1:   62-block  0
+call    0 returned 1
+       1*:   63:    assert(strcmp(erori, "\nID invalid!\nTip invalid!\nAdresa invalida!\nSuprafata invalida!\nPret invalida!") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   63-block  0
+call    2 never executed
+        1:   63-block  1
+        1:   64:}
+        -:   65:
+function teste_service called 1 returned 100% blocks executed 85%
+        1:   66:void teste_service(){
+        1:   67:    MyList *repo = creazaLista();
+        1:   67-block  0
+call    0 returned 1
+        1:   68:    MyList *undolist = creazaLista();
+call    0 returned 1
+        1:   69:    adaugareOferte(repo, undolist, 1, "apartament", "Cluj-Napoca", 500, 1213);
+call    0 returned 1
+        1:   70:    adaugareOferte(repo, undolist, 2, "teren", "Borsa", 600, 2323);
+call    0 returned 1
+        -:   71:    int dim;
+        1:   72:    adaugareOferte(repo, undolist, 1, "apartamen", "Cluj-Napoca", 500, 1213);
+call    0 returned 1
+        1:   73:    adaugareOferte(repo, undolist, 3, "casa", "Cluj", 500, 1234);
+call    0 returned 1
+        1:   74:    Dim(repo, &dim);
+call    0 returned 1
+       1*:   75:    assert(dim == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   75-block  0
+call    2 never executed
+        1:   75-block  1
+        1:   76:    modificareOferta(repo, undolist, 1, "apartament", "Baia Mare", 501, 2332);
+        1:   76-block  0
+call    0 returned 1
+        1:   77:    modificareOferta(repo, undolist, 1, "", "Baia Mare", 501, 2332);
+call    0 returned 1
+        -:   78:
+        1:   79:    struct Oferta* lista = (struct Oferta*)malloc(50 * sizeof(struct Oferta));
+        1:   80:    getAllOferte(repo, lista, &dim);
+call    0 returned 1
+       1*:   81:    assert(strcmp(get_adresa(&lista[0]), "Baia Mare") == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   81-block  0
+call    3 never executed
+        1:   81-block  1
+       1*:   82:    assert(get_suprafata(lista[0]) == 501);
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   82-block  1
+call    3 never executed
+        1:   82-block  2
+       1*:   83:    assert(get_pret(lista[0]) == 2332);
+        1:   83-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   83-block  1
+call    3 never executed
+        1:   83-block  2
+        1:   84:    modificareOferta(repo, undolist, 4, "apartament", "Baia Mare", 501, 2332);
+        1:   84-block  0
+call    0 returned 1
+        1:   85:    getAllOferte(repo, lista, &dim);
+call    0 returned 1
+        3:   86:    for (int i = 1; i < dim; i ++)
+        2:   86-block  0
+        3:   86-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+       2*:   87:        if (strcmp(get_adresa(&lista[i]), "Baia Mare") == 0) assert(0);
+        2:   87-block  0
+call    0 returned 2
+branch  1 taken 0 (fallthrough)
+branch  2 taken 2
+    %%%%%:   87-block  1
+call    3 never executed
+        1:   88:    stergereOferta(repo, undolist, 4);
+        1:   88-block  0
+call    0 returned 1
+        1:   89:    stergereOferta(repo, undolist, 1);
+call    0 returned 1
+        1:   90:    Dim(repo, &dim);
+call    0 returned 1
+       1*:   91:    assert(dim == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   91-block  0
+call    2 never executed
+        1:   91-block  1
+        1:   92:    stergereOferta(repo, undolist, 2);
+        1:   92-block  0
+call    0 returned 1
+        1:   93:    Dim(repo, &dim);
+call    0 returned 1
+       1*:   94:    assert(dim == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   94-block  0
+call    2 never executed
+        1:   94-block  1
+        1:   95:    adaugareOferte(repo, undolist, 1, "casa", "Cluj-Napoca", 700, 100);
+        1:   95-block  0
+call    0 returned 1
+        1:   96:    adaugareOferte(repo, undolist, 2, "teren", "Borsa", 600, 600);
+call    0 returned 1
+        1:   97:    adaugareOferte(repo, undolist, 4, "apartament", "Cluj-Napoca", 100, 100);
+call    0 returned 1
+        1:   98:    adaugareOferte(repo, undolist, 5, "teren", "Borsa", 100, 700);
+call    0 returned 1
+        1:   99:    odonareOferteDupaPretTip(repo, lista, sort_cresc_verif);
+call    0 returned 1
+        1:  100:    Dim(repo, &dim);
+call    0 returned 1
+        5:  101:    for (int i = 0; i < dim - 1; i ++)
+        4:  101-block  0
+        5:  101-block  1
+branch  0 taken 4
+branch  1 taken 1 (fallthrough)
+       4*:  102:        if (get_pret(lista[i]) > get_pret(lista[i + 1])) assert(0);
+        4:  102-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 0 (fallthrough)
+branch  3 taken 4
+    %%%%%:  102-block  1
+call    4 never executed
+        1:  103:    odonareOferteDupaPretTip(repo, lista, sort_descresc_verif);
+        1:  103-block  0
+call    0 returned 1
+        1:  104:    Dim(repo, &dim);
+call    0 returned 1
+        5:  105:    for (int i = 0; i < dim - 1; i ++)
+        4:  105-block  0
+        5:  105-block  1
+branch  0 taken 4
+branch  1 taken 1 (fallthrough)
+       4*:  106:        if (get_pret(lista[i]) < get_pret(lista[i + 1])) assert(0);
+        4:  106-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 0 (fallthrough)
+branch  3 taken 4
+    %%%%%:  106-block  1
+call    4 never executed
+        1:  107:    ordonareBubble(repo, lista, sort_cresc_verif);
+        1:  107-block  0
+call    0 returned 1
+        1:  108:    Dim(repo, &dim);
+call    0 returned 1
+        5:  109:    for (int i = 0; i < dim - 1; i ++)
+        4:  109-block  0
+        5:  109-block  1
+branch  0 taken 4
+branch  1 taken 1 (fallthrough)
+       4*:  110:        if (get_pret(lista[i]) > get_pret(lista[i + 1])) assert(0);
+        4:  110-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 0 (fallthrough)
+branch  3 taken 4
+    %%%%%:  110-block  1
+call    4 never executed
+        1:  111:    ordonareBubble(repo, lista, sort_descresc_verif);
+        1:  111-block  0
+call    0 returned 1
+        1:  112:    Dim(repo, &dim);
+call    0 returned 1
+        5:  113:    for (int i = 0; i < dim - 1; i ++)
+        4:  113-block  0
+        5:  113-block  1
+branch  0 taken 4
+branch  1 taken 1 (fallthrough)
+       4*:  114:        if (get_pret(lista[i]) < get_pret(lista[i + 1])) assert(0);
+        4:  114-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 0 (fallthrough)
+branch  3 taken 4
+    %%%%%:  114-block  1
+call    4 never executed
+        -:  115:    int l;
+        1:  116:    filtrareDupaUnCriteriu(repo, lista, &l, 2, 0, "teren", 0);
+        1:  116-block  0
+call    0 returned 1
+       1*:  117:    assert(l == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  117-block  0
+call    2 never executed
+        1:  117-block  1
+        1:  118:    filtrareDupaUnCriteriu(repo, lista, &l, 1, 100, "", 0);
+        1:  118-block  0
+call    0 returned 1
+       1*:  119:    assert(l == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  119-block  0
+call    2 never executed
+        1:  119-block  1
+        1:  120:    filtrareDupaUnCriteriu(repo, lista, &l, 3, 0, "", 600);
+        1:  120-block  0
+call    0 returned 1
+       1*:  121:    assert(l == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  121-block  0
+call    2 never executed
+        1:  121-block  1
+        1:  122:    filtrareNoua(repo, lista, &l, 400);
+        1:  122-block  0
+call    0 returned 1
+       1*:  123:    assert(l == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  123-block  0
+call    2 never executed
+        1:  123-block  1
+        1:  124:    free(lista);
+        1:  125:    distrugeLista(repo);
+        1:  125-block  0
+call    0 returned 1
+        1:  126:    distrugeListaUndo(undolist);
+call    0 returned 1
+        1:  127:}
+        -:  128:
+function teste_lista called 1 returned 100% blocks executed 84%
+        1:  129:void teste_lista(){
+        1:  130:    MyList *lista = (MyList *) creazaVector();
+        1:  130-block  0
+call    0 returned 1
+        1:  131:    int a = 1234;
+        1:  132:    int *v = &a;
+        1:  133:    adauga((MyList *) lista, v);
+call    0 returned 1
+        1:  134:    *v = 1213;
+        1:  135:    adauga((MyList *) lista, v);
+call    0 returned 1
+        1:  136:    adauga((MyList *) lista, v);
+call    0 returned 1
+       1*:  137:    assert(size((MyList *) lista) == 3);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  137-block  0
+call    3 never executed
+        1:  137-block  1
+        1:  138:    v = (int*)get((MyList *) lista, 1);
+        1:  138-block  0
+call    0 returned 1
+       1*:  139:    assert(*v == 1213);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  139-block  0
+call    2 never executed
+        1:  139-block  1
+        1:  140:    sterge((MyList *) lista, 1);
+        1:  140-block  0
+call    0 returned 1
+       1*:  141:    assert(size((MyList *) lista) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  141-block  0
+call    3 never executed
+        1:  141-block  1
+        1:  142:    MyList* copy = copyList((MyList *) lista);
+        1:  142-block  0
+call    0 returned 1
+       1*:  143:    assert(size(copy) == 2);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  143-block  0
+call    3 never executed
+        1:  143-block  1
+        1:  144:    distruge((MyList *) lista);
+        1:  144-block  0
+call    0 returned 1
+        1:  145:    distruge(copy);
+call    0 returned 1
+        1:  146:}
+        -:  147:
+function run_all_tests called 1 returned 100% blocks executed 100%
+        1:  148:void run_all_tests(){
+        1:  149:    teste_domeniu();
+        1:  149-block  0
+call    0 returned 1
+        1:  150:    teste_repository();
+call    0 returned 1
+        1:  151:    teste_validare();
+call    0 returned 1
+        1:  152:    teste_service();
+call    0 returned 1
+        1:  153:    teste_lista();
+call    0 returned 1
+        1:  154:}

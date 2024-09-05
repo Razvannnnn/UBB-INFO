@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir

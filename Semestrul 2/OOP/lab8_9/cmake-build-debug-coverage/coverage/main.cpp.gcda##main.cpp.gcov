@@ -1,0 +1,102 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/main.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include "repo.h"
+        -:    3:#include "produs.h"
+        -:    4:#include "ui.h"
+        -:    5:#include "validare.h"
+        -:    6:
+function _Z11rulareTestev called 1 returned 100% blocks executed 100%
+        1:    7:void rulareTeste() {
+        1:    8:    testeREPO();
+        1:    8-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:    9:    testeLABREPO();
+        1:    9-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   10:    testeService();
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   11:    Valid valid;
+        1:   12:    teste_validare(valid);
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13:    printf("Testele au fost rulate cu succes!\n");
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   14:}
+        1:   14-block  0
+        -:   15:
+function main called 1 returned 100% blocks executed 62%
+        1:   16:int main() {
+        1:   17:    rulareTeste();
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   18:    //RepoProdus repo;
+        -:   19:
+        1:   20:    LabRepo repo;
+        1:   20-block  0
+call    0 returned 1
+        1:   21:    repo.setProbabilitate(0.9);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   22:
+        1:   23:    string filename = "C:\\Users\\razva\\Desktop\\OOP\\lab8_9\\produse.txt";
+        1:   23-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   23-block  1
+        -:   24:    //RepoProdusFile repo{filename};
+        1:   25:    CosProduse cos;
+call    0 returned 1
+        1:   26:    serviceProdus service{repo, cos};
+call    0 returned 1
+        1:   27:    UI ui{service};
+call    0 returned 1
+        1:   28:    ui.startUI();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   29:    return 0;
+        1:   30:}
+        1:   30-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:   30-block  1
+call    4 never executed
+    $$$$$:   30-block  2
+call    5 never executed
+    $$$$$:   30-block  3
+call    6 never executed
+    $$$$$:   30-block  4
+call    7 never executed
+        -:   31:
+        -:   32:/*
+        -:   33:    1 Magazin
+        -:   34:
+        -:   35:    Creați o aplicație care permite:
+        -:   36:    · gestiunea unei liste de produse. Produs: nume, tip, preț, producător
+        -:   37:    · adăugare, ștergere, modificare și afișare produse
+        -:   38:    · căutare produs
+        -:   39:    · filtrare produse după: preț, nume, producător
+        -:   40:    · sortare produse după: nume, preț, nume + tip
+        -:   41:
+        -:   42: */

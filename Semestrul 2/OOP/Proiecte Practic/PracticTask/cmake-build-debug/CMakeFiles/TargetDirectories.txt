@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/PracticTask/cmake-build-debug/CMakeFiles/PracticTask.dir
+C:/Users/razva/Desktop/PracticTask/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/PracticTask/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/PracticTask/cmake-build-debug/CMakeFiles/PracticTask_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/PracticTask/cmake-build-debug/CMakeFiles/PracticTask_autogen.dir

@@ -1,0 +1,4 @@
+grep -E -c '^$' file
+grep -E -V -c '..*' file
+grep -E -V -c '.+' file
+grep -E -V -c '.{1,}' file

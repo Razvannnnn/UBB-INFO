@@ -1,0 +1,8 @@
+12,Audi,Mare,10
+32,BMW,Mediu,12
+69,Ferrari,Mare,6
+79,Ferrari,Mic,8
+432,Lambo,Mediu,6
+43,Mercedes,Mic,10
+25,Renault,Mic,8
+901,Audi,Mare,8

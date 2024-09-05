@@ -1,0 +1,168 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/service.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_SERVICE_H
+        -:    2:#define LAB6_SERVICE_H
+        -:    3:
+        -:    4:#include <string>
+        -:    5:#include <algorithm>
+        -:    6:#include "repo.h"
+        -:    7:#include "produs.h"
+        -:    8:#include "vector.h"
+        -:    9:#include "validare.h"
+        -:   10:#include "CosProduse.h"
+        -:   11:#include "Error.h"
+        -:   12:#include "undo.h"
+        -:   13:#include <unordered_map>
+        -:   14:#include <memory>
+        -:   15:
+        -:   16:using std::string;
+        -:   17:
+        -:   18:class serviceProdus {
+        -:   19:private:
+        -:   20:    RepoAbstract& repo;
+        -:   21:    CosProduse& cosCurent;
+        -:   22:    Valid validare;
+        -:   23:    vector<std::unique_ptr<ActiuneUndo>> undoAct;
+        -:   24:public:
+        -:   25:    explicit serviceProdus(class RepoAbstract& repo, CosProduse& cosCurent): repo{ repo }, cosCurent{ cosCurent } {
+        -:   26:    }
+        -:   27:
+        -:   28:    serviceProdus() = delete;
+        -:   29:
+        -:   30:    /**
+        -:   31:     * Adauga un produs in lista de produse
+        -:   32:     * @param nume - numele produsului
+        -:   33:     * @param tip - tipul produsului
+        -:   34:     * @param pret - pretul produsului
+        -:   35:     * @param producator - producatorul produsului
+        -:   36:     */
+        -:   37:    void adaugare(string nume, string tip, double pret, string producator);
+        -:   38:
+        -:   39:    /**
+        -:   40:     * Sterge un produs din lista de produse
+        -:   41:     * @param nume - numele produsului
+        -:   42:     * @param tip - tipul produsului
+        -:   43:     * @param pret - pretul produsului
+        -:   44:     * @param producator - producatorul produsului
+        -:   45:     */
+        -:   46:    void stergere( string nume,  string tip, double pret,  string producator);
+        -:   47:
+        -:   48:    /**
+        -:   49:     * Modifica un produs din lista de produse
+        -:   50:     * @param nume - numele produsului pe care il schimbam
+        -:   51:     * @param tip - tipul produsului pe care il schimbam
+        -:   52:     * @param pret - pretul produsului pe care il schimbam
+        -:   53:     * @param producator - producatorul produslui pe care il schimbam
+        -:   54:     * @param numeNou - numele produsului nou
+        -:   55:     * @param tipNou - tipul produsului nou
+        -:   56:     * @param pretNou - pretul produsului nou
+        -:   57:     * @param producatorNou - producatorul produslui nou
+        -:   58:     */
+        -:   59:    void modificare(string nume, string tip, double pret, string producator,
+        -:   60:                    string numeNou, string tipNou, double pretNou, string producatorNou);
+        -:   61:
+        -:   62:    /**
+        -:   63:     * Functie care cauta un produs si il returneaza
+        -:   64:     * @param nume - numele produsului
+        -:   65:     * @param tip - tipul produsului
+        -:   66:     * @param producator - producatorul produsului
+        -:   67:     */
+        -:   68:    Produs &cauta(const string& nume, const string& tip, const string& producator);
+        -:   69:
+        -:   70:
+        -:   71:    /**
+        -:   72:     * Functii de sortare
+        -:   73:     * @return o lista de tip vector
+        -:   74:     */
+        -:   75:    vector<Produs> sortNume();
+        -:   76:    vector<Produs> sortPret();
+        -:   77:    vector<Produs> sortNumeTip();
+        -:   78:
+        -:   79:    /**
+        -:   80:     * Functie de filtrare in functie de nume
+        -:   81:     * @param nume
+        -:   82:     * @return
+        -:   83:     */
+        -:   84:    vector<Produs> filtrareNume(const string& nume);
+        -:   85:
+        -:   86:    /**
+        -:   87:     * Functie de filtrare in functie de tip
+        -:   88:     * @param tip
+        -:   89:     * @return
+        -:   90:     */
+        -:   91:    vector<Produs> filtrareTip(const string& tip);
+        -:   92:
+        -:   93:    /**
+        -:   94:     * Functie de filtrare in functie de pret
+        -:   95:     * @param pret
+        -:   96:     * @return
+        -:   97:     */
+        -:   98:    vector<Produs> filtrarePret(double pret);
+        -:   99:
+        -:  100:    /**
+        -:  101:     * Functie de filtrare in functie de producator
+        -:  102:     * @param producator
+        -:  103:     * @return
+        -:  104:     */
+        -:  105:    vector<Produs> filtrareProducator(const string& producator);
+        -:  106:
+        -:  107:    /**
+        -:  108:     * Getter care returneaza un vector cu lista de produse
+        -:  109:     * @return - lista produse
+        -:  110:     */
+function _ZN13serviceProdus6getAllEv called 0 returned 0% blocks executed 0%
+    #####:  111:    vector<Produs> &getAll() {
+    #####:  112:        return repo.getAll();
+    %%%%%:  112-block  0
+call    0 never executed
+        -:  113:    }
+        -:  114:
+        -:  115:    /**
+        -:  116:     * Returneaza nr de produse de tipul tip
+        -:  117:     * @return
+        -:  118:     */
+        -:  119:    unordered_map<string, int> raportTip();
+        -:  120:
+        -:  121:    /**
+        -:  122:     * Adauga un produs cu numele nume, de tipul tip si cu producatorul producator in cos
+        -:  123:     * @param nume
+        -:  124:     * @param tip
+        -:  125:     * @param producator
+        -:  126:     */
+        -:  127:    void cosAdauga(const string &nume, const string &tip, const string &producator);
+        -:  128:
+        -:  129:    /**
+        -:  130:     * Adauga un numar random de produse in cos
+        -:  131:     * @param nr
+        -:  132:     * @return
+        -:  133:     */
+        -:  134:    int cosAdaugaRandom(int nr);
+        -:  135:
+        -:  136:    /**
+        -:  137:     * Goleste produsele din cos
+        -:  138:     */
+        -:  139:    void cosSterge();
+        -:  140:
+        -:  141:    /**
+        -:  142:     * Returneaza toate produsele din cos
+        -:  143:     * @return
+        -:  144:     */
+        -:  145:    const vector<Produs> &getAllCos();
+        -:  146:
+        -:  147:    /**
+        -:  148:     * Exporta tot cosul intr un fisier dat ca parametru
+        -:  149:     * @param filename - calea catre fisier
+        -:  150:     */
+        -:  151:    void cosExport(const string &filename);
+        -:  152:
+        -:  153:    /**
+        -:  154:     * Realizeaza operatia de undo
+        -:  155:     */
+        -:  156:    void undo();
+        -:  157:};
+        -:  158:
+        -:  159:void testeService();
+        -:  160:
+        -:  161:#endif //LAB6_SERVICE_H

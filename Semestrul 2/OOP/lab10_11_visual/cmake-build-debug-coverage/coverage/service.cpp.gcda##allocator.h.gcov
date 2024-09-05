@@ -1,0 +1,722 @@
+        -:    0:Source:C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocator.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:// Allocators -*- C++ -*-
+        -:    2:
+        -:    3:// Copyright (C) 2001-2023 Free Software Foundation, Inc.
+        -:    4://
+        -:    5:// This file is part of the GNU ISO C++ Library.  This library is free
+        -:    6:// software; you can redistribute it and/or modify it under the
+        -:    7:// terms of the GNU General Public License as published by the
+        -:    8:// Free Software Foundation; either version 3, or (at your option)
+        -:    9:// any later version.
+        -:   10:
+        -:   11:// This library is distributed in the hope that it will be useful,
+        -:   12:// but WITHOUT ANY WARRANTY; without even the implied warranty of
+        -:   13:// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        -:   14:// GNU General Public License for more details.
+        -:   15:
+        -:   16:// Under Section 7 of GPL version 3, you are granted additional
+        -:   17:// permissions described in the GCC Runtime Library Exception, version
+        -:   18:// 3.1, as published by the Free Software Foundation.
+        -:   19:
+        -:   20:// You should have received a copy of the GNU General Public License and
+        -:   21:// a copy of the GCC Runtime Library Exception along with this program;
+        -:   22:// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+        -:   23:// <http://www.gnu.org/licenses/>.
+        -:   24:
+        -:   25:/*
+        -:   26: * Copyright (c) 1996-1997
+        -:   27: * Silicon Graphics Computer Systems, Inc.
+        -:   28: *
+        -:   29: * Permission to use, copy, modify, distribute and sell this software
+        -:   30: * and its documentation for any purpose is hereby granted without fee,
+        -:   31: * provided that the above copyright notice appear in all copies and
+        -:   32: * that both that copyright notice and this permission notice appear
+        -:   33: * in supporting documentation.  Silicon Graphics makes no
+        -:   34: * representations about the suitability of this software for any
+        -:   35: * purpose.  It is provided "as is" without express or implied warranty.
+        -:   36: */
+        -:   37:
+        -:   38:/** @file bits/allocator.h
+        -:   39: *  This is an internal header file, included by other library headers.
+        -:   40: *  Do not attempt to use it directly. @headername{memory}
+        -:   41: */
+        -:   42:
+        -:   43:#ifndef _ALLOCATOR_H
+        -:   44:#define _ALLOCATOR_H 1
+        -:   45:
+        -:   46:#include <bits/c++allocator.h> // Define the base class to std::allocator.
+        -:   47:#include <bits/memoryfwd.h>
+        -:   48:#if __cplusplus >= 201103L
+        -:   49:#include <type_traits>
+        -:   50:#endif
+        -:   51:
+        -:   52:#define __cpp_lib_incomplete_container_elements 201505L
+        -:   53:
+        -:   54:namespace std _GLIBCXX_VISIBILITY(default)
+        -:   55:{
+        -:   56:_GLIBCXX_BEGIN_NAMESPACE_VERSION
+        -:   57:
+        -:   58:  /**
+        -:   59:   *  @addtogroup allocators
+        -:   60:   *  @{
+        -:   61:   */
+        -:   62:
+        -:   63:  // Since C++20 the primary template should be used for allocator<void>,
+        -:   64:  // but then it would have a non-trivial default ctor and dtor for C++20,
+        -:   65:  // but trivial for C++98-17, which would be an ABI incompatibility between
+        -:   66:  // different standard dialects. So C++20 still uses the allocator<void>
+        -:   67:  // explicit specialization, with the historical ABI properties, but with
+        -:   68:  // the same members that are present in the primary template.
+        -:   69:
+        -:   70:  /** std::allocator<void> specialization.
+        -:   71:   *
+        -:   72:   * @headerfile memory
+        -:   73:   */
+        -:   74:  template<>
+        -:   75:    class allocator<void>
+        -:   76:    {
+        -:   77:    public:
+        -:   78:      typedef void        value_type;
+        -:   79:      typedef size_t      size_type;
+        -:   80:      typedef ptrdiff_t   difference_type;
+        -:   81:
+        -:   82:#if __cplusplus <= 201703L
+        -:   83:      // These were removed for C++20, allocator_traits does the right thing.
+        -:   84:      typedef void*       pointer;
+        -:   85:      typedef const void* const_pointer;
+        -:   86:
+        -:   87:      template<typename _Tp1>
+        -:   88:	struct rebind
+        -:   89:	{ typedef allocator<_Tp1> other; };
+        -:   90:#endif
+        -:   91:
+        -:   92:#if __cplusplus >= 201103L
+        -:   93:      // _GLIBCXX_RESOLVE_LIB_DEFECTS
+        -:   94:      // 2103. std::allocator propagate_on_container_move_assignment
+        -:   95:      using propagate_on_container_move_assignment = true_type;
+        -:   96:
+        -:   97:      using is_always_equal
+        -:   98:	_GLIBCXX20_DEPRECATED_SUGGEST("std::allocator_traits::is_always_equal")
+        -:   99:	= true_type;
+        -:  100:
+        -:  101:#if __cplusplus >= 202002L
+        -:  102:      // As noted above, these members are present for C++20 to provide the
+        -:  103:      // same API as the primary template, but still trivial as in pre-C++20.
+        -:  104:      allocator() = default;
+        -:  105:      ~allocator() = default;
+        -:  106:
+        -:  107:      template<typename _Up>
+        -:  108:	__attribute__((__always_inline__))
+        -:  109:	constexpr
+        -:  110:	allocator(const allocator<_Up>&) noexcept { }
+        -:  111:
+        -:  112:      // No allocate member because it's ill-formed by LWG 3307.
+        -:  113:      // No deallocate member because it would be undefined to call it
+        -:  114:      // with any pointer which wasn't obtained from allocate.
+        -:  115:#endif // C++20
+        -:  116:#endif // C++11
+        -:  117:    };
+        -:  118:
+        -:  119:  /**
+        -:  120:   * @brief  The @a standard allocator, as per C++03 [20.4.1].
+        -:  121:   *
+        -:  122:   *  See https://gcc.gnu.org/onlinedocs/libstdc++/manual/memory.html#std.util.memory.allocator
+        -:  123:   *  for further details.
+        -:  124:   *
+        -:  125:   *  @tparam  _Tp  Type of allocated object.
+        -:  126:   *
+        -:  127:   *  @headerfile memory
+        -:  128:   */
+        -:  129:  template<typename _Tp>
+        -:  130:    class allocator : public __allocator_base<_Tp>
+        -:  131:    {
+        -:  132:    public:
+        -:  133:      typedef _Tp        value_type;
+        -:  134:      typedef size_t     size_type;
+        -:  135:      typedef ptrdiff_t  difference_type;
+        -:  136:
+        -:  137:#if __cplusplus <= 201703L
+        -:  138:      // These were removed for C++20.
+        -:  139:      typedef _Tp*       pointer;
+        -:  140:      typedef const _Tp* const_pointer;
+        -:  141:      typedef _Tp&       reference;
+        -:  142:      typedef const _Tp& const_reference;
+        -:  143:
+        -:  144:      template<typename _Tp1>
+        -:  145:	struct rebind
+        -:  146:	{ typedef allocator<_Tp1> other; };
+        -:  147:#endif
+        -:  148:
+        -:  149:#if __cplusplus >= 201103L
+        -:  150:      // _GLIBCXX_RESOLVE_LIB_DEFECTS
+        -:  151:      // 2103. std::allocator propagate_on_container_move_assignment
+        -:  152:      using propagate_on_container_move_assignment = true_type;
+        -:  153:
+        -:  154:      using is_always_equal
+        -:  155:	_GLIBCXX20_DEPRECATED_SUGGEST("std::allocator_traits::is_always_equal")
+        -:  156:	= true_type;
+        -:  157:#endif
+        -:  158:
+        -:  159:      // _GLIBCXX_RESOLVE_LIB_DEFECTS
+        -:  160:      // 3035. std::allocator's constructors should be constexpr
+        -:  161:      __attribute__((__always_inline__))
+        -:  162:      _GLIBCXX20_CONSTEXPR
+     102*:  163:      allocator() _GLIBCXX_NOTHROW { }
+        1:  163-block  0
+    %%%%%:  163-block  1
+    %%%%%:  163-block  2
+        1:  163-block  3
+        1:  163-block  4
+        1:  163-block  5
+        1:  163-block  6
+        1:  163-block  7
+        1:  163-block  8
+        1:  163-block  9
+        1:  163-block 10
+        1:  163-block 11
+        1:  163-block 12
+        1:  163-block 13
+        1:  163-block 14
+        1:  163-block 15
+        1:  163-block 16
+        1:  163-block 17
+        1:  163-block 18
+        1:  163-block 19
+        1:  163-block 20
+        1:  163-block 21
+        1:  163-block 22
+        1:  163-block 23
+        1:  163-block 24
+        1:  163-block 25
+        1:  163-block 26
+        1:  163-block 27
+        1:  163-block 28
+        1:  163-block 29
+        1:  163-block 30
+        1:  163-block 31
+        1:  163-block 32
+        1:  163-block 33
+        1:  163-block 34
+        1:  163-block 35
+        1:  163-block 36
+        1:  163-block 37
+        1:  163-block 38
+        1:  163-block 39
+        1:  163-block 40
+        1:  163-block 41
+        1:  163-block 42
+        1:  163-block 43
+        1:  163-block 44
+        1:  163-block 45
+        1:  163-block 46
+        1:  163-block 47
+        1:  163-block 48
+        1:  163-block 49
+        1:  163-block 50
+        1:  163-block 51
+        1:  163-block 52
+        1:  163-block 53
+        1:  163-block 54
+        1:  163-block 55
+        1:  163-block 56
+        1:  163-block 57
+        1:  163-block 58
+        1:  163-block 59
+        1:  163-block 60
+        1:  163-block 61
+        1:  163-block 62
+        1:  163-block 63
+        1:  163-block 64
+        1:  163-block 65
+        1:  163-block 66
+        1:  163-block 67
+        1:  163-block 68
+        1:  163-block 69
+        1:  163-block 70
+        1:  163-block 71
+        1:  163-block 72
+        1:  163-block 73
+        1:  163-block 74
+        1:  163-block 75
+        1:  163-block 76
+        1:  163-block 77
+        1:  163-block 78
+        1:  163-block 79
+        1:  163-block 80
+        1:  163-block 81
+        1:  163-block 82
+        1:  163-block 83
+        1:  163-block 84
+        1:  163-block 85
+        1:  163-block 86
+        1:  163-block 87
+        1:  163-block 88
+        1:  163-block 89
+        1:  163-block 90
+        1:  163-block 91
+        1:  163-block 92
+        1:  163-block 93
+        1:  163-block 94
+        1:  163-block 95
+        1:  163-block 96
+        1:  163-block 97
+        1:  163-block 98
+        1:  163-block 99
+        1:  163-block 100
+        1:  163-block 101
+        1:  163-block 102
+        1:  163-block 103
+        -:  164:
+        -:  165:      __attribute__((__always_inline__))
+        -:  166:      _GLIBCXX20_CONSTEXPR
+        -:  167:      allocator(const allocator& __a) _GLIBCXX_NOTHROW
+       8*:  168:      : __allocator_base<_Tp>(__a) { }
+        8:  168-block  0
+    %%%%%:  168-block  1
+    %%%%%:  168-block  2
+        -:  169:
+        -:  170:#if __cplusplus >= 201103L
+        -:  171:      // Avoid implicit deprecation.
+        -:  172:      allocator& operator=(const allocator&) = default;
+        -:  173:#endif
+        -:  174:
+        -:  175:      template<typename _Tp1>
+        -:  176:	__attribute__((__always_inline__))
+        -:  177:	_GLIBCXX20_CONSTEXPR
+        2:  178:	allocator(const allocator<_Tp1>&) _GLIBCXX_NOTHROW { }
+        1:  178-block  0
+        1:  178-block  1
+        -:  179:
+        -:  180:      __attribute__((__always_inline__))
+        -:  181:#if __cpp_constexpr_dynamic_alloc
+        -:  182:      constexpr
+        -:  183:#endif
+     111*:  184:      ~allocator() _GLIBCXX_NOTHROW { }
+call    0 returned 1
+    $$$$$:  184-block  0
+call    1 never executed
+call    2 returned 1
+call    3 returned 8
+    %%%%%:  184-block  1
+call    4 never executed
+    $$$$$:  184-block  2
+call    5 never executed
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+call    9 returned 1
+call   10 returned 1
+call   11 returned 1
+call   12 returned 1
+call   13 returned 1
+call   14 returned 1
+call   15 returned 1
+call   16 returned 1
+call   17 returned 1
+call   18 returned 1
+call   19 returned 1
+call   20 returned 1
+call   21 returned 1
+call   22 returned 1
+call   23 returned 1
+call   24 never executed
+call   25 never executed
+call   26 never executed
+    $$$$$:  184-block  3
+call   27 never executed
+    $$$$$:  184-block  4
+call   28 never executed
+    $$$$$:  184-block  5
+call   29 never executed
+    $$$$$:  184-block  6
+call   30 never executed
+    $$$$$:  184-block  7
+call   31 never executed
+    $$$$$:  184-block  8
+call   32 never executed
+    $$$$$:  184-block  9
+call   33 never executed
+    $$$$$:  184-block 10
+call   34 never executed
+    $$$$$:  184-block 11
+call   35 never executed
+    $$$$$:  184-block 12
+call   36 never executed
+    $$$$$:  184-block 13
+call   37 never executed
+    $$$$$:  184-block 14
+call   38 never executed
+    $$$$$:  184-block 15
+call   39 never executed
+    $$$$$:  184-block 16
+call   40 never executed
+    $$$$$:  184-block 17
+call   41 never executed
+    $$$$$:  184-block 18
+call   42 never executed
+    $$$$$:  184-block 19
+call   43 never executed
+    $$$$$:  184-block 20
+call   44 never executed
+        1:  184-block 21
+call   45 returned 1
+        1:  184-block 22
+call   46 returned 1
+        1:  184-block 23
+call   47 returned 1
+call   48 returned 1
+call   49 returned 1
+call   50 returned 1
+call   51 returned 1
+call   52 returned 1
+call   53 returned 1
+call   54 returned 1
+call   55 returned 1
+call   56 returned 1
+call   57 returned 1
+call   58 returned 1
+call   59 returned 1
+call   60 returned 1
+call   61 returned 1
+call   62 returned 1
+call   63 never executed
+call   64 never executed
+call   65 never executed
+        1:  184-block 24
+call   66 returned 1
+        1:  184-block 25
+call   67 returned 1
+        1:  184-block 26
+call   68 returned 1
+    $$$$$:  184-block 27
+call   69 never executed
+    $$$$$:  184-block 28
+call   70 never executed
+    $$$$$:  184-block 29
+call   71 never executed
+    $$$$$:  184-block 30
+call   72 never executed
+    $$$$$:  184-block 31
+call   73 never executed
+    $$$$$:  184-block 32
+call   74 never executed
+    $$$$$:  184-block 33
+call   75 never executed
+    $$$$$:  184-block 34
+call   76 never executed
+    $$$$$:  184-block 35
+call   77 never executed
+    $$$$$:  184-block 36
+call   78 never executed
+    $$$$$:  184-block 37
+call   79 never executed
+    $$$$$:  184-block 38
+call   80 never executed
+    $$$$$:  184-block 39
+call   81 never executed
+    $$$$$:  184-block 40
+call   82 never executed
+    $$$$$:  184-block 41
+call   83 never executed
+        1:  184-block 42
+call   84 returned 1
+        1:  184-block 43
+call   85 returned 1
+        1:  184-block 44
+call   86 returned 1
+    $$$$$:  184-block 45
+call   87 never executed
+    $$$$$:  184-block 46
+call   88 never executed
+    $$$$$:  184-block 47
+call   89 never executed
+call   90 returned 1
+call   91 returned 1
+call   92 returned 1
+call   93 returned 1
+call   94 returned 1
+call   95 returned 1
+call   96 returned 1
+call   97 returned 1
+call   98 returned 1
+call   99 returned 1
+call   100 returned 1
+call   101 returned 1
+    $$$$$:  184-block 48
+call   102 never executed
+    $$$$$:  184-block 49
+call   103 never executed
+    $$$$$:  184-block 50
+call   104 never executed
+    $$$$$:  184-block 51
+call   105 never executed
+    $$$$$:  184-block 52
+call   106 never executed
+    $$$$$:  184-block 53
+call   107 never executed
+    $$$$$:  184-block 54
+call   108 never executed
+    $$$$$:  184-block 55
+call   109 never executed
+    $$$$$:  184-block 56
+call   110 never executed
+    $$$$$:  184-block 57
+call   111 never executed
+    $$$$$:  184-block 58
+call   112 never executed
+    $$$$$:  184-block 59
+call   113 never executed
+call   114 returned 1
+call   115 returned 1
+call   116 returned 1
+call   117 returned 1
+call   118 returned 1
+call   119 returned 1
+    $$$$$:  184-block 60
+call   120 never executed
+    $$$$$:  184-block 61
+call   121 never executed
+    $$$$$:  184-block 62
+call   122 never executed
+    $$$$$:  184-block 63
+call   123 never executed
+    $$$$$:  184-block 64
+call   124 never executed
+    $$$$$:  184-block 65
+call   125 never executed
+call   126 returned 1
+call   127 returned 1
+call   128 returned 1
+call   129 returned 1
+call   130 returned 1
+call   131 returned 1
+call   132 returned 1
+call   133 returned 1
+call   134 returned 1
+call   135 returned 1
+call   136 returned 1
+call   137 returned 1
+    $$$$$:  184-block 66
+call   138 never executed
+    $$$$$:  184-block 67
+call   139 never executed
+    $$$$$:  184-block 68
+call   140 never executed
+    $$$$$:  184-block 69
+call   141 never executed
+    $$$$$:  184-block 70
+call   142 never executed
+    $$$$$:  184-block 71
+call   143 never executed
+    $$$$$:  184-block 72
+call   144 never executed
+    $$$$$:  184-block 73
+call   145 never executed
+    $$$$$:  184-block 74
+call   146 never executed
+    $$$$$:  184-block 75
+call   147 never executed
+    $$$$$:  184-block 76
+call   148 never executed
+    $$$$$:  184-block 77
+call   149 never executed
+call   150 returned 1
+call   151 returned 1
+call   152 returned 1
+call   153 returned 1
+call   154 returned 1
+call   155 returned 1
+call   156 returned 1
+call   157 returned 1
+call   158 returned 1
+    $$$$$:  184-block 78
+call   159 never executed
+    $$$$$:  184-block 79
+call   160 never executed
+    $$$$$:  184-block 80
+call   161 never executed
+    $$$$$:  184-block 81
+call   162 never executed
+    $$$$$:  184-block 82
+call   163 never executed
+    $$$$$:  184-block 83
+call   164 never executed
+    $$$$$:  184-block 84
+call   165 never executed
+    $$$$$:  184-block 85
+call   166 never executed
+    $$$$$:  184-block 86
+call   167 never executed
+call   168 returned 1
+call   169 returned 1
+call   170 returned 1
+call   171 returned 1
+call   172 returned 1
+call   173 returned 1
+    $$$$$:  184-block 87
+call   174 never executed
+    $$$$$:  184-block 88
+call   175 never executed
+    $$$$$:  184-block 89
+call   176 never executed
+    $$$$$:  184-block 90
+call   177 never executed
+    $$$$$:  184-block 91
+call   178 never executed
+    $$$$$:  184-block 92
+call   179 never executed
+call   180 returned 1
+call   181 returned 1
+call   182 returned 1
+    $$$$$:  184-block 93
+call   183 never executed
+    $$$$$:  184-block 94
+call   184 never executed
+    $$$$$:  184-block 95
+call   185 never executed
+call   186 returned 1
+call   187 returned 1
+call   188 returned 1
+call   189 returned 1
+call   190 returned 1
+call   191 returned 1
+call   192 returned 1
+call   193 returned 1
+call   194 returned 1
+    $$$$$:  184-block 96
+call   195 never executed
+    $$$$$:  184-block 97
+call   196 never executed
+    $$$$$:  184-block 98
+call   197 never executed
+    $$$$$:  184-block 99
+call   198 never executed
+    $$$$$:  184-block 100
+call   199 never executed
+    $$$$$:  184-block 101
+call   200 never executed
+    $$$$$:  184-block 102
+call   201 never executed
+    $$$$$:  184-block 103
+call   202 never executed
+    $$$$$:  184-block 104
+call   203 never executed
+call   204 returned 1
+    $$$$$:  184-block 105
+call   205 never executed
+call   206 returned 1
+    $$$$$:  184-block 106
+call   207 never executed
+        -:  185:
+        -:  186:#if __cplusplus > 201703L
+        -:  187:      [[nodiscard,__gnu__::__always_inline__]]
+        -:  188:      constexpr _Tp*
+        -:  189:      allocate(size_t __n)
+        -:  190:      {
+        -:  191:	if (std::__is_constant_evaluated())
+        -:  192:	  {
+        -:  193:	    if (__builtin_mul_overflow(__n, sizeof(_Tp), &__n))
+        -:  194:	      std::__throw_bad_array_new_length();
+        -:  195:	    return static_cast<_Tp*>(::operator new(__n));
+        -:  196:	  }
+        -:  197:
+        -:  198:	return __allocator_base<_Tp>::allocate(__n, 0);
+        -:  199:      }
+        -:  200:
+        -:  201:      [[__gnu__::__always_inline__]]
+        -:  202:      constexpr void
+        -:  203:      deallocate(_Tp* __p, size_t __n)
+        -:  204:      {
+        -:  205:	if (std::__is_constant_evaluated())
+        -:  206:	  {
+        -:  207:	    ::operator delete(__p);
+        -:  208:	    return;
+        -:  209:	  }
+        -:  210:	__allocator_base<_Tp>::deallocate(__p, __n);
+        -:  211:      }
+        -:  212:#endif // C++20
+        -:  213:
+        -:  214:      friend __attribute__((__always_inline__)) _GLIBCXX20_CONSTEXPR
+        -:  215:      bool
+        -:  216:      operator==(const allocator&, const allocator&) _GLIBCXX_NOTHROW
+        -:  217:      { return true; }
+        -:  218:
+        -:  219:#if __cpp_impl_three_way_comparison < 201907L
+        -:  220:      friend __attribute__((__always_inline__)) _GLIBCXX20_CONSTEXPR
+        -:  221:      bool
+        -:  222:      operator!=(const allocator&, const allocator&) _GLIBCXX_NOTHROW
+    #####:  223:      { return false; }
+        -:  224:#endif
+        -:  225:
+        -:  226:      // Inherit everything else.
+        -:  227:    };
+        -:  228:
+        -:  229:  /** Equality comparison for std::allocator objects
+        -:  230:   *
+        -:  231:   * @return true, for all std::allocator objects.
+        -:  232:   * @relates std::allocator
+        -:  233:   */
+        -:  234:  template<typename _T1, typename _T2>
+        -:  235:    __attribute__((__always_inline__))
+        -:  236:    inline _GLIBCXX20_CONSTEXPR bool
+        -:  237:    operator==(const allocator<_T1>&, const allocator<_T2>&)
+        -:  238:    _GLIBCXX_NOTHROW
+        -:  239:    { return true; }
+        -:  240:
+        -:  241:#if __cpp_impl_three_way_comparison < 201907L
+        -:  242:  template<typename _T1, typename _T2>
+        -:  243:    __attribute__((__always_inline__))
+        -:  244:    inline _GLIBCXX20_CONSTEXPR bool
+        -:  245:    operator!=(const allocator<_T1>&, const allocator<_T2>&)
+        -:  246:    _GLIBCXX_NOTHROW
+        -:  247:    { return false; }
+        -:  248:#endif
+        -:  249:
+        -:  250:  /// @cond undocumented
+        -:  251:
+        -:  252:  // Invalid allocator<cv T> partial specializations.
+        -:  253:  // allocator_traits::rebind_alloc can be used to form a valid allocator type.
+        -:  254:  template<typename _Tp>
+        -:  255:    class allocator<const _Tp>
+        -:  256:    {
+        -:  257:    public:
+        -:  258:      typedef _Tp value_type;
+        -:  259:      template<typename _Up> allocator(const allocator<_Up>&) { }
+        -:  260:    };
+        -:  261:
+        -:  262:  template<typename _Tp>
+        -:  263:    class allocator<volatile _Tp>
+        -:  264:    {
+        -:  265:    public:
+        -:  266:      typedef _Tp value_type;
+        -:  267:      template<typename _Up> allocator(const allocator<_Up>&) { }
+        -:  268:    };
+        -:  269:
+        -:  270:  template<typename _Tp>
+        -:  271:    class allocator<const volatile _Tp>
+        -:  272:    {
+        -:  273:    public:
+        -:  274:      typedef _Tp value_type;
+        -:  275:      template<typename _Up> allocator(const allocator<_Up>&) { }
+        -:  276:    };
+        -:  277:  /// @endcond
+        -:  278:
+        -:  279:  /// @} group allocator
+        -:  280:
+        -:  281:  // Inhibit implicit instantiations for required instantiations,
+        -:  282:  // which are defined via explicit instantiations elsewhere.
+        -:  283:#if _GLIBCXX_EXTERN_TEMPLATE
+        -:  284:  extern template class allocator<char>;
+        -:  285:  extern template class allocator<wchar_t>;
+        -:  286:#endif
+        -:  287:
+        -:  288:  // Undefine.
+        -:  289:#undef __allocator_base
+        -:  290:
+        -:  291:_GLIBCXX_END_NAMESPACE_VERSION
+        -:  292:} // namespace std
+        -:  293:
+        -:  294:#endif

@@ -1,0 +1,27 @@
+# ninja log v5
+22	312	7381119351496060	CMakeFiles/TAD_Colectie.dir/Teste/TestExtins.cpp.obj	35493c76a2130ef1
+33	280	7381117392090917	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+38	174	7381110021481335	CMakeFiles/TAD_Colectie.dir/Teste/TestScurt.cpp.obj	c6b64a25b4d4c565
+1	258	7381066828163169	build.ninja	85256f11598c613e
+25	272	7381066865417645	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/App.cpp.obj	7e0ee7ac79c8ed3d
+30	170	7381114914004937	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/IteratorColectie.cpp.obj	8c298edc920dd1bc
+313	387	7381119352201509	TAD_Colectie.exe	cc2758e86b082224
+25	285	7381119764322368	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+285	359	7381119765037143	TAD_Colectie.exe	cc2758e86b082224
+26	282	7381119941447864	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+282	359	7381119942200673	TAD_Colectie.exe	cc2758e86b082224
+28	282	7381121581440250	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+38	329	7381121581896396	CMakeFiles/TAD_Colectie.dir/Teste/TestExtins.cpp.obj	35493c76a2130ef1
+329	402	7381121582603563	TAD_Colectie.exe	cc2758e86b082224
+19	330	7381121638113227	CMakeFiles/TAD_Colectie.dir/Teste/TestExtins.cpp.obj	35493c76a2130ef1
+330	408	7381121638924281	TAD_Colectie.exe	cc2758e86b082224
+24	320	7381122044834962	CMakeFiles/TAD_Colectie.dir/Teste/TestExtins.cpp.obj	35493c76a2130ef1
+320	394	7381122045546665	TAD_Colectie.exe	cc2758e86b082224
+31	284	7381126052757212	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+284	363	7381126053553346	TAD_Colectie.exe	cc2758e86b082224
+20	281	7381126113249703	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+281	360	7381126114011142	TAD_Colectie.exe	cc2758e86b082224
+26	293	7381127853982352	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+294	371	7381127854721534	TAD_Colectie.exe	cc2758e86b082224
+20	264	7381127978816183	CMakeFiles/TAD_Colectie.dir/Proiect_C++/Colectie/Colectie.cpp.obj	f35b28a9418ed2a6
+264	343	7381127979572673	TAD_Colectie.exe	cc2758e86b082224

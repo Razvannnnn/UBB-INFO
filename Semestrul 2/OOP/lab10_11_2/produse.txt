@@ -1,0 +1,9 @@
+Apa minerala,Apa,2.99,Dorna
+Apa plata,Apa,3.29,Aquavia
+Carne de mici,Carne,12.89,Aldis
+Salam de Sibiu,Mezel,13.29,Sisin
+Iaurt cu fructe,Lactate,5.79,Pilos
+Iaurt proteic,Lactate,4.99,Pilos
+Apa minerala,Apa,3.29,Aqua Carpatica
+Ceafa de porc,Carne,20.99,Marcel
+da,da,123,da

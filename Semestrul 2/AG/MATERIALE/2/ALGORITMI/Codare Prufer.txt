@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+
+int n;
+std::vector<int> parent;
+std::vector<int> encoding;
+std::vector<bool> processed;
+
+int minimumLeaf() {
+    for (int i = 0; i <= n; ++i) {
+        if (!processed[i] && std::count(parent.begin(), parent.end(), i) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void codarePrufer() {
+    for (int i = 0; i < n - 1; ++i) {
+        // Alegem frunza minima
+        int minimumLeafNode = minimumLeaf();
+        // Adaugam parintele frunzei in codare
+        encoding.push_back(parent[minimumLeafNode]);
+        processed[minimumLeafNode] = true;
+        parent[minimumLeafNode] = 0; // Not necessary to set this since we track with processed array
+    }
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " input_file output_file\n";
+        return 1;
+    }
+
+    std::ifstream fin(argv[1]);
+    if (!fin) {
+        std::cerr << "Error: Unable to open input file " << argv[1] << "\n";
+        return 1;
+    }
+
+    std::ofstream fout(argv[2]);
+    if (!fout) {
+        std::cerr << "Error: Unable to open output file " << argv[2] << "\n";
+        return 1;
+    }
+
+    fin >> n;
+    parent.resize(n + 1);
+    processed.resize(n + 1, false);
+    for (int i = 0; i < n; ++i) {
+        fin >> parent[i];
+    }
+
+    codarePrufer();
+
+    fout << encoding.size() << "\n";
+    for (const auto& node : encoding) {
+        fout << node << " ";
+    }
+
+    return 0;
+}

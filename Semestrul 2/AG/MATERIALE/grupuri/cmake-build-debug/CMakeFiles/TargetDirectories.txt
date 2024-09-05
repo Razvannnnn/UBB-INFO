@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/AG/grupuri/cmake-build-debug/CMakeFiles/grupuri.dir
+C:/Users/razva/Desktop/AG/grupuri/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/AG/grupuri/cmake-build-debug/CMakeFiles/rebuild_cache.dir

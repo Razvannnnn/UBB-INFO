@@ -1,0 +1,22 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/ui.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_UI_H
+        -:    2:#define LAB6_UI_H
+        -:    3:
+        -:    4:#include "service.h"
+        -:    5:
+        -:    6:class UI {
+        -:    7:private:
+        -:    8:    serviceProdus& service;
+        -:    9:public:
+function _ZN2UIC1ER13serviceProdus called 1 returned 100% blocks executed 100%
+        1:   10:    explicit UI(serviceProdus& service) :service{ service } {
+        1:   11:    }
+        -:   12:
+        -:   13:    void startUI();
+        -:   14:    void meniuCos();
+        -:   15:};
+        -:   16:
+        -:   17:#endif //LAB6_UI_H

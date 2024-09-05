@@ -1,0 +1,8 @@
+#!/bin/bash
+
+1.  if [ -e $file ]
+2.  if [ $(ls $file 2>&1 | grep -E -c "No such file") -eq 0 ]
+3.  if $(ls $file 2>&1 | grep -E -c "No such file")
+
+
+

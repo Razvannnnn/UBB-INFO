@@ -1,0 +1,8 @@
+# ninja log v5
+12	219	7407446128096990	Practic_autogen/timestamp	21ab383ada80b425
+12	219	7407446128096990	Practic_autogen/mocs_compilation.cpp	21ab383ada80b425
+12	219	7407446128096990	C:/Users/razva/Desktop/Practic/cmake-build-debug/Practic_autogen/timestamp	21ab383ada80b425
+12	219	7407446128096990	C:/Users/razva/Desktop/Practic/cmake-build-debug/Practic_autogen/mocs_compilation.cpp	21ab383ada80b425
+220	353	7407446129673178	CMakeFiles/Practic.dir/Practic_autogen/mocs_compilation.cpp.obj	7fa6cebdf47ca6b8
+228	2097	7407446147099559	CMakeFiles/Practic.dir/main.cpp.obj	711228ee41831c0e
+2099	2352	7407446149072662	Practic.exe	e305c4ca0279e67a

@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+using namespace std;
+std::ifstream fin("kruskal.in");
+std::ofstream fout("kruskal.out");
+struct edge{
+    int nod1 , nod2 , cost;
+    edge(int n1 , int n2 , int c) : nod1(n1) , nod2(n2) , cost(c){}
+    bool operator<(const edge& ot)const{
+        return (cost < ot.cost);
+    };
+};
+int n , m;
+std::vector<std::vector<int>>gf;
+std::vector<edge>edges;
+std::vector<int>arb;
+std::vector<std::pair<int,int>> ans;
+
+int radacina(int nod){
+    if(arb[nod] != nod){
+        arb[nod] = radacina(arb[nod]);
+    }
+    return arb[nod];
+}
+
+void kruskal(){
+    int costAPM = 0;
+    arb.resize(n + 1);
+    for(int i = 1 ; i <= n ; ++i)arb[i] = i;
+
+    for(const auto& e : edges){
+        int nodLeft = e.nod1;
+        int nodRight = e.nod2;
+        int costEdge = e.cost;
+        
+        //prima radacina
+        int rad1 = radacina(nodLeft);
+        int rad2 = radacina(nodRight);
+        
+        // Daca fac parte din subarbori diferiti
+        if(rad1 != rad2){
+            costAPM += costEdge;
+            ans.emplace_back(min(nodLeft , nodRight) ,
+                    max(nodLeft, nodRight));
+            // Trebuie sa reunim
+            //  arb[nodLeft] = nodRight;
+            arb[rad1] = rad2;
+        }
+    }
+    fout << costAPM << "\n";
+    for(const auto el : ans){
+        fout << el.first << " " << el.second << "\n";
+    }   
+}
+
+int main(){
+    fin >> n >> m;
+    gf.assign(n + 1 , std::vector<int>(m + 1));
+    
+    for(int i = 0 ; i < m ; ++i){
+        int x , y , cost;
+        fin >> x >> y >> cost;
+        gf[x][y] = gf[y][x] = cost;
+        edges.emplace_back(x , y , cost);
+    }
+    std::sort(edges.begin() , edges.end());
+    kruskal();
+}

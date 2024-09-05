@@ -1,0 +1,4 @@
+C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug-coverage/CMakeFiles/lab6.dir
+C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug-coverage/CMakeFiles/test.dir
+C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/lab10_11/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,93 @@
+# ninja log v5
+14	131	7406018264760653	Produse_autogen/timestamp	e6528d3f5e59f25d
+14	131	7406018264760653	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+14	131	7406018264760653	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+1072	4432	7405741406091551	CMakeFiles/Produse.dir/Produse_autogen/mocs_compilation.cpp.obj	1d5051fb86d55506
+14	131	7406018264760653	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+2215	2554	7406018288896735	Produse.exe	d46a0ad62ac08ab3
+154	3258	7406015907474920	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+138	2215	7406018285634745	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+134	1892	7406018282344502	CMakeFiles/Produse.dir/service.cpp.obj	107bab904f23e505
+195	1924	7406014563205274	CMakeFiles/Produse.dir/teste.cpp.obj	28686cc103c036c4
+168	2635	7406017359273542	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+146	1339	7405790298895798	CMakeFiles/Produse.dir/produse.cpp.obj	9282bd3d3c80c845
+106	1383	7405826839915033	CMakeFiles/Produse.dir/repo.cpp.obj	d21ab4240299c072
+7	191	7406040916900484	Produse_autogen/timestamp	e6528d3f5e59f25d
+7	191	7406040916900484	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+7	191	7406040916900484	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+7	191	7406040916900484	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+199	2853	7406040943535200	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+21	182	7406041247513791	Produse_autogen/timestamp	e6528d3f5e59f25d
+21	182	7406041247513791	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+21	182	7406041247513791	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+21	182	7406041247513791	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+190	2496	7406041270636859	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+14	137	7406041809363389	Produse_autogen/timestamp	e6528d3f5e59f25d
+14	137	7406041809363389	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+14	137	7406041809363389	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+14	137	7406041809363389	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+144	2528	7406041833301612	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+16	140	7406041923908039	Produse_autogen/timestamp	e6528d3f5e59f25d
+16	140	7406041923908039	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+16	140	7406041923908039	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+16	140	7406041923908039	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+147	2479	7406041947368469	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+24	197	7406042178299476	Produse_autogen/timestamp	e6528d3f5e59f25d
+24	197	7406042178299476	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+24	197	7406042178299476	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+24	197	7406042178299476	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+205	3388	7406042210320190	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+200	4055	7406042217001325	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+209	4069	7406042217114411	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+4069	4558	7406042221781639	Produse.exe	d46a0ad62ac08ab3
+15	144	7406042941046263	Produse_autogen/timestamp	e6528d3f5e59f25d
+15	144	7406042941046263	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+15	144	7406042941046263	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+15	144	7406042941046263	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+151	3034	7406042969922082	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+147	3694	7406042976540266	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+157	3930	7406042978849226	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+3931	4393	7406042983361385	Produse.exe	d46a0ad62ac08ab3
+18	156	7406043073940335	Produse_autogen/timestamp	e6528d3f5e59f25d
+18	156	7406043073940335	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+18	156	7406043073940335	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+18	156	7406043073940335	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+162	2538	7406043097819745	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+159	3077	7406043103236142	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+165	3226	7406043104713523	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+3226	3602	7406043108293586	Produse.exe	d46a0ad62ac08ab3
+14	159	7406043222516909	Produse_autogen/timestamp	e6528d3f5e59f25d
+14	159	7406043222516909	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+14	159	7406043222516909	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+14	159	7406043222516909	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+166	2556	7406043246606994	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+162	3024	7406043251170098	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+170	3147	7406043252405937	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+3147	3523	7406043256221215	Produse.exe	d46a0ad62ac08ab3
+17	219	7406043920487798	Produse_autogen/timestamp	e6528d3f5e59f25d
+17	219	7406043920487798	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+17	219	7406043920487798	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+17	219	7406043920487798	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+229	3758	7406043955749341	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+223	4434	7406043962481191	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+233	4578	7406043964005374	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+4578	5084	7406043968848721	Produse.exe	d46a0ad62ac08ab3
+17	171	7406045666131663	Produse_autogen/timestamp	e6528d3f5e59f25d
+17	171	7406045666131663	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+17	171	7406045666131663	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+17	171	7406045666131663	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+192	2565	7406045690039263	CMakeFiles/Produse.dir/teste.cpp.obj	28686cc103c036c4
+188	3334	7406045697672851	CMakeFiles/Produse.dir/service.cpp.obj	107bab904f23e505
+184	3527	7406045699637578	CMakeFiles/Produse.dir/repo.cpp.obj	d21ab4240299c072
+179	3802	7406045702413283	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+175	4671	7406045711077626	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+195	4730	7406045711699499	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+4730	5298	7406045717294907	Produse.exe	d46a0ad62ac08ab3
+15	142	7406047857835090	Produse_autogen/timestamp	e6528d3f5e59f25d
+15	142	7406047857835090	Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+15	142	7406047857835090	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/timestamp	e6528d3f5e59f25d
+15	142	7406047857835090	D:/Semestrul 2/Programe oop/exercitii practic/Produse/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/Produse_autogen/mocs_compilation.cpp	e6528d3f5e59f25d
+149	3377	7406047890162054	CMakeFiles/Produse.dir/mainwindow.cpp.obj	e14267c7163071db
+145	4243	7406047898940936	CMakeFiles/Produse.dir/main.cpp.obj	ae79032e5671d95e
+152	4380	7406047900159511	CMakeFiles/Produse.dir/gui.cpp.obj	7c258dfa09638e95
+4381	4902	7406047905336543	Produse.exe	d46a0ad62ac08ab3

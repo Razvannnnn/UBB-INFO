@@ -1,0 +1,21 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/main.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\main.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\main.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "ui.h"
+        -:    2:#include "teste.h"
+        -:    3:#include "repository.h"
+        -:    4:
+function main called 1 returned 100% blocks executed 100%
+        1:    5:int main() {
+        1:    6:    run_all_tests();
+        1:    6-block  0
+call    0 returned 1
+        1:    7:    MyList* repo = creazaLista();
+call    0 returned 1
+        1:    8:    MyList* undolist = creazaLista();
+call    0 returned 1
+        1:    9:    main_menu(repo, undolist);
+call    0 returned 1
+        1:   10:    return 0;
+        -:   11:}

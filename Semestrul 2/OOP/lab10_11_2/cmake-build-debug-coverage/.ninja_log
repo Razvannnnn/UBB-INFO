@@ -1,0 +1,27 @@
+# ninja log v5
+258	668	7383245156311593	CMakeFiles/lab6.dir/produs.cpp.obj	ef997f1cf3145268
+98	1239	7384198241727662	CMakeFiles/lab6.dir/service.cpp.obj	17272a27f831a582
+101	858	7384198237933520	CMakeFiles/lab6.dir/ui.cpp.obj	77902ec5c8b2ccb0
+144	4152	7406203174974887	CMakeFiles/lab6.dir/main.cpp.obj	90fd06cb93a09429
+255	351	7383245153151196	CMakeFiles/lab6.dir/vector.cpp.obj	40d6791491ed4901
+75	588	7384120289404470	CMakeFiles/lab6.dir/repo.cpp.obj	d4e7d67ce1a7a169
+4609	5406	7406203187475551	lab6.exe	98d0282027326973
+272	693	7383245156566860	CMakeFiles/lab6.dir/validare.cpp.obj	9981cbce75605b86
+20	3178	7460166844038495	build.ninja	ff52968aa30d3386
+250	325	7343982434939435	test.exe	5d942ce78243f6d7
+99	711	7386146291394259	CMakeFiles/lab6.dir/CosProduse.cpp.obj	82778ac774d645c3
+279	1133	7383245160961155	CMakeFiles/lab6.dir/LabRepo.cpp.obj	974cbe65f13a7c30
+39	140	7406203134884314	lab6_autogen/timestamp	f2213ef89f0b022b
+16	165	7373983738006765	C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/lab6_autogen/mocs_compilation.cpp	f2adfc6e37749def
+39	140	7406203134884314	lab6_autogen/mocs_compilation.cpp	f2213ef89f0b022b
+16	165	7373983738006765	C:/Users/razva/Desktop/OOP/lab8_9/cmake-build-debug-coverage/lab6_autogen/timestamp	f2adfc6e37749def
+242	350	7383245153131202	CMakeFiles/lab6.dir/lab6_autogen/mocs_compilation.cpp.obj	ce7fd0da9033e37
+39	140	7406203134884314	C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug-coverage/lab6_autogen/timestamp	f2213ef89f0b022b
+39	140	7406203134884314	C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug-coverage/lab6_autogen/mocs_compilation.cpp	f2213ef89f0b022b
+169	4604	7406203179481709	CMakeFiles/lab6.dir/GUI.cpp.obj	6fba268fe2afdaee
+172	4580	7406203179245982	CMakeFiles/lab6.dir/tabelModelGUI.cpp.obj	ab41d216223f5388
+5	808	7460166844038495	build.ninja	ff52968aa30d3386
+20	119	7460166846034905	lab6_autogen/timestamp	f2213ef89f0b022b
+20	119	7460166846034905	lab6_autogen/mocs_compilation.cpp	f2213ef89f0b022b
+20	119	7460166846034905	C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug-coverage/lab6_autogen/timestamp	f2213ef89f0b022b
+20	119	7460166846034905	C:/Users/razva/Desktop/OOP/lab10_11_2/cmake-build-debug-coverage/lab6_autogen/mocs_compilation.cpp	f2213ef89f0b022b

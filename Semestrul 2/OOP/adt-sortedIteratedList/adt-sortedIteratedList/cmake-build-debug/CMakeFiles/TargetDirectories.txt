@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/OOP/adt-sortedIteratedList/adt-sortedIteratedList/cmake-build-debug/CMakeFiles/adt_sortedIteratedList.dir
+C:/Users/razva/Desktop/OOP/adt-sortedIteratedList/adt-sortedIteratedList/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/adt-sortedIteratedList/adt-sortedIteratedList/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3412 @@
+        -:    0:Source:C:/Program Files/JetBrains/CLion 2023.2.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/random.tcc
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\CosProduse.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\CosProduse.cpp.gcda
+        -:    0:Runs:1
+        -:    1:// random number generation (out of line) -*- C++ -*-
+        -:    2:
+        -:    3:// Copyright (C) 2009-2023 Free Software Foundation, Inc.
+        -:    4://
+        -:    5:// This file is part of the GNU ISO C++ Library.  This library is free
+        -:    6:// software; you can redistribute it and/or modify it under the
+        -:    7:// terms of the GNU General Public License as published by the
+        -:    8:// Free Software Foundation; either version 3, or (at your option)
+        -:    9:// any later version.
+        -:   10:
+        -:   11:// This library is distributed in the hope that it will be useful,
+        -:   12:// but WITHOUT ANY WARRANTY; without even the implied warranty of
+        -:   13:// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        -:   14:// GNU General Public License for more details.
+        -:   15:
+        -:   16:// Under Section 7 of GPL version 3, you are granted additional
+        -:   17:// permissions described in the GCC Runtime Library Exception, version
+        -:   18:// 3.1, as published by the Free Software Foundation.
+        -:   19:
+        -:   20:// You should have received a copy of the GNU General Public License and
+        -:   21:// a copy of the GCC Runtime Library Exception along with this program;
+        -:   22:// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+        -:   23:// <http://www.gnu.org/licenses/>.
+        -:   24:
+        -:   25:/** @file bits/random.tcc
+        -:   26: *  This is an internal header file, included by other library headers.
+        -:   27: *  Do not attempt to use it directly. @headername{random}
+        -:   28: */
+        -:   29:
+        -:   30:#ifndef _RANDOM_TCC
+        -:   31:#define _RANDOM_TCC 1
+        -:   32:
+        -:   33:#include <numeric> // std::accumulate and std::partial_sum
+        -:   34:
+        -:   35:namespace std _GLIBCXX_VISIBILITY(default)
+        -:   36:{
+        -:   37:_GLIBCXX_BEGIN_NAMESPACE_VERSION
+        -:   38:
+        -:   39:  /// @cond undocumented
+        -:   40:  // (Further) implementation-space details.
+        -:   41:  namespace __detail
+        -:   42:  {
+        -:   43:    // General case for x = (ax + c) mod m -- use Schrage's algorithm
+        -:   44:    // to avoid integer overflow.
+        -:   45:    //
+        -:   46:    // Preconditions:  a > 0, m > 0.
+        -:   47:    //
+        -:   48:    // Note: only works correctly for __m % __a < __m / __a.
+        -:   49:    template<typename _Tp, _Tp __m, _Tp __a, _Tp __c>
+        -:   50:      _Tp
+function _ZNSt8__detail4_ModIjLj2147483647ELj16807ELj0ELb0ELb1EE6__calcEj called 1 returned 100% blocks executed 83%
+        1:   51:      _Mod<_Tp, __m, __a, __c, false, true>::
+        1:   51-block  0
+        -:   52:      __calc(_Tp __x)
+        -:   53:      {
+        -:   54:	if (__a == 1)
+        -:   55:	  __x %= __m;
+        -:   56:	else
+        -:   57:	  {
+        -:   58:	    static const _Tp __q = __m / __a;
+        -:   59:	    static const _Tp __r = __m % __a;
+        -:   60:
+        1:   61:	    _Tp __t1 = __a * (__x % __q);
+        1:   62:	    _Tp __t2 = __r * (__x / __q);
+        1:   63:	    if (__t1 >= __t2)
+        1:   63-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   64:	      __x = __t1 - __t2;
+        1:   64-block  0
+        -:   65:	    else
+    #####:   66:	      __x = __m - __t2 + __t1;
+    %%%%%:   66-block  0
+        -:   67:	  }
+        -:   68:
+        -:   69:	if (__c != 0)
+        -:   70:	  {
+        -:   71:	    const _Tp __d = __m - __x;
+        -:   72:	    if (__d > __c)
+        -:   73:	      __x += __c;
+        -:   74:	    else
+        -:   75:	      __x = __c - __d;
+        -:   76:	  }
+        1:   77:	return __x;
+        1:   77-block  0
+        -:   78:      }
+        -:   79:
+        -:   80:    template<typename _InputIterator, typename _OutputIterator,
+        -:   81:	     typename _Tp>
+        -:   82:      _OutputIterator
+        -:   83:      __normalize(_InputIterator __first, _InputIterator __last,
+        -:   84:		  _OutputIterator __result, const _Tp& __factor)
+        -:   85:      {
+        -:   86:	for (; __first != __last; ++__first, ++__result)
+        -:   87:	  *__result = *__first / __factor;
+        -:   88:	return __result;
+        -:   89:      }
+        -:   90:
+        -:   91:  } // namespace __detail
+        -:   92:  /// @endcond
+        -:   93:
+        -:   94:#if ! __cpp_inline_variables
+        -:   95:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:   96:    constexpr _UIntType
+        -:   97:    linear_congruential_engine<_UIntType, __a, __c, __m>::multiplier;
+        -:   98:
+        -:   99:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:  100:    constexpr _UIntType
+        -:  101:    linear_congruential_engine<_UIntType, __a, __c, __m>::increment;
+        -:  102:
+        -:  103:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:  104:    constexpr _UIntType
+        -:  105:    linear_congruential_engine<_UIntType, __a, __c, __m>::modulus;
+        -:  106:
+        -:  107:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:  108:    constexpr _UIntType
+        -:  109:    linear_congruential_engine<_UIntType, __a, __c, __m>::default_seed;
+        -:  110:#endif
+        -:  111:
+        -:  112:  /**
+        -:  113:   * Seeds the LCR with integral value @p __s, adjusted so that the
+        -:  114:   * ring identity is never a member of the convergence set.
+        -:  115:   */
+        -:  116:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:  117:    void
+function _ZNSt26linear_congruential_engineIjLj16807ELj0ELj2147483647EE4seedEj called 1 returned 100% blocks executed 82%
+        1:  118:    linear_congruential_engine<_UIntType, __a, __c, __m>::
+        -:  119:    seed(result_type __s)
+        -:  120:    {
+        1:  121:      if ((__detail::__mod<_UIntType, __m>(__c) == 0)
+        1:  121-block  0
+call    0 returned 1
+       1*:  122:	  && (__detail::__mod<_UIntType, __m>(__s) == 0))
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  122-block  0
+call    2 returned 1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:  122-block  1
+        1:  122-block  2
+        1:  122-block  3
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+    #####:  123:	_M_x = 1;
+    %%%%%:  123-block  0
+        -:  124:      else
+        1:  125:	_M_x = __detail::__mod<_UIntType, __m>(__s);
+        1:  125-block  0
+call    0 returned 1
+        1:  126:    }
+        -:  127:
+        -:  128:  /**
+        -:  129:   * Seeds the LCR engine with a value generated by @p __q.
+        -:  130:   */
+        -:  131:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m>
+        -:  132:    template<typename _Sseq>
+        -:  133:      auto
+        -:  134:      linear_congruential_engine<_UIntType, __a, __c, __m>::
+        -:  135:      seed(_Sseq& __q)
+        -:  136:      -> _If_seed_seq<_Sseq>
+        -:  137:      {
+        -:  138:	const _UIntType __k0 = __m == 0 ? std::numeric_limits<_UIntType>::digits
+        -:  139:	                                : std::__lg(__m);
+        -:  140:	const _UIntType __k = (__k0 + 31) / 32;
+        -:  141:	uint_least32_t __arr[__k + 3];
+        -:  142:	__q.generate(__arr + 0, __arr + __k + 3);
+        -:  143:	_UIntType __factor = 1u;
+        -:  144:	_UIntType __sum = 0u;
+        -:  145:	for (size_t __j = 0; __j < __k; ++__j)
+        -:  146:	  {
+        -:  147:	    __sum += __arr[__j + 3] * __factor;
+        -:  148:	    __factor *= __detail::_Shift<_UIntType, 32>::__value;
+        -:  149:	  }
+        -:  150:	seed(__sum);
+        -:  151:      }
+        -:  152:
+        -:  153:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m,
+        -:  154:	   typename _CharT, typename _Traits>
+        -:  155:    std::basic_ostream<_CharT, _Traits>&
+        -:  156:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  157:	       const linear_congruential_engine<_UIntType,
+        -:  158:						__a, __c, __m>& __lcr)
+        -:  159:    {
+        -:  160:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  161:
+        -:  162:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  163:      const _CharT __fill = __os.fill();
+        -:  164:      __os.flags(__ios_base::dec | __ios_base::fixed | __ios_base::left);
+        -:  165:      __os.fill(__os.widen(' '));
+        -:  166:
+        -:  167:      __os << __lcr._M_x;
+        -:  168:
+        -:  169:      __os.flags(__flags);
+        -:  170:      __os.fill(__fill);
+        -:  171:      return __os;
+        -:  172:    }
+        -:  173:
+        -:  174:  template<typename _UIntType, _UIntType __a, _UIntType __c, _UIntType __m,
+        -:  175:	   typename _CharT, typename _Traits>
+        -:  176:    std::basic_istream<_CharT, _Traits>&
+        -:  177:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  178:	       linear_congruential_engine<_UIntType, __a, __c, __m>& __lcr)
+        -:  179:    {
+        -:  180:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  181:
+        -:  182:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  183:      __is.flags(__ios_base::dec);
+        -:  184:
+        -:  185:      __is >> __lcr._M_x;
+        -:  186:
+        -:  187:      __is.flags(__flags);
+        -:  188:      return __is;
+        -:  189:    }
+        -:  190:
+        -:  191:#if ! __cpp_inline_variables
+        -:  192:  template<typename _UIntType,
+        -:  193:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  194:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  195:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  196:	   _UIntType __f>
+        -:  197:    constexpr size_t
+        -:  198:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  199:			    __s, __b, __t, __c, __l, __f>::word_size;
+        -:  200:
+        -:  201:  template<typename _UIntType,
+        -:  202:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  203:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  204:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  205:	   _UIntType __f>
+        -:  206:    constexpr size_t
+        -:  207:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  208:			    __s, __b, __t, __c, __l, __f>::state_size;
+        -:  209:
+        -:  210:  template<typename _UIntType,
+        -:  211:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  212:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  213:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  214:	   _UIntType __f>
+        -:  215:    constexpr size_t
+        -:  216:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  217:			    __s, __b, __t, __c, __l, __f>::shift_size;
+        -:  218:
+        -:  219:  template<typename _UIntType,
+        -:  220:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  221:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  222:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  223:	   _UIntType __f>
+        -:  224:    constexpr size_t
+        -:  225:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  226:			    __s, __b, __t, __c, __l, __f>::mask_bits;
+        -:  227:
+        -:  228:  template<typename _UIntType,
+        -:  229:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  230:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  231:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  232:	   _UIntType __f>
+        -:  233:    constexpr _UIntType
+        -:  234:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  235:			    __s, __b, __t, __c, __l, __f>::xor_mask;
+        -:  236:
+        -:  237:  template<typename _UIntType,
+        -:  238:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  239:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  240:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  241:	   _UIntType __f>
+        -:  242:    constexpr size_t
+        -:  243:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  244:			    __s, __b, __t, __c, __l, __f>::tempering_u;
+        -:  245:   
+        -:  246:  template<typename _UIntType,
+        -:  247:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  248:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  249:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  250:	   _UIntType __f>
+        -:  251:    constexpr _UIntType
+        -:  252:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  253:			    __s, __b, __t, __c, __l, __f>::tempering_d;
+        -:  254:
+        -:  255:  template<typename _UIntType,
+        -:  256:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  257:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  258:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  259:	   _UIntType __f>
+        -:  260:    constexpr size_t
+        -:  261:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  262:			    __s, __b, __t, __c, __l, __f>::tempering_s;
+        -:  263:
+        -:  264:  template<typename _UIntType,
+        -:  265:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  266:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  267:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  268:	   _UIntType __f>
+        -:  269:    constexpr _UIntType
+        -:  270:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  271:			    __s, __b, __t, __c, __l, __f>::tempering_b;
+        -:  272:
+        -:  273:  template<typename _UIntType,
+        -:  274:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  275:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  276:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  277:	   _UIntType __f>
+        -:  278:    constexpr size_t
+        -:  279:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  280:			    __s, __b, __t, __c, __l, __f>::tempering_t;
+        -:  281:
+        -:  282:  template<typename _UIntType,
+        -:  283:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  284:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  285:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  286:	   _UIntType __f>
+        -:  287:    constexpr _UIntType
+        -:  288:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  289:			    __s, __b, __t, __c, __l, __f>::tempering_c;
+        -:  290:
+        -:  291:  template<typename _UIntType,
+        -:  292:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  293:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  294:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  295:	   _UIntType __f>
+        -:  296:    constexpr size_t
+        -:  297:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  298:			    __s, __b, __t, __c, __l, __f>::tempering_l;
+        -:  299:
+        -:  300:  template<typename _UIntType,
+        -:  301:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  302:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  303:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  304:	   _UIntType __f>
+        -:  305:    constexpr _UIntType
+        -:  306:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  307:			    __s, __b, __t, __c, __l, __f>::
+        -:  308:                                              initialization_multiplier;
+        -:  309:
+        -:  310:  template<typename _UIntType,
+        -:  311:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  312:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  313:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  314:	   _UIntType __f>
+        -:  315:    constexpr _UIntType
+        -:  316:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  317:			    __s, __b, __t, __c, __l, __f>::default_seed;
+        -:  318:#endif
+        -:  319:
+        -:  320:  template<typename _UIntType,
+        -:  321:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  322:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  323:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  324:	   _UIntType __f>
+        -:  325:    void
+        -:  326:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  327:			    __s, __b, __t, __c, __l, __f>::
+        -:  328:    seed(result_type __sd)
+        -:  329:    {
+        -:  330:      _M_x[0] = __detail::__mod<_UIntType,
+        -:  331:	__detail::_Shift<_UIntType, __w>::__value>(__sd);
+        -:  332:
+        -:  333:      for (size_t __i = 1; __i < state_size; ++__i)
+        -:  334:	{
+        -:  335:	  _UIntType __x = _M_x[__i - 1];
+        -:  336:	  __x ^= __x >> (__w - 2);
+        -:  337:	  __x *= __f;
+        -:  338:	  __x += __detail::__mod<_UIntType, __n>(__i);
+        -:  339:	  _M_x[__i] = __detail::__mod<_UIntType,
+        -:  340:	    __detail::_Shift<_UIntType, __w>::__value>(__x);
+        -:  341:	}
+        -:  342:      _M_p = state_size;
+        -:  343:    }
+        -:  344:
+        -:  345:  template<typename _UIntType,
+        -:  346:	   size_t __w, size_t __n, size_t __m, size_t __r,
+        -:  347:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  348:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  349:	   _UIntType __f>
+        -:  350:    template<typename _Sseq>
+        -:  351:      auto
+        -:  352:      mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  353:			      __s, __b, __t, __c, __l, __f>::
+        -:  354:      seed(_Sseq& __q)
+        -:  355:      -> _If_seed_seq<_Sseq>
+        -:  356:      {
+        -:  357:	const _UIntType __upper_mask = (~_UIntType()) << __r;
+        -:  358:	const size_t __k = (__w + 31) / 32;
+        -:  359:	uint_least32_t __arr[__n * __k];
+        -:  360:	__q.generate(__arr + 0, __arr + __n * __k);
+        -:  361:
+        -:  362:	bool __zero = true;
+        -:  363:	for (size_t __i = 0; __i < state_size; ++__i)
+        -:  364:	  {
+        -:  365:	    _UIntType __factor = 1u;
+        -:  366:	    _UIntType __sum = 0u;
+        -:  367:	    for (size_t __j = 0; __j < __k; ++__j)
+        -:  368:	      {
+        -:  369:		__sum += __arr[__k * __i + __j] * __factor;
+        -:  370:		__factor *= __detail::_Shift<_UIntType, 32>::__value;
+        -:  371:	      }
+        -:  372:	    _M_x[__i] = __detail::__mod<_UIntType,
+        -:  373:	      __detail::_Shift<_UIntType, __w>::__value>(__sum);
+        -:  374:
+        -:  375:	    if (__zero)
+        -:  376:	      {
+        -:  377:		if (__i == 0)
+        -:  378:		  {
+        -:  379:		    if ((_M_x[0] & __upper_mask) != 0u)
+        -:  380:		      __zero = false;
+        -:  381:		  }
+        -:  382:		else if (_M_x[__i] != 0u)
+        -:  383:		  __zero = false;
+        -:  384:	      }
+        -:  385:	  }
+        -:  386:        if (__zero)
+        -:  387:          _M_x[0] = __detail::_Shift<_UIntType, __w - 1>::__value;
+        -:  388:	_M_p = state_size;
+        -:  389:      }
+        -:  390:
+        -:  391:  template<typename _UIntType, size_t __w,
+        -:  392:	   size_t __n, size_t __m, size_t __r,
+        -:  393:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  394:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  395:	   _UIntType __f>
+        -:  396:    void
+        -:  397:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  398:			    __s, __b, __t, __c, __l, __f>::
+        -:  399:    _M_gen_rand(void)
+        -:  400:    {
+        -:  401:      const _UIntType __upper_mask = (~_UIntType()) << __r;
+        -:  402:      const _UIntType __lower_mask = ~__upper_mask;
+        -:  403:
+        -:  404:      for (size_t __k = 0; __k < (__n - __m); ++__k)
+        -:  405:        {
+        -:  406:	  _UIntType __y = ((_M_x[__k] & __upper_mask)
+        -:  407:			   | (_M_x[__k + 1] & __lower_mask));
+        -:  408:	  _M_x[__k] = (_M_x[__k + __m] ^ (__y >> 1)
+        -:  409:		       ^ ((__y & 0x01) ? __a : 0));
+        -:  410:        }
+        -:  411:
+        -:  412:      for (size_t __k = (__n - __m); __k < (__n - 1); ++__k)
+        -:  413:	{
+        -:  414:	  _UIntType __y = ((_M_x[__k] & __upper_mask)
+        -:  415:			   | (_M_x[__k + 1] & __lower_mask));
+        -:  416:	  _M_x[__k] = (_M_x[__k + (__m - __n)] ^ (__y >> 1)
+        -:  417:		       ^ ((__y & 0x01) ? __a : 0));
+        -:  418:	}
+        -:  419:
+        -:  420:      _UIntType __y = ((_M_x[__n - 1] & __upper_mask)
+        -:  421:		       | (_M_x[0] & __lower_mask));
+        -:  422:      _M_x[__n - 1] = (_M_x[__m - 1] ^ (__y >> 1)
+        -:  423:		       ^ ((__y & 0x01) ? __a : 0));
+        -:  424:      _M_p = 0;
+        -:  425:    }
+        -:  426:
+        -:  427:  template<typename _UIntType, size_t __w,
+        -:  428:	   size_t __n, size_t __m, size_t __r,
+        -:  429:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  430:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  431:	   _UIntType __f>
+        -:  432:    void
+        -:  433:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  434:			    __s, __b, __t, __c, __l, __f>::
+        -:  435:    discard(unsigned long long __z)
+        -:  436:    {
+        -:  437:      while (__z > state_size - _M_p)
+        -:  438:	{
+        -:  439:	  __z -= state_size - _M_p;
+        -:  440:	  _M_gen_rand();
+        -:  441:	}
+        -:  442:      _M_p += __z;
+        -:  443:    }
+        -:  444:
+        -:  445:  template<typename _UIntType, size_t __w,
+        -:  446:	   size_t __n, size_t __m, size_t __r,
+        -:  447:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  448:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  449:	   _UIntType __f>
+        -:  450:    typename
+        -:  451:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  452:			    __s, __b, __t, __c, __l, __f>::result_type
+        -:  453:    mersenne_twister_engine<_UIntType, __w, __n, __m, __r, __a, __u, __d,
+        -:  454:			    __s, __b, __t, __c, __l, __f>::
+        -:  455:    operator()()
+        -:  456:    {
+        -:  457:      // Reload the vector - cost is O(n) amortized over n calls.
+        -:  458:      if (_M_p >= state_size)
+        -:  459:	_M_gen_rand();
+        -:  460:
+        -:  461:      // Calculate o(x(i)).
+        -:  462:      result_type __z = _M_x[_M_p++];
+        -:  463:      __z ^= (__z >> __u) & __d;
+        -:  464:      __z ^= (__z << __s) & __b;
+        -:  465:      __z ^= (__z << __t) & __c;
+        -:  466:      __z ^= (__z >> __l);
+        -:  467:
+        -:  468:      return __z;
+        -:  469:    }
+        -:  470:
+        -:  471:  template<typename _UIntType, size_t __w,
+        -:  472:	   size_t __n, size_t __m, size_t __r,
+        -:  473:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  474:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  475:	   _UIntType __f, typename _CharT, typename _Traits>
+        -:  476:    std::basic_ostream<_CharT, _Traits>&
+        -:  477:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  478:	       const mersenne_twister_engine<_UIntType, __w, __n, __m,
+        -:  479:	       __r, __a, __u, __d, __s, __b, __t, __c, __l, __f>& __x)
+        -:  480:    {
+        -:  481:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  482:
+        -:  483:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  484:      const _CharT __fill = __os.fill();
+        -:  485:      const _CharT __space = __os.widen(' ');
+        -:  486:      __os.flags(__ios_base::dec | __ios_base::fixed | __ios_base::left);
+        -:  487:      __os.fill(__space);
+        -:  488:
+        -:  489:      for (size_t __i = 0; __i < __n; ++__i)
+        -:  490:	__os << __x._M_x[__i] << __space;
+        -:  491:      __os << __x._M_p;
+        -:  492:
+        -:  493:      __os.flags(__flags);
+        -:  494:      __os.fill(__fill);
+        -:  495:      return __os;
+        -:  496:    }
+        -:  497:
+        -:  498:  template<typename _UIntType, size_t __w,
+        -:  499:	   size_t __n, size_t __m, size_t __r,
+        -:  500:	   _UIntType __a, size_t __u, _UIntType __d, size_t __s,
+        -:  501:	   _UIntType __b, size_t __t, _UIntType __c, size_t __l,
+        -:  502:	   _UIntType __f, typename _CharT, typename _Traits>
+        -:  503:    std::basic_istream<_CharT, _Traits>&
+        -:  504:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  505:	       mersenne_twister_engine<_UIntType, __w, __n, __m,
+        -:  506:	       __r, __a, __u, __d, __s, __b, __t, __c, __l, __f>& __x)
+        -:  507:    {
+        -:  508:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  509:
+        -:  510:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  511:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -:  512:
+        -:  513:      for (size_t __i = 0; __i < __n; ++__i)
+        -:  514:	__is >> __x._M_x[__i];
+        -:  515:      __is >> __x._M_p;
+        -:  516:
+        -:  517:      __is.flags(__flags);
+        -:  518:      return __is;
+        -:  519:    }
+        -:  520:
+        -:  521:#if ! __cpp_inline_variables
+        -:  522:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  523:    constexpr size_t
+        -:  524:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::word_size;
+        -:  525:
+        -:  526:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  527:    constexpr size_t
+        -:  528:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::short_lag;
+        -:  529:
+        -:  530:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  531:    constexpr size_t
+        -:  532:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::long_lag;
+        -:  533:
+        -:  534:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  535:    constexpr uint_least32_t
+        -:  536:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::default_seed;
+        -:  537:#endif
+        -:  538:
+        -:  539:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  540:    void
+        -:  541:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::
+        -:  542:    seed(result_type __value)
+        -:  543:    {
+        -:  544:      std::linear_congruential_engine<uint_least32_t, 40014u, 0u, 2147483563u>
+        -:  545:	__lcg(__value == 0u ? default_seed : __value);
+        -:  546:
+        -:  547:      const size_t __n = (__w + 31) / 32;
+        -:  548:
+        -:  549:      for (size_t __i = 0; __i < long_lag; ++__i)
+        -:  550:	{
+        -:  551:	  _UIntType __sum = 0u;
+        -:  552:	  _UIntType __factor = 1u;
+        -:  553:	  for (size_t __j = 0; __j < __n; ++__j)
+        -:  554:	    {
+        -:  555:	      __sum += __detail::__mod<uint_least32_t,
+        -:  556:		       __detail::_Shift<uint_least32_t, 32>::__value>
+        -:  557:			 (__lcg()) * __factor;
+        -:  558:	      __factor *= __detail::_Shift<_UIntType, 32>::__value;
+        -:  559:	    }
+        -:  560:	  _M_x[__i] = __detail::__mod<_UIntType,
+        -:  561:	    __detail::_Shift<_UIntType, __w>::__value>(__sum);
+        -:  562:	}
+        -:  563:      _M_carry = (_M_x[long_lag - 1] == 0) ? 1 : 0;
+        -:  564:      _M_p = 0;
+        -:  565:    }
+        -:  566:
+        -:  567:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  568:    template<typename _Sseq>
+        -:  569:      auto
+        -:  570:      subtract_with_carry_engine<_UIntType, __w, __s, __r>::
+        -:  571:      seed(_Sseq& __q)
+        -:  572:      -> _If_seed_seq<_Sseq>
+        -:  573:      {
+        -:  574:	const size_t __k = (__w + 31) / 32;
+        -:  575:	uint_least32_t __arr[__r * __k];
+        -:  576:	__q.generate(__arr + 0, __arr + __r * __k);
+        -:  577:
+        -:  578:	for (size_t __i = 0; __i < long_lag; ++__i)
+        -:  579:	  {
+        -:  580:	    _UIntType __sum = 0u;
+        -:  581:	    _UIntType __factor = 1u;
+        -:  582:	    for (size_t __j = 0; __j < __k; ++__j)
+        -:  583:	      {
+        -:  584:		__sum += __arr[__k * __i + __j] * __factor;
+        -:  585:		__factor *= __detail::_Shift<_UIntType, 32>::__value;
+        -:  586:	      }
+        -:  587:	    _M_x[__i] = __detail::__mod<_UIntType,
+        -:  588:	      __detail::_Shift<_UIntType, __w>::__value>(__sum);
+        -:  589:	  }
+        -:  590:	_M_carry = (_M_x[long_lag - 1] == 0) ? 1 : 0;
+        -:  591:	_M_p = 0;
+        -:  592:      }
+        -:  593:
+        -:  594:  template<typename _UIntType, size_t __w, size_t __s, size_t __r>
+        -:  595:    typename subtract_with_carry_engine<_UIntType, __w, __s, __r>::
+        -:  596:	     result_type
+        -:  597:    subtract_with_carry_engine<_UIntType, __w, __s, __r>::
+        -:  598:    operator()()
+        -:  599:    {
+        -:  600:      // Derive short lag index from current index.
+        -:  601:      long __ps = _M_p - short_lag;
+        -:  602:      if (__ps < 0)
+        -:  603:	__ps += long_lag;
+        -:  604:
+        -:  605:      // Calculate new x(i) without overflow or division.
+        -:  606:      // NB: Thanks to the requirements for _UIntType, _M_x[_M_p] + _M_carry
+        -:  607:      // cannot overflow.
+        -:  608:      _UIntType __xi;
+        -:  609:      if (_M_x[__ps] >= _M_x[_M_p] + _M_carry)
+        -:  610:	{
+        -:  611:	  __xi = _M_x[__ps] - _M_x[_M_p] - _M_carry;
+        -:  612:	  _M_carry = 0;
+        -:  613:	}
+        -:  614:      else
+        -:  615:	{
+        -:  616:	  __xi = (__detail::_Shift<_UIntType, __w>::__value
+        -:  617:		  - _M_x[_M_p] - _M_carry + _M_x[__ps]);
+        -:  618:	  _M_carry = 1;
+        -:  619:	}
+        -:  620:      _M_x[_M_p] = __xi;
+        -:  621:
+        -:  622:      // Adjust current index to loop around in ring buffer.
+        -:  623:      if (++_M_p >= long_lag)
+        -:  624:	_M_p = 0;
+        -:  625:
+        -:  626:      return __xi;
+        -:  627:    }
+        -:  628:
+        -:  629:  template<typename _UIntType, size_t __w, size_t __s, size_t __r,
+        -:  630:	   typename _CharT, typename _Traits>
+        -:  631:    std::basic_ostream<_CharT, _Traits>&
+        -:  632:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  633:	       const subtract_with_carry_engine<_UIntType,
+        -:  634:						__w, __s, __r>& __x)
+        -:  635:    {
+        -:  636:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  637:
+        -:  638:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  639:      const _CharT __fill = __os.fill();
+        -:  640:      const _CharT __space = __os.widen(' ');
+        -:  641:      __os.flags(__ios_base::dec | __ios_base::fixed | __ios_base::left);
+        -:  642:      __os.fill(__space);
+        -:  643:
+        -:  644:      for (size_t __i = 0; __i < __r; ++__i)
+        -:  645:	__os << __x._M_x[__i] << __space;
+        -:  646:      __os << __x._M_carry << __space << __x._M_p;
+        -:  647:
+        -:  648:      __os.flags(__flags);
+        -:  649:      __os.fill(__fill);
+        -:  650:      return __os;
+        -:  651:    }
+        -:  652:
+        -:  653:  template<typename _UIntType, size_t __w, size_t __s, size_t __r,
+        -:  654:	   typename _CharT, typename _Traits>
+        -:  655:    std::basic_istream<_CharT, _Traits>&
+        -:  656:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  657:	       subtract_with_carry_engine<_UIntType, __w, __s, __r>& __x)
+        -:  658:    {
+        -:  659:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  660:
+        -:  661:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  662:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -:  663:
+        -:  664:      for (size_t __i = 0; __i < __r; ++__i)
+        -:  665:	__is >> __x._M_x[__i];
+        -:  666:      __is >> __x._M_carry;
+        -:  667:      __is >> __x._M_p;
+        -:  668:
+        -:  669:      __is.flags(__flags);
+        -:  670:      return __is;
+        -:  671:    }
+        -:  672:
+        -:  673:#if ! __cpp_inline_variables
+        -:  674:  template<typename _RandomNumberEngine, size_t __p, size_t __r>
+        -:  675:    constexpr size_t
+        -:  676:    discard_block_engine<_RandomNumberEngine, __p, __r>::block_size;
+        -:  677:
+        -:  678:  template<typename _RandomNumberEngine, size_t __p, size_t __r>
+        -:  679:    constexpr size_t
+        -:  680:    discard_block_engine<_RandomNumberEngine, __p, __r>::used_block;
+        -:  681:#endif
+        -:  682:
+        -:  683:  template<typename _RandomNumberEngine, size_t __p, size_t __r>
+        -:  684:    typename discard_block_engine<_RandomNumberEngine,
+        -:  685:			   __p, __r>::result_type
+        -:  686:    discard_block_engine<_RandomNumberEngine, __p, __r>::
+        -:  687:    operator()()
+        -:  688:    {
+        -:  689:      if (_M_n >= used_block)
+        -:  690:	{
+        -:  691:	  _M_b.discard(block_size - _M_n);
+        -:  692:	  _M_n = 0;
+        -:  693:	}
+        -:  694:      ++_M_n;
+        -:  695:      return _M_b();
+        -:  696:    }
+        -:  697:
+        -:  698:  template<typename _RandomNumberEngine, size_t __p, size_t __r,
+        -:  699:	   typename _CharT, typename _Traits>
+        -:  700:    std::basic_ostream<_CharT, _Traits>&
+        -:  701:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  702:	       const discard_block_engine<_RandomNumberEngine,
+        -:  703:	       __p, __r>& __x)
+        -:  704:    {
+        -:  705:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  706:
+        -:  707:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  708:      const _CharT __fill = __os.fill();
+        -:  709:      const _CharT __space = __os.widen(' ');
+        -:  710:      __os.flags(__ios_base::dec | __ios_base::fixed | __ios_base::left);
+        -:  711:      __os.fill(__space);
+        -:  712:
+        -:  713:      __os << __x.base() << __space << __x._M_n;
+        -:  714:
+        -:  715:      __os.flags(__flags);
+        -:  716:      __os.fill(__fill);
+        -:  717:      return __os;
+        -:  718:    }
+        -:  719:
+        -:  720:  template<typename _RandomNumberEngine, size_t __p, size_t __r,
+        -:  721:	   typename _CharT, typename _Traits>
+        -:  722:    std::basic_istream<_CharT, _Traits>&
+        -:  723:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  724:	       discard_block_engine<_RandomNumberEngine, __p, __r>& __x)
+        -:  725:    {
+        -:  726:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  727:
+        -:  728:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  729:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -:  730:
+        -:  731:      __is >> __x._M_b >> __x._M_n;
+        -:  732:
+        -:  733:      __is.flags(__flags);
+        -:  734:      return __is;
+        -:  735:    }
+        -:  736:
+        -:  737:
+        -:  738:  template<typename _RandomNumberEngine, size_t __w, typename _UIntType>
+        -:  739:    typename independent_bits_engine<_RandomNumberEngine, __w, _UIntType>::
+        -:  740:      result_type
+        -:  741:    independent_bits_engine<_RandomNumberEngine, __w, _UIntType>::
+        -:  742:    operator()()
+        -:  743:    {
+        -:  744:      typedef typename _RandomNumberEngine::result_type _Eresult_type;
+        -:  745:      const _Eresult_type __r
+        -:  746:	= (_M_b.max() - _M_b.min() < std::numeric_limits<_Eresult_type>::max()
+        -:  747:	   ? _M_b.max() - _M_b.min() + 1 : 0);
+        -:  748:      const unsigned __edig = std::numeric_limits<_Eresult_type>::digits;
+        -:  749:      const unsigned __m = __r ? std::__lg(__r) : __edig;
+        -:  750:
+        -:  751:      typedef typename std::common_type<_Eresult_type, result_type>::type
+        -:  752:	__ctype;
+        -:  753:      const unsigned __cdig = std::numeric_limits<__ctype>::digits;
+        -:  754:
+        -:  755:      unsigned __n, __n0;
+        -:  756:      __ctype __s0, __s1, __y0, __y1;
+        -:  757:
+        -:  758:      for (size_t __i = 0; __i < 2; ++__i)
+        -:  759:	{
+        -:  760:	  __n = (__w + __m - 1) / __m + __i;
+        -:  761:	  __n0 = __n - __w % __n;
+        -:  762:	  const unsigned __w0 = __w / __n;  // __w0 <= __m
+        -:  763:
+        -:  764:	  __s0 = 0;
+        -:  765:	  __s1 = 0;
+        -:  766:	  if (__w0 < __cdig)
+        -:  767:	    {
+        -:  768:	      __s0 = __ctype(1) << __w0;
+        -:  769:	      __s1 = __s0 << 1;
+        -:  770:	    }
+        -:  771:
+        -:  772:	  __y0 = 0;
+        -:  773:	  __y1 = 0;
+        -:  774:	  if (__r)
+        -:  775:	    {
+        -:  776:	      __y0 = __s0 * (__r / __s0);
+        -:  777:	      if (__s1)
+        -:  778:		__y1 = __s1 * (__r / __s1);
+        -:  779:
+        -:  780:	      if (__r - __y0 <= __y0 / __n)
+        -:  781:		break;
+        -:  782:	    }
+        -:  783:	  else
+        -:  784:	    break;
+        -:  785:	}
+        -:  786:
+        -:  787:      result_type __sum = 0;
+        -:  788:      for (size_t __k = 0; __k < __n0; ++__k)
+        -:  789:	{
+        -:  790:	  __ctype __u;
+        -:  791:	  do
+        -:  792:	    __u = _M_b() - _M_b.min();
+        -:  793:	  while (__y0 && __u >= __y0);
+        -:  794:	  __sum = __s0 * __sum + (__s0 ? __u % __s0 : __u);
+        -:  795:	}
+        -:  796:      for (size_t __k = __n0; __k < __n; ++__k)
+        -:  797:	{
+        -:  798:	  __ctype __u;
+        -:  799:	  do
+        -:  800:	    __u = _M_b() - _M_b.min();
+        -:  801:	  while (__y1 && __u >= __y1);
+        -:  802:	  __sum = __s1 * __sum + (__s1 ? __u % __s1 : __u);
+        -:  803:	}
+        -:  804:      return __sum;
+        -:  805:    }
+        -:  806:
+        -:  807:#if ! __cpp_inline_variables
+        -:  808:  template<typename _RandomNumberEngine, size_t __k>
+        -:  809:    constexpr size_t
+        -:  810:    shuffle_order_engine<_RandomNumberEngine, __k>::table_size;
+        -:  811:#endif
+        -:  812:
+        -:  813:  namespace __detail
+        -:  814:  {
+        -:  815:    // Determine whether an integer is representable as double.
+        -:  816:    template<typename _Tp>
+        -:  817:      constexpr bool
+        -:  818:      __representable_as_double(_Tp __x) noexcept
+        -:  819:      {
+        -:  820:	static_assert(numeric_limits<_Tp>::is_integer, "");
+        -:  821:	static_assert(!numeric_limits<_Tp>::is_signed, "");
+        -:  822:	// All integers <= 2^53 are representable.
+        -:  823:	return (__x <= (1ull << __DBL_MANT_DIG__))
+        -:  824:	  // Between 2^53 and 2^54 only even numbers are representable.
+        -:  825:	  || (!(__x & 1) && __detail::__representable_as_double(__x >> 1));
+        -:  826:      }
+        -:  827:
+        -:  828:    // Determine whether x+1 is representable as double.
+        -:  829:    template<typename _Tp>
+        -:  830:      constexpr bool
+        -:  831:      __p1_representable_as_double(_Tp __x) noexcept
+        -:  832:      {
+        -:  833:	static_assert(numeric_limits<_Tp>::is_integer, "");
+        -:  834:	static_assert(!numeric_limits<_Tp>::is_signed, "");
+        -:  835:	return numeric_limits<_Tp>::digits < __DBL_MANT_DIG__
+        -:  836:	  || (bool(__x + 1u) // return false if x+1 wraps around to zero
+        -:  837:	      && __detail::__representable_as_double(__x + 1u));
+        -:  838:      }
+        -:  839:  }
+        -:  840:
+        -:  841:  template<typename _RandomNumberEngine, size_t __k>
+        -:  842:    typename shuffle_order_engine<_RandomNumberEngine, __k>::result_type
+        -:  843:    shuffle_order_engine<_RandomNumberEngine, __k>::
+        -:  844:    operator()()
+        -:  845:    {
+        -:  846:      constexpr result_type __range = max() - min();
+        -:  847:      size_t __j = __k;
+        -:  848:      const result_type __y = _M_y - min();
+        -:  849:      // Avoid using slower long double arithmetic if possible.
+        -:  850:      if _GLIBCXX17_CONSTEXPR (__detail::__p1_representable_as_double(__range))
+        -:  851:	__j *= __y / (__range + 1.0);
+        -:  852:      else
+        -:  853:	__j *= __y / (__range + 1.0L);
+        -:  854:      _M_y = _M_v[__j];
+        -:  855:      _M_v[__j] = _M_b();
+        -:  856:
+        -:  857:      return _M_y;
+        -:  858:    }
+        -:  859:
+        -:  860:  template<typename _RandomNumberEngine, size_t __k,
+        -:  861:	   typename _CharT, typename _Traits>
+        -:  862:    std::basic_ostream<_CharT, _Traits>&
+        -:  863:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  864:	       const shuffle_order_engine<_RandomNumberEngine, __k>& __x)
+        -:  865:    {
+        -:  866:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  867:
+        -:  868:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  869:      const _CharT __fill = __os.fill();
+        -:  870:      const _CharT __space = __os.widen(' ');
+        -:  871:      __os.flags(__ios_base::dec | __ios_base::fixed | __ios_base::left);
+        -:  872:      __os.fill(__space);
+        -:  873:
+        -:  874:      __os << __x.base();
+        -:  875:      for (size_t __i = 0; __i < __k; ++__i)
+        -:  876:	__os << __space << __x._M_v[__i];
+        -:  877:      __os << __space << __x._M_y;
+        -:  878:
+        -:  879:      __os.flags(__flags);
+        -:  880:      __os.fill(__fill);
+        -:  881:      return __os;
+        -:  882:    }
+        -:  883:
+        -:  884:  template<typename _RandomNumberEngine, size_t __k,
+        -:  885:	   typename _CharT, typename _Traits>
+        -:  886:    std::basic_istream<_CharT, _Traits>&
+        -:  887:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  888:	       shuffle_order_engine<_RandomNumberEngine, __k>& __x)
+        -:  889:    {
+        -:  890:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  891:
+        -:  892:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  893:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -:  894:
+        -:  895:      __is >> __x._M_b;
+        -:  896:      for (size_t __i = 0; __i < __k; ++__i)
+        -:  897:	__is >> __x._M_v[__i];
+        -:  898:      __is >> __x._M_y;
+        -:  899:
+        -:  900:      __is.flags(__flags);
+        -:  901:      return __is;
+        -:  902:    }
+        -:  903:
+        -:  904:
+        -:  905:  template<typename _IntType, typename _CharT, typename _Traits>
+        -:  906:    std::basic_ostream<_CharT, _Traits>&
+        -:  907:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  908:	       const uniform_int_distribution<_IntType>& __x)
+        -:  909:    {
+        -:  910:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  911:
+        -:  912:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  913:      const _CharT __fill = __os.fill();
+        -:  914:      const _CharT __space = __os.widen(' ');
+        -:  915:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -:  916:      __os.fill(__space);
+        -:  917:
+        -:  918:      __os << __x.a() << __space << __x.b();
+        -:  919:
+        -:  920:      __os.flags(__flags);
+        -:  921:      __os.fill(__fill);
+        -:  922:      return __os;
+        -:  923:    }
+        -:  924:
+        -:  925:  template<typename _IntType, typename _CharT, typename _Traits>
+        -:  926:    std::basic_istream<_CharT, _Traits>&
+        -:  927:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  928:	       uniform_int_distribution<_IntType>& __x)
+        -:  929:    {
+        -:  930:      using param_type
+        -:  931:	= typename uniform_int_distribution<_IntType>::param_type;
+        -:  932:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  933:
+        -:  934:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  935:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -:  936:
+        -:  937:      _IntType __a, __b;
+        -:  938:      if (__is >> __a >> __b)
+        -:  939:	__x.param(param_type(__a, __b));
+        -:  940:
+        -:  941:      __is.flags(__flags);
+        -:  942:      return __is;
+        -:  943:    }
+        -:  944:
+        -:  945:
+        -:  946:  template<typename _RealType>
+        -:  947:    template<typename _ForwardIterator,
+        -:  948:	     typename _UniformRandomNumberGenerator>
+        -:  949:      void
+        -:  950:      uniform_real_distribution<_RealType>::
+        -:  951:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -:  952:		      _UniformRandomNumberGenerator& __urng,
+        -:  953:		      const param_type& __p)
+        -:  954:      {
+        -:  955:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -:  956:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -:  957:	  __aurng(__urng);
+        -:  958:	auto __range = __p.b() - __p.a();
+        -:  959:	while (__f != __t)
+        -:  960:	  *__f++ = __aurng() * __range + __p.a();
+        -:  961:      }
+        -:  962:
+        -:  963:  template<typename _RealType, typename _CharT, typename _Traits>
+        -:  964:    std::basic_ostream<_CharT, _Traits>&
+        -:  965:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -:  966:	       const uniform_real_distribution<_RealType>& __x)
+        -:  967:    {
+        -:  968:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -:  969:
+        -:  970:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -:  971:      const _CharT __fill = __os.fill();
+        -:  972:      const std::streamsize __precision = __os.precision();
+        -:  973:      const _CharT __space = __os.widen(' ');
+        -:  974:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -:  975:      __os.fill(__space);
+        -:  976:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -:  977:
+        -:  978:      __os << __x.a() << __space << __x.b();
+        -:  979:
+        -:  980:      __os.flags(__flags);
+        -:  981:      __os.fill(__fill);
+        -:  982:      __os.precision(__precision);
+        -:  983:      return __os;
+        -:  984:    }
+        -:  985:
+        -:  986:  template<typename _RealType, typename _CharT, typename _Traits>
+        -:  987:    std::basic_istream<_CharT, _Traits>&
+        -:  988:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -:  989:	       uniform_real_distribution<_RealType>& __x)
+        -:  990:    {
+        -:  991:      using param_type
+        -:  992:	= typename uniform_real_distribution<_RealType>::param_type;
+        -:  993:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -:  994:
+        -:  995:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -:  996:      __is.flags(__ios_base::skipws);
+        -:  997:
+        -:  998:      _RealType __a, __b;
+        -:  999:      if (__is >> __a >> __b)
+        -: 1000:	__x.param(param_type(__a, __b));
+        -: 1001:
+        -: 1002:      __is.flags(__flags);
+        -: 1003:      return __is;
+        -: 1004:    }
+        -: 1005:
+        -: 1006:
+        -: 1007:  template<typename _ForwardIterator,
+        -: 1008:	   typename _UniformRandomNumberGenerator>
+        -: 1009:    void
+        -: 1010:    std::bernoulli_distribution::
+        -: 1011:    __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1012:		    _UniformRandomNumberGenerator& __urng,
+        -: 1013:		    const param_type& __p)
+        -: 1014:    {
+        -: 1015:      __glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1016:      __detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1017:	__aurng(__urng);
+        -: 1018:      auto __limit = __p.p() * (__aurng.max() - __aurng.min());
+        -: 1019:
+        -: 1020:      while (__f != __t)
+        -: 1021:	*__f++ = (__aurng() - __aurng.min()) < __limit;
+        -: 1022:    }
+        -: 1023:
+        -: 1024:  template<typename _CharT, typename _Traits>
+        -: 1025:    std::basic_ostream<_CharT, _Traits>&
+        -: 1026:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1027:	       const bernoulli_distribution& __x)
+        -: 1028:    {
+        -: 1029:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1030:
+        -: 1031:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1032:      const _CharT __fill = __os.fill();
+        -: 1033:      const std::streamsize __precision = __os.precision();
+        -: 1034:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1035:      __os.fill(__os.widen(' '));
+        -: 1036:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 1037:
+        -: 1038:      __os << __x.p();
+        -: 1039:
+        -: 1040:      __os.flags(__flags);
+        -: 1041:      __os.fill(__fill);
+        -: 1042:      __os.precision(__precision);
+        -: 1043:      return __os;
+        -: 1044:    }
+        -: 1045:
+        -: 1046:
+        -: 1047:  template<typename _IntType>
+        -: 1048:    template<typename _UniformRandomNumberGenerator>
+        -: 1049:      typename geometric_distribution<_IntType>::result_type
+        -: 1050:      geometric_distribution<_IntType>::
+        -: 1051:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 1052:		 const param_type& __param)
+        -: 1053:      {
+        -: 1054:	// About the epsilon thing see this thread:
+        -: 1055:	// http://gcc.gnu.org/ml/gcc-patches/2006-10/msg00971.html
+        -: 1056:	const double __naf =
+        -: 1057:	  (1 - std::numeric_limits<double>::epsilon()) / 2;
+        -: 1058:	// The largest _RealType convertible to _IntType.
+        -: 1059:	const double __thr =
+        -: 1060:	  std::numeric_limits<_IntType>::max() + __naf;
+        -: 1061:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1062:	  __aurng(__urng);
+        -: 1063:
+        -: 1064:	double __cand;
+        -: 1065:	do
+        -: 1066:	  __cand = std::floor(std::log(1.0 - __aurng()) / __param._M_log_1_p);
+        -: 1067:	while (__cand >= __thr);
+        -: 1068:
+        -: 1069:	return result_type(__cand + __naf);
+        -: 1070:      }
+        -: 1071:
+        -: 1072:  template<typename _IntType>
+        -: 1073:    template<typename _ForwardIterator,
+        -: 1074:	     typename _UniformRandomNumberGenerator>
+        -: 1075:      void
+        -: 1076:      geometric_distribution<_IntType>::
+        -: 1077:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1078:		      _UniformRandomNumberGenerator& __urng,
+        -: 1079:		      const param_type& __param)
+        -: 1080:      {
+        -: 1081:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1082:	// About the epsilon thing see this thread:
+        -: 1083:	// http://gcc.gnu.org/ml/gcc-patches/2006-10/msg00971.html
+        -: 1084:	const double __naf =
+        -: 1085:	  (1 - std::numeric_limits<double>::epsilon()) / 2;
+        -: 1086:	// The largest _RealType convertible to _IntType.
+        -: 1087:	const double __thr =
+        -: 1088:	  std::numeric_limits<_IntType>::max() + __naf;
+        -: 1089:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1090:	  __aurng(__urng);
+        -: 1091:
+        -: 1092:	while (__f != __t)
+        -: 1093:	  {
+        -: 1094:	    double __cand;
+        -: 1095:	    do
+        -: 1096:	      __cand = std::floor(std::log(1.0 - __aurng())
+        -: 1097:				  / __param._M_log_1_p);
+        -: 1098:	    while (__cand >= __thr);
+        -: 1099:
+        -: 1100:	    *__f++ = __cand + __naf;
+        -: 1101:	  }
+        -: 1102:      }
+        -: 1103:
+        -: 1104:  template<typename _IntType,
+        -: 1105:	   typename _CharT, typename _Traits>
+        -: 1106:    std::basic_ostream<_CharT, _Traits>&
+        -: 1107:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1108:	       const geometric_distribution<_IntType>& __x)
+        -: 1109:    {
+        -: 1110:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1111:
+        -: 1112:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1113:      const _CharT __fill = __os.fill();
+        -: 1114:      const std::streamsize __precision = __os.precision();
+        -: 1115:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1116:      __os.fill(__os.widen(' '));
+        -: 1117:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 1118:
+        -: 1119:      __os << __x.p();
+        -: 1120:
+        -: 1121:      __os.flags(__flags);
+        -: 1122:      __os.fill(__fill);
+        -: 1123:      __os.precision(__precision);
+        -: 1124:      return __os;
+        -: 1125:    }
+        -: 1126:
+        -: 1127:  template<typename _IntType,
+        -: 1128:	   typename _CharT, typename _Traits>
+        -: 1129:    std::basic_istream<_CharT, _Traits>&
+        -: 1130:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1131:	       geometric_distribution<_IntType>& __x)
+        -: 1132:    {
+        -: 1133:      using param_type = typename geometric_distribution<_IntType>::param_type;
+        -: 1134:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1135:
+        -: 1136:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1137:      __is.flags(__ios_base::skipws);
+        -: 1138:
+        -: 1139:      double __p;
+        -: 1140:      if (__is >> __p)
+        -: 1141:	__x.param(param_type(__p));
+        -: 1142:
+        -: 1143:      __is.flags(__flags);
+        -: 1144:      return __is;
+        -: 1145:    }
+        -: 1146:
+        -: 1147:  // This is Leger's algorithm, also in Devroye, Ch. X, Example 1.5.
+        -: 1148:  template<typename _IntType>
+        -: 1149:    template<typename _UniformRandomNumberGenerator>
+        -: 1150:      typename negative_binomial_distribution<_IntType>::result_type
+        -: 1151:      negative_binomial_distribution<_IntType>::
+        -: 1152:      operator()(_UniformRandomNumberGenerator& __urng)
+        -: 1153:      {
+        -: 1154:	const double __y = _M_gd(__urng);
+        -: 1155:
+        -: 1156:	// XXX Is the constructor too slow?
+        -: 1157:	std::poisson_distribution<result_type> __poisson(__y);
+        -: 1158:	return __poisson(__urng);
+        -: 1159:      }
+        -: 1160:
+        -: 1161:  template<typename _IntType>
+        -: 1162:    template<typename _UniformRandomNumberGenerator>
+        -: 1163:      typename negative_binomial_distribution<_IntType>::result_type
+        -: 1164:      negative_binomial_distribution<_IntType>::
+        -: 1165:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 1166:		 const param_type& __p)
+        -: 1167:      {
+        -: 1168:	typedef typename std::gamma_distribution<double>::param_type
+        -: 1169:	  param_type;
+        -: 1170:	
+        -: 1171:	const double __y =
+        -: 1172:	  _M_gd(__urng, param_type(__p.k(), (1.0 - __p.p()) / __p.p()));
+        -: 1173:
+        -: 1174:	std::poisson_distribution<result_type> __poisson(__y);
+        -: 1175:	return __poisson(__urng);
+        -: 1176:      }
+        -: 1177:
+        -: 1178:  template<typename _IntType>
+        -: 1179:    template<typename _ForwardIterator,
+        -: 1180:	     typename _UniformRandomNumberGenerator>
+        -: 1181:      void
+        -: 1182:      negative_binomial_distribution<_IntType>::
+        -: 1183:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1184:		      _UniformRandomNumberGenerator& __urng)
+        -: 1185:      {
+        -: 1186:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1187:	while (__f != __t)
+        -: 1188:	  {
+        -: 1189:	    const double __y = _M_gd(__urng);
+        -: 1190:
+        -: 1191:	    // XXX Is the constructor too slow?
+        -: 1192:	    std::poisson_distribution<result_type> __poisson(__y);
+        -: 1193:	    *__f++ = __poisson(__urng);
+        -: 1194:	  }
+        -: 1195:      }
+        -: 1196:
+        -: 1197:  template<typename _IntType>
+        -: 1198:    template<typename _ForwardIterator,
+        -: 1199:	     typename _UniformRandomNumberGenerator>
+        -: 1200:      void
+        -: 1201:      negative_binomial_distribution<_IntType>::
+        -: 1202:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1203:		      _UniformRandomNumberGenerator& __urng,
+        -: 1204:		      const param_type& __p)
+        -: 1205:      {
+        -: 1206:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1207:	typename std::gamma_distribution<result_type>::param_type
+        -: 1208:	  __p2(__p.k(), (1.0 - __p.p()) / __p.p());
+        -: 1209:
+        -: 1210:	while (__f != __t)
+        -: 1211:	  {
+        -: 1212:	    const double __y = _M_gd(__urng, __p2);
+        -: 1213:
+        -: 1214:	    std::poisson_distribution<result_type> __poisson(__y);
+        -: 1215:	    *__f++ = __poisson(__urng);
+        -: 1216:	  }
+        -: 1217:      }
+        -: 1218:
+        -: 1219:  template<typename _IntType, typename _CharT, typename _Traits>
+        -: 1220:    std::basic_ostream<_CharT, _Traits>&
+        -: 1221:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1222:	       const negative_binomial_distribution<_IntType>& __x)
+        -: 1223:    {
+        -: 1224:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1225:
+        -: 1226:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1227:      const _CharT __fill = __os.fill();
+        -: 1228:      const std::streamsize __precision = __os.precision();
+        -: 1229:      const _CharT __space = __os.widen(' ');
+        -: 1230:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1231:      __os.fill(__os.widen(' '));
+        -: 1232:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 1233:
+        -: 1234:      __os << __x.k() << __space << __x.p()
+        -: 1235:	   << __space << __x._M_gd;
+        -: 1236:
+        -: 1237:      __os.flags(__flags);
+        -: 1238:      __os.fill(__fill);
+        -: 1239:      __os.precision(__precision);
+        -: 1240:      return __os;
+        -: 1241:    }
+        -: 1242:
+        -: 1243:  template<typename _IntType, typename _CharT, typename _Traits>
+        -: 1244:    std::basic_istream<_CharT, _Traits>&
+        -: 1245:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1246:	       negative_binomial_distribution<_IntType>& __x)
+        -: 1247:    {
+        -: 1248:      using param_type
+        -: 1249:	= typename negative_binomial_distribution<_IntType>::param_type;
+        -: 1250:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1251:
+        -: 1252:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1253:      __is.flags(__ios_base::skipws);
+        -: 1254:
+        -: 1255:      _IntType __k;
+        -: 1256:      double __p;
+        -: 1257:      if (__is >> __k >> __p >> __x._M_gd)
+        -: 1258:	__x.param(param_type(__k, __p));
+        -: 1259:
+        -: 1260:      __is.flags(__flags);
+        -: 1261:      return __is;
+        -: 1262:    }
+        -: 1263:
+        -: 1264:
+        -: 1265:  template<typename _IntType>
+        -: 1266:    void
+        -: 1267:    poisson_distribution<_IntType>::param_type::
+        -: 1268:    _M_initialize()
+        -: 1269:    {
+        -: 1270:#if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1271:      if (_M_mean >= 12)
+        -: 1272:	{
+        -: 1273:	  const double __m = std::floor(_M_mean);
+        -: 1274:	  _M_lm_thr = std::log(_M_mean);
+        -: 1275:	  _M_lfm = std::lgamma(__m + 1);
+        -: 1276:	  _M_sm = std::sqrt(__m);
+        -: 1277:
+        -: 1278:	  const double __pi_4 = 0.7853981633974483096156608458198757L;
+        -: 1279:	  const double __dx = std::sqrt(2 * __m * std::log(32 * __m
+        -: 1280:							      / __pi_4));
+        -: 1281:	  _M_d = std::round(std::max<double>(6.0, std::min(__m, __dx)));
+        -: 1282:	  const double __cx = 2 * __m + _M_d;
+        -: 1283:	  _M_scx = std::sqrt(__cx / 2);
+        -: 1284:	  _M_1cx = 1 / __cx;
+        -: 1285:
+        -: 1286:	  _M_c2b = std::sqrt(__pi_4 * __cx) * std::exp(_M_1cx);
+        -: 1287:	  _M_cb = 2 * __cx * std::exp(-_M_d * _M_1cx * (1 + _M_d / 2))
+        -: 1288:		/ _M_d;
+        -: 1289:	}
+        -: 1290:      else
+        -: 1291:#endif
+        -: 1292:	_M_lm_thr = std::exp(-_M_mean);
+        -: 1293:      }
+        -: 1294:
+        -: 1295:  /**
+        -: 1296:   * A rejection algorithm when mean >= 12 and a simple method based
+        -: 1297:   * upon the multiplication of uniform random variates otherwise.
+        -: 1298:   * NB: The former is available only if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1299:   * is defined.
+        -: 1300:   *
+        -: 1301:   * Reference:
+        -: 1302:   * Devroye, L. Non-Uniform Random Variates Generation. Springer-Verlag,
+        -: 1303:   * New York, 1986, Ch. X, Sects. 3.3 & 3.4 (+ Errata!).
+        -: 1304:   */
+        -: 1305:  template<typename _IntType>
+        -: 1306:    template<typename _UniformRandomNumberGenerator>
+        -: 1307:      typename poisson_distribution<_IntType>::result_type
+        -: 1308:      poisson_distribution<_IntType>::
+        -: 1309:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 1310:		 const param_type& __param)
+        -: 1311:      {
+        -: 1312:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1313:	  __aurng(__urng);
+        -: 1314:#if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1315:	if (__param.mean() >= 12)
+        -: 1316:	  {
+        -: 1317:	    double __x;
+        -: 1318:
+        -: 1319:	    // See comments above...
+        -: 1320:	    const double __naf =
+        -: 1321:	      (1 - std::numeric_limits<double>::epsilon()) / 2;
+        -: 1322:	    const double __thr =
+        -: 1323:	      std::numeric_limits<_IntType>::max() + __naf;
+        -: 1324:
+        -: 1325:	    const double __m = std::floor(__param.mean());
+        -: 1326:	    // sqrt(pi / 2)
+        -: 1327:	    const double __spi_2 = 1.2533141373155002512078826424055226L;
+        -: 1328:	    const double __c1 = __param._M_sm * __spi_2;
+        -: 1329:	    const double __c2 = __param._M_c2b + __c1;
+        -: 1330:	    const double __c3 = __c2 + 1;
+        -: 1331:	    const double __c4 = __c3 + 1;
+        -: 1332:	    // 1 / 78
+        -: 1333:	    const double __178 = 0.0128205128205128205128205128205128L;
+        -: 1334:	    // e^(1 / 78)
+        -: 1335:	    const double __e178 = 1.0129030479320018583185514777512983L;
+        -: 1336:	    const double __c5 = __c4 + __e178;
+        -: 1337:	    const double __c = __param._M_cb + __c5;
+        -: 1338:	    const double __2cx = 2 * (2 * __m + __param._M_d);
+        -: 1339:
+        -: 1340:	    bool __reject = true;
+        -: 1341:	    do
+        -: 1342:	      {
+        -: 1343:		const double __u = __c * __aurng();
+        -: 1344:		const double __e = -std::log(1.0 - __aurng());
+        -: 1345:
+        -: 1346:		double __w = 0.0;
+        -: 1347:
+        -: 1348:		if (__u <= __c1)
+        -: 1349:		  {
+        -: 1350:		    const double __n = _M_nd(__urng);
+        -: 1351:		    const double __y = -std::abs(__n) * __param._M_sm - 1;
+        -: 1352:		    __x = std::floor(__y);
+        -: 1353:		    __w = -__n * __n / 2;
+        -: 1354:		    if (__x < -__m)
+        -: 1355:		      continue;
+        -: 1356:		  }
+        -: 1357:		else if (__u <= __c2)
+        -: 1358:		  {
+        -: 1359:		    const double __n = _M_nd(__urng);
+        -: 1360:		    const double __y = 1 + std::abs(__n) * __param._M_scx;
+        -: 1361:		    __x = std::ceil(__y);
+        -: 1362:		    __w = __y * (2 - __y) * __param._M_1cx;
+        -: 1363:		    if (__x > __param._M_d)
+        -: 1364:		      continue;
+        -: 1365:		  }
+        -: 1366:		else if (__u <= __c3)
+        -: 1367:		  // NB: This case not in the book, nor in the Errata,
+        -: 1368:		  // but should be ok...
+        -: 1369:		  __x = -1;
+        -: 1370:		else if (__u <= __c4)
+        -: 1371:		  __x = 0;
+        -: 1372:		else if (__u <= __c5)
+        -: 1373:		  {
+        -: 1374:		    __x = 1;
+        -: 1375:		    // Only in the Errata, see libstdc++/83237.
+        -: 1376:		    __w = __178;
+        -: 1377:		  }
+        -: 1378:		else
+        -: 1379:		  {
+        -: 1380:		    const double __v = -std::log(1.0 - __aurng());
+        -: 1381:		    const double __y = __param._M_d
+        -: 1382:				     + __v * __2cx / __param._M_d;
+        -: 1383:		    __x = std::ceil(__y);
+        -: 1384:		    __w = -__param._M_d * __param._M_1cx * (1 + __y / 2);
+        -: 1385:		  }
+        -: 1386:
+        -: 1387:		__reject = (__w - __e - __x * __param._M_lm_thr
+        -: 1388:			    > __param._M_lfm - std::lgamma(__x + __m + 1));
+        -: 1389:
+        -: 1390:		__reject |= __x + __m >= __thr;
+        -: 1391:
+        -: 1392:	      } while (__reject);
+        -: 1393:
+        -: 1394:	    return result_type(__x + __m + __naf);
+        -: 1395:	  }
+        -: 1396:	else
+        -: 1397:#endif
+        -: 1398:	  {
+        -: 1399:	    _IntType     __x = 0;
+        -: 1400:	    double __prod = 1.0;
+        -: 1401:
+        -: 1402:	    do
+        -: 1403:	      {
+        -: 1404:		__prod *= __aurng();
+        -: 1405:		__x += 1;
+        -: 1406:	      }
+        -: 1407:	    while (__prod > __param._M_lm_thr);
+        -: 1408:
+        -: 1409:	    return __x - 1;
+        -: 1410:	  }
+        -: 1411:      }
+        -: 1412:
+        -: 1413:  template<typename _IntType>
+        -: 1414:    template<typename _ForwardIterator,
+        -: 1415:	     typename _UniformRandomNumberGenerator>
+        -: 1416:      void
+        -: 1417:      poisson_distribution<_IntType>::
+        -: 1418:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1419:		      _UniformRandomNumberGenerator& __urng,
+        -: 1420:		      const param_type& __param)
+        -: 1421:      {
+        -: 1422:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1423:	// We could duplicate everything from operator()...
+        -: 1424:	while (__f != __t)
+        -: 1425:	  *__f++ = this->operator()(__urng, __param);
+        -: 1426:      }
+        -: 1427:
+        -: 1428:  template<typename _IntType,
+        -: 1429:	   typename _CharT, typename _Traits>
+        -: 1430:    std::basic_ostream<_CharT, _Traits>&
+        -: 1431:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1432:	       const poisson_distribution<_IntType>& __x)
+        -: 1433:    {
+        -: 1434:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1435:
+        -: 1436:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1437:      const _CharT __fill = __os.fill();
+        -: 1438:      const std::streamsize __precision = __os.precision();
+        -: 1439:      const _CharT __space = __os.widen(' ');
+        -: 1440:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1441:      __os.fill(__space);
+        -: 1442:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 1443:
+        -: 1444:      __os << __x.mean() << __space << __x._M_nd;
+        -: 1445:
+        -: 1446:      __os.flags(__flags);
+        -: 1447:      __os.fill(__fill);
+        -: 1448:      __os.precision(__precision);
+        -: 1449:      return __os;
+        -: 1450:    }
+        -: 1451:
+        -: 1452:  template<typename _IntType,
+        -: 1453:	   typename _CharT, typename _Traits>
+        -: 1454:    std::basic_istream<_CharT, _Traits>&
+        -: 1455:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1456:	       poisson_distribution<_IntType>& __x)
+        -: 1457:    {
+        -: 1458:      using param_type = typename poisson_distribution<_IntType>::param_type;
+        -: 1459:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1460:
+        -: 1461:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1462:      __is.flags(__ios_base::skipws);
+        -: 1463:
+        -: 1464:      double __mean;
+        -: 1465:      if (__is >> __mean >> __x._M_nd)
+        -: 1466:	__x.param(param_type(__mean));
+        -: 1467:
+        -: 1468:      __is.flags(__flags);
+        -: 1469:      return __is;
+        -: 1470:    }
+        -: 1471:
+        -: 1472:
+        -: 1473:  template<typename _IntType>
+        -: 1474:    void
+        -: 1475:    binomial_distribution<_IntType>::param_type::
+        -: 1476:    _M_initialize()
+        -: 1477:    {
+        -: 1478:      const double __p12 = _M_p <= 0.5 ? _M_p : 1.0 - _M_p;
+        -: 1479:
+        -: 1480:      _M_easy = true;
+        -: 1481:
+        -: 1482:#if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1483:      if (_M_t * __p12 >= 8)
+        -: 1484:	{
+        -: 1485:	  _M_easy = false;
+        -: 1486:	  const double __np = std::floor(_M_t * __p12);
+        -: 1487:	  const double __pa = __np / _M_t;
+        -: 1488:	  const double __1p = 1 - __pa;
+        -: 1489:
+        -: 1490:	  const double __pi_4 = 0.7853981633974483096156608458198757L;
+        -: 1491:	  const double __d1x =
+        -: 1492:	    std::sqrt(__np * __1p * std::log(32 * __np
+        -: 1493:					     / (81 * __pi_4 * __1p)));
+        -: 1494:	  _M_d1 = std::round(std::max<double>(1.0, __d1x));
+        -: 1495:	  const double __d2x =
+        -: 1496:	    std::sqrt(__np * __1p * std::log(32 * _M_t * __1p
+        -: 1497:					     / (__pi_4 * __pa)));
+        -: 1498:	  _M_d2 = std::round(std::max<double>(1.0, __d2x));
+        -: 1499:
+        -: 1500:	  // sqrt(pi / 2)
+        -: 1501:	  const double __spi_2 = 1.2533141373155002512078826424055226L;
+        -: 1502:	  _M_s1 = std::sqrt(__np * __1p) * (1 + _M_d1 / (4 * __np));
+        -: 1503:	  _M_s2 = std::sqrt(__np * __1p) * (1 + _M_d2 / (4 * _M_t * __1p));
+        -: 1504:	  _M_c = 2 * _M_d1 / __np;
+        -: 1505:	  _M_a1 = std::exp(_M_c) * _M_s1 * __spi_2;
+        -: 1506:	  const double __a12 = _M_a1 + _M_s2 * __spi_2;
+        -: 1507:	  const double __s1s = _M_s1 * _M_s1;
+        -: 1508:	  _M_a123 = __a12 + (std::exp(_M_d1 / (_M_t * __1p))
+        -: 1509:			     * 2 * __s1s / _M_d1
+        -: 1510:			     * std::exp(-_M_d1 * _M_d1 / (2 * __s1s)));
+        -: 1511:	  const double __s2s = _M_s2 * _M_s2;
+        -: 1512:	  _M_s = (_M_a123 + 2 * __s2s / _M_d2
+        -: 1513:		  * std::exp(-_M_d2 * _M_d2 / (2 * __s2s)));
+        -: 1514:	  _M_lf = (std::lgamma(__np + 1)
+        -: 1515:		   + std::lgamma(_M_t - __np + 1));
+        -: 1516:	  _M_lp1p = std::log(__pa / __1p);
+        -: 1517:
+        -: 1518:	  _M_q = -std::log(1 - (__p12 - __pa) / __1p);
+        -: 1519:	}
+        -: 1520:      else
+        -: 1521:#endif
+        -: 1522:	_M_q = -std::log(1 - __p12);
+        -: 1523:    }
+        -: 1524:
+        -: 1525:  template<typename _IntType>
+        -: 1526:    template<typename _UniformRandomNumberGenerator>
+        -: 1527:      typename binomial_distribution<_IntType>::result_type
+        -: 1528:      binomial_distribution<_IntType>::
+        -: 1529:      _M_waiting(_UniformRandomNumberGenerator& __urng,
+        -: 1530:		 _IntType __t, double __q)
+        -: 1531:      {
+        -: 1532:	_IntType __x = 0;
+        -: 1533:	double __sum = 0.0;
+        -: 1534:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1535:	  __aurng(__urng);
+        -: 1536:
+        -: 1537:	do
+        -: 1538:	  {
+        -: 1539:	    if (__t == __x)
+        -: 1540:	      return __x;
+        -: 1541:	    const double __e = -std::log(1.0 - __aurng());
+        -: 1542:	    __sum += __e / (__t - __x);
+        -: 1543:	    __x += 1;
+        -: 1544:	  }
+        -: 1545:	while (__sum <= __q);
+        -: 1546:
+        -: 1547:	return __x - 1;
+        -: 1548:      }
+        -: 1549:
+        -: 1550:  /**
+        -: 1551:   * A rejection algorithm when t * p >= 8 and a simple waiting time
+        -: 1552:   * method - the second in the referenced book - otherwise.
+        -: 1553:   * NB: The former is available only if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1554:   * is defined.
+        -: 1555:   *
+        -: 1556:   * Reference:
+        -: 1557:   * Devroye, L. Non-Uniform Random Variates Generation. Springer-Verlag,
+        -: 1558:   * New York, 1986, Ch. X, Sect. 4 (+ Errata!).
+        -: 1559:   */
+        -: 1560:  template<typename _IntType>
+        -: 1561:    template<typename _UniformRandomNumberGenerator>
+        -: 1562:      typename binomial_distribution<_IntType>::result_type
+        -: 1563:      binomial_distribution<_IntType>::
+        -: 1564:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 1565:		 const param_type& __param)
+        -: 1566:      {
+        -: 1567:	result_type __ret;
+        -: 1568:	const _IntType __t = __param.t();
+        -: 1569:	const double __p = __param.p();
+        -: 1570:	const double __p12 = __p <= 0.5 ? __p : 1.0 - __p;
+        -: 1571:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 1572:	  __aurng(__urng);
+        -: 1573:
+        -: 1574:#if _GLIBCXX_USE_C99_MATH_TR1
+        -: 1575:	if (!__param._M_easy)
+        -: 1576:	  {
+        -: 1577:	    double __x;
+        -: 1578:
+        -: 1579:	    // See comments above...
+        -: 1580:	    const double __naf =
+        -: 1581:	      (1 - std::numeric_limits<double>::epsilon()) / 2;
+        -: 1582:	    const double __thr =
+        -: 1583:	      std::numeric_limits<_IntType>::max() + __naf;
+        -: 1584:
+        -: 1585:	    const double __np = std::floor(__t * __p12);
+        -: 1586:
+        -: 1587:	    // sqrt(pi / 2)
+        -: 1588:	    const double __spi_2 = 1.2533141373155002512078826424055226L;
+        -: 1589:	    const double __a1 = __param._M_a1;
+        -: 1590:	    const double __a12 = __a1 + __param._M_s2 * __spi_2;
+        -: 1591:	    const double __a123 = __param._M_a123;
+        -: 1592:	    const double __s1s = __param._M_s1 * __param._M_s1;
+        -: 1593:	    const double __s2s = __param._M_s2 * __param._M_s2;
+        -: 1594:
+        -: 1595:	    bool __reject;
+        -: 1596:	    do
+        -: 1597:	      {
+        -: 1598:		const double __u = __param._M_s * __aurng();
+        -: 1599:
+        -: 1600:		double __v;
+        -: 1601:
+        -: 1602:		if (__u <= __a1)
+        -: 1603:		  {
+        -: 1604:		    const double __n = _M_nd(__urng);
+        -: 1605:		    const double __y = __param._M_s1 * std::abs(__n);
+        -: 1606:		    __reject = __y >= __param._M_d1;
+        -: 1607:		    if (!__reject)
+        -: 1608:		      {
+        -: 1609:			const double __e = -std::log(1.0 - __aurng());
+        -: 1610:			__x = std::floor(__y);
+        -: 1611:			__v = -__e - __n * __n / 2 + __param._M_c;
+        -: 1612:		      }
+        -: 1613:		  }
+        -: 1614:		else if (__u <= __a12)
+        -: 1615:		  {
+        -: 1616:		    const double __n = _M_nd(__urng);
+        -: 1617:		    const double __y = __param._M_s2 * std::abs(__n);
+        -: 1618:		    __reject = __y >= __param._M_d2;
+        -: 1619:		    if (!__reject)
+        -: 1620:		      {
+        -: 1621:			const double __e = -std::log(1.0 - __aurng());
+        -: 1622:			__x = std::floor(-__y);
+        -: 1623:			__v = -__e - __n * __n / 2;
+        -: 1624:		      }
+        -: 1625:		  }
+        -: 1626:		else if (__u <= __a123)
+        -: 1627:		  {
+        -: 1628:		    const double __e1 = -std::log(1.0 - __aurng());
+        -: 1629:		    const double __e2 = -std::log(1.0 - __aurng());
+        -: 1630:
+        -: 1631:		    const double __y = __param._M_d1
+        -: 1632:				     + 2 * __s1s * __e1 / __param._M_d1;
+        -: 1633:		    __x = std::floor(__y);
+        -: 1634:		    __v = (-__e2 + __param._M_d1 * (1 / (__t - __np)
+        -: 1635:						    -__y / (2 * __s1s)));
+        -: 1636:		    __reject = false;
+        -: 1637:		  }
+        -: 1638:		else
+        -: 1639:		  {
+        -: 1640:		    const double __e1 = -std::log(1.0 - __aurng());
+        -: 1641:		    const double __e2 = -std::log(1.0 - __aurng());
+        -: 1642:
+        -: 1643:		    const double __y = __param._M_d2
+        -: 1644:				     + 2 * __s2s * __e1 / __param._M_d2;
+        -: 1645:		    __x = std::floor(-__y);
+        -: 1646:		    __v = -__e2 - __param._M_d2 * __y / (2 * __s2s);
+        -: 1647:		    __reject = false;
+        -: 1648:		  }
+        -: 1649:
+        -: 1650:		__reject = __reject || __x < -__np || __x > __t - __np;
+        -: 1651:		if (!__reject)
+        -: 1652:		  {
+        -: 1653:		    const double __lfx =
+        -: 1654:		      std::lgamma(__np + __x + 1)
+        -: 1655:		      + std::lgamma(__t - (__np + __x) + 1);
+        -: 1656:		    __reject = __v > __param._M_lf - __lfx
+        -: 1657:			     + __x * __param._M_lp1p;
+        -: 1658:		  }
+        -: 1659:
+        -: 1660:		__reject |= __x + __np >= __thr;
+        -: 1661:	      }
+        -: 1662:	    while (__reject);
+        -: 1663:
+        -: 1664:	    __x += __np + __naf;
+        -: 1665:
+        -: 1666:	    const _IntType __z = _M_waiting(__urng, __t - _IntType(__x),
+        -: 1667:					    __param._M_q);
+        -: 1668:	    __ret = _IntType(__x) + __z;
+        -: 1669:	  }
+        -: 1670:	else
+        -: 1671:#endif
+        -: 1672:	  __ret = _M_waiting(__urng, __t, __param._M_q);
+        -: 1673:
+        -: 1674:	if (__p12 != __p)
+        -: 1675:	  __ret = __t - __ret;
+        -: 1676:	return __ret;
+        -: 1677:      }
+        -: 1678:
+        -: 1679:  template<typename _IntType>
+        -: 1680:    template<typename _ForwardIterator,
+        -: 1681:	     typename _UniformRandomNumberGenerator>
+        -: 1682:      void
+        -: 1683:      binomial_distribution<_IntType>::
+        -: 1684:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1685:		      _UniformRandomNumberGenerator& __urng,
+        -: 1686:		      const param_type& __param)
+        -: 1687:      {
+        -: 1688:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1689:	// We could duplicate everything from operator()...
+        -: 1690:	while (__f != __t)
+        -: 1691:	  *__f++ = this->operator()(__urng, __param);
+        -: 1692:      }
+        -: 1693:
+        -: 1694:  template<typename _IntType,
+        -: 1695:	   typename _CharT, typename _Traits>
+        -: 1696:    std::basic_ostream<_CharT, _Traits>&
+        -: 1697:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1698:	       const binomial_distribution<_IntType>& __x)
+        -: 1699:    {
+        -: 1700:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1701:
+        -: 1702:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1703:      const _CharT __fill = __os.fill();
+        -: 1704:      const std::streamsize __precision = __os.precision();
+        -: 1705:      const _CharT __space = __os.widen(' ');
+        -: 1706:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1707:      __os.fill(__space);
+        -: 1708:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 1709:
+        -: 1710:      __os << __x.t() << __space << __x.p()
+        -: 1711:	   << __space << __x._M_nd;
+        -: 1712:
+        -: 1713:      __os.flags(__flags);
+        -: 1714:      __os.fill(__fill);
+        -: 1715:      __os.precision(__precision);
+        -: 1716:      return __os;
+        -: 1717:    }
+        -: 1718:
+        -: 1719:  template<typename _IntType,
+        -: 1720:	   typename _CharT, typename _Traits>
+        -: 1721:    std::basic_istream<_CharT, _Traits>&
+        -: 1722:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1723:	       binomial_distribution<_IntType>& __x)
+        -: 1724:    {
+        -: 1725:      using param_type = typename binomial_distribution<_IntType>::param_type;
+        -: 1726:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1727:
+        -: 1728:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1729:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 1730:
+        -: 1731:      _IntType __t;
+        -: 1732:      double __p;
+        -: 1733:      if (__is >> __t >> __p >> __x._M_nd)
+        -: 1734:	__x.param(param_type(__t, __p));
+        -: 1735:
+        -: 1736:      __is.flags(__flags);
+        -: 1737:      return __is;
+        -: 1738:    }
+        -: 1739:
+        -: 1740:
+        -: 1741:  template<typename _RealType>
+        -: 1742:    template<typename _ForwardIterator,
+        -: 1743:	     typename _UniformRandomNumberGenerator>
+        -: 1744:      void
+        -: 1745:      std::exponential_distribution<_RealType>::
+        -: 1746:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1747:		      _UniformRandomNumberGenerator& __urng,
+        -: 1748:		      const param_type& __p)
+        -: 1749:      {
+        -: 1750:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1751:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 1752:	  __aurng(__urng);
+        -: 1753:	while (__f != __t)
+        -: 1754:	  *__f++ = -std::log(result_type(1) - __aurng()) / __p.lambda();
+        -: 1755:      }
+        -: 1756:
+        -: 1757:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 1758:    std::basic_ostream<_CharT, _Traits>&
+        -: 1759:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1760:	       const exponential_distribution<_RealType>& __x)
+        -: 1761:    {
+        -: 1762:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1763:
+        -: 1764:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1765:      const _CharT __fill = __os.fill();
+        -: 1766:      const std::streamsize __precision = __os.precision();
+        -: 1767:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1768:      __os.fill(__os.widen(' '));
+        -: 1769:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 1770:
+        -: 1771:      __os << __x.lambda();
+        -: 1772:
+        -: 1773:      __os.flags(__flags);
+        -: 1774:      __os.fill(__fill);
+        -: 1775:      __os.precision(__precision);
+        -: 1776:      return __os;
+        -: 1777:    }
+        -: 1778:
+        -: 1779:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 1780:    std::basic_istream<_CharT, _Traits>&
+        -: 1781:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1782:	       exponential_distribution<_RealType>& __x)
+        -: 1783:    {
+        -: 1784:      using param_type
+        -: 1785:	= typename exponential_distribution<_RealType>::param_type;
+        -: 1786:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1787:
+        -: 1788:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1789:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 1790:
+        -: 1791:      _RealType __lambda;
+        -: 1792:      if (__is >> __lambda)
+        -: 1793:	__x.param(param_type(__lambda));
+        -: 1794:
+        -: 1795:      __is.flags(__flags);
+        -: 1796:      return __is;
+        -: 1797:    }
+        -: 1798:
+        -: 1799:
+        -: 1800:  /**
+        -: 1801:   * Polar method due to Marsaglia.
+        -: 1802:   *
+        -: 1803:   * Devroye, L. Non-Uniform Random Variates Generation. Springer-Verlag,
+        -: 1804:   * New York, 1986, Ch. V, Sect. 4.4.
+        -: 1805:   */
+        -: 1806:  template<typename _RealType>
+        -: 1807:    template<typename _UniformRandomNumberGenerator>
+        -: 1808:      typename normal_distribution<_RealType>::result_type
+        -: 1809:      normal_distribution<_RealType>::
+        -: 1810:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 1811:		 const param_type& __param)
+        -: 1812:      {
+        -: 1813:	result_type __ret;
+        -: 1814:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 1815:	  __aurng(__urng);
+        -: 1816:
+        -: 1817:	if (_M_saved_available)
+        -: 1818:	  {
+        -: 1819:	    _M_saved_available = false;
+        -: 1820:	    __ret = _M_saved;
+        -: 1821:	  }
+        -: 1822:	else
+        -: 1823:	  {
+        -: 1824:	    result_type __x, __y, __r2;
+        -: 1825:	    do
+        -: 1826:	      {
+        -: 1827:		__x = result_type(2.0) * __aurng() - 1.0;
+        -: 1828:		__y = result_type(2.0) * __aurng() - 1.0;
+        -: 1829:		__r2 = __x * __x + __y * __y;
+        -: 1830:	      }
+        -: 1831:	    while (__r2 > 1.0 || __r2 == 0.0);
+        -: 1832:
+        -: 1833:	    const result_type __mult = std::sqrt(-2 * std::log(__r2) / __r2);
+        -: 1834:	    _M_saved = __x * __mult;
+        -: 1835:	    _M_saved_available = true;
+        -: 1836:	    __ret = __y * __mult;
+        -: 1837:	  }
+        -: 1838:
+        -: 1839:	__ret = __ret * __param.stddev() + __param.mean();
+        -: 1840:	return __ret;
+        -: 1841:      }
+        -: 1842:
+        -: 1843:  template<typename _RealType>
+        -: 1844:    template<typename _ForwardIterator,
+        -: 1845:	     typename _UniformRandomNumberGenerator>
+        -: 1846:      void
+        -: 1847:      normal_distribution<_RealType>::
+        -: 1848:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1849:		      _UniformRandomNumberGenerator& __urng,
+        -: 1850:		      const param_type& __param)
+        -: 1851:      {
+        -: 1852:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1853:
+        -: 1854:	if (__f == __t)
+        -: 1855:	  return;
+        -: 1856:
+        -: 1857:	if (_M_saved_available)
+        -: 1858:	  {
+        -: 1859:	    _M_saved_available = false;
+        -: 1860:	    *__f++ = _M_saved * __param.stddev() + __param.mean();
+        -: 1861:
+        -: 1862:	    if (__f == __t)
+        -: 1863:	      return;
+        -: 1864:	  }
+        -: 1865:
+        -: 1866:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 1867:	  __aurng(__urng);
+        -: 1868:
+        -: 1869:	while (__f + 1 < __t)
+        -: 1870:	  {
+        -: 1871:	    result_type __x, __y, __r2;
+        -: 1872:	    do
+        -: 1873:	      {
+        -: 1874:		__x = result_type(2.0) * __aurng() - 1.0;
+        -: 1875:		__y = result_type(2.0) * __aurng() - 1.0;
+        -: 1876:		__r2 = __x * __x + __y * __y;
+        -: 1877:	      }
+        -: 1878:	    while (__r2 > 1.0 || __r2 == 0.0);
+        -: 1879:
+        -: 1880:	    const result_type __mult = std::sqrt(-2 * std::log(__r2) / __r2);
+        -: 1881:	    *__f++ = __y * __mult * __param.stddev() + __param.mean();
+        -: 1882:	    *__f++ = __x * __mult * __param.stddev() + __param.mean();
+        -: 1883:	  }
+        -: 1884:
+        -: 1885:	if (__f != __t)
+        -: 1886:	  {
+        -: 1887:	    result_type __x, __y, __r2;
+        -: 1888:	    do
+        -: 1889:	      {
+        -: 1890:		__x = result_type(2.0) * __aurng() - 1.0;
+        -: 1891:		__y = result_type(2.0) * __aurng() - 1.0;
+        -: 1892:		__r2 = __x * __x + __y * __y;
+        -: 1893:	      }
+        -: 1894:	    while (__r2 > 1.0 || __r2 == 0.0);
+        -: 1895:
+        -: 1896:	    const result_type __mult = std::sqrt(-2 * std::log(__r2) / __r2);
+        -: 1897:	    _M_saved = __x * __mult;
+        -: 1898:	    _M_saved_available = true;
+        -: 1899:	    *__f = __y * __mult * __param.stddev() + __param.mean();
+        -: 1900:	  }
+        -: 1901:      }
+        -: 1902:
+        -: 1903:  template<typename _RealType>
+        -: 1904:    bool
+        -: 1905:    operator==(const std::normal_distribution<_RealType>& __d1,
+        -: 1906:	       const std::normal_distribution<_RealType>& __d2)
+        -: 1907:    {
+        -: 1908:      if (__d1._M_param == __d2._M_param
+        -: 1909:	  && __d1._M_saved_available == __d2._M_saved_available)
+        -: 1910:	return __d1._M_saved_available ? __d1._M_saved == __d2._M_saved : true;
+        -: 1911:      else
+        -: 1912:	return false;
+        -: 1913:    }
+        -: 1914:
+        -: 1915:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 1916:    std::basic_ostream<_CharT, _Traits>&
+        -: 1917:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1918:	       const normal_distribution<_RealType>& __x)
+        -: 1919:    {
+        -: 1920:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1921:
+        -: 1922:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1923:      const _CharT __fill = __os.fill();
+        -: 1924:      const std::streamsize __precision = __os.precision();
+        -: 1925:      const _CharT __space = __os.widen(' ');
+        -: 1926:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1927:      __os.fill(__space);
+        -: 1928:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 1929:
+        -: 1930:      __os << __x.mean() << __space << __x.stddev()
+        -: 1931:	   << __space << __x._M_saved_available;
+        -: 1932:      if (__x._M_saved_available)
+        -: 1933:	__os << __space << __x._M_saved;
+        -: 1934:
+        -: 1935:      __os.flags(__flags);
+        -: 1936:      __os.fill(__fill);
+        -: 1937:      __os.precision(__precision);
+        -: 1938:      return __os;
+        -: 1939:    }
+        -: 1940:
+        -: 1941:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 1942:    std::basic_istream<_CharT, _Traits>&
+        -: 1943:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 1944:	       normal_distribution<_RealType>& __x)
+        -: 1945:    {
+        -: 1946:      using param_type = typename normal_distribution<_RealType>::param_type;
+        -: 1947:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 1948:
+        -: 1949:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 1950:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 1951:
+        -: 1952:      double __mean, __stddev;
+        -: 1953:      bool __saved_avail;
+        -: 1954:      if (__is >> __mean >> __stddev >> __saved_avail)
+        -: 1955:	{
+        -: 1956:	  if (!__saved_avail || (__is >> __x._M_saved))
+        -: 1957:	    {
+        -: 1958:	      __x._M_saved_available = __saved_avail;
+        -: 1959:	      __x.param(param_type(__mean, __stddev));
+        -: 1960:	    }
+        -: 1961:	}
+        -: 1962:
+        -: 1963:      __is.flags(__flags);
+        -: 1964:      return __is;
+        -: 1965:    }
+        -: 1966:
+        -: 1967:
+        -: 1968:  template<typename _RealType>
+        -: 1969:    template<typename _ForwardIterator,
+        -: 1970:	     typename _UniformRandomNumberGenerator>
+        -: 1971:      void
+        -: 1972:      lognormal_distribution<_RealType>::
+        -: 1973:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 1974:		      _UniformRandomNumberGenerator& __urng,
+        -: 1975:		      const param_type& __p)
+        -: 1976:      {
+        -: 1977:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 1978:	  while (__f != __t)
+        -: 1979:	    *__f++ = std::exp(__p.s() * _M_nd(__urng) + __p.m());
+        -: 1980:      }
+        -: 1981:
+        -: 1982:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 1983:    std::basic_ostream<_CharT, _Traits>&
+        -: 1984:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 1985:	       const lognormal_distribution<_RealType>& __x)
+        -: 1986:    {
+        -: 1987:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 1988:
+        -: 1989:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 1990:      const _CharT __fill = __os.fill();
+        -: 1991:      const std::streamsize __precision = __os.precision();
+        -: 1992:      const _CharT __space = __os.widen(' ');
+        -: 1993:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 1994:      __os.fill(__space);
+        -: 1995:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 1996:
+        -: 1997:      __os << __x.m() << __space << __x.s()
+        -: 1998:	   << __space << __x._M_nd;
+        -: 1999:
+        -: 2000:      __os.flags(__flags);
+        -: 2001:      __os.fill(__fill);
+        -: 2002:      __os.precision(__precision);
+        -: 2003:      return __os;
+        -: 2004:    }
+        -: 2005:
+        -: 2006:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2007:    std::basic_istream<_CharT, _Traits>&
+        -: 2008:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2009:	       lognormal_distribution<_RealType>& __x)
+        -: 2010:    {
+        -: 2011:      using param_type
+        -: 2012:	= typename lognormal_distribution<_RealType>::param_type;
+        -: 2013:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2014:
+        -: 2015:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2016:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2017:
+        -: 2018:      _RealType __m, __s;
+        -: 2019:      if (__is >> __m >> __s >> __x._M_nd)
+        -: 2020:	__x.param(param_type(__m, __s));
+        -: 2021:
+        -: 2022:      __is.flags(__flags);
+        -: 2023:      return __is;
+        -: 2024:    }
+        -: 2025:
+        -: 2026:  template<typename _RealType>
+        -: 2027:    template<typename _ForwardIterator,
+        -: 2028:	     typename _UniformRandomNumberGenerator>
+        -: 2029:      void
+        -: 2030:      std::chi_squared_distribution<_RealType>::
+        -: 2031:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2032:		      _UniformRandomNumberGenerator& __urng)
+        -: 2033:      {
+        -: 2034:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2035:	while (__f != __t)
+        -: 2036:	  *__f++ = 2 * _M_gd(__urng);
+        -: 2037:      }
+        -: 2038:
+        -: 2039:  template<typename _RealType>
+        -: 2040:    template<typename _ForwardIterator,
+        -: 2041:	     typename _UniformRandomNumberGenerator>
+        -: 2042:      void
+        -: 2043:      std::chi_squared_distribution<_RealType>::
+        -: 2044:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2045:		      _UniformRandomNumberGenerator& __urng,
+        -: 2046:		      const typename
+        -: 2047:		      std::gamma_distribution<result_type>::param_type& __p)
+        -: 2048:      {
+        -: 2049:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2050:	while (__f != __t)
+        -: 2051:	  *__f++ = 2 * _M_gd(__urng, __p);
+        -: 2052:      }
+        -: 2053:
+        -: 2054:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2055:    std::basic_ostream<_CharT, _Traits>&
+        -: 2056:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2057:	       const chi_squared_distribution<_RealType>& __x)
+        -: 2058:    {
+        -: 2059:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2060:
+        -: 2061:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2062:      const _CharT __fill = __os.fill();
+        -: 2063:      const std::streamsize __precision = __os.precision();
+        -: 2064:      const _CharT __space = __os.widen(' ');
+        -: 2065:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2066:      __os.fill(__space);
+        -: 2067:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2068:
+        -: 2069:      __os << __x.n() << __space << __x._M_gd;
+        -: 2070:
+        -: 2071:      __os.flags(__flags);
+        -: 2072:      __os.fill(__fill);
+        -: 2073:      __os.precision(__precision);
+        -: 2074:      return __os;
+        -: 2075:    }
+        -: 2076:
+        -: 2077:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2078:    std::basic_istream<_CharT, _Traits>&
+        -: 2079:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2080:	       chi_squared_distribution<_RealType>& __x)
+        -: 2081:    {
+        -: 2082:      using param_type
+        -: 2083:	= typename chi_squared_distribution<_RealType>::param_type;
+        -: 2084:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2085:
+        -: 2086:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2087:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2088:
+        -: 2089:      _RealType __n;
+        -: 2090:      if (__is >> __n >> __x._M_gd)
+        -: 2091:	__x.param(param_type(__n));
+        -: 2092:
+        -: 2093:      __is.flags(__flags);
+        -: 2094:      return __is;
+        -: 2095:    }
+        -: 2096:
+        -: 2097:
+        -: 2098:  template<typename _RealType>
+        -: 2099:    template<typename _UniformRandomNumberGenerator>
+        -: 2100:      typename cauchy_distribution<_RealType>::result_type
+        -: 2101:      cauchy_distribution<_RealType>::
+        -: 2102:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2103:		 const param_type& __p)
+        -: 2104:      {
+        -: 2105:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2106:	  __aurng(__urng);
+        -: 2107:	_RealType __u;
+        -: 2108:	do
+        -: 2109:	  __u = __aurng();
+        -: 2110:	while (__u == 0.5);
+        -: 2111:
+        -: 2112:	const _RealType __pi = 3.1415926535897932384626433832795029L;
+        -: 2113:	return __p.a() + __p.b() * std::tan(__pi * __u);
+        -: 2114:      }
+        -: 2115:
+        -: 2116:  template<typename _RealType>
+        -: 2117:    template<typename _ForwardIterator,
+        -: 2118:	     typename _UniformRandomNumberGenerator>
+        -: 2119:      void
+        -: 2120:      cauchy_distribution<_RealType>::
+        -: 2121:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2122:		      _UniformRandomNumberGenerator& __urng,
+        -: 2123:		      const param_type& __p)
+        -: 2124:      {
+        -: 2125:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2126:	const _RealType __pi = 3.1415926535897932384626433832795029L;
+        -: 2127:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2128:	  __aurng(__urng);
+        -: 2129:	while (__f != __t)
+        -: 2130:	  {
+        -: 2131:	    _RealType __u;
+        -: 2132:	    do
+        -: 2133:	      __u = __aurng();
+        -: 2134:	    while (__u == 0.5);
+        -: 2135:
+        -: 2136:	    *__f++ = __p.a() + __p.b() * std::tan(__pi * __u);
+        -: 2137:	  }
+        -: 2138:      }
+        -: 2139:
+        -: 2140:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2141:    std::basic_ostream<_CharT, _Traits>&
+        -: 2142:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2143:	       const cauchy_distribution<_RealType>& __x)
+        -: 2144:    {
+        -: 2145:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2146:
+        -: 2147:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2148:      const _CharT __fill = __os.fill();
+        -: 2149:      const std::streamsize __precision = __os.precision();
+        -: 2150:      const _CharT __space = __os.widen(' ');
+        -: 2151:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2152:      __os.fill(__space);
+        -: 2153:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2154:
+        -: 2155:      __os << __x.a() << __space << __x.b();
+        -: 2156:
+        -: 2157:      __os.flags(__flags);
+        -: 2158:      __os.fill(__fill);
+        -: 2159:      __os.precision(__precision);
+        -: 2160:      return __os;
+        -: 2161:    }
+        -: 2162:
+        -: 2163:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2164:    std::basic_istream<_CharT, _Traits>&
+        -: 2165:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2166:	       cauchy_distribution<_RealType>& __x)
+        -: 2167:    {
+        -: 2168:      using param_type = typename cauchy_distribution<_RealType>::param_type;
+        -: 2169:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2170:
+        -: 2171:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2172:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2173:
+        -: 2174:      _RealType __a, __b;
+        -: 2175:      if (__is >> __a >> __b)
+        -: 2176:	__x.param(param_type(__a, __b));
+        -: 2177:
+        -: 2178:      __is.flags(__flags);
+        -: 2179:      return __is;
+        -: 2180:    }
+        -: 2181:
+        -: 2182:
+        -: 2183:  template<typename _RealType>
+        -: 2184:    template<typename _ForwardIterator,
+        -: 2185:	     typename _UniformRandomNumberGenerator>
+        -: 2186:      void
+        -: 2187:      std::fisher_f_distribution<_RealType>::
+        -: 2188:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2189:		      _UniformRandomNumberGenerator& __urng)
+        -: 2190:      {
+        -: 2191:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2192:	while (__f != __t)
+        -: 2193:	  *__f++ = ((_M_gd_x(__urng) * n()) / (_M_gd_y(__urng) * m()));
+        -: 2194:      }
+        -: 2195:
+        -: 2196:  template<typename _RealType>
+        -: 2197:    template<typename _ForwardIterator,
+        -: 2198:	     typename _UniformRandomNumberGenerator>
+        -: 2199:      void
+        -: 2200:      std::fisher_f_distribution<_RealType>::
+        -: 2201:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2202:		      _UniformRandomNumberGenerator& __urng,
+        -: 2203:		      const param_type& __p)
+        -: 2204:      {
+        -: 2205:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2206:	typedef typename std::gamma_distribution<result_type>::param_type
+        -: 2207:	  param_type;
+        -: 2208:	param_type __p1(__p.m() / 2);
+        -: 2209:	param_type __p2(__p.n() / 2);
+        -: 2210:	while (__f != __t)
+        -: 2211:	  *__f++ = ((_M_gd_x(__urng, __p1) * n())
+        -: 2212:		    / (_M_gd_y(__urng, __p2) * m()));
+        -: 2213:      }
+        -: 2214:
+        -: 2215:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2216:    std::basic_ostream<_CharT, _Traits>&
+        -: 2217:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2218:	       const fisher_f_distribution<_RealType>& __x)
+        -: 2219:    {
+        -: 2220:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2221:
+        -: 2222:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2223:      const _CharT __fill = __os.fill();
+        -: 2224:      const std::streamsize __precision = __os.precision();
+        -: 2225:      const _CharT __space = __os.widen(' ');
+        -: 2226:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2227:      __os.fill(__space);
+        -: 2228:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2229:
+        -: 2230:      __os << __x.m() << __space << __x.n()
+        -: 2231:	   << __space << __x._M_gd_x << __space << __x._M_gd_y;
+        -: 2232:
+        -: 2233:      __os.flags(__flags);
+        -: 2234:      __os.fill(__fill);
+        -: 2235:      __os.precision(__precision);
+        -: 2236:      return __os;
+        -: 2237:    }
+        -: 2238:
+        -: 2239:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2240:    std::basic_istream<_CharT, _Traits>&
+        -: 2241:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2242:	       fisher_f_distribution<_RealType>& __x)
+        -: 2243:    {
+        -: 2244:      using param_type
+        -: 2245:	= typename fisher_f_distribution<_RealType>::param_type;
+        -: 2246:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2247:
+        -: 2248:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2249:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2250:
+        -: 2251:      _RealType __m, __n;
+        -: 2252:      if (__is >> __m >> __n >> __x._M_gd_x >> __x._M_gd_y)
+        -: 2253:	__x.param(param_type(__m, __n));
+        -: 2254:
+        -: 2255:      __is.flags(__flags);
+        -: 2256:      return __is;
+        -: 2257:    }
+        -: 2258:
+        -: 2259:
+        -: 2260:  template<typename _RealType>
+        -: 2261:    template<typename _ForwardIterator,
+        -: 2262:	     typename _UniformRandomNumberGenerator>
+        -: 2263:      void
+        -: 2264:      std::student_t_distribution<_RealType>::
+        -: 2265:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2266:		      _UniformRandomNumberGenerator& __urng)
+        -: 2267:      {
+        -: 2268:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2269:	while (__f != __t)
+        -: 2270:	  *__f++ = _M_nd(__urng) * std::sqrt(n() / _M_gd(__urng));
+        -: 2271:      }
+        -: 2272:
+        -: 2273:  template<typename _RealType>
+        -: 2274:    template<typename _ForwardIterator,
+        -: 2275:	     typename _UniformRandomNumberGenerator>
+        -: 2276:      void
+        -: 2277:      std::student_t_distribution<_RealType>::
+        -: 2278:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2279:		      _UniformRandomNumberGenerator& __urng,
+        -: 2280:		      const param_type& __p)
+        -: 2281:      {
+        -: 2282:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2283:	typename std::gamma_distribution<result_type>::param_type
+        -: 2284:	  __p2(__p.n() / 2, 2);
+        -: 2285:	while (__f != __t)
+        -: 2286:	  *__f++ =  _M_nd(__urng) * std::sqrt(__p.n() / _M_gd(__urng, __p2));
+        -: 2287:      }
+        -: 2288:
+        -: 2289:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2290:    std::basic_ostream<_CharT, _Traits>&
+        -: 2291:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2292:	       const student_t_distribution<_RealType>& __x)
+        -: 2293:    {
+        -: 2294:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2295:
+        -: 2296:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2297:      const _CharT __fill = __os.fill();
+        -: 2298:      const std::streamsize __precision = __os.precision();
+        -: 2299:      const _CharT __space = __os.widen(' ');
+        -: 2300:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2301:      __os.fill(__space);
+        -: 2302:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2303:
+        -: 2304:      __os << __x.n() << __space << __x._M_nd << __space << __x._M_gd;
+        -: 2305:
+        -: 2306:      __os.flags(__flags);
+        -: 2307:      __os.fill(__fill);
+        -: 2308:      __os.precision(__precision);
+        -: 2309:      return __os;
+        -: 2310:    }
+        -: 2311:
+        -: 2312:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2313:    std::basic_istream<_CharT, _Traits>&
+        -: 2314:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2315:	       student_t_distribution<_RealType>& __x)
+        -: 2316:    {
+        -: 2317:      using param_type
+        -: 2318:	= typename student_t_distribution<_RealType>::param_type;
+        -: 2319:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2320:
+        -: 2321:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2322:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2323:
+        -: 2324:      _RealType __n;
+        -: 2325:      if (__is >> __n >> __x._M_nd >> __x._M_gd)
+        -: 2326:	__x.param(param_type(__n));
+        -: 2327:
+        -: 2328:      __is.flags(__flags);
+        -: 2329:      return __is;
+        -: 2330:    }
+        -: 2331:
+        -: 2332:
+        -: 2333:  template<typename _RealType>
+        -: 2334:    void
+        -: 2335:    gamma_distribution<_RealType>::param_type::
+        -: 2336:    _M_initialize()
+        -: 2337:    {
+        -: 2338:      _M_malpha = _M_alpha < 1.0 ? _M_alpha + _RealType(1.0) : _M_alpha;
+        -: 2339:
+        -: 2340:      const _RealType __a1 = _M_malpha - _RealType(1.0) / _RealType(3.0);
+        -: 2341:      _M_a2 = _RealType(1.0) / std::sqrt(_RealType(9.0) * __a1);
+        -: 2342:    }
+        -: 2343:
+        -: 2344:  /**
+        -: 2345:   * Marsaglia, G. and Tsang, W. W.
+        -: 2346:   * "A Simple Method for Generating Gamma Variables"
+        -: 2347:   * ACM Transactions on Mathematical Software, 26, 3, 363-372, 2000.
+        -: 2348:   */
+        -: 2349:  template<typename _RealType>
+        -: 2350:    template<typename _UniformRandomNumberGenerator>
+        -: 2351:      typename gamma_distribution<_RealType>::result_type
+        -: 2352:      gamma_distribution<_RealType>::
+        -: 2353:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2354:		 const param_type& __param)
+        -: 2355:      {
+        -: 2356:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2357:	  __aurng(__urng);
+        -: 2358:
+        -: 2359:	result_type __u, __v, __n;
+        -: 2360:	const result_type __a1 = (__param._M_malpha
+        -: 2361:				  - _RealType(1.0) / _RealType(3.0));
+        -: 2362:
+        -: 2363:	do
+        -: 2364:	  {
+        -: 2365:	    do
+        -: 2366:	      {
+        -: 2367:		__n = _M_nd(__urng);
+        -: 2368:		__v = result_type(1.0) + __param._M_a2 * __n; 
+        -: 2369:	      }
+        -: 2370:	    while (__v <= 0.0);
+        -: 2371:
+        -: 2372:	    __v = __v * __v * __v;
+        -: 2373:	    __u = __aurng();
+        -: 2374:	  }
+        -: 2375:	while (__u > result_type(1.0) - 0.0331 * __n * __n * __n * __n
+        -: 2376:	       && (std::log(__u) > (0.5 * __n * __n + __a1
+        -: 2377:				    * (1.0 - __v + std::log(__v)))));
+        -: 2378:
+        -: 2379:	if (__param.alpha() == __param._M_malpha)
+        -: 2380:	  return __a1 * __v * __param.beta();
+        -: 2381:	else
+        -: 2382:	  {
+        -: 2383:	    do
+        -: 2384:	      __u = __aurng();
+        -: 2385:	    while (__u == 0.0);
+        -: 2386:	    
+        -: 2387:	    return (std::pow(__u, result_type(1.0) / __param.alpha())
+        -: 2388:		    * __a1 * __v * __param.beta());
+        -: 2389:	  }
+        -: 2390:      }
+        -: 2391:
+        -: 2392:  template<typename _RealType>
+        -: 2393:    template<typename _ForwardIterator,
+        -: 2394:	     typename _UniformRandomNumberGenerator>
+        -: 2395:      void
+        -: 2396:      gamma_distribution<_RealType>::
+        -: 2397:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2398:		      _UniformRandomNumberGenerator& __urng,
+        -: 2399:		      const param_type& __param)
+        -: 2400:      {
+        -: 2401:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2402:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2403:	  __aurng(__urng);
+        -: 2404:
+        -: 2405:	result_type __u, __v, __n;
+        -: 2406:	const result_type __a1 = (__param._M_malpha
+        -: 2407:				  - _RealType(1.0) / _RealType(3.0));
+        -: 2408:
+        -: 2409:	if (__param.alpha() == __param._M_malpha)
+        -: 2410:	  while (__f != __t)
+        -: 2411:	    {
+        -: 2412:	      do
+        -: 2413:		{
+        -: 2414:		  do
+        -: 2415:		    {
+        -: 2416:		      __n = _M_nd(__urng);
+        -: 2417:		      __v = result_type(1.0) + __param._M_a2 * __n;
+        -: 2418:		    }
+        -: 2419:		  while (__v <= 0.0);
+        -: 2420:
+        -: 2421:		  __v = __v * __v * __v;
+        -: 2422:		  __u = __aurng();
+        -: 2423:		}
+        -: 2424:	      while (__u > result_type(1.0) - 0.0331 * __n * __n * __n * __n
+        -: 2425:		     && (std::log(__u) > (0.5 * __n * __n + __a1
+        -: 2426:					  * (1.0 - __v + std::log(__v)))));
+        -: 2427:
+        -: 2428:	      *__f++ = __a1 * __v * __param.beta();
+        -: 2429:	    }
+        -: 2430:	else
+        -: 2431:	  while (__f != __t)
+        -: 2432:	    {
+        -: 2433:	      do
+        -: 2434:		{
+        -: 2435:		  do
+        -: 2436:		    {
+        -: 2437:		      __n = _M_nd(__urng);
+        -: 2438:		      __v = result_type(1.0) + __param._M_a2 * __n;
+        -: 2439:		    }
+        -: 2440:		  while (__v <= 0.0);
+        -: 2441:
+        -: 2442:		  __v = __v * __v * __v;
+        -: 2443:		  __u = __aurng();
+        -: 2444:		}
+        -: 2445:	      while (__u > result_type(1.0) - 0.0331 * __n * __n * __n * __n
+        -: 2446:		     && (std::log(__u) > (0.5 * __n * __n + __a1
+        -: 2447:					  * (1.0 - __v + std::log(__v)))));
+        -: 2448:
+        -: 2449:	      do
+        -: 2450:		__u = __aurng();
+        -: 2451:	      while (__u == 0.0);
+        -: 2452:
+        -: 2453:	      *__f++ = (std::pow(__u, result_type(1.0) / __param.alpha())
+        -: 2454:			* __a1 * __v * __param.beta());
+        -: 2455:	    }
+        -: 2456:      }
+        -: 2457:
+        -: 2458:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2459:    std::basic_ostream<_CharT, _Traits>&
+        -: 2460:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2461:	       const gamma_distribution<_RealType>& __x)
+        -: 2462:    {
+        -: 2463:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2464:
+        -: 2465:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2466:      const _CharT __fill = __os.fill();
+        -: 2467:      const std::streamsize __precision = __os.precision();
+        -: 2468:      const _CharT __space = __os.widen(' ');
+        -: 2469:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2470:      __os.fill(__space);
+        -: 2471:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2472:
+        -: 2473:      __os << __x.alpha() << __space << __x.beta()
+        -: 2474:	   << __space << __x._M_nd;
+        -: 2475:
+        -: 2476:      __os.flags(__flags);
+        -: 2477:      __os.fill(__fill);
+        -: 2478:      __os.precision(__precision);
+        -: 2479:      return __os;
+        -: 2480:    }
+        -: 2481:
+        -: 2482:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2483:    std::basic_istream<_CharT, _Traits>&
+        -: 2484:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2485:	       gamma_distribution<_RealType>& __x)
+        -: 2486:    {
+        -: 2487:      using param_type = typename gamma_distribution<_RealType>::param_type;
+        -: 2488:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2489:
+        -: 2490:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2491:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2492:
+        -: 2493:      _RealType __alpha_val, __beta_val;
+        -: 2494:      if (__is >> __alpha_val >> __beta_val >> __x._M_nd)
+        -: 2495:	__x.param(param_type(__alpha_val, __beta_val));
+        -: 2496:
+        -: 2497:      __is.flags(__flags);
+        -: 2498:      return __is;
+        -: 2499:    }
+        -: 2500:
+        -: 2501:
+        -: 2502:  template<typename _RealType>
+        -: 2503:    template<typename _UniformRandomNumberGenerator>
+        -: 2504:      typename weibull_distribution<_RealType>::result_type
+        -: 2505:      weibull_distribution<_RealType>::
+        -: 2506:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2507:		 const param_type& __p)
+        -: 2508:      {
+        -: 2509:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2510:	  __aurng(__urng);
+        -: 2511:	return __p.b() * std::pow(-std::log(result_type(1) - __aurng()),
+        -: 2512:				  result_type(1) / __p.a());
+        -: 2513:      }
+        -: 2514:
+        -: 2515:  template<typename _RealType>
+        -: 2516:    template<typename _ForwardIterator,
+        -: 2517:	     typename _UniformRandomNumberGenerator>
+        -: 2518:      void
+        -: 2519:      weibull_distribution<_RealType>::
+        -: 2520:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2521:		      _UniformRandomNumberGenerator& __urng,
+        -: 2522:		      const param_type& __p)
+        -: 2523:      {
+        -: 2524:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2525:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2526:	  __aurng(__urng);
+        -: 2527:	auto __inv_a = result_type(1) / __p.a();
+        -: 2528:
+        -: 2529:	while (__f != __t)
+        -: 2530:	  *__f++ = __p.b() * std::pow(-std::log(result_type(1) - __aurng()),
+        -: 2531:				      __inv_a);
+        -: 2532:      }
+        -: 2533:
+        -: 2534:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2535:    std::basic_ostream<_CharT, _Traits>&
+        -: 2536:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2537:	       const weibull_distribution<_RealType>& __x)
+        -: 2538:    {
+        -: 2539:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2540:
+        -: 2541:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2542:      const _CharT __fill = __os.fill();
+        -: 2543:      const std::streamsize __precision = __os.precision();
+        -: 2544:      const _CharT __space = __os.widen(' ');
+        -: 2545:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2546:      __os.fill(__space);
+        -: 2547:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2548:
+        -: 2549:      __os << __x.a() << __space << __x.b();
+        -: 2550:
+        -: 2551:      __os.flags(__flags);
+        -: 2552:      __os.fill(__fill);
+        -: 2553:      __os.precision(__precision);
+        -: 2554:      return __os;
+        -: 2555:    }
+        -: 2556:
+        -: 2557:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2558:    std::basic_istream<_CharT, _Traits>&
+        -: 2559:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2560:	       weibull_distribution<_RealType>& __x)
+        -: 2561:    {
+        -: 2562:      using param_type = typename weibull_distribution<_RealType>::param_type;
+        -: 2563:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2564:
+        -: 2565:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2566:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2567:
+        -: 2568:      _RealType __a, __b;
+        -: 2569:      if (__is >> __a >> __b)
+        -: 2570:	__x.param(param_type(__a, __b));
+        -: 2571:
+        -: 2572:      __is.flags(__flags);
+        -: 2573:      return __is;
+        -: 2574:    }
+        -: 2575:
+        -: 2576:
+        -: 2577:  template<typename _RealType>
+        -: 2578:    template<typename _UniformRandomNumberGenerator>
+        -: 2579:      typename extreme_value_distribution<_RealType>::result_type
+        -: 2580:      extreme_value_distribution<_RealType>::
+        -: 2581:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2582:		 const param_type& __p)
+        -: 2583:      {
+        -: 2584:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2585:	  __aurng(__urng);
+        -: 2586:	return __p.a() - __p.b() * std::log(-std::log(result_type(1)
+        -: 2587:						      - __aurng()));
+        -: 2588:      }
+        -: 2589:
+        -: 2590:  template<typename _RealType>
+        -: 2591:    template<typename _ForwardIterator,
+        -: 2592:	     typename _UniformRandomNumberGenerator>
+        -: 2593:      void
+        -: 2594:      extreme_value_distribution<_RealType>::
+        -: 2595:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2596:		      _UniformRandomNumberGenerator& __urng,
+        -: 2597:		      const param_type& __p)
+        -: 2598:      {
+        -: 2599:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2600:	__detail::_Adaptor<_UniformRandomNumberGenerator, result_type>
+        -: 2601:	  __aurng(__urng);
+        -: 2602:
+        -: 2603:	while (__f != __t)
+        -: 2604:	  *__f++ = __p.a() - __p.b() * std::log(-std::log(result_type(1)
+        -: 2605:							  - __aurng()));
+        -: 2606:      }
+        -: 2607:
+        -: 2608:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2609:    std::basic_ostream<_CharT, _Traits>&
+        -: 2610:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2611:	       const extreme_value_distribution<_RealType>& __x)
+        -: 2612:    {
+        -: 2613:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2614:
+        -: 2615:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2616:      const _CharT __fill = __os.fill();
+        -: 2617:      const std::streamsize __precision = __os.precision();
+        -: 2618:      const _CharT __space = __os.widen(' ');
+        -: 2619:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2620:      __os.fill(__space);
+        -: 2621:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2622:
+        -: 2623:      __os << __x.a() << __space << __x.b();
+        -: 2624:
+        -: 2625:      __os.flags(__flags);
+        -: 2626:      __os.fill(__fill);
+        -: 2627:      __os.precision(__precision);
+        -: 2628:      return __os;
+        -: 2629:    }
+        -: 2630:
+        -: 2631:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2632:    std::basic_istream<_CharT, _Traits>&
+        -: 2633:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2634:	       extreme_value_distribution<_RealType>& __x)
+        -: 2635:    {
+        -: 2636:      using param_type
+        -: 2637:	= typename extreme_value_distribution<_RealType>::param_type;
+        -: 2638:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2639:
+        -: 2640:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2641:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2642:
+        -: 2643:      _RealType __a, __b;
+        -: 2644:      if (__is >> __a >> __b)
+        -: 2645:	__x.param(param_type(__a, __b));
+        -: 2646:
+        -: 2647:      __is.flags(__flags);
+        -: 2648:      return __is;
+        -: 2649:    }
+        -: 2650:
+        -: 2651:
+        -: 2652:  template<typename _IntType>
+        -: 2653:    void
+        -: 2654:    discrete_distribution<_IntType>::param_type::
+        -: 2655:    _M_initialize()
+        -: 2656:    {
+        -: 2657:      if (_M_prob.size() < 2)
+        -: 2658:	{
+        -: 2659:	  _M_prob.clear();
+        -: 2660:	  return;
+        -: 2661:	}
+        -: 2662:
+        -: 2663:      const double __sum = std::accumulate(_M_prob.begin(),
+        -: 2664:					   _M_prob.end(), 0.0);
+        -: 2665:      __glibcxx_assert(__sum > 0);
+        -: 2666:      // Now normalize the probabilites.
+        -: 2667:      __detail::__normalize(_M_prob.begin(), _M_prob.end(), _M_prob.begin(),
+        -: 2668:			    __sum);
+        -: 2669:      // Accumulate partial sums.
+        -: 2670:      _M_cp.reserve(_M_prob.size());
+        -: 2671:      std::partial_sum(_M_prob.begin(), _M_prob.end(),
+        -: 2672:		       std::back_inserter(_M_cp));
+        -: 2673:      // Make sure the last cumulative probability is one.
+        -: 2674:      _M_cp[_M_cp.size() - 1] = 1.0;
+        -: 2675:    }
+        -: 2676:
+        -: 2677:  template<typename _IntType>
+        -: 2678:    template<typename _Func>
+        -: 2679:      discrete_distribution<_IntType>::param_type::
+        -: 2680:      param_type(size_t __nw, double __xmin, double __xmax, _Func __fw)
+        -: 2681:      : _M_prob(), _M_cp()
+        -: 2682:      {
+        -: 2683:	const size_t __n = __nw == 0 ? 1 : __nw;
+        -: 2684:	const double __delta = (__xmax - __xmin) / __n;
+        -: 2685:
+        -: 2686:	_M_prob.reserve(__n);
+        -: 2687:	for (size_t __k = 0; __k < __nw; ++__k)
+        -: 2688:	  _M_prob.push_back(__fw(__xmin + __k * __delta + 0.5 * __delta));
+        -: 2689:
+        -: 2690:	_M_initialize();
+        -: 2691:      }
+        -: 2692:
+        -: 2693:  template<typename _IntType>
+        -: 2694:    template<typename _UniformRandomNumberGenerator>
+        -: 2695:      typename discrete_distribution<_IntType>::result_type
+        -: 2696:      discrete_distribution<_IntType>::
+        -: 2697:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2698:		 const param_type& __param)
+        -: 2699:      {
+        -: 2700:	if (__param._M_cp.empty())
+        -: 2701:	  return result_type(0);
+        -: 2702:
+        -: 2703:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 2704:	  __aurng(__urng);
+        -: 2705:
+        -: 2706:	const double __p = __aurng();
+        -: 2707:	auto __pos = std::lower_bound(__param._M_cp.begin(),
+        -: 2708:				      __param._M_cp.end(), __p);
+        -: 2709:
+        -: 2710:	return __pos - __param._M_cp.begin();
+        -: 2711:      }
+        -: 2712:
+        -: 2713:  template<typename _IntType>
+        -: 2714:    template<typename _ForwardIterator,
+        -: 2715:	     typename _UniformRandomNumberGenerator>
+        -: 2716:      void
+        -: 2717:      discrete_distribution<_IntType>::
+        -: 2718:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2719:		      _UniformRandomNumberGenerator& __urng,
+        -: 2720:		      const param_type& __param)
+        -: 2721:      {
+        -: 2722:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2723:
+        -: 2724:	if (__param._M_cp.empty())
+        -: 2725:	  {
+        -: 2726:	    while (__f != __t)
+        -: 2727:	      *__f++ = result_type(0);
+        -: 2728:	    return;
+        -: 2729:	  }
+        -: 2730:
+        -: 2731:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 2732:	  __aurng(__urng);
+        -: 2733:
+        -: 2734:	while (__f != __t)
+        -: 2735:	  {
+        -: 2736:	    const double __p = __aurng();
+        -: 2737:	    auto __pos = std::lower_bound(__param._M_cp.begin(),
+        -: 2738:					  __param._M_cp.end(), __p);
+        -: 2739:
+        -: 2740:	    *__f++ = __pos - __param._M_cp.begin();
+        -: 2741:	  }
+        -: 2742:      }
+        -: 2743:
+        -: 2744:  template<typename _IntType, typename _CharT, typename _Traits>
+        -: 2745:    std::basic_ostream<_CharT, _Traits>&
+        -: 2746:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2747:	       const discrete_distribution<_IntType>& __x)
+        -: 2748:    {
+        -: 2749:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2750:
+        -: 2751:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2752:      const _CharT __fill = __os.fill();
+        -: 2753:      const std::streamsize __precision = __os.precision();
+        -: 2754:      const _CharT __space = __os.widen(' ');
+        -: 2755:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2756:      __os.fill(__space);
+        -: 2757:      __os.precision(std::numeric_limits<double>::max_digits10);
+        -: 2758:
+        -: 2759:      std::vector<double> __prob = __x.probabilities();
+        -: 2760:      __os << __prob.size();
+        -: 2761:      for (auto __dit = __prob.begin(); __dit != __prob.end(); ++__dit)
+        -: 2762:	__os << __space << *__dit;
+        -: 2763:
+        -: 2764:      __os.flags(__flags);
+        -: 2765:      __os.fill(__fill);
+        -: 2766:      __os.precision(__precision);
+        -: 2767:      return __os;
+        -: 2768:    }
+        -: 2769:
+        -: 2770:namespace __detail
+        -: 2771:{
+        -: 2772:  template<typename _ValT, typename _CharT, typename _Traits>
+        -: 2773:    basic_istream<_CharT, _Traits>&
+        -: 2774:    __extract_params(basic_istream<_CharT, _Traits>& __is,
+        -: 2775:		     vector<_ValT>& __vals, size_t __n)
+        -: 2776:    {
+        -: 2777:      __vals.reserve(__n);
+        -: 2778:      while (__n--)
+        -: 2779:	{
+        -: 2780:	  _ValT __val;
+        -: 2781:	  if (__is >> __val)
+        -: 2782:	    __vals.push_back(__val);
+        -: 2783:	  else
+        -: 2784:	    break;
+        -: 2785:	}
+        -: 2786:      return __is;
+        -: 2787:    }
+        -: 2788:} // namespace __detail
+        -: 2789:
+        -: 2790:  template<typename _IntType, typename _CharT, typename _Traits>
+        -: 2791:    std::basic_istream<_CharT, _Traits>&
+        -: 2792:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 2793:	       discrete_distribution<_IntType>& __x)
+        -: 2794:    {
+        -: 2795:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 2796:
+        -: 2797:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 2798:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 2799:
+        -: 2800:      size_t __n;
+        -: 2801:      if (__is >> __n)
+        -: 2802:	{
+        -: 2803:	  std::vector<double> __prob_vec;
+        -: 2804:	  if (__detail::__extract_params(__is, __prob_vec, __n))
+        -: 2805:	    __x.param({__prob_vec.begin(), __prob_vec.end()});
+        -: 2806:	}
+        -: 2807:
+        -: 2808:      __is.flags(__flags);
+        -: 2809:      return __is;
+        -: 2810:    }
+        -: 2811:
+        -: 2812:
+        -: 2813:  template<typename _RealType>
+        -: 2814:    void
+        -: 2815:    piecewise_constant_distribution<_RealType>::param_type::
+        -: 2816:    _M_initialize()
+        -: 2817:    {
+        -: 2818:      if (_M_int.size() < 2
+        -: 2819:	  || (_M_int.size() == 2
+        -: 2820:	      && _M_int[0] == _RealType(0)
+        -: 2821:	      && _M_int[1] == _RealType(1)))
+        -: 2822:	{
+        -: 2823:	  _M_int.clear();
+        -: 2824:	  _M_den.clear();
+        -: 2825:	  return;
+        -: 2826:	}
+        -: 2827:
+        -: 2828:      const double __sum = std::accumulate(_M_den.begin(),
+        -: 2829:					   _M_den.end(), 0.0);
+        -: 2830:      __glibcxx_assert(__sum > 0);
+        -: 2831:
+        -: 2832:      __detail::__normalize(_M_den.begin(), _M_den.end(), _M_den.begin(),
+        -: 2833:			    __sum);
+        -: 2834:
+        -: 2835:      _M_cp.reserve(_M_den.size());
+        -: 2836:      std::partial_sum(_M_den.begin(), _M_den.end(),
+        -: 2837:		       std::back_inserter(_M_cp));
+        -: 2838:
+        -: 2839:      // Make sure the last cumulative probability is one.
+        -: 2840:      _M_cp[_M_cp.size() - 1] = 1.0;
+        -: 2841:
+        -: 2842:      for (size_t __k = 0; __k < _M_den.size(); ++__k)
+        -: 2843:	_M_den[__k] /= _M_int[__k + 1] - _M_int[__k];
+        -: 2844:    }
+        -: 2845:
+        -: 2846:  template<typename _RealType>
+        -: 2847:    template<typename _InputIteratorB, typename _InputIteratorW>
+        -: 2848:      piecewise_constant_distribution<_RealType>::param_type::
+        -: 2849:      param_type(_InputIteratorB __bbegin,
+        -: 2850:		 _InputIteratorB __bend,
+        -: 2851:		 _InputIteratorW __wbegin)
+        -: 2852:      : _M_int(), _M_den(), _M_cp()
+        -: 2853:      {
+        -: 2854:	if (__bbegin != __bend)
+        -: 2855:	  {
+        -: 2856:	    for (;;)
+        -: 2857:	      {
+        -: 2858:		_M_int.push_back(*__bbegin);
+        -: 2859:		++__bbegin;
+        -: 2860:		if (__bbegin == __bend)
+        -: 2861:		  break;
+        -: 2862:
+        -: 2863:		_M_den.push_back(*__wbegin);
+        -: 2864:		++__wbegin;
+        -: 2865:	      }
+        -: 2866:	  }
+        -: 2867:
+        -: 2868:	_M_initialize();
+        -: 2869:      }
+        -: 2870:
+        -: 2871:  template<typename _RealType>
+        -: 2872:    template<typename _Func>
+        -: 2873:      piecewise_constant_distribution<_RealType>::param_type::
+        -: 2874:      param_type(initializer_list<_RealType> __bl, _Func __fw)
+        -: 2875:      : _M_int(), _M_den(), _M_cp()
+        -: 2876:      {
+        -: 2877:	_M_int.reserve(__bl.size());
+        -: 2878:	for (auto __biter = __bl.begin(); __biter != __bl.end(); ++__biter)
+        -: 2879:	  _M_int.push_back(*__biter);
+        -: 2880:
+        -: 2881:	_M_den.reserve(_M_int.size() - 1);
+        -: 2882:	for (size_t __k = 0; __k < _M_int.size() - 1; ++__k)
+        -: 2883:	  _M_den.push_back(__fw(0.5 * (_M_int[__k + 1] + _M_int[__k])));
+        -: 2884:
+        -: 2885:	_M_initialize();
+        -: 2886:      }
+        -: 2887:
+        -: 2888:  template<typename _RealType>
+        -: 2889:    template<typename _Func>
+        -: 2890:      piecewise_constant_distribution<_RealType>::param_type::
+        -: 2891:      param_type(size_t __nw, _RealType __xmin, _RealType __xmax, _Func __fw)
+        -: 2892:      : _M_int(), _M_den(), _M_cp()
+        -: 2893:      {
+        -: 2894:	const size_t __n = __nw == 0 ? 1 : __nw;
+        -: 2895:	const _RealType __delta = (__xmax - __xmin) / __n;
+        -: 2896:
+        -: 2897:	_M_int.reserve(__n + 1);
+        -: 2898:	for (size_t __k = 0; __k <= __nw; ++__k)
+        -: 2899:	  _M_int.push_back(__xmin + __k * __delta);
+        -: 2900:
+        -: 2901:	_M_den.reserve(__n);
+        -: 2902:	for (size_t __k = 0; __k < __nw; ++__k)
+        -: 2903:	  _M_den.push_back(__fw(_M_int[__k] + 0.5 * __delta));
+        -: 2904:
+        -: 2905:	_M_initialize();
+        -: 2906:      }
+        -: 2907:
+        -: 2908:  template<typename _RealType>
+        -: 2909:    template<typename _UniformRandomNumberGenerator>
+        -: 2910:      typename piecewise_constant_distribution<_RealType>::result_type
+        -: 2911:      piecewise_constant_distribution<_RealType>::
+        -: 2912:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 2913:		 const param_type& __param)
+        -: 2914:      {
+        -: 2915:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 2916:	  __aurng(__urng);
+        -: 2917:
+        -: 2918:	const double __p = __aurng();
+        -: 2919:	if (__param._M_cp.empty())
+        -: 2920:	  return __p;
+        -: 2921:
+        -: 2922:	auto __pos = std::lower_bound(__param._M_cp.begin(),
+        -: 2923:				      __param._M_cp.end(), __p);
+        -: 2924:	const size_t __i = __pos - __param._M_cp.begin();
+        -: 2925:
+        -: 2926:	const double __pref = __i > 0 ? __param._M_cp[__i - 1] : 0.0;
+        -: 2927:
+        -: 2928:	return __param._M_int[__i] + (__p - __pref) / __param._M_den[__i];
+        -: 2929:      }
+        -: 2930:
+        -: 2931:  template<typename _RealType>
+        -: 2932:    template<typename _ForwardIterator,
+        -: 2933:	     typename _UniformRandomNumberGenerator>
+        -: 2934:      void
+        -: 2935:      piecewise_constant_distribution<_RealType>::
+        -: 2936:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 2937:		      _UniformRandomNumberGenerator& __urng,
+        -: 2938:		      const param_type& __param)
+        -: 2939:      {
+        -: 2940:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 2941:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 2942:	  __aurng(__urng);
+        -: 2943:
+        -: 2944:	if (__param._M_cp.empty())
+        -: 2945:	  {
+        -: 2946:	    while (__f != __t)
+        -: 2947:	      *__f++ = __aurng();
+        -: 2948:	    return;
+        -: 2949:	  }
+        -: 2950:
+        -: 2951:	while (__f != __t)
+        -: 2952:	  {
+        -: 2953:	    const double __p = __aurng();
+        -: 2954:
+        -: 2955:	    auto __pos = std::lower_bound(__param._M_cp.begin(),
+        -: 2956:					  __param._M_cp.end(), __p);
+        -: 2957:	    const size_t __i = __pos - __param._M_cp.begin();
+        -: 2958:
+        -: 2959:	    const double __pref = __i > 0 ? __param._M_cp[__i - 1] : 0.0;
+        -: 2960:
+        -: 2961:	    *__f++ = (__param._M_int[__i]
+        -: 2962:		      + (__p - __pref) / __param._M_den[__i]);
+        -: 2963:	  }
+        -: 2964:      }
+        -: 2965:
+        -: 2966:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2967:    std::basic_ostream<_CharT, _Traits>&
+        -: 2968:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 2969:	       const piecewise_constant_distribution<_RealType>& __x)
+        -: 2970:    {
+        -: 2971:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 2972:
+        -: 2973:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 2974:      const _CharT __fill = __os.fill();
+        -: 2975:      const std::streamsize __precision = __os.precision();
+        -: 2976:      const _CharT __space = __os.widen(' ');
+        -: 2977:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 2978:      __os.fill(__space);
+        -: 2979:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 2980:
+        -: 2981:      std::vector<_RealType> __int = __x.intervals();
+        -: 2982:      __os << __int.size() - 1;
+        -: 2983:
+        -: 2984:      for (auto __xit = __int.begin(); __xit != __int.end(); ++__xit)
+        -: 2985:	__os << __space << *__xit;
+        -: 2986:
+        -: 2987:      std::vector<double> __den = __x.densities();
+        -: 2988:      for (auto __dit = __den.begin(); __dit != __den.end(); ++__dit)
+        -: 2989:	__os << __space << *__dit;
+        -: 2990:
+        -: 2991:      __os.flags(__flags);
+        -: 2992:      __os.fill(__fill);
+        -: 2993:      __os.precision(__precision);
+        -: 2994:      return __os;
+        -: 2995:    }
+        -: 2996:
+        -: 2997:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 2998:    std::basic_istream<_CharT, _Traits>&
+        -: 2999:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 3000:	       piecewise_constant_distribution<_RealType>& __x)
+        -: 3001:    {
+        -: 3002:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 3003:
+        -: 3004:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 3005:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 3006:
+        -: 3007:      size_t __n;
+        -: 3008:      if (__is >> __n)
+        -: 3009:	{
+        -: 3010:	  std::vector<_RealType> __int_vec;
+        -: 3011:	  if (__detail::__extract_params(__is, __int_vec, __n + 1))
+        -: 3012:	    {
+        -: 3013:	      std::vector<double> __den_vec;
+        -: 3014:	      if (__detail::__extract_params(__is, __den_vec, __n))
+        -: 3015:		{
+        -: 3016:		  __x.param({ __int_vec.begin(), __int_vec.end(),
+        -: 3017:			      __den_vec.begin() });
+        -: 3018:		}
+        -: 3019:	    }
+        -: 3020:	}
+        -: 3021:
+        -: 3022:      __is.flags(__flags);
+        -: 3023:      return __is;
+        -: 3024:    }
+        -: 3025:
+        -: 3026:
+        -: 3027:  template<typename _RealType>
+        -: 3028:    void
+        -: 3029:    piecewise_linear_distribution<_RealType>::param_type::
+        -: 3030:    _M_initialize()
+        -: 3031:    {
+        -: 3032:      if (_M_int.size() < 2
+        -: 3033:	  || (_M_int.size() == 2
+        -: 3034:	      && _M_int[0] == _RealType(0)
+        -: 3035:	      && _M_int[1] == _RealType(1)
+        -: 3036:	      && _M_den[0] == _M_den[1]))
+        -: 3037:	{
+        -: 3038:	  _M_int.clear();
+        -: 3039:	  _M_den.clear();
+        -: 3040:	  return;
+        -: 3041:	}
+        -: 3042:
+        -: 3043:      double __sum = 0.0;
+        -: 3044:      _M_cp.reserve(_M_int.size() - 1);
+        -: 3045:      _M_m.reserve(_M_int.size() - 1);
+        -: 3046:      for (size_t __k = 0; __k < _M_int.size() - 1; ++__k)
+        -: 3047:	{
+        -: 3048:	  const _RealType __delta = _M_int[__k + 1] - _M_int[__k];
+        -: 3049:	  __sum += 0.5 * (_M_den[__k + 1] + _M_den[__k]) * __delta;
+        -: 3050:	  _M_cp.push_back(__sum);
+        -: 3051:	  _M_m.push_back((_M_den[__k + 1] - _M_den[__k]) / __delta);
+        -: 3052:	}
+        -: 3053:      __glibcxx_assert(__sum > 0);
+        -: 3054:
+        -: 3055:      //  Now normalize the densities...
+        -: 3056:      __detail::__normalize(_M_den.begin(), _M_den.end(), _M_den.begin(),
+        -: 3057:			    __sum);
+        -: 3058:      //  ... and partial sums... 
+        -: 3059:      __detail::__normalize(_M_cp.begin(), _M_cp.end(), _M_cp.begin(), __sum);
+        -: 3060:      //  ... and slopes.
+        -: 3061:      __detail::__normalize(_M_m.begin(), _M_m.end(), _M_m.begin(), __sum);
+        -: 3062:
+        -: 3063:      //  Make sure the last cumulative probablility is one.
+        -: 3064:      _M_cp[_M_cp.size() - 1] = 1.0;
+        -: 3065:     }
+        -: 3066:
+        -: 3067:  template<typename _RealType>
+        -: 3068:    template<typename _InputIteratorB, typename _InputIteratorW>
+        -: 3069:      piecewise_linear_distribution<_RealType>::param_type::
+        -: 3070:      param_type(_InputIteratorB __bbegin,
+        -: 3071:		 _InputIteratorB __bend,
+        -: 3072:		 _InputIteratorW __wbegin)
+        -: 3073:      : _M_int(), _M_den(), _M_cp(), _M_m()
+        -: 3074:      {
+        -: 3075:	for (; __bbegin != __bend; ++__bbegin, ++__wbegin)
+        -: 3076:	  {
+        -: 3077:	    _M_int.push_back(*__bbegin);
+        -: 3078:	    _M_den.push_back(*__wbegin);
+        -: 3079:	  }
+        -: 3080:
+        -: 3081:	_M_initialize();
+        -: 3082:      }
+        -: 3083:
+        -: 3084:  template<typename _RealType>
+        -: 3085:    template<typename _Func>
+        -: 3086:      piecewise_linear_distribution<_RealType>::param_type::
+        -: 3087:      param_type(initializer_list<_RealType> __bl, _Func __fw)
+        -: 3088:      : _M_int(), _M_den(), _M_cp(), _M_m()
+        -: 3089:      {
+        -: 3090:	_M_int.reserve(__bl.size());
+        -: 3091:	_M_den.reserve(__bl.size());
+        -: 3092:	for (auto __biter = __bl.begin(); __biter != __bl.end(); ++__biter)
+        -: 3093:	  {
+        -: 3094:	    _M_int.push_back(*__biter);
+        -: 3095:	    _M_den.push_back(__fw(*__biter));
+        -: 3096:	  }
+        -: 3097:
+        -: 3098:	_M_initialize();
+        -: 3099:      }
+        -: 3100:
+        -: 3101:  template<typename _RealType>
+        -: 3102:    template<typename _Func>
+        -: 3103:      piecewise_linear_distribution<_RealType>::param_type::
+        -: 3104:      param_type(size_t __nw, _RealType __xmin, _RealType __xmax, _Func __fw)
+        -: 3105:      : _M_int(), _M_den(), _M_cp(), _M_m()
+        -: 3106:      {
+        -: 3107:	const size_t __n = __nw == 0 ? 1 : __nw;
+        -: 3108:	const _RealType __delta = (__xmax - __xmin) / __n;
+        -: 3109:
+        -: 3110:	_M_int.reserve(__n + 1);
+        -: 3111:	_M_den.reserve(__n + 1);
+        -: 3112:	for (size_t __k = 0; __k <= __nw; ++__k)
+        -: 3113:	  {
+        -: 3114:	    _M_int.push_back(__xmin + __k * __delta);
+        -: 3115:	    _M_den.push_back(__fw(_M_int[__k] + __delta));
+        -: 3116:	  }
+        -: 3117:
+        -: 3118:	_M_initialize();
+        -: 3119:      }
+        -: 3120:
+        -: 3121:  template<typename _RealType>
+        -: 3122:    template<typename _UniformRandomNumberGenerator>
+        -: 3123:      typename piecewise_linear_distribution<_RealType>::result_type
+        -: 3124:      piecewise_linear_distribution<_RealType>::
+        -: 3125:      operator()(_UniformRandomNumberGenerator& __urng,
+        -: 3126:		 const param_type& __param)
+        -: 3127:      {
+        -: 3128:	__detail::_Adaptor<_UniformRandomNumberGenerator, double>
+        -: 3129:	  __aurng(__urng);
+        -: 3130:
+        -: 3131:	const double __p = __aurng();
+        -: 3132:	if (__param._M_cp.empty())
+        -: 3133:	  return __p;
+        -: 3134:
+        -: 3135:	auto __pos = std::lower_bound(__param._M_cp.begin(),
+        -: 3136:				      __param._M_cp.end(), __p);
+        -: 3137:	const size_t __i = __pos - __param._M_cp.begin();
+        -: 3138:
+        -: 3139:	const double __pref = __i > 0 ? __param._M_cp[__i - 1] : 0.0;
+        -: 3140:
+        -: 3141:	const double __a = 0.5 * __param._M_m[__i];
+        -: 3142:	const double __b = __param._M_den[__i];
+        -: 3143:	const double __cm = __p - __pref;
+        -: 3144:
+        -: 3145:	_RealType __x = __param._M_int[__i];
+        -: 3146:	if (__a == 0)
+        -: 3147:	  __x += __cm / __b;
+        -: 3148:	else
+        -: 3149:	  {
+        -: 3150:	    const double __d = __b * __b + 4.0 * __a * __cm;
+        -: 3151:	    __x += 0.5 * (std::sqrt(__d) - __b) / __a;
+        -: 3152:          }
+        -: 3153:
+        -: 3154:        return __x;
+        -: 3155:      }
+        -: 3156:
+        -: 3157:  template<typename _RealType>
+        -: 3158:    template<typename _ForwardIterator,
+        -: 3159:	     typename _UniformRandomNumberGenerator>
+        -: 3160:      void
+        -: 3161:      piecewise_linear_distribution<_RealType>::
+        -: 3162:      __generate_impl(_ForwardIterator __f, _ForwardIterator __t,
+        -: 3163:		      _UniformRandomNumberGenerator& __urng,
+        -: 3164:		      const param_type& __param)
+        -: 3165:      {
+        -: 3166:	__glibcxx_function_requires(_ForwardIteratorConcept<_ForwardIterator>)
+        -: 3167:	// We could duplicate everything from operator()...
+        -: 3168:	while (__f != __t)
+        -: 3169:	  *__f++ = this->operator()(__urng, __param);
+        -: 3170:      }
+        -: 3171:
+        -: 3172:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 3173:    std::basic_ostream<_CharT, _Traits>&
+        -: 3174:    operator<<(std::basic_ostream<_CharT, _Traits>& __os,
+        -: 3175:	       const piecewise_linear_distribution<_RealType>& __x)
+        -: 3176:    {
+        -: 3177:      using __ios_base = typename basic_ostream<_CharT, _Traits>::ios_base;
+        -: 3178:
+        -: 3179:      const typename __ios_base::fmtflags __flags = __os.flags();
+        -: 3180:      const _CharT __fill = __os.fill();
+        -: 3181:      const std::streamsize __precision = __os.precision();
+        -: 3182:      const _CharT __space = __os.widen(' ');
+        -: 3183:      __os.flags(__ios_base::scientific | __ios_base::left);
+        -: 3184:      __os.fill(__space);
+        -: 3185:      __os.precision(std::numeric_limits<_RealType>::max_digits10);
+        -: 3186:
+        -: 3187:      std::vector<_RealType> __int = __x.intervals();
+        -: 3188:      __os << __int.size() - 1;
+        -: 3189:
+        -: 3190:      for (auto __xit = __int.begin(); __xit != __int.end(); ++__xit)
+        -: 3191:	__os << __space << *__xit;
+        -: 3192:
+        -: 3193:      std::vector<double> __den = __x.densities();
+        -: 3194:      for (auto __dit = __den.begin(); __dit != __den.end(); ++__dit)
+        -: 3195:	__os << __space << *__dit;
+        -: 3196:
+        -: 3197:      __os.flags(__flags);
+        -: 3198:      __os.fill(__fill);
+        -: 3199:      __os.precision(__precision);
+        -: 3200:      return __os;
+        -: 3201:    }
+        -: 3202:
+        -: 3203:  template<typename _RealType, typename _CharT, typename _Traits>
+        -: 3204:    std::basic_istream<_CharT, _Traits>&
+        -: 3205:    operator>>(std::basic_istream<_CharT, _Traits>& __is,
+        -: 3206:	       piecewise_linear_distribution<_RealType>& __x)
+        -: 3207:    {
+        -: 3208:      using __ios_base = typename basic_istream<_CharT, _Traits>::ios_base;
+        -: 3209:
+        -: 3210:      const typename __ios_base::fmtflags __flags = __is.flags();
+        -: 3211:      __is.flags(__ios_base::dec | __ios_base::skipws);
+        -: 3212:
+        -: 3213:      size_t __n;
+        -: 3214:      if (__is >> __n)
+        -: 3215:	{
+        -: 3216:	  vector<_RealType> __int_vec;
+        -: 3217:	  if (__detail::__extract_params(__is, __int_vec, __n + 1))
+        -: 3218:	    {
+        -: 3219:	      vector<double> __den_vec;
+        -: 3220:	      if (__detail::__extract_params(__is, __den_vec, __n + 1))
+        -: 3221:		{
+        -: 3222:		  __x.param({ __int_vec.begin(), __int_vec.end(),
+        -: 3223:			      __den_vec.begin() });
+        -: 3224:		}
+        -: 3225:	    }
+        -: 3226:	}
+        -: 3227:      __is.flags(__flags);
+        -: 3228:      return __is;
+        -: 3229:    }
+        -: 3230:
+        -: 3231:
+        -: 3232:  template<typename _IntType, typename>
+        -: 3233:    seed_seq::seed_seq(std::initializer_list<_IntType> __il)
+        -: 3234:    {
+        -: 3235:      _M_v.reserve(__il.size());
+        -: 3236:      for (auto __iter = __il.begin(); __iter != __il.end(); ++__iter)
+        -: 3237:	_M_v.push_back(__detail::__mod<result_type,
+        -: 3238:		       __detail::_Shift<result_type, 32>::__value>(*__iter));
+        -: 3239:    }
+        -: 3240:
+        -: 3241:  template<typename _InputIterator>
+        -: 3242:    seed_seq::seed_seq(_InputIterator __begin, _InputIterator __end)
+        -: 3243:    {
+        -: 3244:      if _GLIBCXX17_CONSTEXPR (__is_random_access_iter<_InputIterator>::value)
+        -: 3245:	_M_v.reserve(std::distance(__begin, __end));
+        -: 3246:
+        -: 3247:      for (_InputIterator __iter = __begin; __iter != __end; ++__iter)
+        -: 3248:	_M_v.push_back(__detail::__mod<result_type,
+        -: 3249:		       __detail::_Shift<result_type, 32>::__value>(*__iter));
+        -: 3250:    }
+        -: 3251:
+        -: 3252:  template<typename _RandomAccessIterator>
+        -: 3253:    void
+        -: 3254:    seed_seq::generate(_RandomAccessIterator __begin,
+        -: 3255:		       _RandomAccessIterator __end)
+        -: 3256:    {
+        -: 3257:      typedef typename iterator_traits<_RandomAccessIterator>::value_type
+        -: 3258:        _Type;
+        -: 3259:
+        -: 3260:      if (__begin == __end)
+        -: 3261:	return;
+        -: 3262:
+        -: 3263:      std::fill(__begin, __end, _Type(0x8b8b8b8bu));
+        -: 3264:
+        -: 3265:      const size_t __n = __end - __begin;
+        -: 3266:      const size_t __s = _M_v.size();
+        -: 3267:      const size_t __t = (__n >= 623) ? 11
+        -: 3268:		       : (__n >=  68) ? 7
+        -: 3269:		       : (__n >=  39) ? 5
+        -: 3270:		       : (__n >=   7) ? 3
+        -: 3271:		       : (__n - 1) / 2;
+        -: 3272:      const size_t __p = (__n - __t) / 2;
+        -: 3273:      const size_t __q = __p + __t;
+        -: 3274:      const size_t __m = std::max(size_t(__s + 1), __n);
+        -: 3275:
+        -: 3276:#ifndef __UINT32_TYPE__
+        -: 3277:      struct _Up
+        -: 3278:      {
+        -: 3279:	_Up(uint_least32_t v) : _M_v(v & 0xffffffffu) { }
+        -: 3280:
+        -: 3281:	operator uint_least32_t() const { return _M_v; }
+        -: 3282:
+        -: 3283:	uint_least32_t _M_v;
+        -: 3284:      };
+        -: 3285:      using uint32_t = _Up;
+        -: 3286:#endif
+        -: 3287:
+        -: 3288:      // k == 0, every element in [begin,end) equals 0x8b8b8b8bu
+        -: 3289:	{
+        -: 3290:	  uint32_t __r1 = 1371501266u;
+        -: 3291:	  uint32_t __r2 = __r1 + __s;
+        -: 3292:	  __begin[__p] += __r1;
+        -: 3293:	  __begin[__q] = (uint32_t)__begin[__q] + __r2;
+        -: 3294:	  __begin[0] = __r2;
+        -: 3295:	}
+        -: 3296:
+        -: 3297:      for (size_t __k = 1; __k <= __s; ++__k)
+        -: 3298:	{
+        -: 3299:	  const size_t __kn = __k % __n;
+        -: 3300:	  const size_t __kpn = (__k + __p) % __n;
+        -: 3301:	  const size_t __kqn = (__k + __q) % __n;
+        -: 3302:	  uint32_t __arg = (__begin[__kn]
+        -: 3303:			    ^ __begin[__kpn]
+        -: 3304:			    ^ __begin[(__k - 1) % __n]);
+        -: 3305:	  uint32_t __r1 = 1664525u * (__arg ^ (__arg >> 27));
+        -: 3306:	  uint32_t __r2 = __r1 + (uint32_t)__kn + _M_v[__k - 1];
+        -: 3307:	  __begin[__kpn] = (uint32_t)__begin[__kpn] + __r1;
+        -: 3308:	  __begin[__kqn] = (uint32_t)__begin[__kqn] + __r2;
+        -: 3309:	  __begin[__kn] = __r2;
+        -: 3310:	}
+        -: 3311:
+        -: 3312:      for (size_t __k = __s + 1; __k < __m; ++__k)
+        -: 3313:	{
+        -: 3314:	  const size_t __kn = __k % __n;
+        -: 3315:	  const size_t __kpn = (__k + __p) % __n;
+        -: 3316:	  const size_t __kqn = (__k + __q) % __n;
+        -: 3317:	  uint32_t __arg = (__begin[__kn]
+        -: 3318:				 ^ __begin[__kpn]
+        -: 3319:				 ^ __begin[(__k - 1) % __n]);
+        -: 3320:	  uint32_t __r1 = 1664525u * (__arg ^ (__arg >> 27));
+        -: 3321:	  uint32_t __r2 = __r1 + (uint32_t)__kn;
+        -: 3322:	  __begin[__kpn] = (uint32_t)__begin[__kpn] + __r1;
+        -: 3323:	  __begin[__kqn] = (uint32_t)__begin[__kqn] + __r2;
+        -: 3324:	  __begin[__kn] = __r2;
+        -: 3325:	}
+        -: 3326:
+        -: 3327:      for (size_t __k = __m; __k < __m + __n; ++__k)
+        -: 3328:	{
+        -: 3329:	  const size_t __kn = __k % __n;
+        -: 3330:	  const size_t __kpn = (__k + __p) % __n;
+        -: 3331:	  const size_t __kqn = (__k + __q) % __n;
+        -: 3332:	  uint32_t __arg = (__begin[__kn]
+        -: 3333:			    + __begin[__kpn]
+        -: 3334:			    + __begin[(__k - 1) % __n]);
+        -: 3335:	  uint32_t __r3 = 1566083941u * (__arg ^ (__arg >> 27));
+        -: 3336:	  uint32_t __r4 = __r3 - __kn;
+        -: 3337:	  __begin[__kpn] ^= __r3;
+        -: 3338:	  __begin[__kqn] ^= __r4;
+        -: 3339:	  __begin[__kn] = __r4;
+        -: 3340:	}
+        -: 3341:    }
+        -: 3342:
+        -: 3343:  template<typename _RealType, size_t __bits,
+        -: 3344:	   typename _UniformRandomNumberGenerator>
+        -: 3345:    _RealType
+        -: 3346:    generate_canonical(_UniformRandomNumberGenerator& __urng)
+        -: 3347:    {
+        -: 3348:      static_assert(std::is_floating_point<_RealType>::value,
+        -: 3349:		    "template argument must be a floating point type");
+        -: 3350:
+        -: 3351:      const size_t __b
+        -: 3352:	= std::min(static_cast<size_t>(std::numeric_limits<_RealType>::digits),
+        -: 3353:                   __bits);
+        -: 3354:      const long double __r = static_cast<long double>(__urng.max())
+        -: 3355:			    - static_cast<long double>(__urng.min()) + 1.0L;
+        -: 3356:      const size_t __log2r = std::log(__r) / std::log(2.0L);
+        -: 3357:      const size_t __m = std::max<size_t>(1UL,
+        -: 3358:					  (__b + __log2r - 1UL) / __log2r);
+        -: 3359:      _RealType __ret;
+        -: 3360:      _RealType __sum = _RealType(0);
+        -: 3361:      _RealType __tmp = _RealType(1);
+        -: 3362:      for (size_t __k = __m; __k != 0; --__k)
+        -: 3363:	{
+        -: 3364:	  __sum += _RealType(__urng() - __urng.min()) * __tmp;
+        -: 3365:	  __tmp *= __r;
+        -: 3366:	}
+        -: 3367:      __ret = __sum / __tmp;
+        -: 3368:      if (__builtin_expect(__ret >= _RealType(1), 0))
+        -: 3369:	{
+        -: 3370:#if _GLIBCXX_USE_C99_MATH_TR1
+        -: 3371:	  __ret = std::nextafter(_RealType(1), _RealType(0));
+        -: 3372:#else
+        -: 3373:	  __ret = _RealType(1)
+        -: 3374:	    - std::numeric_limits<_RealType>::epsilon() / _RealType(2);
+        -: 3375:#endif
+        -: 3376:	}
+        -: 3377:      return __ret;
+        -: 3378:    }
+        -: 3379:
+        -: 3380:_GLIBCXX_END_NAMESPACE_VERSION
+        -: 3381:} // namespace
+        -: 3382:
+        -: 3383:#endif

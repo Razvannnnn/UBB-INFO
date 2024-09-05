@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\Sem_2\AG\Test\Dijkstra\Dijkstra\main.cpp(22,6): warning C4101: 'i': unreferenced local variable
+D:\Sem_2\AG\Test\Dijkstra\Dijkstra\main.cpp(56,17): warning C4101: 'nod_final': unreferenced local variable
+  Dijkstra.vcxproj -> D:\Sem_2\AG\Test\Dijkstra\x64\Debug\Dijkstra.exe

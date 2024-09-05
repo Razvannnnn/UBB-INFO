@@ -1,0 +1,26 @@
+PSEUDOCOD
+
+Functie minimNod(Nod: p)
+    Cat timp p.st != null
+        p <- p.st
+    returnam p
+SFFunctie
+
+
+Functie maximNod(Nod: p)
+    Cat timp p.dr != null
+        p <- p.dr
+    returnam p
+SFFunctie
+
+
+Funcție diferentaMaxMin()
+    Daca radacina este null
+        returnam -1
+
+    min <- minimNod(rad)
+    max <- maximNod(rad)
+
+    return max.e - min.e
+
+SFFuncție

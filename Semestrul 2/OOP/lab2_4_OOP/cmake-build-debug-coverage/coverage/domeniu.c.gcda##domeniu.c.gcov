@@ -1,0 +1,80 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_4_OOP/domeniu.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\domeniu.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_4_OOP\cmake-build-debug-coverage\CMakeFiles\lab2_4_OOP.dir\domeniu.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <string.h>
+        -:    2:#include <malloc.h>
+        -:    3:#include "domeniu.h"
+        -:    4:
+        -:    5:
+function get_id called 134 returned 100% blocks executed 100%
+      134:    6:int get_id(struct Oferta oferta){
+      134:    7:    return oferta.id;
+      134:    7-block  0
+        -:    8:}
+        -:    9:
+function get_tip called 116 returned 100% blocks executed 100%
+      116:   10:char *get_tip(struct Oferta* oferta){
+      116:   11:    return oferta->tip;
+      116:   11-block  0
+        -:   12:}
+        -:   13:
+function get_adresa called 94 returned 100% blocks executed 100%
+       94:   14:char *get_adresa(struct Oferta* oferta){
+       94:   15:    return oferta->adresa;
+       94:   15-block  0
+        -:   16:}
+        -:   17:
+function get_suprafata called 97 returned 100% blocks executed 100%
+       97:   18:int get_suprafata(struct Oferta oferta){
+       97:   19:    return oferta.suprefata;
+       97:   19-block  0
+        -:   20:}
+        -:   21:
+function get_pret called 134 returned 100% blocks executed 100%
+      134:   22:int get_pret(struct Oferta oferta){
+      134:   23:    return oferta.pret;
+      134:   23-block  0
+        -:   24:}
+        -:   25:
+function set_id called 51 returned 100% blocks executed 100%
+       51:   26:void set_id(struct Oferta* oferta, int id){
+       51:   27:    oferta->id = id;
+       51:   28:}
+        -:   29:
+function set_tip called 51 returned 100% blocks executed 100%
+       51:   30:void set_tip(struct Oferta* oferta, char tip[]){
+       51:   31:    strcpy(oferta->tip, tip);
+       51:   32:}
+        -:   33:
+function set_adresa called 51 returned 100% blocks executed 100%
+       51:   34:void set_adresa(struct Oferta* oferta, char adresa[]){
+       51:   35:    strcpy(oferta->adresa, adresa);
+       51:   36:}
+        -:   37:
+function set_suprafata called 51 returned 100% blocks executed 100%
+       51:   38:void set_suprafata(struct Oferta* oferta, int suprafata){
+       51:   39:    oferta->suprefata = suprafata;
+       51:   40:}
+        -:   41:
+function set_pret called 51 returned 100% blocks executed 100%
+       51:   42:void set_pret(struct Oferta* oferta, int pret){
+       51:   43:    oferta->pret = pret;
+       51:   44:}
+        -:   45:
+function creareOferta called 36 returned 100% blocks executed 100%
+       36:   46:struct Oferta* creareOferta(int id, char tip[], char adresa[], int suprafata, int pret){
+       36:   47:    struct Oferta* oferta = (struct Oferta*)malloc(sizeof(struct Oferta));
+       36:   48:    oferta->id = id;
+       36:   49:    strcpy(oferta->tip, tip);
+       36:   50:    strcpy(oferta->adresa, adresa);
+       36:   51:    oferta->suprefata = suprafata;
+       36:   52:    oferta->pret = pret;
+       36:   53:    return oferta;
+       36:   53-block  0
+        -:   54:}
+        -:   55:
+function distrugeOferta called 33 returned 100% blocks executed 100%
+       33:   56:void distrugeOferta(struct Oferta* oferta) {
+       33:   57:    free(oferta);
+       33:   58:}

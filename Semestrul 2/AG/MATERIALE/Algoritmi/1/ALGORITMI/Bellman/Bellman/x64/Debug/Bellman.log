@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\Sem_2\AG\Test\Bellman\Bellman\main.cpp(13,16): warning C4101: 'j': unreferenced local variable
+D:\Sem_2\AG\Test\Bellman\Bellman\main.cpp(13,14): warning C4101: 'i': unreferenced local variable
+  Bellman.vcxproj -> D:\Sem_2\AG\Test\Bellman\x64\Debug\Bellman.exe

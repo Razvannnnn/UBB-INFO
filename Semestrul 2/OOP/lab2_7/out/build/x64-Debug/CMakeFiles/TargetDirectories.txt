@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/OOP/lab2_7/out/build/x64-Debug/CMakeFiles/lab2_7.dir
+C:/Users/razva/Desktop/OOP/lab2_7/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/lab2_7/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

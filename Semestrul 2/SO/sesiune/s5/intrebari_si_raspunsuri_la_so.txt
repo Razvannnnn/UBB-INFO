@@ -1,0 +1,336 @@
+1. Scrie-ti 5 comenzi grep care afiseaza toate liniile dintr-un fisier care contin litera "a" mare sai mic.
+R:
+grep -e 'a' -e 'A' file.txt
+grep -i 'a' file.txt
+grep -E '[aA]' file.txt
+grep -E '[aA]+' file.txt
+grep -E 'a|A' file.txt
+grep -i "\baz\' file.txt
+
+2.Scrie-ti 4 comenzi care afiseaza nr de linii golae dintr-un fisier
+R:
+grep -v "." "fisier" | wc -l
+grep "^$" "fisier" |wc -l
+sed -n "/$/p" "fsier" | wc -l
+awk 'if(length($0) == 0)nr++;} END {print nr}" "fisier"
+
+3.Scrie-ti doua comenzi sed care afiseaza dintr-un fisier doar liniile care nu contin cifra 7.
+R:
+sed -n '/7/!p' file
+sed '/7/d' file
+
+4.Scrie-ti o comanda awk care afiseaza suma penultimului camp al tuturor liniilor.
+R:
+awk 'BEGIN {suma=0} {suma+=$(NF-1)} END{print suma}'
+
+5.Dati patru moduri prin care iesirea standatd a unui proces poate fii redirectionata.
+R:
+>
+>>
+cmd || cmd2
+dup2(1,new_fd)
+
+6.Scrie-ti un script Shell care afiseaza toate argumentele din linia de comanda fara a folosi for.
+R:
+#!/bin/bash
+echo "$@"
+while [-n "$1"]
+do 
+	echo "$1"
+	shift
+done
+
+7.Scrie-ti 4 conditii Shell care verifica existenta unui fisier.
+R:
+[-f 'fisier"]
+file "fisier"
+[-r "fisier"]
+[$(find . -type f "fisier" | wc-l) -eq 1]
+
+8.Desenati ierarhia proceselor create de codul de mai jos,incluzand parinte
+for(i=0;i<3,i++)
+{
+	fork();
+	execl("ls","ls","/",NULL)
+}
+R:
+P-c se suprascrie parintele
+
+9.Scrie-ti codul c  necesar pt ca fisierul b.txt sa fie suprascris cu continultul fisierului a.txt din instructiunea de mai jos.
+execl("cat","cat","a.txt",NULL)
+R:
+int fd=open("fisier",O_CREAT | O_WEONLY);
+dup2(fd,1)
+
+10.Adaugati codul C necesar pt ca instr. de maji jos sa nu se blocheze asteptand la intrarea standard.
+execlp("cat",NULL);
+R:
+int fd=open("fisier" O_RDONLY);
+dup2(fd,0)
+
+11.Cate fifo-uri poate deschide un proces daca nu sunt si nici nu vor fi folosite vreodata de vreun alt proces.
+R:
+Doar 1 ,deoarece dupa primul open se blocheaza
+
+12.Care este efectul apelului pthread_barrier_wait pentru o bariera care este initializata cu 1?
+R:
+Când o barieră este inițializată cu 1, firul de execuție apelant va trece imediat bariera fără a se bloca, deoarece numărul necesar de fire de execuție pentru a trece bariera este deja satisfăcut. Firul de execuție va primi PTHREAD_BARRIER_SERIAL_THREAD ca valoare returnată, indicând că .
+It will not have any practical effect on the calling thread,and it will continue its execution without blocking or synchronization with other threads
+
+13.Cand ati folosi un proces in locul unui thread?
+R:
+Cred ca e de preferat sa folosesti procese daca:
+1.ai nevoie de comunicare intre ele (IPC:piep,FIFO,cozi de mesaje ect.)
+2.daca sarciniile care sunt de rezolvat sunt complexe
+3.daca procesele trebuie sa ruleze pe masini diferite
+4.daca se pune accent pe securitatea datelor (pentru ca intre thread-ri nu exista securitate
+
+14.Ce face pthread_cond_wait cu mutexul primit ca argument:
+R:
+Face 3 operatii:
+-face unlock pe mutexul primit ca argument
+-asteapta primirea unui semnal (trimis prin pthread_cond_signal()/pthread_cond_broadcast())pe acea variabila conditionala
+-face lock pe mutex (sau asteapta acolo daca alt thread i-a "luat-o inainte"
+
+15.Ce este sectiunea critica?
+R:
+O secțiune critică se referă la o secțiune de cod sau o regiune dintr-un program în care resursele partajate sunt accesate și modificate. Este important să vă asigurați că numai un proces sau thread executa secțiunea critică la un moment dat pentru a menține integritatea datelor și a preveni race conditions.
+
+16.Cate FIFO-uri poate deschide pentru citire un proces,daca FIFO-urile sunt si vor fi intotdeauna folosire de alte procese doar pentru citire?
+R:
+Daca FIFO-urile sunt dechise doar pentru citire,in momentul deschiderii unuia se va astepta pana cand se va deschide operatia complementara (scriere),prin urmare un proces poate deschide doar un FIFO,asteptand apoi la infinit.
+
+17. Daţi o expresie regulară care acceptă orice număr impar de cuvinte separate prin spaţii, fiecare cuvânt având număr impar de litere.
+R:^(\b\w{1}\b|\b\w{3}\b|\b\w{5}\b|\b\w{7}\b|\b\w{9}\b)(\s+(\b\w{1}\b|\b\w{3}\b|\b\w{5}\b|\b\w{7}\b|\b\w{9}\b))*$
+
+
+18.Scrieţi o comandă SED care afişează liniile dintr-un fişier ştergând din ele primul, al treilea, al cincilea, al şaptelea, etc spaţii.
+R:sed ':a; s/^\(\([^ ]* [^ ]* \)*[^ ]*\) /\1/; ta' input.txt
+
+
+19.Scrieţi o comandă AWK care afişează produsul ultimului câmp al liniilor de pe poziţii impare care au număr impar de câmpuri.
+R:awk 'NR % 2 == 1 && NF % 2 == 1 { product *= $NF } END { print product }' input.txt
+
+
+20.Desenati ierarhia proceselor create de coduld e mai jos, incluzand procesul parinte.
+for(i=0; i<3; i++) {
+        if(execlp("ls", "ls", "/", NULL) != -1) {
+            fork();
+        }
+    }
+
+R:
+
+21.Adăugaţi codul C necesar pentru ca instrucţiunea de mai jos să nu se blocheze aşteptând la intrarea standard.
+	execlp("cat", NULL);
+R:dup2(fd , 0);
+
+22.Schiţaţi o implementare a funcţiilor popen şi pclose, doar pentru cazul în care outputul comenzii e citit în codul C.
+
+R:#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
+#include <sys/wait.h>
+
+#define READ_END 0
+#define WRITE_END 1
+
+typedef struct {
+    FILE *stream;
+    pid_t pid;
+} PopenFile;
+
+PopenFile* my_popen(const char *command, const char *type) {
+    if (strcmp(type, "r") != 0) {
+        errno = EINVAL;
+        return NULL;
+    }
+
+    int pipe_fd[2];
+    if (pipe(pipe_fd) == -1) {
+        return NULL;
+    }
+
+    pid_t pid = fork();
+    if (pid == -1) {
+        close(pipe_fd[READ_END]);
+        close(pipe_fd[WRITE_END]);
+        return NULL;
+    }
+
+    if (pid == 0) {  // Child process
+        close(pipe_fd[READ_END]);
+        if (dup2(pipe_fd[WRITE_END], STDOUT_FILENO) == -1) {
+            perror("dup2");
+            exit(EXIT_FAILURE);
+        }
+        close(pipe_fd[WRITE_END]);
+        execlp("sh", "sh", "-c", command, NULL);
+        perror("execlp");
+        exit(EXIT_FAILURE);
+    } else {  // Parent process
+        close(pipe_fd[WRITE_END]);
+        FILE *stream = fdopen(pipe_fd[READ_END], "r");
+        if (stream == NULL) {
+            close(pipe_fd[READ_END]);
+            return NULL;
+        }
+        PopenFile *pf = malloc(sizeof(PopenFile));
+        if (pf == NULL) {
+            fclose(stream);
+            return NULL;
+        }
+        pf->stream = stream;
+        pf->pid = pid;
+        return pf;
+    }
+}
+
+int my_pclose(PopenFile *pf) {
+    if (pf == NULL) {
+        errno = EINVAL;
+        return -1;
+    }
+
+    int status;
+    fclose(pf->stream);
+    waitpid(pf->pid, &status, 0);
+    free(pf);
+    return status;
+}
+
+
+23.Când aţi folosi un FIFO în locul unui pipe?
+R:
+Eu aș folosi un FIFO în locul unui pipe deoarece FIFO-urile sunt preferate în anumite situații. Acestea oferă mai multă flexibilitate și persistență în comunicarea între procese, fiind utile atunci când procese diferite trebuie să comunice între ele în mod independent și simultan sau atunci când este necesară stocarea temporară a datelor pe disc pentru acces ulterior.
+
+24.Când aţi folosi un mutex în locul unui rwlock?
+R:
+Eu as folosi un mutex  atunci când avem o resursă care nu trebuie să fie accesată în mod concurent de mai multe fire de execuție, iar performanța nu este o preocupare majoră. Utilizarea unui mutex este mai simplă decât a unui rwlock și poate fi mai eficientă în anumite circumstanțe, dar nu permite accesul concurent la resursă.
+
+25.Care va fi efectul înlocuirii apelurilor la pthread_mutex_lock cu apeluri la sem_wait?
+R:
+Efectul schimbării pthread_mutex_lock cu sem_wait este că, dacă semaforul este inițializat cu o valoare mai mare de 1, mai multe fire pot accesa resursa simultan, ceea ce poate duce la probleme de concurență. Utilizarea semafoarelor pentru exclusivitate poate introduce complexitate suplimentară în gestionarea sincronizării, iar mutex-urile sunt optimizate pentru exclusivitate și pot fi mai eficiente pentru acest scop specific. În concluzie, schimbarea poate afecta exclusivitatea accesului la resursă și poate complica gestionarea sincronizării între fire.
+
+26.Schiţaţi o soluţie pentru problema producător-consumator.
+R:
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+#define BUFFER_SIZE 10
+
+int buffer[BUFFER_SIZE];
+int index_producer = 0;
+int index_consumer = 0;
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t full_cond = PTHREAD_COND_INITIALIZER;
+pthread_cond_t empty_cond = PTHREAD_COND_INITIALIZER;
+
+void *producer(void *arg) {
+    int item;
+    while (1) {
+        item = rand() % 100;  
+
+        pthread_mutex_lock(&mutex);
+        
+        while ((index_producer + 1) % BUFFER_SIZE == index_consumer) {
+            pthread_cond_wait(&full_cond, &mutex);
+        }
+        
+        buffer[index_producer] = item;
+        index_producer = (index_producer + 1) % BUFFER_SIZE;
+        
+        pthread_cond_signal(&empty_cond);
+        
+        pthread_mutex_unlock(&mutex);
+        
+        printf("Producător a adăugat: %d\n", item);
+        
+        usleep(rand() % 500000);
+    }
+    return NULL;
+}
+
+void *consumer(void *arg) {
+    int item;
+    while (1) {
+        pthread_mutex_lock(&mutex);
+        
+        while (index_producer == index_consumer) {
+            pthread_cond_wait(&empty_cond, &mutex);
+        }
+        
+
+        item = buffer[index_consumer];
+        index_consumer = (index_consumer + 1) % BUFFER_SIZE;
+        
+
+        pthread_cond_signal(&full_cond);
+        
+        pthread_mutex_unlock(&mutex);
+        
+        printf("Consumator a extras: %d\n", item);
+        
+        usleep(rand() % 500000);
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t prod_tid, cons_tid;
+
+
+    if (pthread_create(&prod_tid, NULL, producer, NULL) != 0) {
+        perror("pthread_create");
+        exit(EXIT_FAILURE);
+    }
+    if (pthread_create(&cons_tid, NULL, consumer, NULL) != 0) {
+        perror("pthread_create");
+        exit(EXIT_FAILURE);
+    }
+
+
+    pthread_join(prod_tid, NULL);
+    pthread_join(cons_tid, NULL);
+
+    return 0;
+}
+
+27.Ce puteţi face ca programator pentru a preveni deadlock-urile?
+R:
+ordinea corecta a mutexurior
+
+28.Prin ce tranziţie de stare va trece un process când apelează pthread_cond_wait? Justificaţi răspunsul.
+R:
+1) eliberare mutex 
+2) asteptare eliberare conditie
+3) blocarea si suspendarea threadului
+4) reasteptarea thread-ului
+
+29.Ce conţinue un fişier de tip director în sistemul de fişiere Linux?
+R:
+Lista de intrări (entries)
+Metadatele directorului:
+Pointeri către blocurile de date
+Intrări speciale
+
+30.Explicaţi diferenţa dintre un link simbolic şi un link hard.
+R:
+hard link-ul pointeaza catre un loc de pe drive
+simbolic link0ul pointeaza catre un alt fisier , care acela pointeaza catredrive
+
+
+
+
+
+
+
+
+
+
+
+

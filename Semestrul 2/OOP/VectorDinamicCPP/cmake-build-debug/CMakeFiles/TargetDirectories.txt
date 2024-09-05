@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/OOP/VectorDinamicCPP/cmake-build-debug/CMakeFiles/VectorDinamicCPP.dir
+C:/Users/razva/Desktop/OOP/VectorDinamicCPP/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/VectorDinamicCPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir

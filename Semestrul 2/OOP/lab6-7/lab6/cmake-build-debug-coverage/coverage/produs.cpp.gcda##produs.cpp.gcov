@@ -1,0 +1,88 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/produs.cpp
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\produs.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\produs.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "produs.h"
+        -:    2:
+function _ZNK6Produs7getPretEv called 45 returned 100% blocks executed 100%
+       45:    3:double Produs::getPret() const {
+       45:    4:    return pret;
+       45:    4-block  0
+        -:    5:}
+        -:    6:
+function _ZNK6Produs7getNumeB5cxx11Ev called 125 returned 100% blocks executed 100%
+      125:    7:string Produs::getNume() const{
+      125:    8:    return nume;
+      125:    8-block  0
+call    0 returned 125
+        -:    9:}
+        -:   10:
+function _ZNK6Produs6getTipB5cxx11Ev called 46 returned 100% blocks executed 100%
+       46:   11:string Produs::getTip() const{
+       46:   12:    return tip;
+       46:   12-block  0
+call    0 returned 46
+        -:   13:}
+        -:   14:
+function _ZNK6Produs13getProducatorB5cxx11Ev called 63 returned 100% blocks executed 100%
+       63:   15:string Produs::getProducator() const{
+       63:   16:    return producator;
+       63:   16-block  0
+call    0 returned 63
+        -:   17:}
+        -:   18:
+function _ZN6Produs7setPretEd called 2 returned 100% blocks executed 100%
+        2:   19:void Produs::setPret(double newPret) {
+        2:   20:    pret = newPret;
+        2:   21:}
+        -:   22:
+function _ZN6Produs7setNumeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 100%
+        2:   23:void Produs::setNume(const string& newNume) {
+        2:   24:    nume = newNume;
+        2:   24-block  0
+call    0 returned 2
+        2:   25:}
+        -:   26:
+function _ZN6Produs6setTipERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 100%
+        2:   27:void Produs::setTip(const string& newTip) {
+        2:   28:    tip = newTip;
+        2:   28-block  0
+call    0 returned 2
+        2:   29:}
+        -:   30:
+function _ZN6Produs13setProducatorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 100%
+        2:   31:void Produs::setProducator(const string& newProducator) {
+        2:   32:    producator = newProducator;
+        2:   32-block  0
+call    0 returned 2
+        2:   33:}
+        -:   34:
+function _ZN6ProdusC2Ev called 610 returned 100% blocks executed 62%
+      610:   35:Produs::Produs() {
+      610:   35-block  0
+call    0 returned 610
+call    1 returned 610
+call    2 returned 610
+      610:   36:    pret = 0;
+      610:   37:    nume = "";
+call    0 returned 610
+branch  1 taken 610 (fallthrough)
+branch  2 taken 0 (throw)
+      610:   38:    tip = "";
+      610:   38-block  0
+call    0 returned 610
+branch  1 taken 610 (fallthrough)
+branch  2 taken 0 (throw)
+      610:   39:    producator = "";
+      610:   39-block  0
+call    0 returned 610
+branch  1 taken 610 (fallthrough)
+branch  2 taken 0 (throw)
+      610:   40:}
+      610:   40-block  0
+    $$$$$:   40-block  1
+call    0 never executed
+    $$$$$:   40-block  2
+call    1 never executed
+    $$$$$:   40-block  3
+call    2 never executed

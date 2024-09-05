@@ -1,0 +1,24 @@
+PSEUDOCOD
+
+Funcție adaugaInexistente(d: Dictionar)
+
+    perechiAdaugate <- 0
+    iteratorD <- d.iterator()
+
+    CâtTimp iteratorD este valid
+        elem <- it.element()
+        cheie <- elem.first()
+        valoare <- elem.second()
+
+        Dacă cheia NU există în dicționarul curent
+
+            adaugă pereche (cheie, valoare)în dicționarul curent
+            perechiAdaugate <- perechiAdaugate + 1
+
+        SFDacă
+
+        it.urmator()  //următorul element folosind iteratorul iteratorD
+    SFCâtTimp
+
+    return perechiAdaugate
+SFFuncție

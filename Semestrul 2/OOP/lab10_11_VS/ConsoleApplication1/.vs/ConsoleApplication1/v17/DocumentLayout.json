@@ -1,0 +1,309 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\CosProduse.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\CosProduse.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\LabRepo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\LabRepo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\repo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\Error.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\vector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\vector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\validare.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\validare.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\undo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\undo.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\service.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\service.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\repo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\produs.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D8AEC78E-EB6A-4D34-9170-93BFBEA0CD1E}|ConsoleApplication1\\ConsoleApplication1.vcxproj|solutionrelative:ConsoleApplication1\\produs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "undo.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\undo.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\undo.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\undo.h",
+              "RelativeToolTip": "ConsoleApplication1\\undo.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:12:41.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ui.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\ui.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.h",
+              "RelativeToolTip": "ConsoleApplication1\\ui.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:12:29.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ui.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\ui.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\ui.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\ui.cpp",
+              "ViewState": "AQIAACkBAAAAAAAAAAAQwE0BAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:12:15.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "service.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\service.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.h",
+              "RelativeToolTip": "ConsoleApplication1\\service.h",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAAAJYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:11:38.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "service.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\service.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\service.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\service.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:11:25.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "repo.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\repo.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.h",
+              "RelativeToolTip": "ConsoleApplication1\\repo.h",
+              "ViewState": "AQIAAFkAAAAAAAAAAAD4v2MAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:11:00.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\main.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\main.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\main.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\main.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:09:11.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Error.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\Error.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\Error.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\Error.h",
+              "RelativeToolTip": "ConsoleApplication1\\Error.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:08:40.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "repo.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\repo.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\repo.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\repo.cpp",
+              "ViewState": "AQIAALIAAAAAAAAAAAAQwMIAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:10:37.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LabRepo.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\LabRepo.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\LabRepo.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\LabRepo.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\LabRepo.cpp",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAuwI4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:08:54.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CosProduse.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\CosProduse.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\CosProduse.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:07:17.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CosProduse.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\CosProduse.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\CosProduse.h",
+              "RelativeToolTip": "ConsoleApplication1\\CosProduse.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:08:16.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "validare.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\validare.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\validare.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:13:04.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "validare.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\validare.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\validare.h",
+              "RelativeToolTip": "ConsoleApplication1\\validare.h",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCEAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:13:15.983Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "vector.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\vector.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.h",
+              "RelativeToolTip": "ConsoleApplication1\\vector.h",
+              "ViewState": "AQIAAM4AAAAAAAAAAAAQwPAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:13:49.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "vector.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\vector.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\vector.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\vector.cpp",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAQwJMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:13:56.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "produs.h",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.h",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\produs.h",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.h",
+              "RelativeToolTip": "ConsoleApplication1\\produs.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-05-06T20:09:56.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "produs.cpp",
+              "DocumentMoniker": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.cpp",
+              "RelativeDocumentMoniker": "ConsoleApplication1\\produs.cpp",
+              "ToolTip": "C:\\Users\\razva\\Desktop\\OOP\\lab10_11_VS\\ConsoleApplication1\\ConsoleApplication1\\produs.cpp",
+              "RelativeToolTip": "ConsoleApplication1\\produs.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-06T20:09:27.845Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

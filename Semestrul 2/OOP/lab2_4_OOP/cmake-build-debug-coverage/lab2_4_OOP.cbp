@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="lab2_4_OOP"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab2_4_OOP">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/lab2_4_OOP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 lab2_4_OOP"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lab2_4_OOP/fast">
+				<Option output="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/lab2_4_OOP" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 lab2_4_OOP/fast"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j32 -f &quot;/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/MyList.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/MyList.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/domeniu.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/domeniu.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/main.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/repository.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/repository.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/service.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/service.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/teste.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/teste.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/ui.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/ui.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/validare.c">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/validare.h">
+			<Option target="lab2_4_OOP"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/razva/Desktop/OOP/lab2_4_OOP/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

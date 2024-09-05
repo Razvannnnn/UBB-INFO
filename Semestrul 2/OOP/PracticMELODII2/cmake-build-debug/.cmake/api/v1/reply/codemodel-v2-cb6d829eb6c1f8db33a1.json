@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "PracticMELODII2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "PracticMELODII2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PracticMELODII2-Debug-bbd975abe2517f580268.json",
+					"name" : "PracticMELODII2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PracticMELODII2_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PracticMELODII2_autogen-Debug-fd82fadeeb451e9f3687.json",
+					"name" : "PracticMELODII2_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "PracticMELODII2_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PracticMELODII2_autogen_timestamp_deps-Debug-807f059dcdb7ab8a6f13.json",
+					"name" : "PracticMELODII2_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/razva/Desktop/OOP/PracticMELODII2/cmake-build-debug",
+		"source" : "C:/Users/razva/Desktop/OOP/PracticMELODII2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

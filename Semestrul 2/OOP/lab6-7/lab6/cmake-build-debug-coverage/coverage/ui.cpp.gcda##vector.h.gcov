@@ -1,0 +1,366 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/vector.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\ui.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_VECTOR_H
+        -:    2:#define LAB6_VECTOR_H
+        -:    3:
+        -:    4:template <typename Elem>
+        -:    5:class IteratorVector;
+        -:    6:
+        -:    7:template <typename Elem>
+        -:    8:class Vector {
+        -:    9:private:
+        -:   10:    int dimensiune; //nr elemente
+        -:   11:    int capacitate; //capacitatea
+        -:   12:    Elem* elemente; //elementele
+        -:   13:public:
+        -:   14:    //Constructor
+        -:   15:    Vector();
+        -:   16:
+        -:   17:    //Constructor copiere
+        -:   18:    Vector(const Vector& obiect);
+        -:   19:
+        -:   20:    //Destructor
+        -:   21:    ~Vector();
+        -:   22:
+        -:   23:    /*
+        -:   24:      Operator assgnment
+        -:   25:	  elibereaza ce era in obiectul curent obiect
+        -:   26:	  aloca spatiu pentru elemente
+        -:   27:	  copieaza elementele din ot in this
+        -:   28:     */
+        -:   29:    Vector& operator=(const Vector& obiect);
+        -:   30:
+        -:   31:    /*
+        -:   32:	 Move constructor
+        -:   33:	 Obiectul obiect nu se mai foloseste astfel se poate refolosi interiorul lui
+        -:   34:	*/
+        -:   35:    Vector(Vector&& obiect);
+        -:   36:
+        -:   37:	//Move assignment
+        -:   38:    Vector& operator=(Vector&& obiect) noexcept ;
+        -:   39:
+        -:   40:    //Adaugare
+        -:   41:    void push_back(const Elem& element);
+        -:   42:    //Redimensionare in cazul in care lista este plina
+        -:   43:    void redimensionare();
+        -:   44:    Elem& get(int poz);
+        -:   45:    //Returneaza dimensiunea
+        -:   46:    int size();
+        -:   47:    //Stergere
+        -:   48:    void erase(int poz);
+        -:   49:    Elem& operator[](int index);
+        -:   50:
+        -:   51:    friend class IteratorVector<Elem>;
+        -:   52:    //Functii care creeaza iteratori
+        -:   53:    IteratorVector<Elem> begin();
+        -:   54:    IteratorVector<Elem> end();
+        -:   55:};
+        -:   56:
+        -:   57:template <typename Elem>
+        -:   58:class IteratorVector {
+        -:   59:private:
+        -:   60:    Vector<Elem>& vector;
+        -:   61:    int poz = 0;
+        -:   62:public:
+        -:   63:    //Constructori
+        -:   64:    IteratorVector(Vector<Elem>& vector);
+        -:   65:    IteratorVector(Vector<Elem>& vector, int poz);
+        -:   66:
+        -:   67:    //Returneaza referinta la elementul curent
+        -:   68:    Elem& element();
+        -:   69:
+        -:   70:    //Muta iteratorul la urmatorul element
+        -:   71:    void urmator();
+        -:   72:
+        -:   73:    //Suprascrie operatorul *
+        -:   74:    Elem& operator*();
+        -:   75:
+        -:   76:    //Suprascrie operatorul ++
+        -:   77:    IteratorVector& operator++();
+        -:   78:
+        -:   79:    //Suprascrie operatul ==
+        -:   80:    bool operator==(IteratorVector& obiect);
+        -:   81:
+        -:   82:    //Suprascrie operatorul !=
+        -:   83:    bool operator!=(IteratorVector& obiect);
+        -:   84:};
+        -:   85:
+        -:   86:template <typename Elem>
+function _ZN6VectorI6ProdusEC1Ev called 0 returned 0% blocks executed 0%
+    #####:   87:Vector<Elem>::Vector(): elemente{new Elem[10]}, capacitate{10}, dimensiune{0} {
+    %%%%%:   87-block  0
+call    0 never executed
+    %%%%%:   87-block  1
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   87-block  2
+    %%%%%:   87-block  3
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    $$$$$:   87-block  4
+branch  6 never executed (fallthrough)
+branch  7 never executed
+    $$$$$:   87-block  5
+    $$$$$:   87-block  6
+branch  8 never executed (fallthrough)
+branch  9 never executed
+    $$$$$:   87-block  7
+call   10 never executed
+    $$$$$:   87-block  8
+branch 11 never executed (fallthrough)
+branch 12 never executed
+    $$$$$:   87-block  9
+call   13 never executed
+    #####:   88:}
+    %%%%%:   88-block  0
+        -:   89:
+        -:   90:template <typename Elem>
+function _ZN6VectorI6ProdusEC1ERKS1_ called 0 returned 0% blocks executed 0%
+    #####:   91:Vector<Elem>::Vector(const Vector& obiect) {
+    #####:   92:    elemente = new Elem[obiect.capacitate];
+    %%%%%:   92-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   92-block  1
+    %%%%%:   92-block  2
+    %%%%%:   92-block  3
+call    2 never executed
+    %%%%%:   92-block  4
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   92-block  5
+    %%%%%:   92-block  6
+branch  6 never executed
+branch  7 never executed (fallthrough)
+    $$$$$:   92-block  7
+branch  8 never executed (fallthrough)
+branch  9 never executed
+    $$$$$:   92-block  8
+    $$$$$:   92-block  9
+branch 10 never executed (fallthrough)
+branch 11 never executed
+    $$$$$:   92-block 10
+call   12 never executed
+    $$$$$:   92-block 11
+branch 13 never executed (fallthrough)
+branch 14 never executed
+    $$$$$:   92-block 12
+branch 15 never executed (fallthrough)
+branch 16 never executed
+    $$$$$:   92-block 13
+    $$$$$:   92-block 14
+    $$$$$:   92-block 15
+call   17 never executed
+    #####:   93:    for(int i=0;i<obiect.dimensiune;i++) {
+    %%%%%:   93-block  0
+    %%%%%:   93-block  1
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:   94:        elemente[i] = obiect.elemente[i];
+    %%%%%:   94-block  0
+call    0 never executed
+        -:   95:    }
+    #####:   96:    dimensiune = obiect.dimensiune;
+    #####:   97:    capacitate = obiect.capacitate;
+    #####:   98:}
+    %%%%%:   98-block  0
+        -:   99:
+        -:  100:template <typename Elem>
+function _ZN6VectorI6ProdusED1Ev called 0 returned 0% blocks executed 0%
+    #####:  101:Vector<Elem>::~Vector() {
+    #####:  102:    delete[] elemente;
+    %%%%%:  102-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:  102-block  1
+    %%%%%:  102-block  2
+branch  2 never executed (fallthrough)
+branch  3 never executed
+    %%%%%:  102-block  3
+call    4 never executed
+    %%%%%:  102-block  4
+call    5 never executed
+    #####:  103:}
+        -:  104:
+        -:  105:template <typename Elem>
+        -:  106:Vector<Elem> &Vector<Elem>::operator=(const Vector<Elem> &obiect) {
+        -:  107:    if(this == &obiect) return *this;
+        -:  108:    delete[] elemente;
+        -:  109:    elemente = new Elem[obiect.capacitate];
+        -:  110:    for(int i=0;i<obiect.dimensiune;i++) {
+        -:  111:        elemente[i] = obiect.elemente[i];
+        -:  112:    }
+        -:  113:    dimensiune = obiect.dimensiune;
+        -:  114:    capacitate = obiect.capacitate;
+        -:  115:    return *this;
+        -:  116:}
+        -:  117:
+        -:  118:template <typename Elem>
+        -:  119:Vector<Elem>::Vector(Vector&& obiect) {
+        -:  120:    elemente = obiect.elemente;
+        -:  121:    capacitate = obiect.capacitate;
+        -:  122:    dimensiune = obiect.dimensiune;
+        -:  123:
+        -:  124:    obiect.elemente = nullptr;
+        -:  125:    obiect.dimensiune = 0;
+        -:  126:    obiect.capacitate = 0;
+        -:  127:}
+        -:  128:
+        -:  129:template <typename Elem>
+function _ZN6VectorI6ProdusEaSEOS1_ called 0 returned 0% blocks executed 0%
+    #####:  130:Vector<Elem>& Vector<Elem>::operator=(Vector<Elem> &&obiect)  noexcept {
+    #####:  131:    if(this == &obiect) {
+    %%%%%:  131-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  132:        return *this;
+    %%%%%:  132-block  0
+        -:  133:    }
+    #####:  134:    delete[] elemente;
+    %%%%%:  134-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:  134-block  1
+    %%%%%:  134-block  2
+branch  2 never executed (fallthrough)
+branch  3 never executed
+    %%%%%:  134-block  3
+call    4 never executed
+    %%%%%:  134-block  4
+call    5 never executed
+        -:  135:
+    #####:  136:    elemente = obiect.elemente;
+    #####:  137:    capacitate = obiect.capacitate;
+    #####:  138:    dimensiune = obiect.dimensiune;
+        -:  139:
+    #####:  140:    obiect.elemente = nullptr;
+    #####:  141:    obiect.dimensiune = 0;
+    #####:  142:    obiect.capacitate = 0;
+    #####:  143:    return *this;
+    %%%%%:  143-block  0
+        -:  144:}
+        -:  145:
+        -:  146:template <typename Elem>
+        -:  147:void Vector<Elem>::redimensionare() {
+        -:  148:    if(dimensiune < capacitate) {
+        -:  149:        return;
+        -:  150:    }
+        -:  151:    capacitate = capacitate * 2;
+        -:  152:    Elem* aux = new Elem[capacitate];
+        -:  153:    for(int i=0;i<dimensiune;i++) {
+        -:  154:        aux[i] = elemente[i];
+        -:  155:    }
+        -:  156:    delete[] elemente;
+        -:  157:    elemente = aux;
+        -:  158:}
+        -:  159:
+        -:  160:template <typename Elem>
+        -:  161:void Vector<Elem>::push_back(const Elem &element) {
+        -:  162:    redimensionare();
+        -:  163:    elemente[dimensiune++] = element;
+        -:  164:}
+        -:  165:
+        -:  166:template<typename Elem>
+        -:  167:Elem &Vector<Elem>::operator[](int index) {
+        -:  168:    return elemente[index];
+        -:  169:}
+        -:  170:
+        -:  171:template <typename Elem>
+        -:  172:Elem& Vector<Elem>::get(int poz) {
+        -:  173:    return elemente[poz];
+        -:  174:}
+        -:  175:
+        -:  176:template <typename Elem>
+        -:  177:int  Vector<Elem>::size() {
+        -:  178:    return dimensiune;
+        -:  179:}
+        -:  180:
+        -:  181:template <typename Elem>
+        -:  182:void Vector<Elem>::erase(int poz) {
+        -:  183:    if(poz < 0 || poz >= dimensiune) return;
+        -:  184:    for(int i=poz;i<dimensiune;i++) {
+        -:  185:        elemente[i] = elemente[i+1];
+        -:  186:    }
+        -:  187:    dimensiune--;
+        -:  188:}
+        -:  189:
+        -:  190:template <typename Elem>
+function _ZN6VectorI6ProdusE5beginEv called 0 returned 0% blocks executed 0%
+    #####:  191:IteratorVector<Elem> Vector<Elem>::begin() {
+    #####:  192:    return IteratorVector<Elem>(*this);
+    %%%%%:  192-block  0
+call    0 never executed
+        -:  193:}
+        -:  194:
+        -:  195:template <typename Elem>
+function _ZN6VectorI6ProdusE3endEv called 0 returned 0% blocks executed 0%
+    #####:  196:IteratorVector<Elem> Vector<Elem>::end() {
+    #####:  197:    return IteratorVector<Elem>(*this, dimensiune);
+    %%%%%:  197-block  0
+call    0 never executed
+        -:  198:}
+        -:  199:
+        -:  200:
+        -:  201:template <typename Elem>
+function _ZN14IteratorVectorI6ProdusEC1ER6VectorIS0_E called 0 returned 0% blocks executed 0%
+    #####:  202:IteratorVector<Elem>::IteratorVector(Vector<Elem> &vector) : vector{ vector } {
+    #####:  203:}
+        -:  204:
+        -:  205:template <typename Elem>
+function _ZN14IteratorVectorI6ProdusEC1ER6VectorIS0_Ei called 0 returned 0% blocks executed 0%
+    #####:  206:IteratorVector<Elem>::IteratorVector(Vector<Elem> &vector, int poz) : vector{ vector }, poz{poz} {
+    #####:  207:}
+        -:  208:
+        -:  209:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusE7elementEv called 0 returned 0% blocks executed 0%
+    #####:  210:Elem &IteratorVector<Elem>::element() {
+    #####:  211:    return vector.elemente[poz];
+    %%%%%:  211-block  0
+        -:  212:}
+        -:  213:
+        -:  214:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusE7urmatorEv called 0 returned 0% blocks executed 0%
+    #####:  215:void IteratorVector<Elem>::urmator() {
+    #####:  216:    poz++;
+    #####:  217:}
+        -:  218:
+        -:  219:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusEdeEv called 0 returned 0% blocks executed 0%
+    #####:  220:Elem &IteratorVector<Elem>::operator*() {
+    #####:  221:    return element();
+    %%%%%:  221-block  0
+call    0 never executed
+        -:  222:}
+        -:  223:
+        -:  224:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusEppEv called 0 returned 0% blocks executed 0%
+    #####:  225:IteratorVector<Elem>& IteratorVector<Elem>::operator++() {
+    #####:  226:    urmator();
+    %%%%%:  226-block  0
+call    0 never executed
+    #####:  227:    return *this;
+        -:  228:}
+        -:  229:
+        -:  230:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusEneERS1_ called 0 returned 0% blocks executed 0%
+    #####:  231:bool IteratorVector<Elem>::operator!=(IteratorVector &obiect) {
+    #####:  232:    return !(*this == obiect);
+    %%%%%:  232-block  0
+call    0 never executed
+        -:  233:}
+        -:  234:
+        -:  235:template<typename Elem>
+function _ZN14IteratorVectorI6ProdusEeqERS1_ called 0 returned 0% blocks executed 0%
+    #####:  236:bool IteratorVector<Elem>::operator==(IteratorVector &obiect) {
+    #####:  237:    return poz == obiect.poz;
+    %%%%%:  237-block  0
+        -:  238:}
+        -:  239:
+        -:  240:
+        -:  241:
+        -:  242:
+        -:  243:#endif //LAB6_VECTOR_H

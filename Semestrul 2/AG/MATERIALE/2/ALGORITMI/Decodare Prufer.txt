@@ -1,0 +1,83 @@
+#include <bits/stdc++.h>
+
+int n;
+std::deque<int> encoding;
+std::vector<int> parent;
+
+void decodePrufer() {
+    std::vector<int> degree(n + 1, 1);
+    // Facem gradele nodurilor
+    for (const auto& node : encoding) {
+        degree[node]++;
+    }
+
+    // Priority queue pentru a avea frunzele in ordine crescatoare
+    std::priority_queue<int, std::vector<int>, std::greater<int>> leaves;
+    for (int i = 0; i < n; ++i) {
+        if (degree[i] == 1) {
+            leaves.push(i);
+        }
+    }
+
+    for (int i = 0; i < n - 1; ++i) {
+        int leaf = leaves.top();
+        leaves.pop();
+
+        int node = encoding.front();
+        encoding.pop_front();
+
+        parent[leaf] = node;
+
+        degree[node]--;
+        if (degree[node] == 1) {
+            leaves.push(node);
+        }
+    }
+
+    // Ultimele 2 noduri
+    int u = leaves.top();
+    leaves.pop();
+    int v = leaves.top();
+    leaves.pop();
+    parent[u] = v;
+    parent[v] = -1;  // Ultimul nod este root , deci -1
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " input_file output_file\n";
+        return 1;
+    }
+
+    std::ifstream fin(argv[1]);
+    if (!fin) {
+        std::cerr << "Error: Unable to open input file " << argv[1] << "\n";
+        return 1;
+    }
+
+    std::ofstream fout(argv[2]);
+    if (!fout) {
+        std::cerr << "Error: Unable to open output file " << argv[2] << "\n";
+        return 1;
+    }
+
+    int length;
+    fin >> length;
+    n = length + 1;
+
+    for (int i = 0; i < length; ++i) {
+        int x;
+        fin >> x;
+        encoding.push_back(x);
+    }
+
+    parent.assign(n + 1, -1);
+    decodePrufer();
+
+    fout << n << "\n";
+    for (int i = 0; i < n; ++i) {
+        fout << parent[i] << " ";
+    }
+
+    return 0;
+}

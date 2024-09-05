@@ -1,0 +1,270 @@
+1. RO: Daţi o expresie regulară care acceptă orice număr impar de cuvinte separate prin spaţii, fiecare cuvânt având număr impar de litere. - 0, 10 
+EN: Give a regular expression that matches any odd number of words, each word having an odd number of letters.
+<\(..)*.\> (<\(..)*.\> <\(..)*.\>)* 
+
+2. RO: Daţi patru comenzi care afişează numărul de linii goale dintr-un fişier.-8, 8
+EN: Give four commands that display the number of empty lines in a file.
+grep -E -c "^$" a.txt
+grep -E -V -c "..*" a.txt
+grep -E -v -c ".+" a.txt
+grep -E -v -c ".{1,}" a.txt
+
+3. RO: Scrieţi o comandă SED care afişează liniile dintr-un fişier ştergând din ele primul, al treilea, al cincilea, al şaptelea, etc spaţii. - 0, 7
+EN: Write a SED command that displays a file's lines deleting the first, the third, the fifth, the seventh, etc space on those lines
+sed -E "s/( )([^ ]+)?( )?/\2\3/gi" test.txt
+
+4. RO: Scrieţi o comandă AWK care afişează produsul ultimului câmp al liniilor de pe poziţii impare care au număr impar de câmpuri. - 10, 10
+EN: Write an AWK command that displays the product of the last field of lines on odd positions having an odd number of fields.
+awk 'BEGIN { p = 1} { if (NF % 2 == 1 && NR % 2 == 1) p *= $NF} END { print p}' nrs.txt 
+
+5. RO: Daţi patru moduri prin care ieşirea standard a unui proces poate fi redirectată. - 5, 10
+EN: Give four ways of redirecting the standard output of a process.
+Redirect it via >  : command > a.txt
+Redirect it via >> : command >> a.txt
+Redirect it via pipe : command | echo > a.txt
+Redirect it with tee: echo "Hello" | tee greetings.txt
+
+6. RO: Scrieţi trei condiţii Shell UNIX care verifică existenţa unui fişier. - 8, 10
+EN: Write three UNIX Shell conditions that check the existence of a file.
+1) if [ -e $file ]
+2) if [ $(ls $file 2>&1 | grep -E -c "No such file") -eq 0 ]
+3) if $(ls $file2 2>&1 | grep -E -q "No such file")
+
+7. RO: Desenati ierarhia proceselor create de coduld e mai jos, incluzand procesul parinte. - 10, 10
+EN: Draw the hierarchy of processes created by the code below, including the parent process.
+
+    for(i=0; i<3; i++) {
+        if(execlp("ls", "ls", "/", NULL) != -1) {
+            fork();
+        }
+    }
+P->C1
+
+8. RO: Adăugaţi codul C necesar pentru ca instrucţiunea de mai jos să nu se blocheze aşteptând la intrarea standard. - 7, 10
+EN: Add the necessary code so that the instruction below does not get stuck waiting for standard input.
+    execlp("cat", NULL);
+
+	int fd = open("a.txt", O_RDRWR);
+	dup2(fd, 0);
+	execlp("cat", "cat", NULL);
+
+9. RO: Schiţaţi o implementare a funcţiilor popen şi pclose, doar pentru cazul în care outputul comenzii e citit în codul C. - 0, 0
+EN: Sketch an implementation of the popen and pclose functions, only for the case when the command output should be read in the C code.
+
+FILE* mypopen(const char* command, const char* type) {
+    int pipefd[2];
+    pid_t pid;
+    FILE* fp;
+
+    if (pipe(pipefd) == -1) {
+        perror("pipe");
+        return NULL;
+    }
+
+    if ((pid = fork()) == -1) {
+        perror("fork");
+        return NULL;
+    }
+
+    if (pid == 0) {  // Child process
+        close(pipefd[0]);  // Close unused read end
+        dup2(pipefd[1], STDOUT_FILENO);  // Redirect stdout to pipe
+        close(pipefd[1]);
+
+        execl("/bin/sh", "sh", "-c", command, (char*) NULL);
+        perror("execl");  // execl only returns on error
+        _exit(1);
+    } else {  // Parent process
+        close(pipefd[1]);  // Close unused write end
+        if ((fp = fdopen(pipefd[0], "r")) == NULL) {
+            perror("fdopen");
+            return NULL;
+        }
+        return fp;
+    }
+}
+
+
+int mypclose(FILE* fp) {
+    int status;
+    pid_t pid;
+
+    if (fclose(fp) == EOF) {
+        return -1;
+    }
+
+    pid = waitpid(-1, &status, 0);
+    if (pid == -1) {
+        return -1;
+    }
+
+    return status;
+}
+
+
+10. RO: Câte FIFO-uri poate deschide pentru citire un process, dacă FIFO-urile sunt şi vor fi întotdeauna folosite de alte procese doar pentru citire? - 10, 10
+EN: How many FIFOs can a process open for reading if the FIFOs are and will ever be used by other processes only for reading?
+
+
+Numărul de FIFO-uri pe care un proces le poate deschide pentru citire este limitat în principal de limita 
+sistemului de operare pentru numărul maxim de fișiere deschise simultan. Această limită poate fi verificată 
+și ajustată folosind comanda ulimit. Dacă limita este setată la 1024 și nu există alte fișiere deschise,
+ un proces poate deschide până la 1024 FIFO-uri pentru citire, cu condiția ca fiecare FIFO să fie deschis 
+de un alt proces pentru scriere.
+
+
+11. RO: Când aţi folosi un FIFO în locul unui pipe? 
+EN: When would you prefer using a FIFO instead of a pipe?
+
+Ați folosi un FIFO în locul unui pipe atunci când aveți nevoie de comunicație între procese independente,
+ când doriți ca punctul de comunicare să persiste în sistemul de fișiere și să fie accesibil între diferite 
+lansări ale proceselor sau când doriți flexibilitate în ordinea lansării proceselor. 
+Pipe-urile sunt mai potrivite pentru comunicația temporară între procese legate (părinte-copil)
+ și sunt mai eficiente pentru aceste cazuri datorită simplității și performanței lor.
+
+
+12. RO: Ce este o "secţiune critică"? 
+EN: What is a "critical section"?
+
+
+O secțiune critică este o parte din codul unui program concurent în care doar un singur fir de execuție
+ sau proces poate accesa resurse partajate la un moment dat, pentru a preveni inconsistențele și conflictele.
+ Mecanisme de sincronizare precum mutexuri și semafoare sunt utilizate pentru a gestiona acest acces exclusiv.
+
+
+13. RO: Când aţi folosi un mutex în locul unui rwlock? 
+EN: When would you prefer using a mutex instead of a rwlock?
+
+Aș folosi un mutex în locul unui rwlock atunci când lucrez cu variabile condiționale, deoarece acestea 
+pot elibera doar mutexuri, deci rwlock nu ar fi o soluție potrivită în acest caz. De asemenea, readlock-urile 
+sunt recomandate doar atunci când un fir de execuție efectuează exclusiv operațiuni de citire, deci dacă toate
+ firele de execuție au acțiuni care nu sunt atomice, un rwlock nu este justificat.
+
+
+14. RO: Care va fi efectul înlocuirii apelurilor la pthread_mutex_lock cu apeluri la sem_wait? 
+EN: What will be the effect of replacing calls to pthread_mutex_lock with calls to sem_wait?
+
+Trei cazuri:
+Înlocuim doar sem_wait cu mutex_lock, dar nu și mutex_unlock cu sem_post.
+Rezultat: Comportament nedefinit cauzat de deblocarea unui mutex care nu a fost blocat.
+Folosim un semafor binar.
+Rezultat: Același ca folosirea unui mutex, la fiecare trecere, semaforul este decrementat la 1, iar la sem_post,
+semaforul va fi incrementat.
+Folosim un semafor generic cu x fire alocate.
+Rezultat: Firele vor trece până când semaforul permite acest lucru și, în funcție de operațiunile pe care le
+ executăm, rezultatele pot fi aleatorii.
+
+
+15. RO: Ce face pthread_cond_wait cu mutex-ul primit ca argument? 
+EN: What does pthread_cond_wait do with the mutex it gets as argument?
+
+Funcția pthread_cond_wait eliberează mutex-ul primit ca argument și pune firul de execuție în așteptare pe
+ condiția specificată. Când condiția este semnalizată și firul de execuție este trezit, mutex-ul este
+ recapturat automat înainte ca pthread_cond_wait să returneze, permițând firului de execuție să continue 
+în siguranță în secțiunea critică.
+
+
+16. RO: Schiţaţi o soluţie pentru problema producător-consumator. 
+EN: Sketch a solution for the producer-consumer problem.
+
+#include <pthread.h>
+#include <semaphore.h>
+#define BUFFER_SIZE 10
+int buffer[BUFFER_SIZE];
+int in = 0;
+int out = 0;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+sem_t empty;
+sem_t full;
+
+void* producer(void* arg) {
+    while (1) {
+        int item = produce_item();  // Funcție care produce un element
+        sem_wait(&empty);
+        pthread_mutex_lock(&mutex);
+        buffer[in] = item;
+        in = (in + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&mutex);
+        sem_post(&full);
+    }
+}
+
+void* consumer(void* arg) {
+    while (1) {
+        sem_wait(&full);
+        pthread_mutex_lock(&mutex);
+        int item = buffer[out];
+        out = (out + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&mutex);
+        sem_post(&empty);
+        consume_item(item);  // Funcție care consumă un element
+    }
+}
+
+int main() {
+    pthread_t prod, cons;
+    sem_init(&empty, 0, BUFFER_SIZE);
+    sem_init(&full, 0, 0);
+    pthread_create(&prod, NULL, producer, NULL);
+    pthread_create(&cons, NULL, consumer, NULL);
+    pthread_join(prod, NULL);
+    pthread_join(cons, NULL);
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    return 0;
+}
+
+
+
+17. RO: Ce puteţi face ca programator pentru a preveni deadlock-urile? 
+EN: What can you do as a software developer to prevent deadlocks?
+
+Pentru a preveni deadlock-urile, ca programator, puteți: achiziționa resursele într-o ordine consistentă,
+ utiliza timeouts pentru încercările de achiziție a resurselor, evita blocarea pe resurse multiple simultan,
+implementa algoritmi de evitare a deadlock-ului, precum Algoritmul Bancherului, și folosi mecanisme de detectare 
+a deadlock-ului pentru intervenție și rezolvare.
+
+
+18. RO: Prin ce tranziţie de stare va trece un process când apelează pthread_cond_wait? Justificaţi răspunsul. 
+EN: What state transition will a process undergo when it calls pthread_cond_wait? Justify your answer.
+
+Când un proces apelează pthread_cond_wait, firul de execuție trece de la 
+starea activă (running) la starea
+ blocată (waiting), eliberând mutex-ul și așteptând semnalizarea 
+ condiției. Odată ce condiția este semnalizată,
+ firul trece la starea pregătită (ready), recapturând mutex-ul. 
+ În final, când sistemul de operare îl planifică
+ pentru execuție, revine la starea activă (running). 
+ Aceste tranziții asigură că firul așteaptă eficient și 
+resursele partajate sunt accesate în mod sigur.
+
+
+
+19. RO: Ce conţinue un fişier de tip director în sistemul de fişiere Linux? -
+EN: What is the content of file of type directory in the Linux file system?
+
+Un fișier de tip director în sistemul de fișiere Linux conține o listă de 
+înregistrări, fiecare asociind 
+numele unui fișier sau subdirector cu inode-ul său unic. Aceste înregistrări
+includ referințe la fișiere 
+și directoare conținute în directorul respectiv, precum și intrările speciale .
+(care reprezintă directorul curent) 
+și .. (care reprezintă directorul părinte).
+ Această structură permite navigarea eficientă și gestionarea 
+ ierarhică a sistemului de fișiere.
+
+20. RO: Explicaţi diferenţa dintre un link simbolic şi un link hard. -
+EN: Explain the difference between a symbolic link and a hard link.
+
+
+Un link simbolic (symlink) este un fișier special care conține calea către un alt fișier sau director, 
+permițând accesul indirect la acesta. Dacă ținta este mutată sau ștearsă, symlink-ul devine invalid. 
+Un link hard este o referință directă la inode-ul unui fișier existent, astfel încât mai multe nume de 
+fișiere pot referi aceeași locație de date pe disc. Linkurile hard sunt valide chiar dacă ținta este mutată, 
+dar nu pot traversa sisteme de fișiere diferite și nu pot fi create pentru directoare.
+
+
+
+
+
+

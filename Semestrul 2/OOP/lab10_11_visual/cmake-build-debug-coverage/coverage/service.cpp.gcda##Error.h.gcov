@@ -1,0 +1,32 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab8_9/Error.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab8_9\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_ERROR_H
+        -:    2:#define LAB6_ERROR_H
+        -:    3:
+        -:    4:#include <string>
+        -:    5:#include <utility>
+        -:    6:
+        -:    7:using namespace std;
+        -:    8:
+        -:    9:class Exceptie {
+        -:   10:    string msg;
+        -:   11:public:
+function _ZN8ExceptieC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 100%
+        2:   12:    explicit Exceptie(string m) : msg{std::move(std::move(m))} {
+        2:   12-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+        2:   13:    }
+        -:   14:
+function _ZN8Exceptie6getMsgB5cxx11Ev called 1 returned 100% blocks executed 100%
+        1:   15:    string getMsg() {
+        1:   16:        return msg;
+        1:   16-block  0
+call    0 returned 1
+        -:   17:    }
+        -:   18:};
+        -:   19:
+        -:   20:#endif //LAB6_ERROR_H

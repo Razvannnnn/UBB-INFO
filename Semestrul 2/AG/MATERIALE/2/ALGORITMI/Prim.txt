@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+std::ifstream fin("prim.in");
+std::ofstream fout("prim.out");
+int n , m;
+int costMin , arbCost;
+std::vector<std::vector<int>>gf;
+std::vector<int>arb;
+void primt(int nod){
+    for(int i = 1 ; i <= n ; ++i){
+        arb[i] = -1;
+    }
+    arb[nod] = 0;
+    arbCost = 0;
+    for(int k = 1 ; k < n ; ++k){
+        int costMin = INT_MAX / 2;
+        int minNod1 , minNod2;
+        for(int i = 1 ; i <= n ; ++i){
+            for(int j = 1 ; j <= n ; ++j){
+                // Trecem prin nodurile prin care am trecut deja
+                if(arb[i] != -1 && arb[j] == -1 && gf[i][j] != 0){
+                    if(gf[i][j] < costMin){
+                        minNod1 = i;
+                        minNod2 = j;
+                        costMin = gf[i][j];
+                    }
+                }
+            }
+        }
+        //fout << costMin << "\n";
+        if(costMin != INT_MAX / 2){
+            arbCost += costMin;
+            arb[minNod2] = minNod1;
+        }
+    }
+    fout << arbCost << "\n";
+    for(int i = 1 ; i <= n ; ++i){
+        fout << arb[i] << " ";
+    }
+}
+
+int main()
+{
+    fin >> n >> m;
+    arb.resize(n + 1);
+    gf.assign(n + 1 , std::vector<int>(m + 1));
+    for(int i = 0 ; i < m ; ++i){
+        int x , y , cost;
+        fin >> x >> y >> cost;
+        gf[x][y] = gf[y][x] = cost;
+    }
+    /*
+    for(int i = 1 ; i <= n ; ++i){
+        for(int j = 1 ; j <= m ; ++j){
+            fout << gf[i][j] << " ";
+        }   
+        fout << "\n";
+    }*/
+    primt(1);
+}

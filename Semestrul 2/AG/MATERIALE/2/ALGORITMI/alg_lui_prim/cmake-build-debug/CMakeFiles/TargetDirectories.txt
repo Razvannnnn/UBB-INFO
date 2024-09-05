@@ -1,0 +1,3 @@
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/alg_lui_prim/cmake-build-debug/CMakeFiles/alg_lui_prim.dir
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/alg_lui_prim/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/AG/MATERIALE/2/ALGORITMI/alg_lui_prim/cmake-build-debug/CMakeFiles/rebuild_cache.dir

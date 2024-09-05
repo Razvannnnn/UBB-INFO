@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Implementare_Colectie___repre__TD_adresare_deschisa_cu_verificare_liniara",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Implementare_Colectie___repre__TD_adresare_deschisa_cu_verificare_liniara::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Implementare_Colectie___repre__TD_adresare_deschisa_cu_verificare_liniara-Debug-59ab1608ea9b061cf9a8.json",
+					"name" : "Implementare_Colectie___repre__TD_adresare_deschisa_cu_verificare_liniara",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/razva/Desktop/SDA/REZOLVARE CURS COLECTIE/Implementare Colectie - repre. TD adresare deschisa cu verificare liniara/cmake-build-debug",
+		"source" : "C:/Users/razva/Desktop/SDA/REZOLVARE CURS COLECTIE/Implementare Colectie - repre. TD adresare deschisa cu verificare liniara"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

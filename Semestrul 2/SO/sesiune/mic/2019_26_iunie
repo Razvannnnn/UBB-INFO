@@ -1,0 +1,342 @@
+1. comanda unix care contin un numar binar multiplu de 4 cu 5 sau mai multe cifre
+ex : 010100
+grep -E '\b[01]{3,}00\n' a.txt
+
+2. o comanda unix care inverseaza toate perechile de cifra impara urmata de vocala
+a23e -> a2e3
+deci daca ai cifra impara + vocala , invsersezi
+
+a23e8i97u3
+echo a23e8i97u3 | sed -E 's/([13579])([aeiouAEIOU])/\2\1/g'
+
+3. scrieti o comanda unix care afiseaza toate scorurile de fotbal unice care apar in fisier
+cat b.txt | sort | uniq | awk -F ':' '{if($1 ~ /^[0-9]{1,2}/ && $2 ~ /^[0-9]{1,2}/) {print $0}}'
+
+4. afisati numarul de procese ale fiecarui utilizator activ din sistem
+ps -e -o user= | sort | uniq -c
+
+5. un script shell unix care calculeaza media de fisier cu extensia .txt
+per director din directorul curent si toate subdirectoarele lui
+
+#!/bin/bash
+
+handle_directory() {
+	# Aici facem numarul de fisiere pe care il are acest directo
+	DIR_NAME="$1"
+	local count=0
+
+	if [[ -d "$DIR_NAME" ]]; then
+		cd "$DIR_NAME" || return 0
+		for FILE in *; do
+			if [[ -f "$FILE" && "$FILE" =~ ".txt" ]]; then
+				((++count))
+			fi
+		done
+		echo "$count"
+	else
+		echo "Directory "$DIR_NAME" not found"
+	fi
+
+}
+
+main() {
+	for FILE in *; do
+		echo $FILE
+		if [[ -d "$FILE" ]]; then #director
+			ans=$(handle_directory "$FILE")
+			echo "$FILE has $ans files"
+		fi
+	done
+}
+
+main ""
+6. Cate procese va crea fragmentul de cod de mai jos, excluzand procesul parinte initial
+
+if(fork() != fork())
+  fork();
+
+          P
+        fork1
+        c1            P
+     c3 f2 c1     c2  f3   P
+        c4 f3 c1
+
+
+7. Desenati ierarhia de procesede generate de codul de mai jos
+int p = 0;
+for(i = 0 ; i < 3 ; ++i)
+{
+  if(p == 0)
+    p = fork();
+  else wait(NULL);
+}
+p = 0 numai atunci cand este in copil
+deci vine : 
+          P
+        i=0  c1
+        i=1  c2
+        i=2  c3
+
+8. Ce tipareste in cosnola fragmentul de cod de mai jos
+char* s[3] = {"A" , "B" , "C"};
+for(int i = 0 ; i < 3 ; ++i){
+    if(fork() != 0)// Daca suntem parinte
+    {
+        execl("/bin/echo" , "/bin/echo" , s[i] , NULL);
+    }
+  }
+
+  Ideea e ca execl opreste acolo procesul , deci nu va afisa de mai multe ori , doar 1 data
+
+Raspuns : A B C
+
+
+9. Ce face apelul sistem "write" cand in pipe este spatiu , dar nu este suficient
+pentru cat i se cere sa se scrie
+
+write(file_descriptor , *arg , sizeof(arg));
+Depinde cum este configurat pipe-ul 
+1) Daca a fost setat intr-un mod de blocare, atunci se va bloca pana are suficient spatiu
+2) Daca a fost setat pe partial write , atunci scrie partial cat se poate
+3) eroare -> EWOULDBLOCK , EAGAIN
+ Raspuns : Eroare - signal handler
+
+10. Ce tipareste fragmentul de cod de mai jos daca niciun alt proces nu deschide
+Fifo-ul "abc"
+
+int w , n , k = 10;
+r = open("abc" , O_WRONLY); // Doar citesti
+n = write(r , &k , sizeof(int));
+printf("%d\n" , n);
+
+Functia open nu va afisa nimic daca nu este deschisa de alt fifo
+Raspuns : -1
+
+11. Ce se intampla cu procesul zombie ale caror parinte s-a terminat
+ramane in tabela pana cand parintele va trimite un signal 
+Daca nu se intampla asta , va fi adopta de catre procesul cu pid-ul 1
+
+12. Considerati ca functia f este executate simultan de 10 thread-uri?
+Adaugati liniile de cod necesare ca sa asigurati ca n va avea valoarea 10
+
+int n = 0;
+void* f(void* p){
+    
+    n++;
+
+    return NULL;
+  }
+
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <wait.h>
+#define N 10
+
+int n = 0;
+pthread_mutex_t mutex;
+pthread_t *th;
+void *f(void *p) {
+  pthread_mutex_lock(&mutex);
+  ++n;
+  pthread_mutex_unlock(&mutex);
+  return NULL;
+}
+int main(int argc, char *argv[]) {
+  th = (pthread_t *)malloc(sizeof(pthread_t) * N);
+  pthread_mutex_init(&mutex, NULL);
+
+  for (int i = 0; i < N; ++i) {
+    if (pthread_create(&th[i], NULL, &f, NULL) != 0) {
+      perror("Eroare create\n");
+      return EXIT_FAILURE;
+    }
+  }
+  for (int i = 0; i < N; ++i) {
+    if (pthread_join(th[i], NULL) != 0) {
+      perror("Eroare join\n");
+      return EXIT_FAILURE;
+    }
+  }
+  free(th);
+  printf("Valoare : %d\n", n);
+  return EXIT_SUCCESS;
+}
+
+
+13. Planificati executia job-urilor urmatoare ( date ca Nume / Durate / Termen)
+incat suma intarzierilor sa fie minima:
+A/22/27 , B/2/15 , C/4/5
+
+B C A
+2 6 28 -> S intarzierilor = B (0) + C(1) + A(1) = 2
+
+C B A
+4 6 28 -> S intarzierilor = C(0) + B(0) + A(1) = 1
+
+14. Dati un avantaj si un dezavantaj a cache-urilor set-asociatve
+fata de cele directe
+directed-map-cache - map each block of main memory to only one 
+                      cache location , se foloseste un algoritm de indexing sau hashing
+                      cand se acceseaza se foloseste tag , index, offset
+pro : 
+      simplitate si viteza
+      cost redus
+cons:
+      frecventa la coliziuni, se va intra in conflict si se vor pierde date din cache
+      flexibilitate redusa , un block per locatie
+
+ Set-Associative Cache - un bloc de memorie la mai multe locatii din cache
+            un exemplu - 2-way Set-Associative , fiecare block de memorie
+            poate fi mapat la una din 2 locatii posibile in cache
+
+pro : 
+      reducerea coliziunilor
+      flexibilitate mai mare
+cons:
+      complexitate si cost, mai multa logica necesare , cai
+      consum de energie , deoarece se fac mai multe verificiari
+
+
+15. Care este cea mai prioritara categorie de pagini de memorie din care politica de inlocuire
+NRU ar alege o pagina victima?
+
+Cum se alege pagina care sa fie inlocuita ca memorie
+Not Recently Used (NRU) page replacement algorithm
+NRU - not recently used
+Categoria I : Paginile care nu au fost nici referite(R = 0) , nici modificate(M = 0)
+Categoria II : Paginile care nu au fost referite (R = 0), dar au fost modficiate (M = 1)
+Categoria III : R = 1 , M = 0
+Categoria IV : R = 1 , M = 1
+
+16. Ce ati adauga la fragmentul de program de mai jos incat sa tipareasca in consola
+"1 3 3" . Doar adauga linii
+
+int n = 0;
+pthread_mutex_t m[3];
+void* f(void* p)
+{
+    int id = (int)p;
+    pthread_mutex_lock(&m[id]);
+    n += id;
+    printf("%d " , n);
+    pthread_mutex_unlock(&m[(id + 1) % 3]);
+    return NULL;
+}
+
+int main(int argc , char* argv[])
+{
+    pthread_t t[3];
+    for(int i = 0 ; i < 3 ; ++i){
+        pthread_mutex_init(&m[i] , NULL);
+      }
+    for(int i = 0 ; i < 3 ; ++i){
+        pthread_create(&t[i] , NULL , f , (void*)i);
+      }
+    for(int i = 0 ; i < 3 ; ++i){
+        pthread_join(t[i] , NULL);
+      }
+    for(int i = 0 ; i < 3 ; ++i)
+    {
+        pthread_mutex_destroy(&m[i]);
+      }
+  }
+
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <wait.h>
+
+int n = 0;
+pthread_mutex_t m[3];
+void *f(void *p) {
+  int id = *(int *)p;
+  pthread_mutex_lock(&m[id]);
+  // id = 0 -> n = 1
+  // id = 1 -> n = 3
+  // id = 2 -> n = 3
+  n += id;
+
+  if (id == 0)
+    n = 1;
+  else if (id == 1)
+    n = 3;
+  else if (id == 2)
+    n = 3;
+
+  printf("%d ", n);
+  pthread_mutex_unlock(&m[(id + 1) % 3]);
+  // pthread_mutex_lock(&m[id]);
+  free(p);
+  return NULL;
+}
+
+int main(int argc, char *argv[]) {
+  pthread_t t[3];
+  for (int i = 0; i < 3; ++i) {
+    pthread_mutex_init(&m[i], NULL);
+  }
+  for (int i = 0; i < 3; ++i) {
+    int *nr = (int *)malloc(sizeof(int));
+    *nr = i;
+    pthread_create(&t[i], NULL, f, (void *)nr);
+  }
+  for (int i = 0; i < 3; ++i) {
+    pthread_join(t[i], NULL);
+  }
+  for (int i = 0; i < 3; ++i) {
+    pthread_mutex_destroy(&m[i]);
+  }
+}
+
+
+17. Dandu-se 2 cache-uri set-asociatve , 2 seturi de 4 pagini si unul cu 4 seturi de 2 pagini,
+care va rezultate pentru secventa de cereri : 14, 23 , 1 , 16 , 1, 23, 16 ,14
+
+se foloseste formula : numar % seturi
+                      fiecare slot pe care se ajunge are un numar de N pagini
+Cache 1: 2 seturi de 4 pagini
+Set 0 : [14 , 16] la restul a fost coliziune si nu le-a Adaugat
+Set 1 : [23 , 1]
+
+Cache 2 : 4 seturi de 2 pagini
+Set 0 : [16 , ]
+Set 1 : [1 , ]
+Set 2 : [14 , ]
+Set 3 : [23 , ]
+Nu se vor repeta cererile
+
+18 . Cate blocuri de date pot fi referite prin tripla indirectare a unui
+i-node , daca un bloc are dimensiunea B , si are o adresa de dimensiunea A
+
+i-node = index-node : structura de date
+contine: ( practic contine date despre un fisier )
+      - Numarul de index(inode number) : un id
+      - Tipul fisierului - txt file , director , link symb
+      - Marimea fisierului 
+      - Permisiuni de acces 
+      - Proprietar si grup
+      - Timestamps
+      - Numar de link-uri
+      - Atribute extinse
+
+tripla indectare - trei niveluri de indici
+1. indirectare simpla ( single indirect ): A/sizeof(B)
+2. indirectare dubla ( double indirect ) : (A / sizeof(B))^2
+3. indirectare triple ( triple indirect ) : (A/sizeof(B))^3
+
+19. Ce se intampla cu un link hard cand fisierul spre care puncteaza este sters? 
+
+hardlink inseamna cand 2 fisiere pointeaza catre aceeasi adresa pe disk
+se decrementeaza numarul de link-uri
+link-ul raman dar devine orfan , pointeaza catre un inod care nu mai exista
+nu va afecta
+
+20. Dati o metoda pentru prevenirea dead-lock-ului
+
+pthread_mutex_attr_t recursiveMutexAttribute;
+pthread_mutexattr_settype(&recursiveMutexAttribute , PTHREAD_MUTEX_RECURSIVE)
+pthread_mutex_init(&mutex , recursiveMutexAttribute);

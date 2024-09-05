@@ -1,0 +1,7 @@
+# ninja log v5
+2	204	7356023598983297	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/Iterator.cpp.obj	c8e585c0d26433d5
+2	222	7355984948400926	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/App.cpp.obj	cc40c508637a800c
+2	413	7356124761057136	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestScurt.cpp.obj	12feca94f3dabfcb
+2	200	7355987015521691	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Teste/TestExtins.cpp.obj	e022dc614a09d0a4
+413	653	7356124763422769	lab4.exe	ec6d53b1cf46236b
+14	248	7356023599424542	CMakeFiles/lab4.dir/Lista_Ordonata_-_cu_pozitie_iterator/Proiect_C++/LO.cpp.obj	8aea458094ed41b9

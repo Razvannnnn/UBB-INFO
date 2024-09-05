@@ -1,0 +1,1050 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab2_7/repo.c
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab2_7\cmake-build-debug-coverage\CMakeFiles\lab2_7.dir\repo.c.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab2_7\cmake-build-debug-coverage\CMakeFiles\lab2_7.dir\repo.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <string.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include <assert.h>
+        -:    5:#include "cheltuieli.h"
+        -:    6:#include "repo.h"
+        -:    7:#include "lista.h"
+        -:    8:
+function adaugare called 29 returned 100% blocks executed 100%
+       29:    9:void adaugare(cheltuiala c, Lista* l) {
+        -:   10:    /*
+        -:   11:     * Functie care adauga o cheltuiala in lista
+        -:   12:     * preconditii: c de tip cheltuiala
+        -:   13:     *              l de tip lista
+        -:   14:     * postconditii: -
+        -:   15:     */
+       29:   16:    if(l->capacitate <= l->len + 1) {
+       29:   16-block  0
+branch  0 taken 9 (fallthrough)
+branch  1 taken 20
+        9:   17:        int capacitate = 2*l->capacitate;
+        9:   18:        cheltuiala* array = (cheltuiala*)malloc(sizeof(cheltuiala) * capacitate);
+       18:   19:        for(int i=0;i<l->len;i++) {
+        9:   19-block  0
+       18:   19-block  1
+branch  0 taken 9
+branch  1 taken 9 (fallthrough)
+        9:   20:            array[i] = l->array[i];
+        9:   20-block  0
+        -:   21:        }
+        9:   22:        free(l->array);
+        9:   23:        l->array = array;
+        9:   24:        l->capacitate = capacitate;
+        9:   24-block  0
+        -:   25:    }
+       29:   26:    l->array[l->len] = c;
+       29:   27:    l->len++;
+       29:   28:}
+        -:   29:
+function stergere called 2 returned 100% blocks executed 100%
+        2:   30:void stergere(int nr, Lista* l) {
+        -:   31:    /*
+        -:   32:     * Functie care sterge o cheltuiala din lista
+        -:   33:     * preconditii: nr - de tip int > 0
+        -:   34:     *              l - de tip Lista
+        -:   35:     * postconditii: -
+        -:   36:     */
+        2:   37:    int ok=0;
+        6:   38:    for(int i=0; i<l->len; i++) {
+        2:   38-block  0
+        4:   38-block  1
+        6:   38-block  2
+branch  0 taken 4
+branch  1 taken 2 (fallthrough)
+        4:   39:        if(l->array[i].nr == nr) {
+        4:   39-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   40:            destroyCheltuiala(&l->array[i]);
+        2:   40-block  0
+call    0 returned 2
+        2:   41:            ok=1;
+        -:   42:        }
+        4:   43:        if(ok==1 && i < l->len-1) {
+        4:   43-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 0
+        4:   43-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 2
+        2:   44:            l->array[i]=l->array[i+1];
+        2:   44-block  0
+        -:   45:        }
+        -:   46:    }
+        2:   47:    if(ok==1) l->len--;
+        2:   47-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:   47-block  1
+        2:   48:}
+        -:   49:
+function modificare called 2 returned 100% blocks executed 100%
+        2:   50:void modificare(cheltuiala c, Lista* l) {
+        -:   51:    /*
+        -:   52:     * Functie care modifica o cheltuiala din lista
+        -:   53:     * preconditii: c - de tip cheltuiala
+        -:   54:     *              l - de tip Lista
+        -:   55:     * postcondtii: -
+        -:   56:     */
+        4:   57:    for(int i=0;i<l->len;i++)
+        2:   57-block  0
+        2:   57-block  1
+        4:   57-block  2
+branch  0 taken 2
+branch  1 taken 2 (fallthrough)
+        -:   58:    {
+        2:   59:        if(l->array[i].nr == c.nr)
+        2:   59-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        -:   60:        {
+        2:   61:            l->array[i].suma = c.suma;
+        2:   62:            strcpy(l->array[i].tip, c.tip);
+        2:   62-block  0
+        -:   63:        }
+        -:   64:    }
+        2:   65:}
+        -:   66:
+function filtrare_propr_nr called 1 returned 100% blocks executed 100%
+        1:   67:Lista filtrare_propr_nr(Lista* lista, int nr) {
+        -:   68:    /*
+        -:   69:     * Functie de filtrare a listei dupa nr apt
+        -:   70:     * preconditii - lista - de tip Lista
+        -:   71:     *             - nr - de tip int
+        -:   72:     * postconditii - noua lista filtrata
+        -:   73:     */
+        1:   74:    Lista new_lista = createLista();
+        1:   74-block  0
+call    0 returned 1
+        -:   75:
+        4:   76:    for(int i=0;i<lista->len;i++) {
+        3:   76-block  0
+        4:   76-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:   77:        if(lista->array[i].nr == nr) {
+        3:   77-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   78:            cheltuiala cheltuiala = createCheltuiala();
+        2:   78-block  0
+call    0 returned 2
+        2:   79:            cheltuiala.nr = lista->array[i].nr;
+        2:   80:            cheltuiala.suma = lista->array[i].suma;
+        2:   81:            strcpy(cheltuiala.tip, lista->array[i].tip);
+        2:   82:            adaugare(cheltuiala, &new_lista);
+call    0 returned 2
+        -:   83:        }
+        -:   84:    }
+        1:   85:    return new_lista;
+        1:   85-block  0
+        -:   86:}
+        -:   87:
+function filtrare_propr_suma called 1 returned 100% blocks executed 100%
+        1:   88:Lista filtrare_propr_suma(Lista* lista, int suma) {
+        -:   89:    /*
+        -:   90:     * Functie de filtrare a listei dupa suma cheltuielii
+        -:   91:     * preconditii - lista - de tip Lista
+        -:   92:     *             - suma - de tip int
+        -:   93:     * postconditii - noua lista filtrata
+        -:   94:     */
+        1:   95:    Lista new_lista = createLista();
+        1:   95-block  0
+call    0 returned 1
+        -:   96:
+        4:   97:    for(int i=0;i<lista->len;i++) {
+        3:   97-block  0
+        4:   97-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:   98:        if(lista->array[i].suma == suma) {
+        3:   98-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   99:            cheltuiala cheltuiala = createCheltuiala();
+        2:   99-block  0
+call    0 returned 2
+        2:  100:            cheltuiala.nr = lista->array[i].nr;
+        2:  101:            cheltuiala.suma = lista->array[i].suma;
+        2:  102:            strcpy(cheltuiala.tip,  lista->array[i].tip);
+        2:  103:            adaugare(cheltuiala, &new_lista);
+call    0 returned 2
+        -:  104:        }
+        -:  105:    }
+        1:  106:    return new_lista;
+        1:  106-block  0
+        -:  107:}
+        -:  108:
+function filtrare_propr_tip called 1 returned 100% blocks executed 100%
+        1:  109:Lista filtrare_propr_tip(Lista* lista, char* tip) {
+        -:  110:    /*
+        -:  111:     * Functie de filtrare a listei dupa tipul cheltuielii
+        -:  112:     * preconditii - lista - de tip Lista
+        -:  113:     *             - tip - de tip char
+        -:  114:     * postconditii - noua lista filtrata
+        -:  115:     */
+        1:  116:    Lista new_lista = createLista();
+        1:  116-block  0
+call    0 returned 1
+        -:  117:
+        4:  118:    for(int i=0;i<lista->len;i++) {
+        3:  118-block  0
+        4:  118-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        3:  119:        if(strcmp(lista->array[i].tip, tip) == 0) {
+        3:  119-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:  120:            cheltuiala cheltuiala = createCheltuiala();
+        2:  120-block  0
+call    0 returned 2
+        2:  121:            cheltuiala.nr = lista->array[i].nr;
+        2:  122:            cheltuiala.suma = lista->array[i].suma;
+        2:  123:            strcpy(cheltuiala.tip, lista->array[i].tip);
+        2:  124:            adaugare(cheltuiala, &new_lista);
+call    0 returned 2
+        -:  125:        }
+        -:  126:    }
+        1:  127:    return new_lista;
+        1:  127-block  0
+        -:  128:}
+        -:  129:
+function compare called 23 returned 100% blocks executed 100%
+       23:  130:int compare(cheltuiala a, cheltuiala b, int propr, int ord) {
+        -:  131:    /*
+        -:  132:     * Functie utilizata la sortare
+        -:  133:     */
+       23:  134:    if(propr == 1) {
+       23:  134-block  0
+branch  0 taken 10 (fallthrough)
+branch  1 taken 13
+       10:  135:        if(ord == 1 ) return a.suma > b.suma;
+       10:  135-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 5
+        5:  135-block  1
+        5:  136:        return a.suma < b.suma;
+        5:  136-block  0
+        -:  137:    }
+       13:  138:    if(propr == 0) {
+       13:  138-block  0
+branch  0 taken 12 (fallthrough)
+branch  1 taken 1
+       12:  139:        if(ord == 1) return strcmp(a.tip, b.tip) > 0;
+       12:  139-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 7
+        5:  139-block  1
+        7:  140:        return strcmp(a.tip, b.tip) < 0;
+        7:  140-block  0
+        -:  141:    }
+        1:  142:    return -1;
+        1:  142-block  0
+        -:  143:}
+        -:  144:
+function sortare called 4 returned 100% blocks executed 100%
+        4:  145:Lista sortare(Lista lista, int propr, int ord) {
+        -:  146:    /*
+        -:  147:     * Sortarea listei dupa suma sau dupa tip
+        -:  148:     * propr = 1 -> sortare dupa suma
+        -:  149:     * propr = 0 -> sortare dupa tip
+        -:  150:     * ord = 1 -> sortare crescatoare
+        -:  151:     * ord = 0 -> sortare descrescatoare
+        -:  152:     * preconditii - lista - de tip Lista
+        -:  153:     *             - propr - de tip int
+        -:  154:     *             - ord - de tip int
+        -:  155:     * postconditii - lista sortata
+        -:  156:     */
+        4:  157:    int ok = 0;
+       13:  158:    while(ok == 0) {
+        4:  158-block  0
+       13:  158-block  1
+branch  0 taken 9
+branch  1 taken 4 (fallthrough)
+        9:  159:        ok = 1;
+       27:  160:        for(int i=0;i<lista.len - 1;i++) {
+        9:  160-block  0
+       18:  160-block  1
+       27:  160-block  2
+branch  0 taken 18
+branch  1 taken 9 (fallthrough)
+       18:  161:            if(compare(lista.array[i], lista.array[i+1], propr, ord)) {
+       18:  161-block  0
+call    0 returned 18
+branch  1 taken 6 (fallthrough)
+branch  2 taken 12
+        6:  162:                cheltuiala auxiliar = lista.array[i];
+        6:  163:                lista.array[i] = lista.array[i+1];
+        6:  164:                lista.array[i+1] = auxiliar;
+        6:  165:                ok = 0;
+        6:  165-block  0
+        -:  166:            }
+        -:  167:        }
+        -:  168:    }
+        4:  169:    return lista;
+        4:  169-block  0
+        -:  170:}
+        -:  171:
+function sort_cresc called 10 returned 100% blocks executed 100%
+       10:  172:int sort_cresc(cheltuiala cheltuialaA, cheltuiala cheltuialaB) {
+       10:  173:    if(cheltuialaA.suma == cheltuialaB.suma){
+       10:  173-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 5
+        5:  174:        return strcmp(cheltuialaA.tip, cheltuialaB.tip) > 0;
+        5:  174-block  0
+        -:  175:    }
+        5:  176:    return cheltuialaA.suma > cheltuialaB.suma;
+        5:  176-block  0
+        -:  177:}
+function sort_descresc called 12 returned 100% blocks executed 100%
+       12:  178:int sort_descresc(cheltuiala cheltuialaA, cheltuiala cheltuialaB) {
+       12:  179:    if(cheltuialaA.suma == cheltuialaB.suma){
+       12:  179-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 8
+        4:  180:        return strcmp(cheltuialaA.tip, cheltuialaB.tip) < 0;
+        4:  180-block  0
+        -:  181:    }
+        8:  182:    return cheltuialaA.suma < cheltuialaB.suma;
+        8:  182-block  0
+        -:  183:}
+        -:  184:
+function sortare2 called 4 returned 100% blocks executed 100%
+        4:  185:Lista sortare2(Lista lista, int (*compare)()) {
+        -:  186:    /*
+        -:  187:     * Sortarea listei dupa suma sau dupa tip
+        -:  188:     * propr = 1 -> sortare dupa suma
+        -:  189:     * propr = 0 -> sortare dupa tip
+        -:  190:     * ord = 1 -> sortare crescatoare
+        -:  191:     * ord = 0 -> sortare descrescatoare
+        -:  192:     * preconditii - lista - de tip Lista
+        -:  193:     *             - propr - de tip int
+        -:  194:     *             - ord - de tip int
+        -:  195:     * postconditii - lista sortata
+        -:  196:     */
+        4:  197:    int ok = 0;
+       15:  198:    while(ok == 0) {
+        4:  198-block  0
+       15:  198-block  1
+branch  0 taken 11
+branch  1 taken 4 (fallthrough)
+       11:  199:        ok = 1;
+       33:  200:        for(int i=0;i<lista.len - 1;i++) {
+       11:  200-block  0
+       22:  200-block  1
+       33:  200-block  2
+branch  0 taken 22
+branch  1 taken 11 (fallthrough)
+       22:  201:            if(compare(lista.array[i], lista.array[i+1])) {
+       22:  201-block  0
+call    0 returned 22
+branch  1 taken 10 (fallthrough)
+branch  2 taken 12
+       10:  202:                cheltuiala auxiliar = lista.array[i];
+       10:  203:                lista.array[i] = lista.array[i+1];
+       10:  204:                lista.array[i+1] = auxiliar;
+       10:  205:                ok = 0;
+       10:  205-block  0
+        -:  206:            }
+        -:  207:        }
+        -:  208:    }
+        4:  209:    return lista;
+        4:  209-block  0
+        -:  210:}
+        -:  211:
+        -:  212:// TESTE
+        -:  213:
+function test_adaugare called 1 returned 100% blocks executed 75%
+        1:  214:void test_adaugare() {
+        1:  215:    Lista lista_ad = createLista();
+        1:  215-block  0
+call    0 returned 1
+        1:  216:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  217:    c1.nr = 250;
+        1:  218:    c1.suma = 300;
+        1:  219:    strcpy(c1.tip, "curent");
+        -:  220:
+       1*:  221:    assert(lista_ad.len == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  221-block  0
+call    2 never executed
+        1:  221-block  1
+        1:  222:    adaugare(c1, &lista_ad);
+        1:  222-block  0
+call    0 returned 1
+       1*:  223:    assert(lista_ad.len == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  223-block  0
+call    2 never executed
+        1:  223-block  1
+       1*:  224:    assert(lista_ad.array[0].nr == 250);
+        1:  224-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  224-block  1
+call    2 never executed
+        1:  224-block  2
+       1*:  225:    assert(lista_ad.array[0].suma == 300);
+        1:  225-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  225-block  1
+call    2 never executed
+        1:  225-block  2
+       1*:  226:    assert(strcmp(lista_ad.array[0].tip, "curent") == 0);
+        1:  226-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  226-block  1
+call    2 never executed
+        1:  226-block  2
+        -:  227:
+        1:  228:    destroyLista(&lista_ad);
+        1:  228-block  0
+call    0 returned 1
+        1:  229:}
+        -:  230:
+function test_stergere called 1 returned 100% blocks executed 84%
+        1:  231:void test_stergere() {
+        1:  232:    Lista lista_st = createLista();
+        1:  232-block  0
+call    0 returned 1
+        1:  233:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  234:    c1.nr = 250;
+        1:  235:    c1.suma = 300;
+        1:  236:    strcpy(c1.tip, "curent");
+        -:  237:
+        1:  238:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  239:    c2.nr = 130;
+        1:  240:    c2.suma = 100;
+        1:  241:    strcpy(c2.tip, "apa");
+        -:  242:
+        1:  243:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  244:    c3.nr = 150;
+        1:  245:    c3.suma = 300;
+        1:  246:    strcpy(c3.tip, "caldura");
+        -:  247:
+       1*:  248:    assert(lista_st.len == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  248-block  0
+call    2 never executed
+        1:  248-block  1
+        1:  249:    adaugare(c1, &lista_st);
+        1:  249-block  0
+call    0 returned 1
+        1:  250:    adaugare(c2, &lista_st);
+call    0 returned 1
+        1:  251:    adaugare(c3, &lista_st);
+call    0 returned 1
+       1*:  252:    assert(lista_st.len == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  252-block  0
+call    2 never executed
+        1:  252-block  1
+        1:  253:    stergere(250, &lista_st);
+        1:  253-block  0
+call    0 returned 1
+       1*:  254:    assert(lista_st.len == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  254-block  0
+call    2 never executed
+        1:  254-block  1
+        -:  255:
+        1:  256:    destroyLista(&lista_st);
+        1:  256-block  0
+call    0 returned 1
+        1:  257:}
+        -:  258:
+function test_modificare called 1 returned 100% blocks executed 82%
+        1:  259:void test_modificare() {
+        1:  260:    Lista lista_modif = createLista();
+        1:  260-block  0
+call    0 returned 1
+        1:  261:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  262:    c1.nr = 250;
+        1:  263:    c1.suma = 300;
+        1:  264:    strcpy(c1.tip,  "curent");
+        -:  265:
+        1:  266:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  267:    c2.nr = 250;
+        1:  268:    c2.suma = 100;
+        1:  269:    strcpy(c2.tip, "apa");
+        -:  270:
+       1*:  271:    assert(lista_modif.len == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  271-block  0
+call    2 never executed
+        1:  271-block  1
+        1:  272:    adaugare(c1, &lista_modif);
+        1:  272-block  0
+call    0 returned 1
+       1*:  273:    assert(lista_modif.len == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  273-block  0
+call    2 never executed
+        1:  273-block  1
+        1:  274:    modificare(c2, &lista_modif);
+        1:  274-block  0
+call    0 returned 1
+       1*:  275:    assert(lista_modif.len == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  275-block  0
+call    2 never executed
+        1:  275-block  1
+       1*:  276:    assert(lista_modif.array[0].nr == 250 && lista_modif.array[0].suma == 100 && strcmp(lista_modif.array[0].tip, "apa") == 0);
+        1:  276-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:  276-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  276-block  2
+branch  4 taken 0 (fallthrough)
+branch  5 taken 1
+    %%%%%:  276-block  3
+call    6 never executed
+        1:  276-block  4
+        -:  277:
+        1:  278:    destroyCheltuiala(&c2);
+        1:  278-block  0
+call    0 returned 1
+        1:  279:    destroyLista(&lista_modif);
+call    0 returned 1
+        1:  280:}
+        -:  281:
+function test_filtrare_propr_nr called 1 returned 100% blocks executed 83%
+        1:  282:void test_filtrare_propr_nr() {
+        1:  283:    Lista lista = createLista();
+        1:  283-block  0
+call    0 returned 1
+        1:  284:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  285:    c1.nr = 250;
+        1:  286:    c1.suma = 300;
+        1:  287:    strcpy(c1.tip,"curent");
+        -:  288:
+        1:  289:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  290:    c2.nr = 150;
+        1:  291:    c2.suma = 100;
+        1:  292:    strcpy(c2.tip,  "apa");
+        -:  293:
+        1:  294:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  295:    c3.nr = 150;
+        1:  296:    c3.suma = 300;
+        1:  297:    strcpy(c3.tip, "caldura");
+        1:  298:    adaugare(c1, &lista);
+call    0 returned 1
+        1:  299:    adaugare(c2, &lista);
+call    0 returned 1
+        1:  300:    adaugare(c3, &lista);
+call    0 returned 1
+        -:  301:
+        1:  302:    Lista new_lista = filtrare_propr_nr(&lista, 150);
+call    0 returned 1
+       1*:  303:    assert(new_lista.array[0].suma == 100);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  303-block  0
+call    2 never executed
+        1:  303-block  1
+       1*:  304:    assert(strcmp(new_lista.array[0].tip, "apa") == 0);
+        1:  304-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  304-block  1
+call    2 never executed
+        1:  304-block  2
+       1*:  305:    assert(new_lista.array[1].suma == 300);
+        1:  305-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  305-block  1
+call    2 never executed
+        1:  305-block  2
+       1*:  306:    assert(strcmp(new_lista.array[1].tip, "caldura") == 0);
+        1:  306-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  306-block  1
+call    2 never executed
+        1:  306-block  2
+        -:  307:
+        1:  308:    destroyLista(&new_lista);
+        1:  308-block  0
+call    0 returned 1
+        1:  309:    destroyLista(&lista);
+call    0 returned 1
+        1:  310:}
+        -:  311:
+function test_filtrare_propr_suma called 1 returned 100% blocks executed 83%
+        1:  312:void test_filtrare_propr_suma() {
+        1:  313:    Lista lista = createLista();
+        1:  313-block  0
+call    0 returned 1
+        1:  314:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  315:    c1.nr = 250;
+        1:  316:    c1.suma = 300;
+        1:  317:    strcpy(c1.tip, "curent");
+        -:  318:
+        1:  319:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  320:    c2.nr = 150;
+        1:  321:    c2.suma = 100;
+        1:  322:    strcpy(c2.tip,  "apa");
+        -:  323:
+        1:  324:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  325:    c3.nr = 150;
+        1:  326:    c3.suma = 300;
+        1:  327:    strcpy(c3.tip, "caldura");
+        1:  328:    adaugare(c1, &lista);
+call    0 returned 1
+        1:  329:    adaugare(c2, &lista);
+call    0 returned 1
+        1:  330:    adaugare(c3, &lista);
+call    0 returned 1
+        -:  331:
+        1:  332:    Lista new_lista = filtrare_propr_suma(&lista, 300);
+call    0 returned 1
+       1*:  333:    assert(new_lista.array[0].nr == 250);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  333-block  0
+call    2 never executed
+        1:  333-block  1
+       1*:  334:    assert(strcmp(new_lista.array[0].tip, "curent") == 0);
+        1:  334-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  334-block  1
+call    2 never executed
+        1:  334-block  2
+       1*:  335:    assert(new_lista.array[1].nr == 150);
+        1:  335-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  335-block  1
+call    2 never executed
+        1:  335-block  2
+       1*:  336:    assert(strcmp(new_lista.array[1].tip, "caldura") == 0);
+        1:  336-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  336-block  1
+call    2 never executed
+        1:  336-block  2
+        -:  337:
+        1:  338:    destroyLista(&new_lista);
+        1:  338-block  0
+call    0 returned 1
+        1:  339:    destroyLista(&lista);
+call    0 returned 1
+        1:  340:}
+        -:  341:
+function test_filtrare_propr_tip called 1 returned 100% blocks executed 83%
+        1:  342:void test_filtrare_propr_tip() {
+        1:  343:    Lista lista = createLista();
+        1:  343-block  0
+call    0 returned 1
+        1:  344:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  345:    c1.nr = 250;
+        1:  346:    c1.suma = 300;
+        1:  347:    strcpy(c1.tip, "apa");
+        -:  348:
+        1:  349:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  350:    c2.nr = 150;
+        1:  351:    c2.suma = 100;
+        1:  352:    strcpy(c2.tip, "apa");
+        -:  353:
+        1:  354:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  355:    c3.nr = 150;
+        1:  356:    c3.suma = 300;
+        1:  357:    strcpy(c3.tip, "caldura");
+        1:  358:    adaugare(c1, &lista);
+call    0 returned 1
+        1:  359:    adaugare(c2, &lista);
+call    0 returned 1
+        1:  360:    adaugare(c3, &lista);
+call    0 returned 1
+        -:  361:
+        1:  362:    Lista new_lista = filtrare_propr_tip(&lista, "apa");
+call    0 returned 1
+       1*:  363:    assert(new_lista.array[0].nr == 250);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  363-block  0
+call    2 never executed
+        1:  363-block  1
+       1*:  364:    assert(new_lista.array[0].suma == 300);
+        1:  364-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  364-block  1
+call    2 never executed
+        1:  364-block  2
+       1*:  365:    assert(new_lista.array[1].nr == 150);
+        1:  365-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  365-block  1
+call    2 never executed
+        1:  365-block  2
+       1*:  366:    assert(new_lista.array[1].suma == 100);
+        1:  366-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  366-block  1
+call    2 never executed
+        1:  366-block  2
+        -:  367:
+        1:  368:    destroyLista(&new_lista);
+        1:  368-block  0
+call    0 returned 1
+        1:  369:    destroyLista(&lista);
+call    0 returned 1
+        1:  370:}
+        -:  371:
+function test_sortare called 1 returned 100% blocks executed 76%
+        1:  372:void test_sortare() {
+        1:  373:    Lista lista = createLista();
+        1:  373-block  0
+call    0 returned 1
+        1:  374:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  375:    c1.nr = 250;
+        1:  376:    c1.suma = 300;
+        1:  377:    strcpy(c1.tip, "apa");
+        -:  378:
+        1:  379:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  380:    c2.nr = 150;
+        1:  381:    c2.suma = 100;
+        1:  382:    strcpy(c2.tip,  "apa");
+        -:  383:
+        1:  384:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  385:    c3.nr = 150;
+        1:  386:    c3.suma = 300;
+        1:  387:    strcpy(c3.tip, "caldura");
+        1:  388:    adaugare(c1, &lista);
+call    0 returned 1
+        1:  389:    adaugare(c2, &lista);
+call    0 returned 1
+        1:  390:    adaugare(c3, &lista);
+call    0 returned 1
+        -:  391:
+        1:  392:    sortare(lista, 1, 1);
+call    0 returned 1
+       1*:  393:    assert(lista.array[0].suma == 100);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  393-block  0
+call    2 never executed
+        1:  393-block  1
+       1*:  394:    assert(lista.array[1].suma == 300);
+        1:  394-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  394-block  1
+call    2 never executed
+        1:  394-block  2
+       1*:  395:    assert(lista.array[2].suma == 300);
+        1:  395-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  395-block  1
+call    2 never executed
+        1:  395-block  2
+        -:  396:
+        1:  397:    sortare(lista, 1, 0);
+        1:  397-block  0
+call    0 returned 1
+       1*:  398:    assert(lista.array[0].suma == 300);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  398-block  0
+call    2 never executed
+        1:  398-block  1
+       1*:  399:    assert(lista.array[1].suma == 300);
+        1:  399-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  399-block  1
+call    2 never executed
+        1:  399-block  2
+       1*:  400:    assert(lista.array[2].suma == 100);
+        1:  400-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  400-block  1
+call    2 never executed
+        1:  400-block  2
+        -:  401:
+        1:  402:    sortare(lista, 0, 1);
+        1:  402-block  0
+call    0 returned 1
+       1*:  403:    assert(strcmp(lista.array[0].tip, "apa") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  403-block  0
+call    2 never executed
+        1:  403-block  1
+       1*:  404:    assert(strcmp(lista.array[1].tip, "apa") == 0);
+        1:  404-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  404-block  1
+call    2 never executed
+        1:  404-block  2
+       1*:  405:    assert(strcmp(lista.array[2].tip, "caldura") == 0);
+        1:  405-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  405-block  1
+call    2 never executed
+        1:  405-block  2
+        -:  406:
+        1:  407:    sortare(lista, 0, 0);
+        1:  407-block  0
+call    0 returned 1
+       1*:  408:    assert(strcmp(lista.array[0].tip, "caldura") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  408-block  0
+call    2 never executed
+        1:  408-block  1
+       1*:  409:    assert(strcmp(lista.array[1].tip, "apa") == 0);
+        1:  409-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  409-block  1
+call    2 never executed
+        1:  409-block  2
+       1*:  410:    assert(strcmp(lista.array[2].tip, "apa") == 0);
+        1:  410-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  410-block  1
+call    2 never executed
+        1:  410-block  2
+        -:  411:
+        1:  412:    destroyLista(&lista);
+        1:  412-block  0
+call    0 returned 1
+        1:  413:}
+        -:  414:
+function test_sortare2 called 1 returned 100% blocks executed 76%
+        1:  415:void test_sortare2() {
+        1:  416:    Lista lista_sort = createLista();
+        1:  416-block  0
+call    0 returned 1
+        1:  417:    cheltuiala c1 = createCheltuiala();
+call    0 returned 1
+        1:  418:    c1.nr = 250;
+        -:  419:
+        1:  420:    c1.suma = 300;
+        1:  421:    strcpy(c1.tip, "apa");
+        -:  422:
+        1:  423:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  424:    c2.nr = 150;
+        1:  425:    c2.suma = 100;
+        1:  426:    strcpy(c2.tip,  "apa");
+        -:  427:
+        1:  428:    cheltuiala c3 = createCheltuiala();
+call    0 returned 1
+        1:  429:    c3.nr = 150;
+        1:  430:    c3.suma = 300;
+        1:  431:    strcpy(c3.tip, "caldura");
+        1:  432:    adaugare(c1, &lista_sort);
+call    0 returned 1
+        1:  433:    adaugare(c2, &lista_sort);
+call    0 returned 1
+        1:  434:    adaugare(c3, &lista_sort);
+call    0 returned 1
+        -:  435:
+        1:  436:    sortare2(lista_sort, sort_cresc);
+call    0 returned 1
+       1*:  437:    assert(lista_sort.array[0].suma == 100);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  437-block  0
+call    2 never executed
+        1:  437-block  1
+       1*:  438:    assert(lista_sort.array[1].suma == 300);
+        1:  438-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  438-block  1
+call    2 never executed
+        1:  438-block  2
+       1*:  439:    assert(lista_sort.array[2].suma == 300);
+        1:  439-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  439-block  1
+call    2 never executed
+        1:  439-block  2
+        -:  440:
+        1:  441:    sortare2(lista_sort, sort_descresc);
+        1:  441-block  0
+call    0 returned 1
+       1*:  442:    assert(lista_sort.array[0].suma == 300);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  442-block  0
+call    2 never executed
+        1:  442-block  1
+       1*:  443:    assert(lista_sort.array[1].suma == 300);
+        1:  443-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  443-block  1
+call    2 never executed
+        1:  443-block  2
+       1*:  444:    assert(lista_sort.array[2].suma == 100);
+        1:  444-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  444-block  1
+call    2 never executed
+        1:  444-block  2
+        -:  445:
+        1:  446:    sortare2(lista_sort, sort_cresc);
+        1:  446-block  0
+call    0 returned 1
+       1*:  447:    assert(strcmp(lista_sort.array[0].tip, "apa") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  447-block  0
+call    2 never executed
+        1:  447-block  1
+       1*:  448:    assert(strcmp(lista_sort.array[1].tip, "apa") == 0);
+        1:  448-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  448-block  1
+call    2 never executed
+        1:  448-block  2
+       1*:  449:    assert(strcmp(lista_sort.array[2].tip, "caldura") == 0);
+        1:  449-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  449-block  1
+call    2 never executed
+        1:  449-block  2
+        -:  450:
+        1:  451:    sortare2(lista_sort, sort_descresc);
+        1:  451-block  0
+call    0 returned 1
+       1*:  452:    assert(strcmp(lista_sort.array[0].tip, "caldura") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  452-block  0
+call    2 never executed
+        1:  452-block  1
+       1*:  453:    assert(strcmp(lista_sort.array[1].tip, "apa") == 0);
+        1:  453-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  453-block  1
+call    2 never executed
+        1:  453-block  2
+       1*:  454:    assert(strcmp(lista_sort.array[2].tip, "apa") == 0);
+        1:  454-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  454-block  1
+call    2 never executed
+        1:  454-block  2
+        -:  455:
+        1:  456:    destroyLista(&lista_sort);
+        1:  456-block  0
+call    0 returned 1
+        1:  457:}
+        -:  458:
+function test_compare called 1 returned 100% blocks executed 80%
+        1:  459:void test_compare() {
+        1:  460:    cheltuiala c1 = createCheltuiala();
+        1:  460-block  0
+call    0 returned 1
+        1:  461:    cheltuiala c2 = createCheltuiala();
+call    0 returned 1
+        1:  462:    c1.suma = 100;
+        1:  463:    c2.suma = 150;
+        1:  464:    strcpy(c1.tip,  "apa");
+        1:  465:    strcpy(c2.tip,  "caldura");
+        -:  466:
+       1*:  467:    assert(compare(c1, c2, 1, 1) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  467-block  0
+call    3 never executed
+        1:  467-block  1
+       1*:  468:    assert(compare(c1, c2, 1, 0) == 1);
+        1:  468-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  468-block  1
+call    3 never executed
+        1:  468-block  2
+       1*:  469:    assert(compare(c1, c2, 0, 1) == 0);
+        1:  469-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  469-block  1
+call    3 never executed
+        1:  469-block  2
+       1*:  470:    assert(compare(c1, c2, 0, 0) == 1);
+        1:  470-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  470-block  1
+call    3 never executed
+        1:  470-block  2
+       1*:  471:    assert(compare(c1, c2, 100, 1) == -1);
+        1:  471-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  471-block  1
+call    3 never executed
+        1:  471-block  2
+        -:  472:
+        1:  473:    destroyCheltuiala(&c1);
+        1:  473-block  0
+call    0 returned 1
+        1:  474:    destroyCheltuiala(&c2);
+call    0 returned 1
+        1:  475:}

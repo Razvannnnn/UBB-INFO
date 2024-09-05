@@ -1,0 +1,20 @@
+T: 1
+a: 3
+e: 5
+r: 2
+s: 2
+u: 2
+
+Coduri:
+e: 11
+r: 101
+s: 100
+u: 011
+T: 010
+a: 00
+
+Text codificat:
+0101011111000000100100011011101111111
+
+Text decodificat:
+Treeaaassuureee

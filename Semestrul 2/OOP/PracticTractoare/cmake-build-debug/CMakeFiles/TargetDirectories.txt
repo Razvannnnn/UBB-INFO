@@ -1,0 +1,5 @@
+C:/Users/razva/Desktop/OOP/PracticTractoare/cmake-build-debug/CMakeFiles/PracticTractoare.dir
+C:/Users/razva/Desktop/OOP/PracticTractoare/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/razva/Desktop/OOP/PracticTractoare/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/razva/Desktop/OOP/PracticTractoare/cmake-build-debug/CMakeFiles/PracticTractoare_autogen_timestamp_deps.dir
+C:/Users/razva/Desktop/OOP/PracticTractoare/cmake-build-debug/CMakeFiles/PracticTractoare_autogen.dir

@@ -1,0 +1,48 @@
+        -:    0:Source:C:/Users/razva/Desktop/OOP/lab6/produs.h
+        -:    0:Graph:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcno
+        -:    0:Data:C:\Users\razva\Desktop\OOP\lab6\cmake-build-debug-coverage\CMakeFiles\lab6.dir\service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#ifndef LAB6_PRODUS_H
+        -:    2:#define LAB6_PRODUS_H
+        -:    3:
+        -:    4:
+        -:    5:#include <string>
+        -:    6:#include <iostream>
+        -:    7:#include <utility>
+        -:    8:
+        -:    9:using std::string;
+        -:   10:
+        -:   11:class Produs {
+        -:   12:
+        -:   13:private:
+        -:   14:    string nume;
+        -:   15:    string tip;
+        -:   16:    double pret;
+        -:   17:    string producator;
+        -:   18:public:
+        -:   19:
+        -:   20:    double getPret() const;
+        -:   21:    string getNume() const;
+        -:   22:    string getTip() const;
+        -:   23:    string getProducator() const;
+        -:   24:
+        -:   25:    void setPret(double newPret);
+        -:   26:    void setNume(const string& newNume);
+        -:   27:    void setTip(const string& newTip);
+        -:   28:    void setProducator(const string& newProducator);
+        -:   29:
+        -:   30:    Produs();
+function _ZN6ProdusC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_dS5_ called 0 returned 0% blocks executed 0%
+    #####:   31:    Produs(string nume, string tip, double pret, string producator) :nume{std::move(nume)}, tip{std::move(tip)}, pret{pret}, producator{std::move(producator)}{
+    %%%%%:   31-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+call    4 never executed
+call    5 never executed
+    #####:   32:    }
+        -:   33:
+        -:   34:};
+        -:   35:
+        -:   36:#endif //LAB6_PRODUS_H

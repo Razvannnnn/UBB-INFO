@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1649362781 source:d:\an1_sem2\ag\algoritmi\floyd\main.cpp
+	<iostream>
+	<fstream>
+

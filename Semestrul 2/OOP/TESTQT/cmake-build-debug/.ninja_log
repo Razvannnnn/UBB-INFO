@@ -1,0 +1,24 @@
+# ninja log v5
+35	102	7373995213138740	TESTQT_autogen/timestamp	9b8762b29d0162e8
+35	102	7373995213138740	TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+35	102	7373995213138740	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/timestamp	9b8762b29d0162e8
+35	102	7373995213138740	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+105	1129	7373995223409240	CMakeFiles/TESTQT.dir/main.cpp.obj	50a0ec7468153acd
+1130	1226	7373995224338350	TESTQT.exe	97913ccdbb863faa
+169	256	7373995010108154	CMakeFiles/TESTQT.dir/TESTQT_autogen/mocs_compilation.cpp.obj	866da303f2a6a5f1
+12	87	7373999383421519	TESTQT_autogen/timestamp	9b8762b29d0162e8
+12	87	7373999383421519	TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+12	87	7373999383421519	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/timestamp	9b8762b29d0162e8
+12	87	7373999383421519	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+8	82	7374002360658548	TESTQT_autogen/timestamp	9b8762b29d0162e8
+8	82	7374002360658548	TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+8	82	7374002360658548	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/timestamp	9b8762b29d0162e8
+8	82	7374002360658548	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+85	1357	7374002373389953	CMakeFiles/TESTQT.dir/main.cpp.obj	50a0ec7468153acd
+1357	1510	7374002374897542	TESTQT.exe	97913ccdbb863faa
+18	86	7374003480364053	TESTQT_autogen/timestamp	9b8762b29d0162e8
+18	86	7374003480364053	TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+18	86	7374003480364053	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/timestamp	9b8762b29d0162e8
+18	86	7374003480364053	C:/Users/razva/Desktop/OOP/TESTQT/cmake-build-debug/TESTQT_autogen/mocs_compilation.cpp	9b8762b29d0162e8
+88	2932	7374003508820694	CMakeFiles/TESTQT.dir/main.cpp.obj	50a0ec7468153acd
+2934	3043	7374003509915195	TESTQT.exe	97913ccdbb863faa
